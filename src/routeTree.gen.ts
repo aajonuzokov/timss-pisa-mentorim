@@ -9,8 +9,62 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TimssRouteImport } from './routes/timss'
+import { Route as QollanmaRouteImport } from './routes/qollanma'
+import { Route as PisaRouteImport } from './routes/pisa'
+import { Route as NatijalarRouteImport } from './routes/natijalar'
+import { Route as MonitoringRouteImport } from './routes/monitoring'
+import { Route as ModelRouteImport } from './routes/model'
+import { Route as KutubxonaRouteImport } from './routes/kutubxona'
+import { Route as DolzarblikRouteImport } from './routes/dolzarblik'
+import { Route as AloqaRouteImport } from './routes/aloqa'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TimssRoute = TimssRouteImport.update({
+  id: '/timss',
+  path: '/timss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QollanmaRoute = QollanmaRouteImport.update({
+  id: '/qollanma',
+  path: '/qollanma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PisaRoute = PisaRouteImport.update({
+  id: '/pisa',
+  path: '/pisa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NatijalarRoute = NatijalarRouteImport.update({
+  id: '/natijalar',
+  path: '/natijalar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonitoringRoute = MonitoringRouteImport.update({
+  id: '/monitoring',
+  path: '/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModelRoute = ModelRouteImport.update({
+  id: '/model',
+  path: '/model',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KutubxonaRoute = KutubxonaRouteImport.update({
+  id: '/kutubxona',
+  path: '/kutubxona',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DolzarblikRoute = DolzarblikRouteImport.update({
+  id: '/dolzarblik',
+  path: '/dolzarblik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AloqaRoute = AloqaRouteImport.update({
+  id: '/aloqa',
+  path: '/aloqa',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +73,158 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aloqa': typeof AloqaRoute
+  '/dolzarblik': typeof DolzarblikRoute
+  '/kutubxona': typeof KutubxonaRoute
+  '/model': typeof ModelRoute
+  '/monitoring': typeof MonitoringRoute
+  '/natijalar': typeof NatijalarRoute
+  '/pisa': typeof PisaRoute
+  '/qollanma': typeof QollanmaRoute
+  '/timss': typeof TimssRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aloqa': typeof AloqaRoute
+  '/dolzarblik': typeof DolzarblikRoute
+  '/kutubxona': typeof KutubxonaRoute
+  '/model': typeof ModelRoute
+  '/monitoring': typeof MonitoringRoute
+  '/natijalar': typeof NatijalarRoute
+  '/pisa': typeof PisaRoute
+  '/qollanma': typeof QollanmaRoute
+  '/timss': typeof TimssRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aloqa': typeof AloqaRoute
+  '/dolzarblik': typeof DolzarblikRoute
+  '/kutubxona': typeof KutubxonaRoute
+  '/model': typeof ModelRoute
+  '/monitoring': typeof MonitoringRoute
+  '/natijalar': typeof NatijalarRoute
+  '/pisa': typeof PisaRoute
+  '/qollanma': typeof QollanmaRoute
+  '/timss': typeof TimssRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/aloqa'
+    | '/dolzarblik'
+    | '/kutubxona'
+    | '/model'
+    | '/monitoring'
+    | '/natijalar'
+    | '/pisa'
+    | '/qollanma'
+    | '/timss'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/aloqa'
+    | '/dolzarblik'
+    | '/kutubxona'
+    | '/model'
+    | '/monitoring'
+    | '/natijalar'
+    | '/pisa'
+    | '/qollanma'
+    | '/timss'
+  id:
+    | '__root__'
+    | '/'
+    | '/aloqa'
+    | '/dolzarblik'
+    | '/kutubxona'
+    | '/model'
+    | '/monitoring'
+    | '/natijalar'
+    | '/pisa'
+    | '/qollanma'
+    | '/timss'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AloqaRoute: typeof AloqaRoute
+  DolzarblikRoute: typeof DolzarblikRoute
+  KutubxonaRoute: typeof KutubxonaRoute
+  ModelRoute: typeof ModelRoute
+  MonitoringRoute: typeof MonitoringRoute
+  NatijalarRoute: typeof NatijalarRoute
+  PisaRoute: typeof PisaRoute
+  QollanmaRoute: typeof QollanmaRoute
+  TimssRoute: typeof TimssRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/timss': {
+      id: '/timss'
+      path: '/timss'
+      fullPath: '/timss'
+      preLoaderRoute: typeof TimssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qollanma': {
+      id: '/qollanma'
+      path: '/qollanma'
+      fullPath: '/qollanma'
+      preLoaderRoute: typeof QollanmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pisa': {
+      id: '/pisa'
+      path: '/pisa'
+      fullPath: '/pisa'
+      preLoaderRoute: typeof PisaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/natijalar': {
+      id: '/natijalar'
+      path: '/natijalar'
+      fullPath: '/natijalar'
+      preLoaderRoute: typeof NatijalarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monitoring': {
+      id: '/monitoring'
+      path: '/monitoring'
+      fullPath: '/monitoring'
+      preLoaderRoute: typeof MonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/model': {
+      id: '/model'
+      path: '/model'
+      fullPath: '/model'
+      preLoaderRoute: typeof ModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kutubxona': {
+      id: '/kutubxona'
+      path: '/kutubxona'
+      fullPath: '/kutubxona'
+      preLoaderRoute: typeof KutubxonaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dolzarblik': {
+      id: '/dolzarblik'
+      path: '/dolzarblik'
+      fullPath: '/dolzarblik'
+      preLoaderRoute: typeof DolzarblikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aloqa': {
+      id: '/aloqa'
+      path: '/aloqa'
+      fullPath: '/aloqa'
+      preLoaderRoute: typeof AloqaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +237,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AloqaRoute: AloqaRoute,
+  DolzarblikRoute: DolzarblikRoute,
+  KutubxonaRoute: KutubxonaRoute,
+  ModelRoute: ModelRoute,
+  MonitoringRoute: MonitoringRoute,
+  NatijalarRoute: NatijalarRoute,
+  PisaRoute: PisaRoute,
+  QollanmaRoute: QollanmaRoute,
+  TimssRoute: TimssRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
