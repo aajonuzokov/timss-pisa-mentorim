@@ -13,14 +13,10 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
-  { n: "100+", label: "Animatsiya" },
-  { n: "250", label: "TIMSS testlari" },
-  { n: "130", label: "Mavzuli rasm" },
-  { n: "40+", label: "Mustahkamlash mashqlari" },
-  { n: "15+", label: "Video dars" },
-  { n: "15", label: "Audio dars" },
-  { n: "15", label: "Qiziqarli ma'lumotlar" },
-  { n: "10", label: "Mantiqiy savollar" },
+  { n: "250", label: "TIMSS topshiriqlari" },
+  { n: "150", label: "PISA topshiriqlari" },
+  { n: "40", label: "Metodik qo'llanmalar" },
+  { n: "20", label: "Video darslar" },
 ];
 
 const features = [
@@ -61,14 +57,14 @@ function Home() {
               Pedagogik tadqiqot · Dissertatsiya
             </span>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6">
-              Bo'lajak o'qituvchilar uchun{" "}
+              Bo'lajak boshlang'ich sinf o'qituvchilarining{" "}
               <span className="italic" style={{ backgroundImage: "var(--gradient-hero)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
-                TIMSS/PISA
+                matematik tayyorgarligini
               </span>{" "}
-              metodik resursi
+              oshirish metodikasi
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
-              Boshlang'ich sinf o'qituvchilarini xalqaro baholash dasturi asosida o'qitishga metodik tayyorgarligini takomillashtirish maqsadida yaratilgan multimediyali elektron ta'lim resursi.
+              TIMSS va PISA xalqaro baholash dasturlari asosida bo'lajak boshlang'ich sinf o'qituvchilarining metodik tayyorgarligini rivojlantirishga mo'ljallangan elektron platforma.
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#resurs" className="px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition" style={{ boxShadow: "var(--shadow-elegant)" }}>
