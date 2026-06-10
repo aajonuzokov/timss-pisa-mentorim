@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { Target, BookOpen, Cog, Activity, Award } from "lucide-react";
+import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/model")({
   head: () => ({
@@ -12,24 +15,65 @@ export const Route = createFileRoute("/model")({
   component: Page,
 });
 
-const blocks = [
-  { icon: Target, title: "Maqsadli blok", desc: "Bo'lajak o'qituvchilarning TIMSS/PISA asosidagi metodik tayyorgarligini shakllantirishning maqsad va vazifalarini belgilaydi." },
-  { icon: BookOpen, title: "Mazmuniy blok", desc: "O'quv dasturlari, modullar, nazariy va amaliy materiallar, TIMSS/PISA topshiriqlari va metodik qo'llanmalarni o'z ichiga oladi." },
-  { icon: Cog, title: "Jarayonli (texnologik) blok", desc: "Interaktiv ta'lim texnologiyalari, multimediyali resurslar va o'qitish metodlari orqali bilim, ko'nikma va malakalarni shakllantirish." },
-  { icon: Activity, title: "Diagnostik-monitoring blok", desc: "Talabalar bilimini muntazam baholash, monitoring qilish va shakllanish dinamikasini kuzatish vositalari." },
-  { icon: Award, title: "Natijaviy blok", desc: "Bo'lajak o'qituvchilarning erishilgan metodik tayyorgarlik darajasini aniqlash mezonlari va ko'rsatkichlari." },
+type Block = {
+  icon: typeof Target;
+  title: string;
+  desc: string;
+  full: string;
+  components: string[];
+};
+
+const blocks: Block[] = [
+  {
+    icon: Target,
+    title: "Maqsadli blok",
+    desc: "Bo'lajak o'qituvchilarning TIMSS/PISA asosidagi metodik tayyorgarligini shakllantirishning maqsad va vazifalarini belgilaydi.",
+    full: "Maqsadli blok bo'lajak boshlang'ich sinf o'qituvchilarining TIMSS va PISA xalqaro baholash dasturlari talablariga muvofiq metodik tayyorgarligini shakllantirish jarayonining yo'nalishini belgilab beradi. Ushbu blokda ta'limning strategik maqsadi, didaktik vazifalar, talabalarda shakllantirilishi lozim bo'lgan kasbiy kompetensiyalar va kutilayotgan natijalar aniq ifodalanadi. Maqsadlar Davlat ta'lim standartlari, xalqaro baholash dasturlari mezonlari va zamonaviy pedagogik talablar bilan uyg'unlashtiriladi.",
+    components: ["Strategik maqsad", "Didaktik vazifalar", "Kasbiy kompetensiyalar", "Kutilayotgan natijalar"],
+  },
+  {
+    icon: BookOpen,
+    title: "Mazmuniy blok",
+    desc: "O'quv dasturlari, modullar, nazariy va amaliy materiallar, TIMSS/PISA topshiriqlari va metodik qo'llanmalarni o'z ichiga oladi.",
+    full: "Mazmuniy blok o'qitishning ilmiy-metodik mazmunini, ya'ni nazariy bilimlar, amaliy ko'nikmalar va TIMSS/PISA topshiriqlari tizimini qamrab oladi. Bu blokda matematik savodxonlikni rivojlantirishga qaratilgan mavzular, kognitiv sohalar (bilish, qo'llash, mulohaza yuritish) va mazmuniy sohalar (sonlar, geometriya, ma'lumotlar va ehtimollik) bo'yicha tizimlashtirilgan o'quv materiallari joylashtiriladi.",
+    components: ["O'quv dasturi va modullar", "Nazariy materiallar", "TIMSS/PISA topshiriqlari banki", "Metodik qo'llanmalar"],
+  },
+  {
+    icon: Cog,
+    title: "Jarayonli (texnologik) blok",
+    desc: "Interaktiv ta'lim texnologiyalari, multimediyali resurslar va o'qitish metodlari orqali bilim, ko'nikma va malakalarni shakllantirish.",
+    full: "Jarayonli blok ta'lim jarayonini tashkil etishning shakllari, metodlari va vositalarini o'z ichiga oladi. Interaktiv metodlar (muammoli ta'lim, loyiha metodi, keys-stadi), multimediyali elektron resurslar, animatsiyalar, video darslar va raqamli platformalardan foydalanish orqali talabalarning faol bilim olishi ta'minlanadi. Texnologik blok zamonaviy axborot-kommunikatsiya texnologiyalari va an'anaviy pedagogik metodlarni uyg'unlashtirgan holda qo'llaniladi.",
+    components: ["Interaktiv metodlar", "Multimediyali resurslar", "Raqamli platformalar", "Ta'lim shakllari"],
+  },
+  {
+    icon: Activity,
+    title: "Diagnostik-monitoring blok",
+    desc: "Talabalar bilimini muntazam baholash, monitoring qilish va shakllanish dinamikasini kuzatish vositalari.",
+    full: "Diagnostik-monitoring blok talabalarning metodik tayyorgarligini bosqichma-bosqich baholash, kuzatish va tahlil qilish tizimini ifodalaydi. Kirish, joriy, oraliq va yakuniy nazorat shakllari, test topshiriqlari, kuzatuv jadvallari hamda dinamikani aks ettiruvchi diagrammalar yordamida har bir talaba rivojlanishining individual trayektoriyasi aniqlanadi.",
+    components: ["Kirish diagnostikasi", "Joriy monitoring", "Oraliq baholash", "Yakuniy nazorat"],
+  },
+  {
+    icon: Award,
+    title: "Natijaviy blok",
+    desc: "Bo'lajak o'qituvchilarning erishilgan metodik tayyorgarlik darajasini aniqlash mezonlari va ko'rsatkichlari.",
+    full: "Natijaviy blok ta'lim jarayonining samaradorligini baholash mezonlari, ko'rsatkichlar va darajalar tizimini o'z ichiga oladi. Bo'lajak o'qituvchilarning metodik tayyorgarligi quyi, o'rta va yuqori darajalarda aniqlanadi. Har bir daraja bo'yicha nazariy bilim, amaliy ko'nikma, kreativ fikrlash va TIMSS/PISA topshiriqlarini yechish malakasi mezonlari orqali baholanadi.",
+    components: ["Baholash mezonlari", "Tayyorgarlik darajalari", "Sifat ko'rsatkichlari", "Yakuniy natijalar"],
+  },
 ];
 
 function Page() {
+  const [active, setActive] = useState<Block | null>(null);
+
   return (
     <SiteLayout>
       <PageHeader eyebrow="Metodik tizim" title="Besh blokli metodik model" description="Bo'lajak boshlang'ich sinf o'qituvchilarining TIMSS/PISA asosidagi metodik tayyorgarligini rivojlantirish modelining tarkibiy bloklari." />
+
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {blocks.map((b, i) => {
             const Icon = b.icon;
             return (
-              <div key={i} className="p-7 rounded-2xl border bg-card shadow-card hover:-translate-y-1 transition">
+              <div key={i} className="p-7 rounded-2xl border bg-card shadow-card hover:-translate-y-1 transition flex flex-col">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-11 h-11 rounded-xl bg-gradient-hero flex items-center justify-center text-primary-foreground">
                     <Icon className="w-5 h-5" />
@@ -37,12 +81,78 @@ function Page() {
                   <span className="text-xs text-muted-foreground font-medium">BLOK {i + 1}</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{b.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{b.desc}</p>
+                <p className="text-muted-foreground leading-relaxed flex-1">{b.desc}</p>
+                <Button variant="outline" className="mt-5 self-start" onClick={() => setActive(b)}>
+                  Batafsil
+                </Button>
               </div>
             );
           })}
         </div>
       </section>
+
+      <section className="max-w-3xl mx-auto px-6 pb-20">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3">Bloklar orasidagi bog'liqlik sxemasi</h2>
+          <p className="text-muted-foreground">Metodik modelning bosqichma-bosqich ketma-ketligi</p>
+        </div>
+
+        <div className="flex flex-col items-center gap-3">
+          {blocks.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <div key={i} className="w-full flex flex-col items-center">
+                <div className="w-full max-w-md p-5 rounded-2xl border bg-card shadow-card flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center text-primary-foreground shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-xs text-muted-foreground font-medium mb-0.5">BOSQICH {i + 1}</div>
+                    <div className="font-semibold">{b.title}</div>
+                  </div>
+                </div>
+                {i < blocks.length - 1 && (
+                  <ArrowDown className="w-7 h-7 text-primary my-2 animate-pulse" />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
+        <DialogContent className="max-w-2xl">
+          {active && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center text-primary-foreground">
+                    <active.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground font-medium">METODIK BLOK</div>
+                    <DialogTitle className="text-2xl">{active.title}</DialogTitle>
+                  </div>
+                </div>
+                <DialogDescription className="text-base leading-relaxed pt-2 text-foreground/80">
+                  {active.full}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="mt-2">
+                <h4 className="font-semibold mb-3">Tarkibiy komponentlar:</h4>
+                <ul className="space-y-2">
+                  {active.components.map((c, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </SiteLayout>
   );
 }
