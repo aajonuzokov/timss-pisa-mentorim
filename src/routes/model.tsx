@@ -34,9 +34,9 @@ const blocks: Block[] = [
   {
     icon: BookOpen,
     title: "Mazmuniy blok",
-    desc: "O'quv dasturlari, modullar, nazariy va amaliy materiallar, TIMSS/PISA topshiriqlari va metodik qo'llanmalarni o'z ichiga oladi.",
-    full: "Mazmuniy blok o'qitishning ilmiy-metodik mazmunini, ya'ni nazariy bilimlar, amaliy ko'nikmalar va TIMSS/PISA topshiriqlari tizimini qamrab oladi. Bu blokda matematik savodxonlikni rivojlantirishga qaratilgan mavzular, kognitiv sohalar (bilish, qo'llash, mulohaza yuritish) va mazmuniy sohalar (sonlar, geometriya, ma'lumotlar va ehtimollik) bo'yicha tizimlashtirilgan o'quv materiallari joylashtiriladi.",
-    components: ["O'quv dasturi va modullar", "Nazariy materiallar", "TIMSS/PISA topshiriqlari banki", "Metodik qo'llanmalar"],
+    desc: "O'quv dasturlari, modullar, TIMSS/PISA topshiriqlari banki, nazariy-amaliy materiallar va metodik qo'llanmalarni qamrab oladi.",
+    full: "Mazmuniy blok bo'lajak boshlang'ich sinf o'qituvchilarining TIMSS va PISA xalqaro baholash dasturlari asosida metodik tayyorgarligini rivojlantirish jarayonining ilmiy-nazariy va amaliy mazmunini belgilaydi. Blok matematik savodxonlikni shakllantirishga qaratilgan kognitiv sohalar (bilish, qo'llash, mulohaza yuritish) hamda mazmuniy sohalar (sonlar, geometriya, algebra, ma'lumotlar va ehtimollik) bo'yicha tizimlashtirilgan o'quv materiallari, modullar, integrativ kurslar va xalqaro standartlarga muvofiqlashtirilgan topshiriqlar bankini o'z ichiga oladi.",
+    components: ["O'quv dasturi va modullar", "Nazariy-metodik materiallar", "TIMSS/PISA topshiriqlari banki", "Kognitiv va mazmuniy sohalar", "Metodik qo'llanmalar va resurslar"],
   },
   {
     icon: Cog,
