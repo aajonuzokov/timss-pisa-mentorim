@@ -27,9 +27,9 @@ const blocks: Block[] = [
   {
     icon: Target,
     title: "Maqsadli blok",
-    desc: "Bo'lajak o'qituvchilarning TIMSS/PISA asosidagi metodik tayyorgarligini shakllantirishning maqsad va vazifalarini belgilaydi.",
-    full: "Maqsadli blok bo'lajak boshlang'ich sinf o'qituvchilarining TIMSS va PISA xalqaro baholash dasturlari talablariga muvofiq metodik tayyorgarligini shakllantirish jarayonining yo'nalishini belgilab beradi. Ushbu blokda ta'limning strategik maqsadi, didaktik vazifalar, talabalarda shakllantirilishi lozim bo'lgan kasbiy kompetensiyalar va kutilayotgan natijalar aniq ifodalanadi. Maqsadlar Davlat ta'lim standartlari, xalqaro baholash dasturlari mezonlari va zamonaviy pedagogik talablar bilan uyg'unlashtiriladi.",
-    components: ["Strategik maqsad", "Didaktik vazifalar", "Kasbiy kompetensiyalar", "Kutilayotgan natijalar"],
+    desc: "Bo'lajak o'qituvchilarning TIMSS/PISA asosida metodik tayyorgarligini rivojlantirishning maqsadi, vazifalari, tamoyillari va pedagogik shart-sharoitlarini belgilaydi.",
+    full: "Mazkur blok bo'lajak boshlang'ich sinf o'qituvchilarining TIMSS va PISA xalqaro baholash dasturlari asosida o'qitishga metodik tayyorgarligini rivojlantirishning maqsadi, vazifalari, tamoyillari va pedagogik shart-sharoitlarini belgilaydi. Blokning asosiy maqsadi talabalarda matematik savodxonlik, metodik kompetentlik hamda xalqaro baholash dasturlari talablariga mos kasbiy tayyorgarlikni shakllantirishdan iborat.",
+    components: ["Strategik maqsad", "Pedagogik vazifalar", "TIMSS/PISA kompetensiyalari", "Kasbiy rivojlanish ko'rsatkichlari", "Kutilayotgan natijalar"],
   },
   {
     icon: BookOpen,
