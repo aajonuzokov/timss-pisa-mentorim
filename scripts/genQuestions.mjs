@@ -560,17 +560,11 @@ const pisaGenerators = [
 
 // Generate
 const genN = (gens, n, prefix) => {
-  const seen = new Set();
   const out = [];
-  let safety = 0;
-  while (out.length < n && safety < n * 30) {
-    safety++;
-    const g = gens[out.length % gens.length];
+  for (let i = 0; i < n; i++) {
+    const g = gens[i % gens.length];
     const item = g();
-    const key = item.q;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push({ id: `${prefix}-${out.length + 1}`, ...item });
+    out.push({ id: `${prefix}-${i + 1}`, ...item });
   }
   return out;
 };
@@ -580,17 +574,9 @@ const timssApplying = genN(applyingGenerators, 83, "A");
 const timssReasoning = genN(reasoningGenerators, 83, "R");
 
 const pisa = [];
-{
-  const seen = new Set();
-  let safety = 0;
-  while (pisa.length < 50 && safety < 5000) {
-    safety++;
-    const g = pisaGenerators[pisa.length % pisaGenerators.length];
-    const item = g();
-    if (seen.has(item.q)) continue;
-    seen.add(item.q);
-    pisa.push({ id: `P-${pisa.length + 1}`, ...item });
-  }
+for (let i = 0; i < 50; i++) {
+  const g = pisaGenerators[i % pisaGenerators.length];
+  pisa.push({ id: `P-${i + 1}`, ...g() });
 }
 
 const timssData = {
