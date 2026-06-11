@@ -131,215 +131,1811 @@
       ],
       "correctIndex": 3,
       "explain": "8241 sonida yuzlar xonasidagi raqam 2, uning qiymati 200."
+    },
+    {
+      "id": "K-12",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "8945",
+        "3501",
+        "4005",
+        "9602"
+      ],
+      "correctIndex": 3,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 9602."
+    },
+    {
+      "id": "K-13",
+      "q": "5 × 5 = ?",
+      "options": [
+        "30",
+        "10",
+        "20",
+        "25"
+      ],
+      "correctIndex": 3,
+      "explain": "5 ni 5 marta qo'shamiz yoki ko'paytirish jadvalidan 5 × 5 = 25."
+    },
+    {
+      "id": "K-14",
+      "q": "120 : 12 = ?",
+      "options": [
+        "12",
+        "10",
+        "9",
+        "11"
+      ],
+      "correctIndex": 1,
+      "explain": "12 × 10 = 120, demak 120 : 12 = 10."
+    },
+    {
+      "id": "K-15",
+      "q": "0.50 o'nlik kasrga eng yaqin oddiy kasr qaysi?",
+      "options": [
+        "1/2",
+        "2/1",
+        "1/3",
+        "1/2"
+      ],
+      "correctIndex": 0,
+      "explain": "1/2 = 0.50."
+    },
+    {
+      "id": "K-16",
+      "q": "5 ta tomoni bor ko'pburchak bo'lgan geometrik shakl qaysi?",
+      "options": [
+        "Uchburchak",
+        "To'rtburchak",
+        "Beshburchak",
+        "Olti burchak"
+      ],
+      "correctIndex": 2,
+      "explain": "5 ta tomoni bor ko'pburchak – bu Beshburchak."
+    },
+    {
+      "id": "K-17",
+      "q": "1 daqiqa necha soniya?",
+      "options": [
+        "60 soniya",
+        "100 soniya",
+        "24 soniya",
+        "1000 soniya"
+      ],
+      "correctIndex": 0,
+      "explain": "O'lchov birliklari jadvali: 1 daqiqa necha soniya 60 soniya."
+    },
+    {
+      "id": "K-18",
+      "q": "841 soni qanday son?",
+      "options": [
+        "Juft",
+        "Murakkab son",
+        "Toq",
+        "Tub son"
+      ],
+      "correctIndex": 2,
+      "explain": "841 ning oxirgi raqami 1, demak son toq."
+    },
+    {
+      "id": "K-19",
+      "q": "5444 sonini eng yaqin yuzlikkacha yaxlitlang.",
+      "options": [
+        "5500",
+        "5400",
+        "5440",
+        "5300"
+      ],
+      "correctIndex": 1,
+      "explain": "O'nlar xonasiga qarab: pastga yaxlitlanadi → 5400."
+    },
+    {
+      "id": "K-20",
+      "q": "Soat 9:15 ni ko'rsatmoqda. 15 daqiqadan keyin soat qancha bo'ladi?",
+      "options": [
+        "8:15",
+        "9:45",
+        "9:00",
+        "9:30"
+      ],
+      "correctIndex": 3,
+      "explain": "9:15 + 0:15 = 9:30."
+    },
+    {
+      "id": "K-21",
+      "q": "9808 sonida birlar xonasidagi raqamning qiymati nechaga teng?",
+      "options": [
+        "80",
+        "1",
+        "8",
+        "8"
+      ],
+      "correctIndex": 2,
+      "explain": "9808 sonida birlar xonasidagi raqam 8, uning qiymati 8."
+    },
+    {
+      "id": "K-22",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "8568",
+        "9223",
+        "2778",
+        "5409"
+      ],
+      "correctIndex": 1,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 9223."
+    },
+    {
+      "id": "K-23",
+      "q": "6 × 2 = ?",
+      "options": [
+        "8",
+        "12",
+        "18",
+        "10"
+      ],
+      "correctIndex": 1,
+      "explain": "6 ni 2 marta qo'shamiz yoki ko'paytirish jadvalidan 6 × 2 = 12."
+    },
+    {
+      "id": "K-24",
+      "q": "32 : 4 = ?",
+      "options": [
+        "8",
+        "4",
+        "9",
+        "7"
+      ],
+      "correctIndex": 0,
+      "explain": "4 × 8 = 32, demak 32 : 4 = 8."
+    },
+    {
+      "id": "K-25",
+      "q": "0.33 o'nlik kasrga eng yaqin oddiy kasr qaysi?",
+      "options": [
+        "1/4",
+        "1/3",
+        "1/3",
+        "3/1"
+      ],
+      "correctIndex": 1,
+      "explain": "1/3 = 0.33."
+    },
+    {
+      "id": "K-26",
+      "q": "6 ta tomoni bor ko'pburchak bo'lgan geometrik shakl qaysi?",
+      "options": [
+        "Olti burchak",
+        "Sakkiz burchak",
+        "Beshburchak",
+        "Uchburchak"
+      ],
+      "correctIndex": 0,
+      "explain": "6 ta tomoni bor ko'pburchak – bu Olti burchak."
+    },
+    {
+      "id": "K-27",
+      "q": "1 metr necha santimetr?",
+      "options": [
+        "100 sm",
+        "1000 sm",
+        "60 sm",
+        "10 sm"
+      ],
+      "correctIndex": 0,
+      "explain": "O'lchov birliklari jadvali: 1 metr necha santimetr 100 sm."
+    },
+    {
+      "id": "K-28",
+      "q": "952 soni qanday son?",
+      "options": [
+        "Juft",
+        "Tub son",
+        "Murakkab son",
+        "Toq"
+      ],
+      "correctIndex": 0,
+      "explain": "952 ning oxirgi raqami 2, demak son juft."
+    },
+    {
+      "id": "K-29",
+      "q": "3157 sonini eng yaqin yuzlikkacha yaxlitlang.",
+      "options": [
+        "3300",
+        "3200",
+        "3160",
+        "3100"
+      ],
+      "correctIndex": 1,
+      "explain": "O'nlar xonasiga qarab: yuqoriga yaxlitlanadi → 3200."
+    },
+    {
+      "id": "K-30",
+      "q": "Soat 5:15 ni ko'rsatmoqda. 15 daqiqadan keyin soat qancha bo'ladi?",
+      "options": [
+        "5:45",
+        "5:30",
+        "4:15",
+        "5:00"
+      ],
+      "correctIndex": 1,
+      "explain": "5:15 + 0:15 = 5:30."
+    },
+    {
+      "id": "K-31",
+      "q": "6181 sonida yuzlar xonasidagi raqamning qiymati nechaga teng?",
+      "options": [
+        "1",
+        "100",
+        "10",
+        "1000"
+      ],
+      "correctIndex": 1,
+      "explain": "6181 sonida yuzlar xonasidagi raqam 1, uning qiymati 100."
+    },
+    {
+      "id": "K-32",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "7490",
+        "3293",
+        "5554",
+        "1308"
+      ],
+      "correctIndex": 0,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 7490."
+    },
+    {
+      "id": "K-33",
+      "q": "10 × 7 = ?",
+      "options": [
+        "70",
+        "80",
+        "63",
+        "17"
+      ],
+      "correctIndex": 0,
+      "explain": "10 ni 7 marta qo'shamiz yoki ko'paytirish jadvalidan 10 × 7 = 70."
+    },
+    {
+      "id": "K-34",
+      "q": "20 : 10 = ?",
+      "options": [
+        "10",
+        "2",
+        "3",
+        "1"
+      ],
+      "correctIndex": 1,
+      "explain": "10 × 2 = 20, demak 20 : 10 = 2."
+    },
+    {
+      "id": "K-35",
+      "q": "0.13 o'nlik kasrga eng yaqin oddiy kasr qaysi?",
+      "options": [
+        "1/8",
+        "1/8",
+        "8/1",
+        "1/9"
+      ],
+      "correctIndex": 0,
+      "explain": "1/8 = 0.13."
+    },
+    {
+      "id": "K-36",
+      "q": "Qarama-qarshi tomonlari teng va parallel, burchaklari to'g'ri bo'lgan geometrik shakl qaysi?",
+      "options": [
+        "Kvadrat",
+        "Trapetsiya",
+        "To'g'ri to'rtburchak",
+        "Parallelogramm"
+      ],
+      "correctIndex": 2,
+      "explain": "Qarama-qarshi tomonlari teng va parallel, burchaklari to'g'ri – bu To'g'ri to'rtburchak."
+    },
+    {
+      "id": "K-37",
+      "q": "1 daqiqa necha soniya?",
+      "options": [
+        "100 soniya",
+        "24 soniya",
+        "1000 soniya",
+        "60 soniya"
+      ],
+      "correctIndex": 3,
+      "explain": "O'lchov birliklari jadvali: 1 daqiqa necha soniya 60 soniya."
+    },
+    {
+      "id": "K-38",
+      "q": "263 soni qanday son?",
+      "options": [
+        "Murakkab son",
+        "Toq",
+        "Juft",
+        "Tub son"
+      ],
+      "correctIndex": 1,
+      "explain": "263 ning oxirgi raqami 3, demak son toq."
+    },
+    {
+      "id": "K-39",
+      "q": "9750 sonini eng yaqin yuzlikkacha yaxlitlang.",
+      "options": [
+        "9750",
+        "9800",
+        "9900",
+        "9700"
+      ],
+      "correctIndex": 1,
+      "explain": "O'nlar xonasiga qarab: yuqoriga yaxlitlanadi → 9800."
+    },
+    {
+      "id": "K-40",
+      "q": "Soat 9:15 ni ko'rsatmoqda. 15 daqiqadan keyin soat qancha bo'ladi?",
+      "options": [
+        "9:30",
+        "9:45",
+        "8:15",
+        "9:00"
+      ],
+      "correctIndex": 0,
+      "explain": "9:15 + 0:15 = 9:30."
+    },
+    {
+      "id": "K-41",
+      "q": "6898 sonida o'nlar xonasidagi raqamning qiymati nechaga teng?",
+      "options": [
+        "9",
+        "9",
+        "90",
+        "900"
+      ],
+      "correctIndex": 2,
+      "explain": "6898 sonida o'nlar xonasidagi raqam 9, uning qiymati 90."
+    },
+    {
+      "id": "K-42",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "4971",
+        "1929",
+        "3100",
+        "4081"
+      ],
+      "correctIndex": 0,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 4971."
+    },
+    {
+      "id": "K-43",
+      "q": "5 × 9 = ?",
+      "options": [
+        "45",
+        "36",
+        "14",
+        "50"
+      ],
+      "correctIndex": 0,
+      "explain": "5 ni 9 marta qo'shamiz yoki ko'paytirish jadvalidan 5 × 9 = 45."
+    },
+    {
+      "id": "K-44",
+      "q": "70 : 7 = ?",
+      "options": [
+        "7",
+        "11",
+        "10",
+        "9"
+      ],
+      "correctIndex": 2,
+      "explain": "7 × 10 = 70, demak 70 : 7 = 10."
+    },
+    {
+      "id": "K-45",
+      "q": "0.80 o'nlik kasrga eng yaqin oddiy kasr qaysi?",
+      "options": [
+        "7/10",
+        "10/8",
+        "8/10",
+        "8/11"
+      ],
+      "correctIndex": 2,
+      "explain": "8/10 = 0.80."
+    },
+    {
+      "id": "K-46",
+      "q": "Qarama-qarshi tomonlari teng va parallel, burchaklari to'g'ri bo'lgan geometrik shakl qaysi?",
+      "options": [
+        "Kvadrat",
+        "Trapetsiya",
+        "To'g'ri to'rtburchak",
+        "Parallelogramm"
+      ],
+      "correctIndex": 2,
+      "explain": "Qarama-qarshi tomonlari teng va parallel, burchaklari to'g'ri – bu To'g'ri to'rtburchak."
+    },
+    {
+      "id": "K-47",
+      "q": "1 metr necha santimetr?",
+      "options": [
+        "10 sm",
+        "1000 sm",
+        "100 sm",
+        "60 sm"
+      ],
+      "correctIndex": 2,
+      "explain": "O'lchov birliklari jadvali: 1 metr necha santimetr 100 sm."
+    },
+    {
+      "id": "K-48",
+      "q": "974 soni qanday son?",
+      "options": [
+        "Toq",
+        "Juft",
+        "Tub son",
+        "Murakkab son"
+      ],
+      "correctIndex": 1,
+      "explain": "974 ning oxirgi raqami 4, demak son juft."
+    },
+    {
+      "id": "K-49",
+      "q": "5047 sonini eng yaqin yuzlikkacha yaxlitlang.",
+      "options": [
+        "5100",
+        "5000",
+        "5050",
+        "4900"
+      ],
+      "correctIndex": 1,
+      "explain": "O'nlar xonasiga qarab: pastga yaxlitlanadi → 5000."
+    },
+    {
+      "id": "K-50",
+      "q": "Soat 2:45 ni ko'rsatmoqda. 15 daqiqadan keyin soat qancha bo'ladi?",
+      "options": [
+        "2:15",
+        "3:00",
+        "1:45",
+        "2:30"
+      ],
+      "correctIndex": 1,
+      "explain": "2:45 + 0:15 = 3:00."
+    },
+    {
+      "id": "K-51",
+      "q": "3014 sonida birlar xonasidagi raqamning qiymati nechaga teng?",
+      "options": [
+        "4",
+        "4",
+        "40",
+        "1"
+      ],
+      "correctIndex": 0,
+      "explain": "3014 sonida birlar xonasidagi raqam 4, uning qiymati 4."
+    },
+    {
+      "id": "K-52",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "9374",
+        "1822",
+        "6595",
+        "7117"
+      ],
+      "correctIndex": 0,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 9374."
+    },
+    {
+      "id": "K-53",
+      "q": "10 × 6 = ?",
+      "options": [
+        "70",
+        "54",
+        "60",
+        "16"
+      ],
+      "correctIndex": 2,
+      "explain": "10 ni 6 marta qo'shamiz yoki ko'paytirish jadvalidan 10 × 6 = 60."
+    },
+    {
+      "id": "K-54",
+      "q": "32 : 8 = ?",
+      "options": [
+        "3",
+        "8",
+        "5",
+        "4"
+      ],
+      "correctIndex": 3,
+      "explain": "8 × 4 = 32, demak 32 : 8 = 4."
+    },
+    {
+      "id": "K-55",
+      "q": "0.63 o'nlik kasrga eng yaqin oddiy kasr qaysi?",
+      "options": [
+        "8/5",
+        "4/8",
+        "5/9",
+        "5/8"
+      ],
+      "correctIndex": 3,
+      "explain": "5/8 = 0.63."
+    },
+    {
+      "id": "K-56",
+      "q": "6 ta tomoni bor ko'pburchak bo'lgan geometrik shakl qaysi?",
+      "options": [
+        "Sakkiz burchak",
+        "Olti burchak",
+        "Beshburchak",
+        "Uchburchak"
+      ],
+      "correctIndex": 1,
+      "explain": "6 ta tomoni bor ko'pburchak – bu Olti burchak."
+    },
+    {
+      "id": "K-57",
+      "q": "1 metr necha santimetr?",
+      "options": [
+        "10 sm",
+        "60 sm",
+        "1000 sm",
+        "100 sm"
+      ],
+      "correctIndex": 3,
+      "explain": "O'lchov birliklari jadvali: 1 metr necha santimetr 100 sm."
+    },
+    {
+      "id": "K-58",
+      "q": "454 soni qanday son?",
+      "options": [
+        "Juft",
+        "Toq",
+        "Tub son",
+        "Murakkab son"
+      ],
+      "correctIndex": 0,
+      "explain": "454 ning oxirgi raqami 4, demak son juft."
+    },
+    {
+      "id": "K-59",
+      "q": "3026 sonini eng yaqin yuzlikkacha yaxlitlang.",
+      "options": [
+        "3030",
+        "3100",
+        "2900",
+        "3000"
+      ],
+      "correctIndex": 3,
+      "explain": "O'nlar xonasiga qarab: pastga yaxlitlanadi → 3000."
+    },
+    {
+      "id": "K-60",
+      "q": "Soat 1:45 ni ko'rsatmoqda. 15 daqiqadan keyin soat qancha bo'ladi?",
+      "options": [
+        "1:15",
+        "12:45",
+        "1:30",
+        "2:00"
+      ],
+      "correctIndex": 3,
+      "explain": "1:45 + 0:15 = 2:00."
+    },
+    {
+      "id": "K-61",
+      "q": "9290 sonida birlar xonasidagi raqamning qiymati nechaga teng?",
+      "options": [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "correctIndex": 0,
+      "explain": "9290 sonida birlar xonasidagi raqam 0, uning qiymati 0."
+    },
+    {
+      "id": "K-62",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "4930",
+        "7239",
+        "1368",
+        "9043"
+      ],
+      "correctIndex": 3,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 9043."
+    },
+    {
+      "id": "K-63",
+      "q": "4 × 11 = ?",
+      "options": [
+        "15",
+        "48",
+        "44",
+        "33"
+      ],
+      "correctIndex": 2,
+      "explain": "4 ni 11 marta qo'shamiz yoki ko'paytirish jadvalidan 4 × 11 = 44."
+    },
+    {
+      "id": "K-64",
+      "q": "12 : 3 = ?",
+      "options": [
+        "5",
+        "3",
+        "4",
+        "3"
+      ],
+      "correctIndex": 2,
+      "explain": "3 × 4 = 12, demak 12 : 3 = 4."
+    },
+    {
+      "id": "K-65",
+      "q": "0.70 o'nlik kasrga eng yaqin oddiy kasr qaysi?",
+      "options": [
+        "7/10",
+        "6/10",
+        "7/11",
+        "10/7"
+      ],
+      "correctIndex": 0,
+      "explain": "7/10 = 0.70."
+    },
+    {
+      "id": "K-66",
+      "q": "3 ta tomoni va 3 ta burchagi bor bo'lgan geometrik shakl qaysi?",
+      "options": [
+        "Aylana",
+        "Beshburchak",
+        "Kvadrat",
+        "Uchburchak"
+      ],
+      "correctIndex": 3,
+      "explain": "3 ta tomoni va 3 ta burchagi bor – bu Uchburchak."
+    },
+    {
+      "id": "K-67",
+      "q": "1 litr necha millilitr?",
+      "options": [
+        "60 ml",
+        "10 ml",
+        "100 ml",
+        "1000 ml"
+      ],
+      "correctIndex": 3,
+      "explain": "O'lchov birliklari jadvali: 1 litr necha millilitr 1000 ml."
+    },
+    {
+      "id": "K-68",
+      "q": "588 soni qanday son?",
+      "options": [
+        "Juft",
+        "Toq",
+        "Murakkab son",
+        "Tub son"
+      ],
+      "correctIndex": 0,
+      "explain": "588 ning oxirgi raqami 8, demak son juft."
+    },
+    {
+      "id": "K-69",
+      "q": "6656 sonini eng yaqin yuzlikkacha yaxlitlang.",
+      "options": [
+        "6800",
+        "6700",
+        "6660",
+        "6600"
+      ],
+      "correctIndex": 1,
+      "explain": "O'nlar xonasiga qarab: yuqoriga yaxlitlanadi → 6700."
+    },
+    {
+      "id": "K-70",
+      "q": "Soat 3:45 ni ko'rsatmoqda. 15 daqiqadan keyin soat qancha bo'ladi?",
+      "options": [
+        "3:15",
+        "3:30",
+        "4:00",
+        "2:45"
+      ],
+      "correctIndex": 2,
+      "explain": "3:45 + 0:15 = 4:00."
+    },
+    {
+      "id": "K-71",
+      "q": "7377 sonida birlar xonasidagi raqamning qiymati nechaga teng?",
+      "options": [
+        "7",
+        "7",
+        "1",
+        "70"
+      ],
+      "correctIndex": 0,
+      "explain": "7377 sonida birlar xonasidagi raqam 7, uning qiymati 7."
+    },
+    {
+      "id": "K-72",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "2143",
+        "4390",
+        "7816",
+        "2298"
+      ],
+      "correctIndex": 2,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 7816."
+    },
+    {
+      "id": "K-73",
+      "q": "2 × 2 = ?",
+      "options": [
+        "2",
+        "4",
+        "6",
+        "4"
+      ],
+      "correctIndex": 1,
+      "explain": "2 ni 2 marta qo'shamiz yoki ko'paytirish jadvalidan 2 × 2 = 4."
+    },
+    {
+      "id": "K-74",
+      "q": "66 : 6 = ?",
+      "options": [
+        "11",
+        "10",
+        "6",
+        "12"
+      ],
+      "correctIndex": 0,
+      "explain": "6 × 11 = 66, demak 66 : 6 = 11."
+    },
+    {
+      "id": "K-75",
+      "q": "0.67 o'nlik kasrga eng yaqin oddiy kasr qaysi?",
+      "options": [
+        "1/3",
+        "2/4",
+        "3/2",
+        "2/3"
+      ],
+      "correctIndex": 3,
+      "explain": "2/3 = 0.67."
+    },
+    {
+      "id": "K-76",
+      "q": "Qarama-qarshi tomonlari teng va parallel, burchaklari to'g'ri bo'lgan geometrik shakl qaysi?",
+      "options": [
+        "Trapetsiya",
+        "To'g'ri to'rtburchak",
+        "Parallelogramm",
+        "Kvadrat"
+      ],
+      "correctIndex": 1,
+      "explain": "Qarama-qarshi tomonlari teng va parallel, burchaklari to'g'ri – bu To'g'ri to'rtburchak."
+    },
+    {
+      "id": "K-77",
+      "q": "1 sutka necha soat?",
+      "options": [
+        "24 soat",
+        "60 soat",
+        "12 soat",
+        "100 soat"
+      ],
+      "correctIndex": 0,
+      "explain": "O'lchov birliklari jadvali: 1 sutka necha soat 24 soat."
+    },
+    {
+      "id": "K-78",
+      "q": "288 soni qanday son?",
+      "options": [
+        "Juft",
+        "Toq",
+        "Murakkab son",
+        "Tub son"
+      ],
+      "correctIndex": 0,
+      "explain": "288 ning oxirgi raqami 8, demak son juft."
+    },
+    {
+      "id": "K-79",
+      "q": "2325 sonini eng yaqin yuzlikkacha yaxlitlang.",
+      "options": [
+        "2330",
+        "2400",
+        "2300",
+        "2200"
+      ],
+      "correctIndex": 2,
+      "explain": "O'nlar xonasiga qarab: pastga yaxlitlanadi → 2300."
+    },
+    {
+      "id": "K-80",
+      "q": "Soat 5:00 ni ko'rsatmoqda. 15 daqiqadan keyin soat qancha bo'ladi?",
+      "options": [
+        "5:15",
+        "5:30",
+        "5:00",
+        "4:00"
+      ],
+      "correctIndex": 0,
+      "explain": "5:00 + 0:15 = 5:15."
+    },
+    {
+      "id": "K-81",
+      "q": "6004 sonida o'nlar xonasidagi raqamning qiymati nechaga teng?",
+      "options": [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "correctIndex": 0,
+      "explain": "6004 sonida o'nlar xonasidagi raqam 0, uning qiymati 0."
+    },
+    {
+      "id": "K-82",
+      "q": "Quyidagi sonlardan qaysi biri eng katta?",
+      "options": [
+        "8641",
+        "8987",
+        "7141",
+        "4227"
+      ],
+      "correctIndex": 1,
+      "explain": "Sonlarni xonalari bo'yicha taqqoslaymiz: eng kattasi 8987."
+    },
+    {
+      "id": "K-83",
+      "q": "3 × 2 = ?",
+      "options": [
+        "5",
+        "9",
+        "6",
+        "4"
+      ],
+      "correctIndex": 2,
+      "explain": "3 ni 2 marta qo'shamiz yoki ko'paytirish jadvalidan 3 × 2 = 6."
+    },
+    {
+      "id": "K-84",
+      "q": "63 : 7 = ?",
+      "options": [
+        "10",
+        "7",
+        "9",
+        "8"
+      ],
+      "correctIndex": 2,
+      "explain": "7 × 9 = 63, demak 63 : 7 = 9."
     }
   ],
   "applying": [
     {
       "id": "A-1",
-      "q": "To'g'ri to'rtburchakning tomonlari 3 sm va 15 sm. Perimetrini toping.",
+      "q": "To'g'ri to'rtburchakning tomonlari 13 sm va 16 sm. Perimetrini toping.",
       "options": [
-        "18 sm",
-        "38 sm",
-        "36 sm",
-        "45 sm"
+        "208 sm",
+        "58 sm",
+        "29 sm",
+        "60 sm"
       ],
-      "correctIndex": 2,
-      "explain": "P = 2·(a + b) = 2·(3 + 15) = 36 sm."
+      "correctIndex": 1,
+      "explain": "P = 2·(a + b) = 2·(13 + 16) = 58 sm."
     },
     {
       "id": "A-2",
-      "q": "To'g'ri to'rtburchakning tomonlari 9 sm va 6 sm. Yuzini toping.",
+      "q": "To'g'ri to'rtburchakning tomonlari 20 sm va 8 sm. Yuzini toping.",
       "options": [
-        "15 sm²",
-        "30 sm²",
-        "54 sm²",
-        "63 sm²"
+        "28 sm²",
+        "56 sm²",
+        "160 sm²",
+        "180 sm²"
       ],
       "correctIndex": 2,
-      "explain": "S = a·b = 9·6 = 54 sm²."
+      "explain": "S = a·b = 20·8 = 160 sm²."
     },
     {
       "id": "A-3",
-      "q": "Bog'da 5 qatorda har birida 9 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "q": "Bog'da 6 qatorda har birida 7 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
       "options": [
-        "54",
-        "45",
-        "14",
-        "40"
+        "42",
+        "36",
+        "13",
+        "49"
       ],
-      "correctIndex": 1,
-      "explain": "5 × 9 = 45 ta daraxt."
+      "correctIndex": 0,
+      "explain": "6 × 7 = 42 ta daraxt."
     },
     {
       "id": "A-4",
-      "q": "30 ta daftar 3 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "q": "45 ta daftar 5 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
       "options": [
-        "11",
-        "15",
-        "3",
-        "10"
+        "22.5",
+        "10",
+        "9",
+        "5"
       ],
-      "correctIndex": 3,
-      "explain": "30 : 3 = 10."
+      "correctIndex": 2,
+      "explain": "45 : 5 = 9."
     },
     {
       "id": "A-5",
-      "q": "500 ning 50% i nechaga teng?",
+      "q": "800 ning 75% i nechaga teng?",
       "options": [
-        "125",
-        "250",
-        "500",
-        "250"
+        "200",
+        "600",
+        "300",
+        "1200"
       ],
       "correctIndex": 1,
-      "explain": "500 · 50/100 = 250."
+      "explain": "800 · 75/100 = 600."
     },
     {
       "id": "A-6",
-      "q": "12 ning 2/3 qismini toping.",
+      "q": "40 ning 1/5 qismini toping.",
       "options": [
-        "4",
-        "4",
         "8",
-        "11"
+        "13",
+        "8",
+        "32"
       ],
-      "correctIndex": 2,
-      "explain": "12 : 3 = 4; 4 · 2 = 8."
+      "correctIndex": 0,
+      "explain": "40 : 5 = 8; 8 · 1 = 8."
     },
     {
       "id": "A-7",
-      "q": "Bir daftar 2000 so'm. 4 ta daftar uchun necha so'm to'lanadi?",
+      "q": "Bir daftar 3000 so'm. 9 ta daftar uchun necha so'm to'lanadi?",
       "options": [
-        "10000 so'm",
-        "6000 so'm",
-        "8000 so'm",
-        "2004 so'm"
+        "24000 so'm",
+        "27000 so'm",
+        "30000 so'm",
+        "3009 so'm"
       ],
-      "correctIndex": 2,
-      "explain": "2000 · 4 = 8000 so'm."
+      "correctIndex": 1,
+      "explain": "3000 · 9 = 27000 so'm."
     },
     {
       "id": "A-8",
-      "q": "Avtomobil tezligi 80 km/soat. 5 soatda u necha km yo'l bosadi?",
+      "q": "Avtomobil tezligi 40 km/soat. 5 soatda u necha km yo'l bosadi?",
       "options": [
-        "75 km",
-        "85 km",
-        "480 km",
-        "400 km"
+        "240 km",
+        "45 km",
+        "35 km",
+        "200 km"
       ],
       "correctIndex": 3,
-      "explain": "S = v · t = 80 · 5 = 400 km."
+      "explain": "S = v · t = 40 · 5 = 200 km."
     },
     {
       "id": "A-9",
-      "q": "Uchta sonning o'rtachasini toping: 9, 10, 6.",
+      "q": "Uchta sonning o'rtachasini toping: 15, 11, 8.",
       "options": [
-        "25",
-        "10",
-        "8.33",
-        "9.5"
+        "15",
+        "34",
+        "13.0",
+        "11.33"
       ],
-      "correctIndex": 2,
-      "explain": "(9 + 10 + 6) : 3 = 8.33."
+      "correctIndex": 3,
+      "explain": "(15 + 11 + 8) : 3 = 11.33."
     },
     {
       "id": "A-10",
+      "q": "Xarid 10000 so'm. Mijoz 15000 so'm berdi. Necha so'm qaytim olishi kerak?",
+      "options": [
+        "9000 so'm",
+        "25000 so'm",
+        "6000 so'm",
+        "5000 so'm"
+      ],
+      "correctIndex": 3,
+      "explain": "15000 − 10000 = 5000 so'm."
+    },
+    {
+      "id": "A-11",
+      "q": "To'g'ri to'rtburchakning tomonlari 13 sm va 9 sm. Perimetrini toping.",
+      "options": [
+        "22 sm",
+        "46 sm",
+        "117 sm",
+        "44 sm"
+      ],
+      "correctIndex": 3,
+      "explain": "P = 2·(a + b) = 2·(13 + 9) = 44 sm."
+    },
+    {
+      "id": "A-12",
+      "q": "To'g'ri to'rtburchakning tomonlari 20 sm va 15 sm. Yuzini toping.",
+      "options": [
+        "70 sm²",
+        "300 sm²",
+        "35 sm²",
+        "320 sm²"
+      ],
+      "correctIndex": 1,
+      "explain": "S = a·b = 20·15 = 300 sm²."
+    },
+    {
+      "id": "A-13",
+      "q": "Bog'da 9 qatorda har birida 5 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "options": [
+        "45",
+        "36",
+        "50",
+        "14"
+      ],
+      "correctIndex": 0,
+      "explain": "9 × 5 = 45 ta daraxt."
+    },
+    {
+      "id": "A-14",
+      "q": "30 ta daftar 6 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "options": [
+        "5",
+        "15",
+        "6",
+        "6"
+      ],
+      "correctIndex": 0,
+      "explain": "30 : 6 = 5."
+    },
+    {
+      "id": "A-15",
+      "q": "400 ning 75% i nechaga teng?",
+      "options": [
+        "100",
+        "150",
+        "600",
+        "300"
+      ],
+      "correctIndex": 3,
+      "explain": "400 · 75/100 = 300."
+    },
+    {
+      "id": "A-16",
+      "q": "50 ning 3/5 qismini toping.",
+      "options": [
+        "30",
+        "35",
+        "10",
+        "20"
+      ],
+      "correctIndex": 0,
+      "explain": "50 : 5 = 10; 10 · 3 = 30."
+    },
+    {
+      "id": "A-17",
+      "q": "Bir daftar 8000 so'm. 8 ta daftar uchun necha so'm to'lanadi?",
+      "options": [
+        "64000 so'm",
+        "56000 so'm",
+        "72000 so'm",
+        "8008 so'm"
+      ],
+      "correctIndex": 0,
+      "explain": "8000 · 8 = 64000 so'm."
+    },
+    {
+      "id": "A-18",
+      "q": "Avtomobil tezligi 50 km/soat. 3 soatda u necha km yo'l bosadi?",
+      "options": [
+        "53 km",
+        "200 km",
+        "47 km",
+        "150 km"
+      ],
+      "correctIndex": 3,
+      "explain": "S = v · t = 50 · 3 = 150 km."
+    },
+    {
+      "id": "A-19",
+      "q": "Uchta sonning o'rtachasini toping: 10, 11, 10.",
+      "options": [
+        "31",
+        "10.33",
+        "10.5",
+        "11"
+      ],
+      "correctIndex": 1,
+      "explain": "(10 + 11 + 10) : 3 = 10.33."
+    },
+    {
+      "id": "A-20",
+      "q": "Xarid 11000 so'm. Mijoz 20000 so'm berdi. Necha so'm qaytim olishi kerak?",
+      "options": [
+        "10000 so'm",
+        "9000 so'm",
+        "10000 so'm",
+        "31000 so'm"
+      ],
+      "correctIndex": 1,
+      "explain": "20000 − 11000 = 9000 so'm."
+    },
+    {
+      "id": "A-21",
+      "q": "To'g'ri to'rtburchakning tomonlari 12 sm va 5 sm. Perimetrini toping.",
+      "options": [
+        "36 sm",
+        "60 sm",
+        "17 sm",
+        "34 sm"
+      ],
+      "correctIndex": 3,
+      "explain": "P = 2·(a + b) = 2·(12 + 5) = 34 sm."
+    },
+    {
+      "id": "A-22",
+      "q": "To'g'ri to'rtburchakning tomonlari 5 sm va 15 sm. Yuzini toping.",
+      "options": [
+        "20 sm²",
+        "75 sm²",
+        "40 sm²",
+        "80 sm²"
+      ],
+      "correctIndex": 1,
+      "explain": "S = a·b = 5·15 = 75 sm²."
+    },
+    {
+      "id": "A-23",
+      "q": "Bog'da 9 qatorda har birida 8 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "options": [
+        "17",
+        "72",
+        "80",
+        "63"
+      ],
+      "correctIndex": 1,
+      "explain": "9 × 8 = 72 ta daraxt."
+    },
+    {
+      "id": "A-24",
+      "q": "84 ta daftar 7 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "options": [
+        "13",
+        "42",
+        "7",
+        "12"
+      ],
+      "correctIndex": 3,
+      "explain": "84 : 7 = 12."
+    },
+    {
+      "id": "A-25",
+      "q": "200 ning 50% i nechaga teng?",
+      "options": [
+        "200",
+        "100",
+        "100",
+        "50"
+      ],
+      "correctIndex": 1,
+      "explain": "200 · 50/100 = 100."
+    },
+    {
+      "id": "A-26",
+      "q": "70 ning 1/5 qismini toping.",
+      "options": [
+        "14",
+        "56",
+        "19",
+        "14"
+      ],
+      "correctIndex": 0,
+      "explain": "70 : 5 = 14; 14 · 1 = 14."
+    },
+    {
+      "id": "A-27",
+      "q": "Bir daftar 5000 so'm. 5 ta daftar uchun necha so'm to'lanadi?",
+      "options": [
+        "5005 so'm",
+        "30000 so'm",
+        "20000 so'm",
+        "25000 so'm"
+      ],
+      "correctIndex": 3,
+      "explain": "5000 · 5 = 25000 so'm."
+    },
+    {
+      "id": "A-28",
+      "q": "Avtomobil tezligi 50 km/soat. 5 soatda u necha km yo'l bosadi?",
+      "options": [
+        "55 km",
+        "250 km",
+        "45 km",
+        "300 km"
+      ],
+      "correctIndex": 1,
+      "explain": "S = v · t = 50 · 5 = 250 km."
+    },
+    {
+      "id": "A-29",
+      "q": "Uchta sonning o'rtachasini toping: 18, 13, 14.",
+      "options": [
+        "45",
+        "15",
+        "18",
+        "15.5"
+      ],
+      "correctIndex": 1,
+      "explain": "(18 + 13 + 14) : 3 = 15."
+    },
+    {
+      "id": "A-30",
+      "q": "Xarid 12000 so'm. Mijoz 20000 so'm berdi. Necha so'm qaytim olishi kerak?",
+      "options": [
+        "11000 so'm",
+        "9000 so'm",
+        "32000 so'm",
+        "8000 so'm"
+      ],
+      "correctIndex": 3,
+      "explain": "20000 − 12000 = 8000 so'm."
+    },
+    {
+      "id": "A-31",
+      "q": "To'g'ri to'rtburchakning tomonlari 18 sm va 4 sm. Perimetrini toping.",
+      "options": [
+        "22 sm",
+        "44 sm",
+        "72 sm",
+        "46 sm"
+      ],
+      "correctIndex": 1,
+      "explain": "P = 2·(a + b) = 2·(18 + 4) = 44 sm."
+    },
+    {
+      "id": "A-32",
+      "q": "To'g'ri to'rtburchakning tomonlari 14 sm va 18 sm. Yuzini toping.",
+      "options": [
+        "266 sm²",
+        "252 sm²",
+        "32 sm²",
+        "64 sm²"
+      ],
+      "correctIndex": 1,
+      "explain": "S = a·b = 14·18 = 252 sm²."
+    },
+    {
+      "id": "A-33",
+      "q": "Bog'da 8 qatorda har birida 10 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "options": [
+        "72",
+        "90",
+        "18",
+        "80"
+      ],
+      "correctIndex": 3,
+      "explain": "8 × 10 = 80 ta daraxt."
+    },
+    {
+      "id": "A-34",
+      "q": "55 ta daftar 5 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "options": [
+        "11",
+        "5",
+        "12",
+        "27.5"
+      ],
+      "correctIndex": 0,
+      "explain": "55 : 5 = 11."
+    },
+    {
+      "id": "A-35",
+      "q": "500 ning 25% i nechaga teng?",
+      "options": [
+        "250",
+        "62.5",
+        "125",
+        "375"
+      ],
+      "correctIndex": 2,
+      "explain": "500 · 25/100 = 125."
+    },
+    {
+      "id": "A-36",
+      "q": "30 ning 1/5 qismini toping.",
+      "options": [
+        "6",
+        "11",
+        "24",
+        "6"
+      ],
+      "correctIndex": 0,
+      "explain": "30 : 5 = 6; 6 · 1 = 6."
+    },
+    {
+      "id": "A-37",
+      "q": "Bir daftar 8000 so'm. 2 ta daftar uchun necha so'm to'lanadi?",
+      "options": [
+        "24000 so'm",
+        "8000 so'm",
+        "16000 so'm",
+        "8002 so'm"
+      ],
+      "correctIndex": 2,
+      "explain": "8000 · 2 = 16000 so'm."
+    },
+    {
+      "id": "A-38",
+      "q": "Avtomobil tezligi 60 km/soat. 4 soatda u necha km yo'l bosadi?",
+      "options": [
+        "240 km",
+        "300 km",
+        "64 km",
+        "56 km"
+      ],
+      "correctIndex": 0,
+      "explain": "S = v · t = 60 · 4 = 240 km."
+    },
+    {
+      "id": "A-39",
+      "q": "Uchta sonning o'rtachasini toping: 12, 11, 16.",
+      "options": [
+        "11.5",
+        "13",
+        "16",
+        "39"
+      ],
+      "correctIndex": 1,
+      "explain": "(12 + 11 + 16) : 3 = 13."
+    },
+    {
+      "id": "A-40",
+      "q": "Xarid 8000 so'm. Mijoz 15000 so'm berdi. Necha so'm qaytim olishi kerak?",
+      "options": [
+        "7000 so'm",
+        "8000 so'm",
+        "23000 so'm",
+        "7000 so'm"
+      ],
+      "correctIndex": 0,
+      "explain": "15000 − 8000 = 7000 so'm."
+    },
+    {
+      "id": "A-41",
+      "q": "To'g'ri to'rtburchakning tomonlari 19 sm va 14 sm. Perimetrini toping.",
+      "options": [
+        "33 sm",
+        "68 sm",
+        "66 sm",
+        "266 sm"
+      ],
+      "correctIndex": 2,
+      "explain": "P = 2·(a + b) = 2·(19 + 14) = 66 sm."
+    },
+    {
+      "id": "A-42",
+      "q": "To'g'ri to'rtburchakning tomonlari 16 sm va 7 sm. Yuzini toping.",
+      "options": [
+        "128 sm²",
+        "23 sm²",
+        "112 sm²",
+        "46 sm²"
+      ],
+      "correctIndex": 2,
+      "explain": "S = a·b = 16·7 = 112 sm²."
+    },
+    {
+      "id": "A-43",
+      "q": "Bog'da 4 qatorda har birida 8 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "options": [
+        "12",
+        "28",
+        "32",
+        "40"
+      ],
+      "correctIndex": 2,
+      "explain": "4 × 8 = 32 ta daraxt."
+    },
+    {
+      "id": "A-44",
+      "q": "36 ta daftar 6 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "options": [
+        "6",
+        "6",
+        "18",
+        "7"
+      ],
+      "correctIndex": 0,
+      "explain": "36 : 6 = 6."
+    },
+    {
+      "id": "A-45",
+      "q": "500 ning 75% i nechaga teng?",
+      "options": [
+        "375",
+        "750",
+        "187.5",
+        "125"
+      ],
+      "correctIndex": 0,
+      "explain": "500 · 75/100 = 375."
+    },
+    {
+      "id": "A-46",
+      "q": "40 ning 1/4 qismini toping.",
+      "options": [
+        "10",
+        "10",
+        "14",
+        "30"
+      ],
+      "correctIndex": 0,
+      "explain": "40 : 4 = 10; 10 · 1 = 10."
+    },
+    {
+      "id": "A-47",
+      "q": "Bir daftar 5000 so'm. 3 ta daftar uchun necha so'm to'lanadi?",
+      "options": [
+        "20000 so'm",
+        "15000 so'm",
+        "10000 so'm",
+        "5003 so'm"
+      ],
+      "correctIndex": 1,
+      "explain": "5000 · 3 = 15000 so'm."
+    },
+    {
+      "id": "A-48",
+      "q": "Avtomobil tezligi 50 km/soat. 6 soatda u necha km yo'l bosadi?",
+      "options": [
+        "300 km",
+        "44 km",
+        "350 km",
+        "56 km"
+      ],
+      "correctIndex": 0,
+      "explain": "S = v · t = 50 · 6 = 300 km."
+    },
+    {
+      "id": "A-49",
+      "q": "Uchta sonning o'rtachasini toping: 10, 8, 13.",
+      "options": [
+        "10.33",
+        "31",
+        "13",
+        "9.0"
+      ],
+      "correctIndex": 0,
+      "explain": "(10 + 8 + 13) : 3 = 10.33."
+    },
+    {
+      "id": "A-50",
       "q": "Xarid 14000 so'm. Mijoz 20000 so'm berdi. Necha so'm qaytim olishi kerak?",
       "options": [
         "13000 so'm",
         "6000 so'm",
-        "34000 so'm",
-        "7000 so'm"
+        "7000 so'm",
+        "34000 so'm"
       ],
       "correctIndex": 1,
       "explain": "20000 − 14000 = 6000 so'm."
     },
     {
-      "id": "A-11",
-      "q": "To'g'ri to'rtburchakning tomonlari 7 sm va 19 sm. Perimetrini toping.",
+      "id": "A-51",
+      "q": "To'g'ri to'rtburchakning tomonlari 8 sm va 16 sm. Perimetrini toping.",
       "options": [
-        "52 sm",
-        "54 sm",
-        "133 sm",
-        "26 sm"
+        "48 sm",
+        "128 sm",
+        "24 sm",
+        "50 sm"
       ],
       "correctIndex": 0,
-      "explain": "P = 2·(a + b) = 2·(7 + 19) = 52 sm."
+      "explain": "P = 2·(a + b) = 2·(8 + 16) = 48 sm."
     },
     {
-      "id": "A-12",
-      "q": "To'g'ri to'rtburchakning tomonlari 4 sm va 14 sm. Yuzini toping.",
+      "id": "A-52",
+      "q": "To'g'ri to'rtburchakning tomonlari 19 sm va 6 sm. Yuzini toping.",
       "options": [
-        "56 sm²",
-        "36 sm²",
-        "18 sm²",
-        "60 sm²"
-      ],
-      "correctIndex": 0,
-      "explain": "S = a·b = 4·14 = 56 sm²."
-    },
-    {
-      "id": "A-13",
-      "q": "Bog'da 8 qatorda har birida 11 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
-      "options": [
-        "80",
-        "19",
-        "99",
-        "88"
-      ],
-      "correctIndex": 3,
-      "explain": "8 × 11 = 88 ta daraxt."
-    },
-    {
-      "id": "A-14",
-      "q": "99 ta daftar 9 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
-      "options": [
-        "11",
-        "49.5",
-        "9",
-        "12"
-      ],
-      "correctIndex": 0,
-      "explain": "99 : 9 = 11."
-    },
-    {
-      "id": "A-15",
-      "q": "400 ning 10% i nechaga teng?",
-      "options": [
-        "80",
-        "20",
-        "360",
-        "40"
-      ],
-      "correctIndex": 3,
-      "explain": "400 · 10/100 = 40."
-    },
-    {
-      "id": "A-16",
-      "q": "12 ning 2/4 qismini toping.",
-      "options": [
-        "10",
-        "3",
-        "6",
-        "6"
+        "25 sm²",
+        "50 sm²",
+        "114 sm²",
+        "133 sm²"
       ],
       "correctIndex": 2,
-      "explain": "12 : 4 = 3; 3 · 2 = 6."
+      "explain": "S = a·b = 19·6 = 114 sm²."
     },
     {
-      "id": "A-17",
-      "q": "Bir daftar 4000 so'm. 3 ta daftar uchun necha so'm to'lanadi?",
+      "id": "A-53",
+      "q": "Bog'da 6 qatorda har birida 10 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
       "options": [
-        "4003 so'm",
-        "12000 so'm",
-        "16000 so'm",
-        "8000 so'm"
+        "54",
+        "60",
+        "16",
+        "70"
       ],
       "correctIndex": 1,
-      "explain": "4000 · 3 = 12000 so'm."
+      "explain": "6 × 10 = 60 ta daraxt."
     },
     {
-      "id": "A-18",
+      "id": "A-54",
+      "q": "15 ta daftar 3 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "options": [
+        "7.5",
+        "6",
+        "3",
+        "5"
+      ],
+      "correctIndex": 3,
+      "explain": "15 : 3 = 5."
+    },
+    {
+      "id": "A-55",
+      "q": "1200 ning 25% i nechaga teng?",
+      "options": [
+        "900",
+        "600",
+        "300",
+        "150"
+      ],
+      "correctIndex": 2,
+      "explain": "1200 · 25/100 = 300."
+    },
+    {
+      "id": "A-56",
+      "q": "24 ning 1/2 qismini toping.",
+      "options": [
+        "14",
+        "12",
+        "12",
+        "12"
+      ],
+      "correctIndex": 1,
+      "explain": "24 : 2 = 12; 12 · 1 = 12."
+    },
+    {
+      "id": "A-57",
+      "q": "Bir daftar 6000 so'm. 6 ta daftar uchun necha so'm to'lanadi?",
+      "options": [
+        "42000 so'm",
+        "30000 so'm",
+        "36000 so'm",
+        "6006 so'm"
+      ],
+      "correctIndex": 2,
+      "explain": "6000 · 6 = 36000 so'm."
+    },
+    {
+      "id": "A-58",
+      "q": "Avtomobil tezligi 80 km/soat. 3 soatda u necha km yo'l bosadi?",
+      "options": [
+        "83 km",
+        "320 km",
+        "77 km",
+        "240 km"
+      ],
+      "correctIndex": 3,
+      "explain": "S = v · t = 80 · 3 = 240 km."
+    },
+    {
+      "id": "A-59",
+      "q": "Uchta sonning o'rtachasini toping: 16, 5, 18.",
+      "options": [
+        "18",
+        "13",
+        "10.5",
+        "39"
+      ],
+      "correctIndex": 1,
+      "explain": "(16 + 5 + 18) : 3 = 13."
+    },
+    {
+      "id": "A-60",
+      "q": "Xarid 15000 so'm. Mijoz 20000 so'm berdi. Necha so'm qaytim olishi kerak?",
+      "options": [
+        "6000 so'm",
+        "35000 so'm",
+        "14000 so'm",
+        "5000 so'm"
+      ],
+      "correctIndex": 3,
+      "explain": "20000 − 15000 = 5000 so'm."
+    },
+    {
+      "id": "A-61",
+      "q": "To'g'ri to'rtburchakning tomonlari 16 sm va 10 sm. Perimetrini toping.",
+      "options": [
+        "54 sm",
+        "26 sm",
+        "52 sm",
+        "160 sm"
+      ],
+      "correctIndex": 2,
+      "explain": "P = 2·(a + b) = 2·(16 + 10) = 52 sm."
+    },
+    {
+      "id": "A-62",
+      "q": "To'g'ri to'rtburchakning tomonlari 7 sm va 11 sm. Yuzini toping.",
+      "options": [
+        "18 sm²",
+        "36 sm²",
+        "84 sm²",
+        "77 sm²"
+      ],
+      "correctIndex": 3,
+      "explain": "S = a·b = 7·11 = 77 sm²."
+    },
+    {
+      "id": "A-63",
+      "q": "Bog'da 5 qatorda har birida 6 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "options": [
+        "30",
+        "36",
+        "11",
+        "25"
+      ],
+      "correctIndex": 0,
+      "explain": "5 × 6 = 30 ta daraxt."
+    },
+    {
+      "id": "A-64",
+      "q": "72 ta daftar 8 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "options": [
+        "36",
+        "9",
+        "10",
+        "8"
+      ],
+      "correctIndex": 1,
+      "explain": "72 : 8 = 9."
+    },
+    {
+      "id": "A-65",
+      "q": "500 ning 75% i nechaga teng?",
+      "options": [
+        "187.5",
+        "750",
+        "125",
+        "375"
+      ],
+      "correctIndex": 3,
+      "explain": "500 · 75/100 = 375."
+    },
+    {
+      "id": "A-66",
+      "q": "40 ning 2/5 qismini toping.",
+      "options": [
+        "21",
+        "24",
+        "8",
+        "16"
+      ],
+      "correctIndex": 3,
+      "explain": "40 : 5 = 8; 8 · 2 = 16."
+    },
+    {
+      "id": "A-67",
+      "q": "Bir daftar 9000 so'm. 5 ta daftar uchun necha so'm to'lanadi?",
+      "options": [
+        "36000 so'm",
+        "45000 so'm",
+        "9005 so'm",
+        "54000 so'm"
+      ],
+      "correctIndex": 1,
+      "explain": "9000 · 5 = 45000 so'm."
+    },
+    {
+      "id": "A-68",
+      "q": "Avtomobil tezligi 50 km/soat. 3 soatda u necha km yo'l bosadi?",
+      "options": [
+        "47 km",
+        "200 km",
+        "53 km",
+        "150 km"
+      ],
+      "correctIndex": 3,
+      "explain": "S = v · t = 50 · 3 = 150 km."
+    },
+    {
+      "id": "A-69",
+      "q": "Uchta sonning o'rtachasini toping: 13, 14, 15.",
+      "options": [
+        "15",
+        "14",
+        "13.5",
+        "42"
+      ],
+      "correctIndex": 1,
+      "explain": "(13 + 14 + 15) : 3 = 14."
+    },
+    {
+      "id": "A-70",
+      "q": "Xarid 12000 so'm. Mijoz 20000 so'm berdi. Necha so'm qaytim olishi kerak?",
+      "options": [
+        "32000 so'm",
+        "8000 so'm",
+        "11000 so'm",
+        "9000 so'm"
+      ],
+      "correctIndex": 1,
+      "explain": "20000 − 12000 = 8000 so'm."
+    },
+    {
+      "id": "A-71",
+      "q": "To'g'ri to'rtburchakning tomonlari 17 sm va 3 sm. Perimetrini toping.",
+      "options": [
+        "40 sm",
+        "42 sm",
+        "20 sm",
+        "51 sm"
+      ],
+      "correctIndex": 0,
+      "explain": "P = 2·(a + b) = 2·(17 + 3) = 40 sm."
+    },
+    {
+      "id": "A-72",
+      "q": "To'g'ri to'rtburchakning tomonlari 8 sm va 5 sm. Yuzini toping.",
+      "options": [
+        "26 sm²",
+        "13 sm²",
+        "40 sm²",
+        "48 sm²"
+      ],
+      "correctIndex": 2,
+      "explain": "S = a·b = 8·5 = 40 sm²."
+    },
+    {
+      "id": "A-73",
+      "q": "Bog'da 5 qatorda har birida 15 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "options": [
+        "90",
+        "20",
+        "70",
+        "75"
+      ],
+      "correctIndex": 3,
+      "explain": "5 × 15 = 75 ta daraxt."
+    },
+    {
+      "id": "A-74",
+      "q": "45 ta daftar 5 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
+      "options": [
+        "5",
+        "22.5",
+        "10",
+        "9"
+      ],
+      "correctIndex": 3,
+      "explain": "45 : 5 = 9."
+    },
+    {
+      "id": "A-75",
+      "q": "800 ning 75% i nechaga teng?",
+      "options": [
+        "1200",
+        "300",
+        "200",
+        "600"
+      ],
+      "correctIndex": 3,
+      "explain": "800 · 75/100 = 600."
+    },
+    {
+      "id": "A-76",
+      "q": "10 ning 1/2 qismini toping.",
+      "options": [
+        "5",
+        "5",
+        "5",
+        "7"
+      ],
+      "correctIndex": 0,
+      "explain": "10 : 2 = 5; 5 · 1 = 5."
+    },
+    {
+      "id": "A-77",
+      "q": "Bir daftar 1000 so'm. 8 ta daftar uchun necha so'm to'lanadi?",
+      "options": [
+        "1008 so'm",
+        "7000 so'm",
+        "8000 so'm",
+        "9000 so'm"
+      ],
+      "correctIndex": 2,
+      "explain": "1000 · 8 = 8000 so'm."
+    },
+    {
+      "id": "A-78",
       "q": "Avtomobil tezligi 60 km/soat. 5 soatda u necha km yo'l bosadi?",
       "options": [
         "65 km",
@@ -351,1146 +1947,426 @@
       "explain": "S = v · t = 60 · 5 = 300 km."
     },
     {
-      "id": "A-19",
-      "q": "Uchta sonning o'rtachasini toping: 20, 10, 18.",
-      "options": [
-        "16",
-        "20",
-        "15.0",
-        "48"
-      ],
-      "correctIndex": 0,
-      "explain": "(20 + 10 + 18) : 3 = 16."
-    },
-    {
-      "id": "A-20",
-      "q": "Xarid 18000 so'm. Mijoz 25000 so'm berdi. Necha so'm qaytim olishi kerak?",
-      "options": [
-        "43000 so'm",
-        "8000 so'm",
-        "7000 so'm",
-        "17000 so'm"
-      ],
-      "correctIndex": 2,
-      "explain": "25000 − 18000 = 7000 so'm."
-    },
-    {
-      "id": "A-21",
-      "q": "To'g'ri to'rtburchakning tomonlari 18 sm va 3 sm. Perimetrini toping.",
-      "options": [
-        "42 sm",
-        "44 sm",
-        "54 sm",
-        "21 sm"
-      ],
-      "correctIndex": 0,
-      "explain": "P = 2·(a + b) = 2·(18 + 3) = 42 sm."
-    },
-    {
-      "id": "A-22",
-      "q": "To'g'ri to'rtburchakning tomonlari 19 sm va 3 sm. Yuzini toping.",
-      "options": [
-        "22 sm²",
-        "44 sm²",
-        "57 sm²",
-        "76 sm²"
-      ],
-      "correctIndex": 2,
-      "explain": "S = a·b = 19·3 = 57 sm²."
-    },
-    {
-      "id": "A-23",
-      "q": "Bog'da 9 qatorda har birida 5 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
-      "options": [
-        "36",
-        "45",
-        "50",
-        "14"
-      ],
-      "correctIndex": 1,
-      "explain": "9 × 5 = 45 ta daraxt."
-    },
-    {
-      "id": "A-24",
-      "q": "36 ta daftar 6 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
-      "options": [
-        "6",
-        "7",
-        "6",
-        "18"
-      ],
-      "correctIndex": 0,
-      "explain": "36 : 6 = 6."
-    },
-    {
-      "id": "A-25",
-      "q": "800 ning 25% i nechaga teng?",
-      "options": [
-        "400",
-        "600",
-        "200",
-        "100"
-      ],
-      "correctIndex": 2,
-      "explain": "800 · 25/100 = 200."
-    },
-    {
-      "id": "A-26",
-      "q": "21 ning 2/3 qismini toping.",
-      "options": [
-        "7",
-        "17",
-        "7",
-        "14"
-      ],
-      "correctIndex": 3,
-      "explain": "21 : 3 = 7; 7 · 2 = 14."
-    },
-    {
-      "id": "A-27",
-      "q": "Bir daftar 2000 so'm. 8 ta daftar uchun necha so'm to'lanadi?",
-      "options": [
-        "14000 so'm",
-        "16000 so'm",
-        "2008 so'm",
-        "18000 so'm"
-      ],
-      "correctIndex": 1,
-      "explain": "2000 · 8 = 16000 so'm."
-    },
-    {
-      "id": "A-28",
-      "q": "Avtomobil tezligi 80 km/soat. 3 soatda u necha km yo'l bosadi?",
-      "options": [
-        "83 km",
-        "240 km",
-        "77 km",
-        "320 km"
-      ],
-      "correctIndex": 1,
-      "explain": "S = v · t = 80 · 3 = 240 km."
-    },
-    {
-      "id": "A-29",
-      "q": "Uchta sonning o'rtachasini toping: 7, 12, 11.",
-      "options": [
-        "9.5",
-        "10",
-        "12",
-        "30"
-      ],
-      "correctIndex": 1,
-      "explain": "(7 + 12 + 11) : 3 = 10."
-    },
-    {
-      "id": "A-30",
-      "q": "Xarid 9000 so'm. Mijoz 15000 so'm berdi. Necha so'm qaytim olishi kerak?",
-      "options": [
-        "6000 so'm",
-        "24000 so'm",
-        "7000 so'm",
-        "8000 so'm"
-      ],
-      "correctIndex": 0,
-      "explain": "15000 − 9000 = 6000 so'm."
-    },
-    {
-      "id": "A-31",
-      "q": "To'g'ri to'rtburchakning tomonlari 8 sm va 12 sm. Perimetrini toping.",
-      "options": [
-        "96 sm",
-        "20 sm",
-        "42 sm",
-        "40 sm"
-      ],
-      "correctIndex": 3,
-      "explain": "P = 2·(a + b) = 2·(8 + 12) = 40 sm."
-    },
-    {
-      "id": "A-32",
-      "q": "To'g'ri to'rtburchakning tomonlari 6 sm va 4 sm. Yuzini toping.",
-      "options": [
-        "10 sm²",
-        "20 sm²",
-        "30 sm²",
-        "24 sm²"
-      ],
-      "correctIndex": 3,
-      "explain": "S = a·b = 6·4 = 24 sm²."
-    },
-    {
-      "id": "A-33",
-      "q": "Bog'da 12 qatorda har birida 13 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
-      "options": [
-        "169",
-        "25",
-        "144",
-        "156"
-      ],
-      "correctIndex": 3,
-      "explain": "12 × 13 = 156 ta daraxt."
-    },
-    {
-      "id": "A-34",
-      "q": "48 ta daftar 4 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
-      "options": [
-        "13",
-        "12",
-        "4",
-        "24"
-      ],
-      "correctIndex": 1,
-      "explain": "48 : 4 = 12."
-    },
-    {
-      "id": "A-35",
-      "q": "1000 ning 10% i nechaga teng?",
-      "options": [
-        "900",
-        "200",
-        "50",
-        "100"
-      ],
-      "correctIndex": 3,
-      "explain": "1000 · 10/100 = 100."
-    },
-    {
-      "id": "A-36",
-      "q": "20 ning 1/2 qismini toping.",
-      "options": [
-        "12",
-        "10",
-        "10",
-        "10"
-      ],
-      "correctIndex": 1,
-      "explain": "20 : 2 = 10; 10 · 1 = 10."
-    },
-    {
-      "id": "A-37",
-      "q": "Bir daftar 4000 so'm. 5 ta daftar uchun necha so'm to'lanadi?",
-      "options": [
-        "16000 so'm",
-        "24000 so'm",
-        "4005 so'm",
-        "20000 so'm"
-      ],
-      "correctIndex": 3,
-      "explain": "4000 · 5 = 20000 so'm."
-    },
-    {
-      "id": "A-38",
-      "q": "Avtomobil tezligi 40 km/soat. 6 soatda u necha km yo'l bosadi?",
-      "options": [
-        "280 km",
-        "34 km",
-        "240 km",
-        "46 km"
-      ],
-      "correctIndex": 2,
-      "explain": "S = v · t = 40 · 6 = 240 km."
-    },
-    {
-      "id": "A-39",
-      "q": "Uchta sonning o'rtachasini toping: 10, 18, 17.",
-      "options": [
-        "18",
-        "14.0",
-        "45",
-        "15"
-      ],
-      "correctIndex": 3,
-      "explain": "(10 + 18 + 17) : 3 = 15."
-    },
-    {
-      "id": "A-40",
-      "q": "Xarid 10000 so'm. Mijoz 15000 so'm berdi. Necha so'm qaytim olishi kerak?",
-      "options": [
-        "6000 so'm",
-        "25000 so'm",
-        "5000 so'm",
-        "9000 so'm"
-      ],
-      "correctIndex": 2,
-      "explain": "15000 − 10000 = 5000 so'm."
-    },
-    {
-      "id": "A-41",
-      "q": "To'g'ri to'rtburchakning tomonlari 3 sm va 7 sm. Perimetrini toping.",
-      "options": [
-        "21 sm",
-        "22 sm",
-        "10 sm",
-        "20 sm"
-      ],
-      "correctIndex": 3,
-      "explain": "P = 2·(a + b) = 2·(3 + 7) = 20 sm."
-    },
-    {
-      "id": "A-42",
-      "q": "To'g'ri to'rtburchakning tomonlari 18 sm va 17 sm. Yuzini toping.",
-      "options": [
-        "35 sm²",
-        "306 sm²",
-        "70 sm²",
-        "324 sm²"
-      ],
-      "correctIndex": 1,
-      "explain": "S = a·b = 18·17 = 306 sm²."
-    },
-    {
-      "id": "A-43",
-      "q": "Bog'da 4 qatorda har birida 4 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
-      "options": [
-        "16",
-        "12",
-        "8",
-        "20"
-      ],
-      "correctIndex": 0,
-      "explain": "4 × 4 = 16 ta daraxt."
-    },
-    {
-      "id": "A-44",
-      "q": "88 ta daftar 8 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
-      "options": [
-        "12",
-        "8",
-        "11",
-        "44"
-      ],
-      "correctIndex": 2,
-      "explain": "88 : 8 = 11."
-    },
-    {
-      "id": "A-45",
-      "q": "400 ning 75% i nechaga teng?",
-      "options": [
-        "150",
-        "300",
-        "100",
-        "600"
-      ],
-      "correctIndex": 1,
-      "explain": "400 · 75/100 = 300."
-    },
-    {
-      "id": "A-46",
-      "q": "44 ning 1/4 qismini toping.",
-      "options": [
-        "11",
-        "11",
-        "33",
-        "15"
-      ],
-      "correctIndex": 0,
-      "explain": "44 : 4 = 11; 11 · 1 = 11."
-    },
-    {
-      "id": "A-47",
-      "q": "Bir daftar 8000 so'm. 6 ta daftar uchun necha so'm to'lanadi?",
-      "options": [
-        "56000 so'm",
-        "8006 so'm",
-        "40000 so'm",
-        "48000 so'm"
-      ],
-      "correctIndex": 3,
-      "explain": "8000 · 6 = 48000 so'm."
-    },
-    {
-      "id": "A-48",
-      "q": "Avtomobil tezligi 80 km/soat. 6 soatda u necha km yo'l bosadi?",
-      "options": [
-        "560 km",
-        "480 km",
-        "86 km",
-        "74 km"
-      ],
-      "correctIndex": 1,
-      "explain": "S = v · t = 80 · 6 = 480 km."
-    },
-    {
-      "id": "A-49",
-      "q": "Uchta sonning o'rtachasini toping: 13, 8, 18.",
-      "options": [
-        "13",
-        "10.5",
-        "18",
-        "39"
-      ],
-      "correctIndex": 0,
-      "explain": "(13 + 8 + 18) : 3 = 13."
-    },
-    {
-      "id": "A-50",
-      "q": "Xarid 16000 so'm. Mijoz 25000 so'm berdi. Necha so'm qaytim olishi kerak?",
-      "options": [
-        "15000 so'm",
-        "41000 so'm",
-        "9000 so'm",
-        "10000 so'm"
-      ],
-      "correctIndex": 2,
-      "explain": "25000 − 16000 = 9000 so'm."
-    },
-    {
-      "id": "A-51",
-      "q": "To'g'ri to'rtburchakning tomonlari 5 sm va 20 sm. Perimetrini toping.",
-      "options": [
-        "52 sm",
-        "25 sm",
-        "100 sm",
-        "50 sm"
-      ],
-      "correctIndex": 3,
-      "explain": "P = 2·(a + b) = 2·(5 + 20) = 50 sm."
-    },
-    {
-      "id": "A-52",
-      "q": "To'g'ri to'rtburchakning tomonlari 6 sm va 9 sm. Yuzini toping.",
-      "options": [
-        "30 sm²",
-        "15 sm²",
-        "60 sm²",
-        "54 sm²"
-      ],
-      "correctIndex": 3,
-      "explain": "S = a·b = 6·9 = 54 sm²."
-    },
-    {
-      "id": "A-53",
-      "q": "Bog'da 11 qatorda har birida 6 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
-      "options": [
-        "55",
-        "66",
-        "17",
-        "72"
-      ],
-      "correctIndex": 1,
-      "explain": "11 × 6 = 66 ta daraxt."
-    },
-    {
-      "id": "A-54",
-      "q": "32 ta daftar 8 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
-      "options": [
-        "16",
-        "4",
-        "8",
-        "5"
-      ],
-      "correctIndex": 1,
-      "explain": "32 : 8 = 4."
-    },
-    {
-      "id": "A-55",
-      "q": "800 ning 10% i nechaga teng?",
-      "options": [
-        "80",
-        "720",
-        "40",
-        "160"
-      ],
-      "correctIndex": 0,
-      "explain": "800 · 10/100 = 80."
-    },
-    {
-      "id": "A-56",
-      "q": "30 ning 1/2 qismini toping.",
-      "options": [
-        "15",
-        "17",
-        "15",
-        "15"
-      ],
-      "correctIndex": 0,
-      "explain": "30 : 2 = 15; 15 · 1 = 15."
-    },
-    {
-      "id": "A-57",
-      "q": "Bir daftar 5000 so'm. 4 ta daftar uchun necha so'm to'lanadi?",
-      "options": [
-        "20000 so'm",
-        "5004 so'm",
-        "15000 so'm",
-        "25000 so'm"
-      ],
-      "correctIndex": 0,
-      "explain": "5000 · 4 = 20000 so'm."
-    },
-    {
-      "id": "A-58",
-      "q": "Avtomobil tezligi 50 km/soat. 2 soatda u necha km yo'l bosadi?",
-      "options": [
-        "48 km",
-        "52 km",
-        "100 km",
-        "150 km"
-      ],
-      "correctIndex": 2,
-      "explain": "S = v · t = 50 · 2 = 100 km."
-    },
-    {
-      "id": "A-59",
-      "q": "Uchta sonning o'rtachasini toping: 20, 5, 13.",
-      "options": [
-        "20",
-        "12.5",
-        "38",
-        "12.67"
-      ],
-      "correctIndex": 3,
-      "explain": "(20 + 5 + 13) : 3 = 12.67."
-    },
-    {
-      "id": "A-60",
-      "q": "Xarid 13000 so'm. Mijoz 20000 so'm berdi. Necha so'm qaytim olishi kerak?",
-      "options": [
-        "8000 so'm",
-        "7000 so'm",
-        "33000 so'm",
-        "12000 so'm"
-      ],
-      "correctIndex": 1,
-      "explain": "20000 − 13000 = 7000 so'm."
-    },
-    {
-      "id": "A-61",
-      "q": "To'g'ri to'rtburchakning tomonlari 4 sm va 14 sm. Perimetrini toping.",
-      "options": [
-        "18 sm",
-        "38 sm",
-        "36 sm",
-        "56 sm"
-      ],
-      "correctIndex": 2,
-      "explain": "P = 2·(a + b) = 2·(4 + 14) = 36 sm."
-    },
-    {
-      "id": "A-62",
-      "q": "To'g'ri to'rtburchakning tomonlari 20 sm va 9 sm. Yuzini toping.",
-      "options": [
-        "200 sm²",
-        "29 sm²",
-        "58 sm²",
-        "180 sm²"
-      ],
-      "correctIndex": 3,
-      "explain": "S = a·b = 20·9 = 180 sm²."
-    },
-    {
-      "id": "A-63",
-      "q": "Bog'da 11 qatorda har birida 5 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
-      "options": [
-        "55",
-        "16",
-        "44",
-        "60"
-      ],
-      "correctIndex": 0,
-      "explain": "11 × 5 = 55 ta daraxt."
-    },
-    {
-      "id": "A-64",
-      "q": "81 ta daftar 9 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
-      "options": [
-        "9",
-        "10",
-        "40.5",
-        "9"
-      ],
-      "correctIndex": 0,
-      "explain": "81 : 9 = 9."
-    },
-    {
-      "id": "A-65",
-      "q": "1200 ning 25% i nechaga teng?",
-      "options": [
-        "600",
-        "300",
-        "150",
-        "900"
-      ],
-      "correctIndex": 1,
-      "explain": "1200 · 25/100 = 300."
-    },
-    {
-      "id": "A-66",
-      "q": "20 ning 3/5 qismini toping.",
-      "options": [
-        "4",
-        "17",
-        "8",
-        "12"
-      ],
-      "correctIndex": 3,
-      "explain": "20 : 5 = 4; 4 · 3 = 12."
-    },
-    {
-      "id": "A-67",
-      "q": "Bir daftar 5000 so'm. 6 ta daftar uchun necha so'm to'lanadi?",
-      "options": [
-        "5006 so'm",
-        "35000 so'm",
-        "30000 so'm",
-        "25000 so'm"
-      ],
-      "correctIndex": 2,
-      "explain": "5000 · 6 = 30000 so'm."
-    },
-    {
-      "id": "A-68",
-      "q": "Avtomobil tezligi 60 km/soat. 3 soatda u necha km yo'l bosadi?",
-      "options": [
-        "240 km",
-        "57 km",
-        "63 km",
-        "180 km"
-      ],
-      "correctIndex": 3,
-      "explain": "S = v · t = 60 · 3 = 180 km."
-    },
-    {
-      "id": "A-69",
-      "q": "Uchta sonning o'rtachasini toping: 15, 8, 17.",
-      "options": [
-        "13.33",
-        "11.5",
-        "17",
-        "40"
-      ],
-      "correctIndex": 0,
-      "explain": "(15 + 8 + 17) : 3 = 13.33."
-    },
-    {
-      "id": "A-70",
-      "q": "Xarid 4000 so'm. Mijoz 10000 so'm berdi. Necha so'm qaytim olishi kerak?",
-      "options": [
-        "3000 so'm",
-        "6000 so'm",
-        "14000 so'm",
-        "7000 so'm"
-      ],
-      "correctIndex": 1,
-      "explain": "10000 − 4000 = 6000 so'm."
-    },
-    {
-      "id": "A-71",
-      "q": "To'g'ri to'rtburchakning tomonlari 5 sm va 6 sm. Perimetrini toping.",
-      "options": [
-        "22 sm",
-        "24 sm",
-        "11 sm",
-        "30 sm"
-      ],
-      "correctIndex": 0,
-      "explain": "P = 2·(a + b) = 2·(5 + 6) = 22 sm."
-    },
-    {
-      "id": "A-72",
-      "q": "To'g'ri to'rtburchakning tomonlari 5 sm va 15 sm. Yuzini toping.",
-      "options": [
-        "75 sm²",
-        "40 sm²",
-        "80 sm²",
-        "20 sm²"
-      ],
-      "correctIndex": 0,
-      "explain": "S = a·b = 5·15 = 75 sm²."
-    },
-    {
-      "id": "A-73",
-      "q": "Bog'da 11 qatorda har birida 11 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
-      "options": [
-        "110",
-        "121",
-        "22",
-        "132"
-      ],
-      "correctIndex": 1,
-      "explain": "11 × 11 = 121 ta daraxt."
-    },
-    {
-      "id": "A-74",
-      "q": "48 ta daftar 8 ta o'quvchiga teng bo'lib taqsimlandi. Har biriga nechtadan tegdi?",
-      "options": [
-        "8",
-        "7",
-        "24",
-        "6"
-      ],
-      "correctIndex": 3,
-      "explain": "48 : 8 = 6."
-    },
-    {
-      "id": "A-75",
-      "q": "1200 ning 75% i nechaga teng?",
-      "options": [
-        "1800",
-        "900",
-        "300",
-        "450"
-      ],
-      "correctIndex": 1,
-      "explain": "1200 · 75/100 = 900."
-    },
-    {
-      "id": "A-76",
-      "q": "39 ning 2/3 qismini toping.",
-      "options": [
-        "13",
-        "13",
-        "29",
-        "26"
-      ],
-      "correctIndex": 3,
-      "explain": "39 : 3 = 13; 13 · 2 = 26."
-    },
-    {
-      "id": "A-77",
-      "q": "Bir daftar 7000 so'm. 9 ta daftar uchun necha so'm to'lanadi?",
-      "options": [
-        "7009 so'm",
-        "70000 so'm",
-        "63000 so'm",
-        "56000 so'm"
-      ],
-      "correctIndex": 2,
-      "explain": "7000 · 9 = 63000 so'm."
-    },
-    {
-      "id": "A-78",
-      "q": "Avtomobil tezligi 60 km/soat. 4 soatda u necha km yo'l bosadi?",
-      "options": [
-        "64 km",
-        "240 km",
-        "300 km",
-        "56 km"
-      ],
-      "correctIndex": 1,
-      "explain": "S = v · t = 60 · 4 = 240 km."
-    },
-    {
       "id": "A-79",
-      "q": "Uchta sonning o'rtachasini toping: 17, 10, 8.",
+      "q": "Uchta sonning o'rtachasini toping: 16, 9, 16.",
       "options": [
-        "13.5",
-        "17",
-        "35",
-        "11.67"
+        "12.5",
+        "16",
+        "13.67",
+        "41"
       ],
-      "correctIndex": 3,
-      "explain": "(17 + 10 + 8) : 3 = 11.67."
+      "correctIndex": 2,
+      "explain": "(16 + 9 + 16) : 3 = 13.67."
     },
     {
       "id": "A-80",
-      "q": "Xarid 12000 so'm. Mijoz 20000 so'm berdi. Necha so'm qaytim olishi kerak?",
+      "q": "Xarid 6000 so'm. Mijoz 15000 so'm berdi. Necha so'm qaytim olishi kerak?",
       "options": [
-        "8000 so'm",
+        "5000 so'm",
         "9000 so'm",
-        "11000 so'm",
-        "32000 so'm"
+        "21000 so'm",
+        "10000 so'm"
       ],
-      "correctIndex": 0,
-      "explain": "20000 − 12000 = 8000 so'm."
+      "correctIndex": 1,
+      "explain": "15000 − 6000 = 9000 so'm."
     },
     {
       "id": "A-81",
-      "q": "To'g'ri to'rtburchakning tomonlari 11 sm va 9 sm. Perimetrini toping.",
+      "q": "To'g'ri to'rtburchakning tomonlari 12 sm va 16 sm. Perimetrini toping.",
       "options": [
-        "20 sm",
-        "99 sm",
-        "40 sm",
-        "42 sm"
+        "58 sm",
+        "192 sm",
+        "28 sm",
+        "56 sm"
       ],
-      "correctIndex": 2,
-      "explain": "P = 2·(a + b) = 2·(11 + 9) = 40 sm."
+      "correctIndex": 3,
+      "explain": "P = 2·(a + b) = 2·(12 + 16) = 56 sm."
     },
     {
       "id": "A-82",
-      "q": "To'g'ri to'rtburchakning tomonlari 3 sm va 7 sm. Yuzini toping.",
+      "q": "To'g'ri to'rtburchakning tomonlari 5 sm va 20 sm. Yuzini toping.",
       "options": [
-        "24 sm²",
-        "20 sm²",
-        "21 sm²",
-        "10 sm²"
+        "100 sm²",
+        "50 sm²",
+        "25 sm²",
+        "105 sm²"
       ],
-      "correctIndex": 2,
-      "explain": "S = a·b = 3·7 = 21 sm²."
+      "correctIndex": 0,
+      "explain": "S = a·b = 5·20 = 100 sm²."
     },
     {
       "id": "A-83",
-      "q": "Bog'da 5 qatorda har birida 15 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
+      "q": "Bog'da 9 qatorda har birida 10 tadan olma daraxti ekilgan. Jami nechta daraxt bor?",
       "options": [
-        "20",
-        "70",
+        "19",
         "90",
-        "75"
+        "81",
+        "100"
       ],
-      "correctIndex": 3,
-      "explain": "5 × 15 = 75 ta daraxt."
+      "correctIndex": 1,
+      "explain": "9 × 10 = 90 ta daraxt."
     }
   ],
   "reasoning": [
     {
       "id": "R-1",
-      "q": "Ketma-ketlik berilgan: 7, 12, 17, 22, ... Keyingi son qaysi?",
+      "q": "Ketma-ketlik berilgan: 6, 9, 12, 15, ... Keyingi son qaysi?",
       "options": [
-        "23",
-        "27",
-        "23",
-        "28"
+        "16",
+        "16",
+        "18",
+        "19"
       ],
-      "correctIndex": 1,
-      "explain": "Har gal +5 qo'shilmoqda, demak keyingisi 22 + 5 = 27."
+      "correctIndex": 2,
+      "explain": "Har gal +3 qo'shilmoqda, demak keyingisi 15 + 3 = 18."
     },
     {
       "id": "R-2",
-      "q": "Aka va ukaning yoshlari yig'indisi 23. Aka ukasidan 5 yosh katta. Ukaning yoshi nechada?",
+      "q": "Aka va ukaning yoshlari yig'indisi 36. Aka ukasidan 10 yosh katta. Ukaning yoshi nechada?",
       "options": [
-        "9",
-        "14",
-        "14",
-        "8"
+        "23",
+        "12",
+        "13",
+        "23"
       ],
-      "correctIndex": 0,
-      "explain": "Uka = (23 − 5) : 2 = 9."
+      "correctIndex": 2,
+      "explain": "Uka = (36 − 10) : 2 = 13."
     },
     {
       "id": "R-3",
-      "q": "Kvadratning perimetri 12 sm. Uning yuzini toping va asoslang.",
+      "q": "Kvadratning perimetri 44 sm. Uning yuzini toping va asoslang.",
       "options": [
-        "12 sm²",
-        "18 sm²",
-        "15 sm²",
-        "9 sm²"
+        "44 sm²",
+        "242 sm²",
+        "121 sm²",
+        "55 sm²"
       ],
-      "correctIndex": 3,
-      "explain": "Tomoni a = 12 : 4 = 3 sm. Yuzi S = a² = 9 sm²."
+      "correctIndex": 2,
+      "explain": "Tomoni a = 44 : 4 = 11 sm. Yuzi S = a² = 121 sm²."
     },
     {
       "id": "R-4",
-      "q": "Tort 9 ta teng bo'lakka bo'lingan. Anvar 3 bo'lak, Zarina 1 bo'lak yedi. Tortning necha foizi qoldi?",
+      "q": "Tort 17 ta teng bo'lakka bo'lingan. Anvar 3 bo'lak, Zarina 2 bo'lak yedi. Tortning necha foizi qoldi?",
       "options": [
-        "61%",
-        "44%",
-        "56%",
-        "50%"
+        "76%",
+        "71%",
+        "29%",
+        "120%"
       ],
-      "correctIndex": 2,
-      "explain": "Qolgan: 5/9 ≈ 56%."
+      "correctIndex": 1,
+      "explain": "Qolgan: 12/17 ≈ 71%."
     },
     {
       "id": "R-5",
-      "q": "Quyidagi sonlardan qaysi biri 4 ga bo'linmaydi: 16, 8, 12, 21?",
+      "q": "Quyidagi sonlardan qaysi biri 9 ga bo'linmaydi: 27, 36, 46, 18?",
       "options": [
-        "8",
-        "16",
-        "21",
-        "12"
+        "36",
+        "18",
+        "46",
+        "27"
       ],
       "correctIndex": 2,
-      "explain": "8, 12, 16 barchasi 4 ga karrali, 21 esa emas."
+      "explain": "18, 27, 36 barchasi 9 ga karrali, 46 esa emas."
     },
     {
       "id": "R-6",
-      "q": "Ikki sonning yig'indisi 25, ayirmasi 13. Kattasini toping.",
+      "q": "Ikki sonning yig'indisi 31, ayirmasi 9. Kattasini toping.",
       "options": [
-        "13",
-        "19",
-        "18",
-        "25"
+        "9",
+        "20",
+        "31",
+        "19"
       ],
       "correctIndex": 1,
-      "explain": "Kattasi = (25 + 13) : 2 = 19."
+      "explain": "Kattasi = (31 + 9) : 2 = 20."
     },
     {
       "id": "R-7",
-      "q": "3 ta qalam 18 so'm bo'lsa, 6 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
+      "q": "8 ta qalam 32 so'm bo'lsa, 4 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
       "options": [
-        "37",
-        "35",
-        "12",
-        "36"
-      ],
-      "correctIndex": 3,
-      "explain": "1 ta qalam 18/3 = 6 ga teng. 6 · 6 = 36."
-    },
-    {
-      "id": "R-8",
-      "q": "Haftalik kitobxonlik: Du-27, Se-14, Ch-13, Pa-18. Eng ko'p o'qilgan kun qaysi?",
-      "options": [
-        "Du",
-        "Se",
-        "Ch",
-        "Pa"
-      ],
-      "correctIndex": 0,
-      "explain": "Eng katta qiymat 27 – Du kuni."
-    },
-    {
-      "id": "R-9",
-      "q": "Qutida 5 ta qizil va 2 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
-      "options": [
-        "7/5",
-        "5/2",
-        "5/7",
-        "2/7"
-      ],
-      "correctIndex": 2,
-      "explain": "P(qizil) = qizillar soni / jami = 5/7."
-    },
-    {
-      "id": "R-10",
-      "q": "Tenglamani yeching: x + 7 = 17. x ning qiymatini toping.",
-      "options": [
-        "10",
-        "11",
-        "7",
+        "16",
+        "8",
+        "15",
         "17"
       ],
       "correctIndex": 0,
-      "explain": "x = 17 − 7 = 10."
+      "explain": "1 ta qalam 32/8 = 4 ga teng. 4 · 4 = 16."
+    },
+    {
+      "id": "R-8",
+      "q": "Haftalik kitobxonlik: Du-29, Se-26, Ch-15, Pa-23. Eng ko'p o'qilgan kun qaysi?",
+      "options": [
+        "Ch",
+        "Se",
+        "Pa",
+        "Du"
+      ],
+      "correctIndex": 3,
+      "explain": "Eng katta qiymat 29 – Du kuni."
+    },
+    {
+      "id": "R-9",
+      "q": "Qutida 5 ta qizil va 6 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
+      "options": [
+        "5/6",
+        "5/11",
+        "11/5",
+        "6/11"
+      ],
+      "correctIndex": 1,
+      "explain": "P(qizil) = qizillar soni / jami = 5/11."
+    },
+    {
+      "id": "R-10",
+      "q": "Tenglamani yeching: x + 8 = 16. x ning qiymatini toping.",
+      "options": [
+        "8",
+        "9",
+        "8",
+        "16"
+      ],
+      "correctIndex": 0,
+      "explain": "x = 16 − 8 = 8."
     },
     {
       "id": "R-11",
-      "q": "Ketma-ketlik berilgan: 6, 8, 10, 12, ... Keyingi son qaysi?",
+      "q": "Ketma-ketlik berilgan: 7, 9, 11, 13, ... Keyingi son qaysi?",
       "options": [
-        "13",
-        "13",
         "15",
+        "16",
+        "14",
         "14"
       ],
-      "correctIndex": 3,
-      "explain": "Har gal +2 qo'shilmoqda, demak keyingisi 12 + 2 = 14."
+      "correctIndex": 0,
+      "explain": "Har gal +2 qo'shilmoqda, demak keyingisi 13 + 2 = 15."
     },
     {
       "id": "R-12",
-      "q": "Aka va ukaning yoshlari yig'indisi 23. Aka ukasidan 3 yosh katta. Ukaning yoshi nechada?",
+      "q": "Aka va ukaning yoshlari yig'indisi 25. Aka ukasidan 5 yosh katta. Ukaning yoshi nechada?",
       "options": [
+        "15",
         "9",
-        "13",
-        "13",
-        "10"
+        "10",
+        "15"
       ],
-      "correctIndex": 3,
-      "explain": "Uka = (23 − 3) : 2 = 10."
+      "correctIndex": 2,
+      "explain": "Uka = (25 − 5) : 2 = 10."
     },
     {
       "id": "R-13",
       "q": "Kvadratning perimetri 32 sm. Uning yuzini toping va asoslang.",
       "options": [
-        "32 sm²",
-        "40 sm²",
         "128 sm²",
-        "64 sm²"
+        "40 sm²",
+        "64 sm²",
+        "32 sm²"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explain": "Tomoni a = 32 : 4 = 8 sm. Yuzi S = a² = 64 sm²."
     },
     {
       "id": "R-14",
-      "q": "Tort 14 ta teng bo'lakka bo'lingan. Anvar 4 bo'lak, Zarina 3 bo'lak yedi. Tortning necha foizi qoldi?",
+      "q": "Tort 14 ta teng bo'lakka bo'lingan. Anvar 3 bo'lak, Zarina 2 bo'lak yedi. Tortning necha foizi qoldi?",
       "options": [
-        "70%",
-        "50%",
-        "50%",
-        "55%"
+        "90%",
+        "64%",
+        "36%",
+        "69%"
       ],
       "correctIndex": 1,
-      "explain": "Qolgan: 7/14 ≈ 50%."
+      "explain": "Qolgan: 9/14 ≈ 64%."
     },
     {
       "id": "R-15",
-      "q": "Quyidagi sonlardan qaysi biri 2 ga bo'linmaydi: 11, 6, 4, 8?",
+      "q": "Quyidagi sonlardan qaysi biri 8 ga bo'linmaydi: 32, 24, 41, 16?",
       "options": [
-        "8",
-        "6",
-        "11",
-        "4"
+        "16",
+        "24",
+        "32",
+        "41"
       ],
-      "correctIndex": 2,
-      "explain": "4, 6, 8 barchasi 2 ga karrali, 11 esa emas."
+      "correctIndex": 3,
+      "explain": "16, 24, 32 barchasi 8 ga karrali, 41 esa emas."
     },
     {
       "id": "R-16",
-      "q": "Ikki sonning yig'indisi 14, ayirmasi 0. Kattasini toping.",
+      "q": "Ikki sonning yig'indisi 26, ayirmasi 4. Kattasini toping.",
       "options": [
-        "7",
+        "26",
+        "15",
         "14",
-        "0",
-        "6"
+        "4"
       ],
-      "correctIndex": 0,
-      "explain": "Kattasi = (14 + 0) : 2 = 7."
+      "correctIndex": 1,
+      "explain": "Kattasi = (26 + 4) : 2 = 15."
     },
     {
       "id": "R-17",
-      "q": "2 ta qalam 12 so'm bo'lsa, 6 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
+      "q": "4 ta qalam 8 so'm bo'lsa, 4 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
       "options": [
-        "37",
-        "35",
-        "12",
-        "36"
+        "6",
+        "9",
+        "8",
+        "7"
       ],
-      "correctIndex": 3,
-      "explain": "1 ta qalam 12/2 = 6 ga teng. 6 · 6 = 36."
+      "correctIndex": 2,
+      "explain": "1 ta qalam 8/4 = 2 ga teng. 4 · 2 = 8."
     },
     {
       "id": "R-18",
-      "q": "Haftalik kitobxonlik: Du-13, Se-11, Ch-27, Pa-22. Eng ko'p o'qilgan kun qaysi?",
+      "q": "Haftalik kitobxonlik: Du-18, Se-15, Ch-28, Pa-22. Eng ko'p o'qilgan kun qaysi?",
       "options": [
         "Du",
-        "Se",
         "Ch",
+        "Se",
         "Pa"
       ],
-      "correctIndex": 2,
-      "explain": "Eng katta qiymat 27 – Ch kuni."
+      "correctIndex": 1,
+      "explain": "Eng katta qiymat 28 – Ch kuni."
     },
     {
       "id": "R-19",
-      "q": "Qutida 5 ta qizil va 7 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
+      "q": "Qutida 6 ta qizil va 4 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
       "options": [
-        "12/5",
-        "5/7",
-        "7/12",
-        "5/12"
+        "4/10",
+        "6/4",
+        "6/10",
+        "10/6"
       ],
-      "correctIndex": 3,
-      "explain": "P(qizil) = qizillar soni / jami = 5/12."
+      "correctIndex": 2,
+      "explain": "P(qizil) = qizillar soni / jami = 6/10."
     },
     {
       "id": "R-20",
-      "q": "Tenglamani yeching: x + 3 = 6. x ning qiymatini toping.",
+      "q": "Tenglamani yeching: x + 9 = 12. x ning qiymatini toping.",
       "options": [
-        "6",
+        "9",
+        "12",
         "4",
-        "3",
         "3"
       ],
-      "correctIndex": 2,
-      "explain": "x = 6 − 3 = 3."
+      "correctIndex": 3,
+      "explain": "x = 12 − 9 = 3."
     },
     {
       "id": "R-21",
-      "q": "Ketma-ketlik berilgan: 2, 8, 14, 20, ... Keyingi son qaysi?",
+      "q": "Ketma-ketlik berilgan: 5, 8, 11, 14, ... Keyingi son qaysi?",
       "options": [
-        "27",
-        "21",
-        "21",
-        "26"
+        "15",
+        "15",
+        "18",
+        "17"
       ],
       "correctIndex": 3,
-      "explain": "Har gal +6 qo'shilmoqda, demak keyingisi 20 + 6 = 26."
+      "explain": "Har gal +3 qo'shilmoqda, demak keyingisi 14 + 3 = 17."
     },
     {
       "id": "R-22",
-      "q": "Aka va ukaning yoshlari yig'indisi 26. Aka ukasidan 6 yosh katta. Ukaning yoshi nechada?",
+      "q": "Aka va ukaning yoshlari yig'indisi 28. Aka ukasidan 8 yosh katta. Ukaning yoshi nechada?",
       "options": [
-        "10",
+        "18",
         "9",
-        "16",
-        "16"
+        "10",
+        "18"
       ],
-      "correctIndex": 0,
-      "explain": "Uka = (26 − 6) : 2 = 10."
+      "correctIndex": 2,
+      "explain": "Uka = (28 − 8) : 2 = 10."
     },
     {
       "id": "R-23",
-      "q": "Kvadratning perimetri 36 sm. Uning yuzini toping va asoslang.",
+      "q": "Kvadratning perimetri 32 sm. Uning yuzini toping va asoslang.",
       "options": [
-        "36 sm²",
-        "81 sm²",
-        "162 sm²",
-        "45 sm²"
+        "40 sm²",
+        "64 sm²",
+        "32 sm²",
+        "128 sm²"
       ],
       "correctIndex": 1,
-      "explain": "Tomoni a = 36 : 4 = 9 sm. Yuzi S = a² = 81 sm²."
+      "explain": "Tomoni a = 32 : 4 = 8 sm. Yuzi S = a² = 64 sm²."
     },
     {
       "id": "R-24",
-      "q": "Tort 12 ta teng bo'lakka bo'lingan. Anvar 2 bo'lak, Zarina 3 bo'lak yedi. Tortning necha foizi qoldi?",
+      "q": "Tort 14 ta teng bo'lakka bo'lingan. Anvar 2 bo'lak, Zarina 3 bo'lak yedi. Tortning necha foizi qoldi?",
       "options": [
-        "70%",
-        "63%",
-        "42%",
-        "58%"
+        "69%",
+        "36%",
+        "90%",
+        "64%"
       ],
       "correctIndex": 3,
-      "explain": "Qolgan: 7/12 ≈ 58%."
+      "explain": "Qolgan: 9/14 ≈ 64%."
     },
     {
       "id": "R-25",
-      "q": "Quyidagi sonlardan qaysi biri 6 ga bo'linmaydi: 18, 12, 24, 31?",
+      "q": "Quyidagi sonlardan qaysi biri 5 ga bo'linmaydi: 26, 20, 10, 15?",
       "options": [
-        "12",
-        "18",
-        "24",
-        "31"
+        "10",
+        "15",
+        "20",
+        "26"
       ],
       "correctIndex": 3,
-      "explain": "12, 18, 24 barchasi 6 ga karrali, 31 esa emas."
+      "explain": "10, 15, 20 barchasi 5 ga karrali, 26 esa emas."
     },
     {
       "id": "R-26",
-      "q": "Ikki sonning yig'indisi 30, ayirmasi 2. Kattasini toping.",
+      "q": "Ikki sonning yig'indisi 33, ayirmasi 5. Kattasini toping.",
       "options": [
-        "15",
-        "30",
-        "2",
-        "16"
+        "19",
+        "18",
+        "5",
+        "33"
       ],
-      "correctIndex": 3,
-      "explain": "Kattasi = (30 + 2) : 2 = 16."
+      "correctIndex": 0,
+      "explain": "Kattasi = (33 + 5) : 2 = 19."
     },
     {
       "id": "R-27",
-      "q": "5 ta qalam 25 so'm bo'lsa, 5 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
+      "q": "4 ta qalam 20 so'm bo'lsa, 5 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
       "options": [
         "25",
-        "26",
         "10",
+        "26",
         "24"
       ],
       "correctIndex": 0,
-      "explain": "1 ta qalam 25/5 = 5 ga teng. 5 · 5 = 25."
+      "explain": "1 ta qalam 20/4 = 5 ga teng. 5 · 5 = 25."
     },
     {
       "id": "R-28",
-      "q": "Haftalik kitobxonlik: Du-10, Se-29, Ch-16, Pa-29. Eng ko'p o'qilgan kun qaysi?",
+      "q": "Haftalik kitobxonlik: Du-14, Se-20, Ch-20, Pa-25. Eng ko'p o'qilgan kun qaysi?",
       "options": [
         "Se",
-        "Ch",
         "Du",
-        "Pa"
+        "Pa",
+        "Ch"
       ],
-      "correctIndex": 0,
-      "explain": "Eng katta qiymat 29 – Se kuni."
+      "correctIndex": 2,
+      "explain": "Eng katta qiymat 25 – Pa kuni."
     },
     {
       "id": "R-29",
-      "q": "Qutida 3 ta qizil va 4 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
+      "q": "Qutida 2 ta qizil va 6 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
       "options": [
-        "3/7",
-        "4/7",
-        "3/4",
-        "7/3"
+        "6/8",
+        "2/6",
+        "8/2",
+        "2/8"
       ],
-      "correctIndex": 0,
-      "explain": "P(qizil) = qizillar soni / jami = 3/7."
+      "correctIndex": 3,
+      "explain": "P(qizil) = qizillar soni / jami = 2/8."
     },
     {
       "id": "R-30",
-      "q": "Tenglamani yeching: x + 4 = 11. x ning qiymatini toping.",
+      "q": "Tenglamani yeching: x + 10 = 23. x ning qiymatini toping.",
       "options": [
-        "11",
-        "8",
-        "7",
-        "4"
+        "13",
+        "10",
+        "14",
+        "23"
       ],
-      "correctIndex": 2,
-      "explain": "x = 11 − 4 = 7."
+      "correctIndex": 0,
+      "explain": "x = 23 − 10 = 13."
     },
     {
       "id": "R-31",
@@ -1506,627 +2382,627 @@
     },
     {
       "id": "R-32",
-      "q": "Aka va ukaning yoshlari yig'indisi 20. Aka ukasidan 6 yosh katta. Ukaning yoshi nechada?",
+      "q": "Aka va ukaning yoshlari yig'indisi 38. Aka ukasidan 10 yosh katta. Ukaning yoshi nechada?",
       "options": [
-        "6",
-        "7",
         "13",
-        "13"
+        "24",
+        "14",
+        "24"
       ],
-      "correctIndex": 1,
-      "explain": "Uka = (20 − 6) : 2 = 7."
+      "correctIndex": 2,
+      "explain": "Uka = (38 − 10) : 2 = 14."
     },
     {
       "id": "R-33",
-      "q": "Kvadratning perimetri 48 sm. Uning yuzini toping va asoslang.",
+      "q": "Kvadratning perimetri 12 sm. Uning yuzini toping va asoslang.",
       "options": [
-        "60 sm²",
-        "144 sm²",
-        "48 sm²",
-        "288 sm²"
+        "18 sm²",
+        "15 sm²",
+        "9 sm²",
+        "12 sm²"
       ],
-      "correctIndex": 1,
-      "explain": "Tomoni a = 48 : 4 = 12 sm. Yuzi S = a² = 144 sm²."
+      "correctIndex": 2,
+      "explain": "Tomoni a = 12 : 4 = 3 sm. Yuzi S = a² = 9 sm²."
     },
     {
       "id": "R-34",
-      "q": "Tort 18 ta teng bo'lakka bo'lingan. Anvar 2 bo'lak, Zarina 1 bo'lak yedi. Tortning necha foizi qoldi?",
+      "q": "Tort 16 ta teng bo'lakka bo'lingan. Anvar 2 bo'lak, Zarina 3 bo'lak yedi. Tortning necha foizi qoldi?",
       "options": [
-        "150%",
-        "88%",
-        "17%",
-        "83%"
-      ],
-      "correctIndex": 3,
-      "explain": "Qolgan: 15/18 ≈ 83%."
-    },
-    {
-      "id": "R-35",
-      "q": "Quyidagi sonlardan qaysi biri 9 ga bo'linmaydi: 27, 46, 36, 18?",
-      "options": [
-        "46",
-        "18",
-        "36",
-        "27"
-      ],
-      "correctIndex": 0,
-      "explain": "18, 27, 36 barchasi 9 ga karrali, 46 esa emas."
-    },
-    {
-      "id": "R-36",
-      "q": "Ikki sonning yig'indisi 23, ayirmasi 13. Kattasini toping.",
-      "options": [
-        "23",
-        "17",
-        "18",
-        "13"
-      ],
-      "correctIndex": 2,
-      "explain": "Kattasi = (23 + 13) : 2 = 18."
-    },
-    {
-      "id": "R-37",
-      "q": "4 ta qalam 16 so'm bo'lsa, 3 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
-      "options": [
-        "7",
-        "11",
-        "13",
-        "12"
-      ],
-      "correctIndex": 3,
-      "explain": "1 ta qalam 16/4 = 4 ga teng. 3 · 4 = 12."
-    },
-    {
-      "id": "R-38",
-      "q": "Haftalik kitobxonlik: Du-27, Se-16, Ch-21, Pa-14. Eng ko'p o'qilgan kun qaysi?",
-      "options": [
-        "Se",
-        "Ch",
-        "Du",
-        "Pa"
-      ],
-      "correctIndex": 2,
-      "explain": "Eng katta qiymat 27 – Du kuni."
-    },
-    {
-      "id": "R-39",
-      "q": "Qutida 8 ta qizil va 5 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
-      "options": [
-        "8/13",
-        "8/5",
-        "5/13",
-        "13/8"
-      ],
-      "correctIndex": 0,
-      "explain": "P(qizil) = qizillar soni / jami = 8/13."
-    },
-    {
-      "id": "R-40",
-      "q": "Tenglamani yeching: x + 9 = 12. x ning qiymatini toping.",
-      "options": [
-        "9",
-        "4",
-        "3",
-        "12"
-      ],
-      "correctIndex": 2,
-      "explain": "x = 12 − 9 = 3."
-    },
-    {
-      "id": "R-41",
-      "q": "Ketma-ketlik berilgan: 2, 7, 12, 17, ... Keyingi son qaysi?",
-      "options": [
-        "18",
-        "22",
-        "23",
-        "18"
-      ],
-      "correctIndex": 1,
-      "explain": "Har gal +5 qo'shilmoqda, demak keyingisi 17 + 5 = 22."
-    },
-    {
-      "id": "R-42",
-      "q": "Aka va ukaning yoshlari yig'indisi 29. Aka ukasidan 9 yosh katta. Ukaning yoshi nechada?",
-      "options": [
-        "10",
-        "9",
-        "19",
-        "19"
-      ],
-      "correctIndex": 0,
-      "explain": "Uka = (29 − 9) : 2 = 10."
-    },
-    {
-      "id": "R-43",
-      "q": "Kvadratning perimetri 44 sm. Uning yuzini toping va asoslang.",
-      "options": [
-        "44 sm²",
-        "121 sm²",
-        "55 sm²",
-        "242 sm²"
-      ],
-      "correctIndex": 1,
-      "explain": "Tomoni a = 44 : 4 = 11 sm. Yuzi S = a² = 121 sm²."
-    },
-    {
-      "id": "R-44",
-      "q": "Tort 10 ta teng bo'lakka bo'lingan. Anvar 3 bo'lak, Zarina 1 bo'lak yedi. Tortning necha foizi qoldi?",
-      "options": [
-        "60%",
-        "65%",
-        "40%",
-        "60%"
-      ],
-      "correctIndex": 0,
-      "explain": "Qolgan: 6/10 ≈ 60%."
-    },
-    {
-      "id": "R-45",
-      "q": "Quyidagi sonlardan qaysi biri 2 ga bo'linmaydi: 8, 6, 11, 4?",
-      "options": [
-        "4",
-        "8",
-        "6",
-        "11"
-      ],
-      "correctIndex": 3,
-      "explain": "4, 6, 8 barchasi 2 ga karrali, 11 esa emas."
-    },
-    {
-      "id": "R-46",
-      "q": "Ikki sonning yig'indisi 19, ayirmasi 3. Kattasini toping.",
-      "options": [
-        "3",
-        "10",
-        "11",
-        "19"
-      ],
-      "correctIndex": 2,
-      "explain": "Kattasi = (19 + 3) : 2 = 11."
-    },
-    {
-      "id": "R-47",
-      "q": "6 ta qalam 36 so'm bo'lsa, 7 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
-      "options": [
-        "42",
-        "43",
-        "13",
-        "41"
-      ],
-      "correctIndex": 0,
-      "explain": "1 ta qalam 36/6 = 6 ga teng. 7 · 6 = 42."
-    },
-    {
-      "id": "R-48",
-      "q": "Haftalik kitobxonlik: Du-24, Se-30, Ch-12, Pa-23. Eng ko'p o'qilgan kun qaysi?",
-      "options": [
-        "Se",
-        "Du",
-        "Pa",
-        "Ch"
-      ],
-      "correctIndex": 0,
-      "explain": "Eng katta qiymat 30 – Se kuni."
-    },
-    {
-      "id": "R-49",
-      "q": "Qutida 6 ta qizil va 5 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
-      "options": [
-        "5/11",
-        "6/5",
-        "11/6",
-        "6/11"
-      ],
-      "correctIndex": 3,
-      "explain": "P(qizil) = qizillar soni / jami = 6/11."
-    },
-    {
-      "id": "R-50",
-      "q": "Tenglamani yeching: x + 5 = 14. x ning qiymatini toping.",
-      "options": [
-        "14",
-        "5",
-        "10",
-        "9"
-      ],
-      "correctIndex": 3,
-      "explain": "x = 14 − 5 = 9."
-    },
-    {
-      "id": "R-51",
-      "q": "Ketma-ketlik berilgan: 3, 5, 7, 9, ... Keyingi son qaysi?",
-      "options": [
-        "10",
-        "10",
-        "11",
-        "12"
-      ],
-      "correctIndex": 2,
-      "explain": "Har gal +2 qo'shilmoqda, demak keyingisi 9 + 2 = 11."
-    },
-    {
-      "id": "R-52",
-      "q": "Aka va ukaning yoshlari yig'indisi 21. Aka ukasidan 5 yosh katta. Ukaning yoshi nechada?",
-      "options": [
-        "13",
-        "7",
-        "8",
-        "13"
-      ],
-      "correctIndex": 2,
-      "explain": "Uka = (21 − 5) : 2 = 8."
-    },
-    {
-      "id": "R-53",
-      "q": "Kvadratning perimetri 24 sm. Uning yuzini toping va asoslang.",
-      "options": [
-        "72 sm²",
-        "24 sm²",
-        "36 sm²",
-        "30 sm²"
-      ],
-      "correctIndex": 2,
-      "explain": "Tomoni a = 24 : 4 = 6 sm. Yuzi S = a² = 36 sm²."
-    },
-    {
-      "id": "R-54",
-      "q": "Tort 16 ta teng bo'lakka bo'lingan. Anvar 4 bo'lak, Zarina 1 bo'lak yedi. Tortning necha foizi qoldi?",
-      "options": [
-        "31%",
         "74%",
         "69%",
+        "31%",
         "110%"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explain": "Qolgan: 11/16 ≈ 69%."
     },
     {
-      "id": "R-55",
-      "q": "Quyidagi sonlardan qaysi biri 4 ga bo'linmaydi: 16, 8, 21, 12?",
+      "id": "R-35",
+      "q": "Quyidagi sonlardan qaysi biri 4 ga bo'linmaydi: 21, 16, 8, 12?",
       "options": [
-        "8",
         "21",
         "16",
-        "12"
+        "12",
+        "8"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explain": "8, 12, 16 barchasi 4 ga karrali, 21 esa emas."
     },
     {
-      "id": "R-56",
-      "q": "Ikki sonning yig'indisi 12, ayirmasi 2. Kattasini toping.",
+      "id": "R-36",
+      "q": "Ikki sonning yig'indisi 20, ayirmasi 4. Kattasini toping.",
       "options": [
-        "7",
-        "12",
-        "6",
-        "2"
+        "11",
+        "4",
+        "20",
+        "12"
       ],
-      "correctIndex": 0,
-      "explain": "Kattasi = (12 + 2) : 2 = 7."
+      "correctIndex": 3,
+      "explain": "Kattasi = (20 + 4) : 2 = 12."
     },
     {
-      "id": "R-57",
+      "id": "R-37",
       "q": "2 ta qalam 4 so'm bo'lsa, 6 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
       "options": [
         "12",
-        "8",
         "13",
-        "11"
+        "11",
+        "8"
       ],
       "correctIndex": 0,
       "explain": "1 ta qalam 4/2 = 2 ga teng. 6 · 2 = 12."
     },
     {
-      "id": "R-58",
-      "q": "Haftalik kitobxonlik: Du-27, Se-10, Ch-23, Pa-24. Eng ko'p o'qilgan kun qaysi?",
+      "id": "R-38",
+      "q": "Haftalik kitobxonlik: Du-21, Se-23, Ch-21, Pa-25. Eng ko'p o'qilgan kun qaysi?",
       "options": [
         "Du",
         "Pa",
         "Se",
         "Ch"
       ],
-      "correctIndex": 0,
-      "explain": "Eng katta qiymat 27 – Du kuni."
+      "correctIndex": 1,
+      "explain": "Eng katta qiymat 25 – Pa kuni."
     },
     {
-      "id": "R-59",
-      "q": "Qutida 7 ta qizil va 7 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
+      "id": "R-39",
+      "q": "Qutida 3 ta qizil va 3 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
       "options": [
-        "14/7",
-        "7/7",
-        "7/14",
-        "7/14"
-      ],
-      "correctIndex": 2,
-      "explain": "P(qizil) = qizillar soni / jami = 7/14."
-    },
-    {
-      "id": "R-60",
-      "q": "Tenglamani yeching: x + 2 = 9. x ning qiymatini toping.",
-      "options": [
-        "2",
-        "9",
-        "7",
-        "8"
-      ],
-      "correctIndex": 2,
-      "explain": "x = 9 − 2 = 7."
-    },
-    {
-      "id": "R-61",
-      "q": "Ketma-ketlik berilgan: 8, 11, 14, 17, ... Keyingi son qaysi?",
-      "options": [
-        "21",
-        "18",
-        "18",
-        "20"
-      ],
-      "correctIndex": 3,
-      "explain": "Har gal +3 qo'shilmoqda, demak keyingisi 17 + 3 = 20."
-    },
-    {
-      "id": "R-62",
-      "q": "Aka va ukaning yoshlari yig'indisi 31. Aka ukasidan 7 yosh katta. Ukaning yoshi nechada?",
-      "options": [
-        "11",
-        "19",
-        "12",
-        "19"
-      ],
-      "correctIndex": 2,
-      "explain": "Uka = (31 − 7) : 2 = 12."
-    },
-    {
-      "id": "R-63",
-      "q": "Kvadratning perimetri 28 sm. Uning yuzini toping va asoslang.",
-      "options": [
-        "35 sm²",
-        "98 sm²",
-        "28 sm²",
-        "49 sm²"
-      ],
-      "correctIndex": 3,
-      "explain": "Tomoni a = 28 : 4 = 7 sm. Yuzi S = a² = 49 sm²."
-    },
-    {
-      "id": "R-64",
-      "q": "Tort 14 ta teng bo'lakka bo'lingan. Anvar 3 bo'lak, Zarina 1 bo'lak yedi. Tortning necha foizi qoldi?",
-      "options": [
-        "29%",
-        "71%",
-        "100%",
-        "76%"
+        "3/3",
+        "3/6",
+        "6/3",
+        "3/6"
       ],
       "correctIndex": 1,
-      "explain": "Qolgan: 10/14 ≈ 71%."
+      "explain": "P(qizil) = qizillar soni / jami = 3/6."
     },
     {
-      "id": "R-65",
-      "q": "Quyidagi sonlardan qaysi biri 2 ga bo'linmaydi: 6, 11, 8, 4?",
+      "id": "R-40",
+      "q": "Tenglamani yeching: x + 10 = 21. x ning qiymatini toping.",
       "options": [
-        "8",
+        "12",
+        "21",
         "11",
-        "6",
+        "10"
+      ],
+      "correctIndex": 2,
+      "explain": "x = 21 − 10 = 11."
+    },
+    {
+      "id": "R-41",
+      "q": "Ketma-ketlik berilgan: 8, 15, 22, 29, ... Keyingi son qaysi?",
+      "options": [
+        "30",
+        "30",
+        "37",
+        "36"
+      ],
+      "correctIndex": 3,
+      "explain": "Har gal +7 qo'shilmoqda, demak keyingisi 29 + 7 = 36."
+    },
+    {
+      "id": "R-42",
+      "q": "Aka va ukaning yoshlari yig'indisi 36. Aka ukasidan 10 yosh katta. Ukaning yoshi nechada?",
+      "options": [
+        "12",
+        "13",
+        "23",
+        "23"
+      ],
+      "correctIndex": 1,
+      "explain": "Uka = (36 − 10) : 2 = 13."
+    },
+    {
+      "id": "R-43",
+      "q": "Kvadratning perimetri 48 sm. Uning yuzini toping va asoslang.",
+      "options": [
+        "288 sm²",
+        "48 sm²",
+        "144 sm²",
+        "60 sm²"
+      ],
+      "correctIndex": 2,
+      "explain": "Tomoni a = 48 : 4 = 12 sm. Yuzi S = a² = 144 sm²."
+    },
+    {
+      "id": "R-44",
+      "q": "Tort 17 ta teng bo'lakka bo'lingan. Anvar 2 bo'lak, Zarina 3 bo'lak yedi. Tortning necha foizi qoldi?",
+      "options": [
+        "29%",
+        "76%",
+        "120%",
+        "71%"
+      ],
+      "correctIndex": 3,
+      "explain": "Qolgan: 12/17 ≈ 71%."
+    },
+    {
+      "id": "R-45",
+      "q": "Quyidagi sonlardan qaysi biri 5 ga bo'linmaydi: 26, 10, 15, 20?",
+      "options": [
+        "26",
+        "20",
+        "10",
+        "15"
+      ],
+      "correctIndex": 0,
+      "explain": "10, 15, 20 barchasi 5 ga karrali, 26 esa emas."
+    },
+    {
+      "id": "R-46",
+      "q": "Ikki sonning yig'indisi 36, ayirmasi 4. Kattasini toping.",
+      "options": [
+        "19",
+        "20",
+        "36",
         "4"
       ],
       "correctIndex": 1,
-      "explain": "4, 6, 8 barchasi 2 ga karrali, 11 esa emas."
+      "explain": "Kattasi = (36 + 4) : 2 = 20."
     },
     {
-      "id": "R-66",
-      "q": "Ikki sonning yig'indisi 22, ayirmasi 6. Kattasini toping.",
+      "id": "R-47",
+      "q": "4 ta qalam 24 so'm bo'lsa, 7 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
       "options": [
-        "6",
-        "22",
+        "41",
         "13",
-        "14"
+        "42",
+        "43"
       ],
-      "correctIndex": 3,
-      "explain": "Kattasi = (22 + 6) : 2 = 14."
+      "correctIndex": 2,
+      "explain": "1 ta qalam 24/4 = 6 ga teng. 7 · 6 = 42."
     },
     {
-      "id": "R-67",
-      "q": "5 ta qalam 15 so'm bo'lsa, 7 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
+      "id": "R-48",
+      "q": "Haftalik kitobxonlik: Du-19, Se-14, Ch-17, Pa-23. Eng ko'p o'qilgan kun qaysi?",
       "options": [
-        "20",
-        "10",
-        "22",
-        "21"
-      ],
-      "correctIndex": 3,
-      "explain": "1 ta qalam 15/5 = 3 ga teng. 7 · 3 = 21."
-    },
-    {
-      "id": "R-68",
-      "q": "Haftalik kitobxonlik: Du-16, Se-16, Ch-27, Pa-17. Eng ko'p o'qilgan kun qaysi?",
-      "options": [
-        "Ch",
-        "Du",
+        "Se",
         "Pa",
-        "Se"
-      ],
-      "correctIndex": 0,
-      "explain": "Eng katta qiymat 27 – Ch kuni."
-    },
-    {
-      "id": "R-69",
-      "q": "Qutida 2 ta qizil va 5 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
-      "options": [
-        "7/2",
-        "2/7",
-        "2/5",
-        "5/7"
+        "Du",
+        "Ch"
       ],
       "correctIndex": 1,
-      "explain": "P(qizil) = qizillar soni / jami = 2/7."
+      "explain": "Eng katta qiymat 23 – Pa kuni."
     },
     {
-      "id": "R-70",
-      "q": "Tenglamani yeching: x + 10 = 23. x ning qiymatini toping.",
+      "id": "R-49",
+      "q": "Qutida 6 ta qizil va 5 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
       "options": [
-        "23",
-        "10",
-        "13",
-        "14"
+        "6/11",
+        "11/6",
+        "6/5",
+        "5/11"
+      ],
+      "correctIndex": 0,
+      "explain": "P(qizil) = qizillar soni / jami = 6/11."
+    },
+    {
+      "id": "R-50",
+      "q": "Tenglamani yeching: x + 8 = 16. x ning qiymatini toping.",
+      "options": [
+        "16",
+        "9",
+        "8",
+        "8"
       ],
       "correctIndex": 2,
-      "explain": "x = 23 − 10 = 13."
+      "explain": "x = 16 − 8 = 8."
     },
     {
-      "id": "R-71",
-      "q": "Ketma-ketlik berilgan: 5, 9, 13, 17, ... Keyingi son qaysi?",
+      "id": "R-51",
+      "q": "Ketma-ketlik berilgan: 3, 8, 13, 18, ... Keyingi son qaysi?",
       "options": [
-        "22",
-        "18",
-        "21",
-        "18"
-      ],
-      "correctIndex": 2,
-      "explain": "Har gal +4 qo'shilmoqda, demak keyingisi 17 + 4 = 21."
-    },
-    {
-      "id": "R-72",
-      "q": "Aka va ukaning yoshlari yig'indisi 38. Aka ukasidan 10 yosh katta. Ukaning yoshi nechada?",
-      "options": [
-        "13",
-        "14",
+        "19",
         "24",
-        "24"
+        "23",
+        "19"
+      ],
+      "correctIndex": 2,
+      "explain": "Har gal +5 qo'shilmoqda, demak keyingisi 18 + 5 = 23."
+    },
+    {
+      "id": "R-52",
+      "q": "Aka va ukaning yoshlari yig'indisi 21. Aka ukasidan 7 yosh katta. Ukaning yoshi nechada?",
+      "options": [
+        "14",
+        "7",
+        "14",
+        "6"
       ],
       "correctIndex": 1,
-      "explain": "Uka = (38 − 10) : 2 = 14."
+      "explain": "Uka = (21 − 7) : 2 = 7."
     },
     {
-      "id": "R-73",
-      "q": "Kvadratning perimetri 8 sm. Uning yuzini toping va asoslang.",
+      "id": "R-53",
+      "q": "Kvadratning perimetri 40 sm. Uning yuzini toping va asoslang.",
       "options": [
-        "4 sm²",
-        "8 sm²",
-        "10 sm²",
-        "8 sm²"
+        "100 sm²",
+        "200 sm²",
+        "40 sm²",
+        "50 sm²"
       ],
       "correctIndex": 0,
-      "explain": "Tomoni a = 8 : 4 = 2 sm. Yuzi S = a² = 4 sm²."
+      "explain": "Tomoni a = 40 : 4 = 10 sm. Yuzi S = a² = 100 sm²."
     },
     {
-      "id": "R-74",
-      "q": "Tort 19 ta teng bo'lakka bo'lingan. Anvar 4 bo'lak, Zarina 3 bo'lak yedi. Tortning necha foizi qoldi?",
+      "id": "R-54",
+      "q": "Tort 13 ta teng bo'lakka bo'lingan. Anvar 3 bo'lak, Zarina 3 bo'lak yedi. Tortning necha foizi qoldi?",
       "options": [
-        "63%",
-        "68%",
-        "37%",
-        "120%"
+        "70%",
+        "54%",
+        "59%",
+        "46%"
       ],
-      "correctIndex": 0,
-      "explain": "Qolgan: 12/19 ≈ 63%."
+      "correctIndex": 1,
+      "explain": "Qolgan: 7/13 ≈ 54%."
     },
     {
-      "id": "R-75",
-      "q": "Quyidagi sonlardan qaysi biri 9 ga bo'linmaydi: 27, 46, 18, 36?",
+      "id": "R-55",
+      "q": "Quyidagi sonlardan qaysi biri 9 ga bo'linmaydi: 18, 27, 36, 46?",
       "options": [
         "18",
-        "27",
         "36",
+        "27",
         "46"
       ],
       "correctIndex": 3,
       "explain": "18, 27, 36 barchasi 9 ga karrali, 46 esa emas."
     },
     {
-      "id": "R-76",
-      "q": "Ikki sonning yig'indisi 17, ayirmasi 5. Kattasini toping.",
+      "id": "R-56",
+      "q": "Ikki sonning yig'indisi 22, ayirmasi 8. Kattasini toping.",
       "options": [
-        "5",
-        "17",
-        "11",
-        "10"
+        "8",
+        "15",
+        "22",
+        "14"
       ],
-      "correctIndex": 2,
-      "explain": "Kattasi = (17 + 5) : 2 = 11."
+      "correctIndex": 1,
+      "explain": "Kattasi = (22 + 8) : 2 = 15."
     },
     {
-      "id": "R-77",
-      "q": "8 ta qalam 24 so'm bo'lsa, 5 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
+      "id": "R-57",
+      "q": "5 ta qalam 10 so'm bo'lsa, 3 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
       "options": [
-        "15",
-        "14",
+        "6",
+        "5",
+        "5",
+        "7"
+      ],
+      "correctIndex": 0,
+      "explain": "1 ta qalam 10/5 = 2 ga teng. 3 · 2 = 6."
+    },
+    {
+      "id": "R-58",
+      "q": "Haftalik kitobxonlik: Du-12, Se-16, Ch-13, Pa-26. Eng ko'p o'qilgan kun qaysi?",
+      "options": [
+        "Du",
+        "Se",
+        "Pa",
+        "Ch"
+      ],
+      "correctIndex": 2,
+      "explain": "Eng katta qiymat 26 – Pa kuni."
+    },
+    {
+      "id": "R-59",
+      "q": "Qutida 6 ta qizil va 6 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
+      "options": [
+        "6/12",
+        "6/12",
+        "12/6",
+        "6/6"
+      ],
+      "correctIndex": 0,
+      "explain": "P(qizil) = qizillar soni / jami = 6/12."
+    },
+    {
+      "id": "R-60",
+      "q": "Tenglamani yeching: x + 9 = 16. x ning qiymatini toping.",
+      "options": [
+        "9",
+        "7",
         "8",
         "16"
       ],
+      "correctIndex": 1,
+      "explain": "x = 16 − 9 = 7."
+    },
+    {
+      "id": "R-61",
+      "q": "Ketma-ketlik berilgan: 2, 4, 6, 8, ... Keyingi son qaysi?",
+      "options": [
+        "9",
+        "11",
+        "10",
+        "9"
+      ],
+      "correctIndex": 2,
+      "explain": "Har gal +2 qo'shilmoqda, demak keyingisi 8 + 2 = 10."
+    },
+    {
+      "id": "R-62",
+      "q": "Aka va ukaning yoshlari yig'indisi 33. Aka ukasidan 7 yosh katta. Ukaning yoshi nechada?",
+      "options": [
+        "20",
+        "12",
+        "13",
+        "20"
+      ],
+      "correctIndex": 2,
+      "explain": "Uka = (33 − 7) : 2 = 13."
+    },
+    {
+      "id": "R-63",
+      "q": "Kvadratning perimetri 32 sm. Uning yuzini toping va asoslang.",
+      "options": [
+        "128 sm²",
+        "32 sm²",
+        "64 sm²",
+        "40 sm²"
+      ],
+      "correctIndex": 2,
+      "explain": "Tomoni a = 32 : 4 = 8 sm. Yuzi S = a² = 64 sm²."
+    },
+    {
+      "id": "R-64",
+      "q": "Tort 13 ta teng bo'lakka bo'lingan. Anvar 3 bo'lak, Zarina 2 bo'lak yedi. Tortning necha foizi qoldi?",
+      "options": [
+        "80%",
+        "67%",
+        "62%",
+        "38%"
+      ],
+      "correctIndex": 2,
+      "explain": "Qolgan: 8/13 ≈ 62%."
+    },
+    {
+      "id": "R-65",
+      "q": "Quyidagi sonlardan qaysi biri 2 ga bo'linmaydi: 11, 6, 8, 4?",
+      "options": [
+        "8",
+        "4",
+        "11",
+        "6"
+      ],
+      "correctIndex": 2,
+      "explain": "4, 6, 8 barchasi 2 ga karrali, 11 esa emas."
+    },
+    {
+      "id": "R-66",
+      "q": "Ikki sonning yig'indisi 19, ayirmasi 3. Kattasini toping.",
+      "options": [
+        "10",
+        "3",
+        "19",
+        "11"
+      ],
+      "correctIndex": 3,
+      "explain": "Kattasi = (19 + 3) : 2 = 11."
+    },
+    {
+      "id": "R-67",
+      "q": "4 ta qalam 20 so'm bo'lsa, 5 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
+      "options": [
+        "26",
+        "10",
+        "24",
+        "25"
+      ],
+      "correctIndex": 3,
+      "explain": "1 ta qalam 20/4 = 5 ga teng. 5 · 5 = 25."
+    },
+    {
+      "id": "R-68",
+      "q": "Haftalik kitobxonlik: Du-28, Se-22, Ch-14, Pa-22. Eng ko'p o'qilgan kun qaysi?",
+      "options": [
+        "Pa",
+        "Du",
+        "Ch",
+        "Se"
+      ],
+      "correctIndex": 1,
+      "explain": "Eng katta qiymat 28 – Du kuni."
+    },
+    {
+      "id": "R-69",
+      "q": "Qutida 5 ta qizil va 7 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
+      "options": [
+        "7/12",
+        "5/7",
+        "12/5",
+        "5/12"
+      ],
+      "correctIndex": 3,
+      "explain": "P(qizil) = qizillar soni / jami = 5/12."
+    },
+    {
+      "id": "R-70",
+      "q": "Tenglamani yeching: x + 6 = 21. x ning qiymatini toping.",
+      "options": [
+        "15",
+        "6",
+        "16",
+        "21"
+      ],
       "correctIndex": 0,
-      "explain": "1 ta qalam 24/8 = 3 ga teng. 5 · 3 = 15."
+      "explain": "x = 21 − 6 = 15."
+    },
+    {
+      "id": "R-71",
+      "q": "Ketma-ketlik berilgan: 6, 12, 18, 24, ... Keyingi son qaysi?",
+      "options": [
+        "31",
+        "25",
+        "30",
+        "25"
+      ],
+      "correctIndex": 2,
+      "explain": "Har gal +6 qo'shilmoqda, demak keyingisi 24 + 6 = 30."
+    },
+    {
+      "id": "R-72",
+      "q": "Aka va ukaning yoshlari yig'indisi 35. Aka ukasidan 9 yosh katta. Ukaning yoshi nechada?",
+      "options": [
+        "22",
+        "13",
+        "12",
+        "22"
+      ],
+      "correctIndex": 1,
+      "explain": "Uka = (35 − 9) : 2 = 13."
+    },
+    {
+      "id": "R-73",
+      "q": "Kvadratning perimetri 36 sm. Uning yuzini toping va asoslang.",
+      "options": [
+        "81 sm²",
+        "36 sm²",
+        "162 sm²",
+        "45 sm²"
+      ],
+      "correctIndex": 0,
+      "explain": "Tomoni a = 36 : 4 = 9 sm. Yuzi S = a² = 81 sm²."
+    },
+    {
+      "id": "R-74",
+      "q": "Tort 13 ta teng bo'lakka bo'lingan. Anvar 2 bo'lak, Zarina 2 bo'lak yedi. Tortning necha foizi qoldi?",
+      "options": [
+        "74%",
+        "90%",
+        "69%",
+        "31%"
+      ],
+      "correctIndex": 2,
+      "explain": "Qolgan: 9/13 ≈ 69%."
+    },
+    {
+      "id": "R-75",
+      "q": "Quyidagi sonlardan qaysi biri 5 ga bo'linmaydi: 20, 26, 15, 10?",
+      "options": [
+        "10",
+        "26",
+        "15",
+        "20"
+      ],
+      "correctIndex": 1,
+      "explain": "10, 15, 20 barchasi 5 ga karrali, 26 esa emas."
+    },
+    {
+      "id": "R-76",
+      "q": "Ikki sonning yig'indisi 33, ayirmasi 3. Kattasini toping.",
+      "options": [
+        "17",
+        "18",
+        "33",
+        "3"
+      ],
+      "correctIndex": 1,
+      "explain": "Kattasi = (33 + 3) : 2 = 18."
+    },
+    {
+      "id": "R-77",
+      "q": "2 ta qalam 10 so'm bo'lsa, 2 ta xuddi shunday qalam necha so'mga sotiladi? (so'mlarsiz son)",
+      "options": [
+        "10",
+        "7",
+        "11",
+        "9"
+      ],
+      "correctIndex": 0,
+      "explain": "1 ta qalam 10/2 = 5 ga teng. 2 · 5 = 10."
     },
     {
       "id": "R-78",
-      "q": "Haftalik kitobxonlik: Du-19, Se-21, Ch-28, Pa-12. Eng ko'p o'qilgan kun qaysi?",
+      "q": "Haftalik kitobxonlik: Du-24, Se-17, Ch-12, Pa-13. Eng ko'p o'qilgan kun qaysi?",
       "options": [
         "Se",
+        "Pa",
         "Ch",
-        "Du",
-        "Pa"
+        "Du"
       ],
-      "correctIndex": 1,
-      "explain": "Eng katta qiymat 28 – Ch kuni."
+      "correctIndex": 3,
+      "explain": "Eng katta qiymat 24 – Du kuni."
     },
     {
       "id": "R-79",
-      "q": "Qutida 3 ta qizil va 5 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
+      "q": "Qutida 7 ta qizil va 8 ta ko'k shar bor. Tasodifan tortilgan shar qizil bo'lish ehtimoli qancha?",
       "options": [
-        "8/3",
-        "3/5",
-        "3/8",
-        "5/8"
+        "7/8",
+        "7/15",
+        "15/7",
+        "8/15"
       ],
-      "correctIndex": 2,
-      "explain": "P(qizil) = qizillar soni / jami = 3/8."
+      "correctIndex": 1,
+      "explain": "P(qizil) = qizillar soni / jami = 7/15."
     },
     {
       "id": "R-80",
-      "q": "Tenglamani yeching: x + 3 = 9. x ning qiymatini toping.",
+      "q": "Tenglamani yeching: x + 7 = 21. x ning qiymatini toping.",
       "options": [
-        "3",
-        "6",
-        "9",
+        "14",
+        "21",
+        "15",
         "7"
       ],
-      "correctIndex": 1,
-      "explain": "x = 9 − 3 = 6."
+      "correctIndex": 0,
+      "explain": "x = 21 − 7 = 14."
     },
     {
       "id": "R-81",
-      "q": "Ketma-ketlik berilgan: 8, 12, 16, 20, ... Keyingi son qaysi?",
+      "q": "Ketma-ketlik berilgan: 6, 10, 14, 18, ... Keyingi son qaysi?",
       "options": [
-        "21",
-        "21",
-        "25",
-        "24"
+        "19",
+        "23",
+        "22",
+        "19"
       ],
-      "correctIndex": 3,
-      "explain": "Har gal +4 qo'shilmoqda, demak keyingisi 20 + 4 = 24."
+      "correctIndex": 2,
+      "explain": "Har gal +4 qo'shilmoqda, demak keyingisi 18 + 4 = 22."
     },
     {
       "id": "R-82",
-      "q": "Aka va ukaning yoshlari yig'indisi 29. Aka ukasidan 3 yosh katta. Ukaning yoshi nechada?",
+      "q": "Aka va ukaning yoshlari yig'indisi 30. Aka ukasidan 4 yosh katta. Ukaning yoshi nechada?",
       "options": [
         "13",
-        "12",
-        "16",
-        "16"
+        "17",
+        "17",
+        "12"
       ],
       "correctIndex": 0,
-      "explain": "Uka = (29 − 3) : 2 = 13."
+      "explain": "Uka = (30 − 4) : 2 = 13."
     },
     {
       "id": "R-83",
-      "q": "Kvadratning perimetri 40 sm. Uning yuzini toping va asoslang.",
+      "q": "Kvadratning perimetri 44 sm. Uning yuzini toping va asoslang.",
       "options": [
-        "50 sm²",
-        "100 sm²",
-        "40 sm²",
-        "200 sm²"
+        "242 sm²",
+        "121 sm²",
+        "44 sm²",
+        "55 sm²"
       ],
       "correctIndex": 1,
-      "explain": "Tomoni a = 40 : 4 = 10 sm. Yuzi S = a² = 100 sm²."
+      "explain": "Tomoni a = 44 : 4 = 11 sm. Yuzi S = a² = 121 sm²."
     }
   ]
 }
