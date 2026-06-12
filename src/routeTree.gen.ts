@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TimssRouteImport } from './routes/timss'
+import { Route as TavsiyalarRouteImport } from './routes/tavsiyalar'
 import { Route as QollanmaRouteImport } from './routes/qollanma'
 import { Route as PisaRouteImport } from './routes/pisa'
 import { Route as NatijalarRouteImport } from './routes/natijalar'
@@ -19,10 +20,16 @@ import { Route as KutubxonaRouteImport } from './routes/kutubxona'
 import { Route as DolzarblikRouteImport } from './routes/dolzarblik'
 import { Route as AloqaRouteImport } from './routes/aloqa'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TavsiyalarSlugRouteImport } from './routes/tavsiyalar.$slug'
 
 const TimssRoute = TimssRouteImport.update({
   id: '/timss',
   path: '/timss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TavsiyalarRoute = TavsiyalarRouteImport.update({
+  id: '/tavsiyalar',
+  path: '/tavsiyalar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QollanmaRoute = QollanmaRouteImport.update({
@@ -70,6 +77,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TavsiyalarSlugRoute = TavsiyalarSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => TavsiyalarRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -81,7 +93,9 @@ export interface FileRoutesByFullPath {
   '/natijalar': typeof NatijalarRoute
   '/pisa': typeof PisaRoute
   '/qollanma': typeof QollanmaRoute
+  '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
+  '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -93,7 +107,9 @@ export interface FileRoutesByTo {
   '/natijalar': typeof NatijalarRoute
   '/pisa': typeof PisaRoute
   '/qollanma': typeof QollanmaRoute
+  '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
+  '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -106,7 +122,9 @@ export interface FileRoutesById {
   '/natijalar': typeof NatijalarRoute
   '/pisa': typeof PisaRoute
   '/qollanma': typeof QollanmaRoute
+  '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
+  '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -120,7 +138,9 @@ export interface FileRouteTypes {
     | '/natijalar'
     | '/pisa'
     | '/qollanma'
+    | '/tavsiyalar'
     | '/timss'
+    | '/tavsiyalar/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -132,7 +152,9 @@ export interface FileRouteTypes {
     | '/natijalar'
     | '/pisa'
     | '/qollanma'
+    | '/tavsiyalar'
     | '/timss'
+    | '/tavsiyalar/$slug'
   id:
     | '__root__'
     | '/'
@@ -144,7 +166,9 @@ export interface FileRouteTypes {
     | '/natijalar'
     | '/pisa'
     | '/qollanma'
+    | '/tavsiyalar'
     | '/timss'
+    | '/tavsiyalar/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -157,6 +181,7 @@ export interface RootRouteChildren {
   NatijalarRoute: typeof NatijalarRoute
   PisaRoute: typeof PisaRoute
   QollanmaRoute: typeof QollanmaRoute
+  TavsiyalarRoute: typeof TavsiyalarRouteWithChildren
   TimssRoute: typeof TimssRoute
 }
 
@@ -167,6 +192,13 @@ declare module '@tanstack/react-router' {
       path: '/timss'
       fullPath: '/timss'
       preLoaderRoute: typeof TimssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tavsiyalar': {
+      id: '/tavsiyalar'
+      path: '/tavsiyalar'
+      fullPath: '/tavsiyalar'
+      preLoaderRoute: typeof TavsiyalarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/qollanma': {
@@ -232,8 +264,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tavsiyalar/$slug': {
+      id: '/tavsiyalar/$slug'
+      path: '/$slug'
+      fullPath: '/tavsiyalar/$slug'
+      preLoaderRoute: typeof TavsiyalarSlugRouteImport
+      parentRoute: typeof TavsiyalarRoute
+    }
   }
 }
+
+interface TavsiyalarRouteChildren {
+  TavsiyalarSlugRoute: typeof TavsiyalarSlugRoute
+}
+
+const TavsiyalarRouteChildren: TavsiyalarRouteChildren = {
+  TavsiyalarSlugRoute: TavsiyalarSlugRoute,
+}
+
+const TavsiyalarRouteWithChildren = TavsiyalarRoute._addFileChildren(
+  TavsiyalarRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -245,6 +296,7 @@ const rootRouteChildren: RootRouteChildren = {
   NatijalarRoute: NatijalarRoute,
   PisaRoute: PisaRoute,
   QollanmaRoute: QollanmaRoute,
+  TavsiyalarRoute: TavsiyalarRouteWithChildren,
   TimssRoute: TimssRoute,
 }
 export const routeTree = rootRouteImport

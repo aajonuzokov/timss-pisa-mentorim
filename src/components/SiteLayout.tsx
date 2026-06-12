@@ -11,6 +11,7 @@ const navItems = [
   { to: "/qollanma", label: "O'quv qo'llanma" },
   { to: "/natijalar", label: "Natijalar" },
   { to: "/monitoring", label: "Monitoring" },
+  { to: "/tavsiyalar", label: "Tavsiyalar" },
   { to: "/kutubxona", label: "Kutubxona" },
   { to: "/aloqa", label: "Aloqa" },
 ] as const;
