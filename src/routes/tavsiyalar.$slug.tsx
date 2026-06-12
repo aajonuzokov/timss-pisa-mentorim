@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { findTavsiya } from "@/data/tavsiyalar";
+import { findTavsiya, type Tavsiya } from "@/data/tavsiyalar";
 import { Target, Sparkles, ListChecks, FileText, Gauge, ArrowLeft } from "lucide-react";
 
 export const Route = createFileRoute("/tavsiyalar/$slug")({
@@ -44,7 +44,7 @@ function Block({ icon: Icon, title, children, tone = "primary" }: { icon: any; t
 }
 
 function Page() {
-  const { tavsiya } = Route.useLoaderData();
+  const { tavsiya } = Route.useLoaderData() as { tavsiya: Tavsiya };
   return (
     <SiteLayout>
       <section className="relative overflow-hidden border-b">
