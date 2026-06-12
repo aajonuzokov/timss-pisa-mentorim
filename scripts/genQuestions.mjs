@@ -574,7 +574,7 @@ const timssApplying = genN(applyingGenerators, 83, "A");
 const timssReasoning = genN(reasoningGenerators, 83, "R");
 
 const pisa = [];
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 150; i++) {
   const g = pisaGenerators[i % pisaGenerators.length];
   pisa.push({ id: `P-${i + 1}`, ...g() });
 }
