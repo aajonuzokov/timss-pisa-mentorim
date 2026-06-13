@@ -22,8 +22,11 @@ import { Route as PisaRouteImport } from './routes/pisa'
 import { Route as NatijalarRouteImport } from './routes/natijalar'
 import { Route as MonitoringRouteImport } from './routes/monitoring'
 import { Route as ModelRouteImport } from './routes/model'
+import { Route as MktRouteImport } from './routes/mkt'
+import { Route as MathematicalModelingRouteImport } from './routes/mathematical-modeling'
 import { Route as KutubxonaRouteImport } from './routes/kutubxona'
 import { Route as DolzarblikRouteImport } from './routes/dolzarblik'
+import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as AloqaRouteImport } from './routes/aloqa'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TavsiyalarSlugRouteImport } from './routes/tavsiyalar.$slug'
@@ -93,6 +96,16 @@ const ModelRoute = ModelRouteImport.update({
   path: '/model',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MktRoute = MktRouteImport.update({
+  id: '/mkt',
+  path: '/mkt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MathematicalModelingRoute = MathematicalModelingRouteImport.update({
+  id: '/mathematical-modeling',
+  path: '/mathematical-modeling',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KutubxonaRoute = KutubxonaRouteImport.update({
   id: '/kutubxona',
   path: '/kutubxona',
@@ -101,6 +114,11 @@ const KutubxonaRoute = KutubxonaRouteImport.update({
 const DolzarblikRoute = DolzarblikRouteImport.update({
   id: '/dolzarblik',
   path: '/dolzarblik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentRoute = AssessmentRouteImport.update({
+  id: '/assessment',
+  path: '/assessment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AloqaRoute = AloqaRouteImport.update({
@@ -122,8 +140,11 @@ const TavsiyalarSlugRoute = TavsiyalarSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aloqa': typeof AloqaRoute
+  '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
   '/kutubxona': typeof KutubxonaRoute
+  '/mathematical-modeling': typeof MathematicalModelingRoute
+  '/mkt': typeof MktRoute
   '/model': typeof ModelRoute
   '/monitoring': typeof MonitoringRoute
   '/natijalar': typeof NatijalarRoute
@@ -142,8 +163,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aloqa': typeof AloqaRoute
+  '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
   '/kutubxona': typeof KutubxonaRoute
+  '/mathematical-modeling': typeof MathematicalModelingRoute
+  '/mkt': typeof MktRoute
   '/model': typeof ModelRoute
   '/monitoring': typeof MonitoringRoute
   '/natijalar': typeof NatijalarRoute
@@ -163,8 +187,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aloqa': typeof AloqaRoute
+  '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
   '/kutubxona': typeof KutubxonaRoute
+  '/mathematical-modeling': typeof MathematicalModelingRoute
+  '/mkt': typeof MktRoute
   '/model': typeof ModelRoute
   '/monitoring': typeof MonitoringRoute
   '/natijalar': typeof NatijalarRoute
@@ -185,8 +212,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/aloqa'
+    | '/assessment'
     | '/dolzarblik'
     | '/kutubxona'
+    | '/mathematical-modeling'
+    | '/mkt'
     | '/model'
     | '/monitoring'
     | '/natijalar'
@@ -205,8 +235,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/aloqa'
+    | '/assessment'
     | '/dolzarblik'
     | '/kutubxona'
+    | '/mathematical-modeling'
+    | '/mkt'
     | '/model'
     | '/monitoring'
     | '/natijalar'
@@ -225,8 +258,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/aloqa'
+    | '/assessment'
     | '/dolzarblik'
     | '/kutubxona'
+    | '/mathematical-modeling'
+    | '/mkt'
     | '/model'
     | '/monitoring'
     | '/natijalar'
@@ -246,8 +282,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AloqaRoute: typeof AloqaRoute
+  AssessmentRoute: typeof AssessmentRoute
   DolzarblikRoute: typeof DolzarblikRoute
   KutubxonaRoute: typeof KutubxonaRoute
+  MathematicalModelingRoute: typeof MathematicalModelingRoute
+  MktRoute: typeof MktRoute
   ModelRoute: typeof ModelRoute
   MonitoringRoute: typeof MonitoringRoute
   NatijalarRoute: typeof NatijalarRoute
@@ -356,6 +395,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ModelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mkt': {
+      id: '/mkt'
+      path: '/mkt'
+      fullPath: '/mkt'
+      preLoaderRoute: typeof MktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mathematical-modeling': {
+      id: '/mathematical-modeling'
+      path: '/mathematical-modeling'
+      fullPath: '/mathematical-modeling'
+      preLoaderRoute: typeof MathematicalModelingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kutubxona': {
       id: '/kutubxona'
       path: '/kutubxona'
@@ -368,6 +421,13 @@ declare module '@tanstack/react-router' {
       path: '/dolzarblik'
       fullPath: '/dolzarblik'
       preLoaderRoute: typeof DolzarblikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment': {
+      id: '/assessment'
+      path: '/assessment'
+      fullPath: '/assessment'
+      preLoaderRoute: typeof AssessmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aloqa': {
@@ -409,8 +469,11 @@ const TavsiyalarRouteWithChildren = TavsiyalarRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AloqaRoute: AloqaRoute,
+  AssessmentRoute: AssessmentRoute,
   DolzarblikRoute: DolzarblikRoute,
   KutubxonaRoute: KutubxonaRoute,
+  MathematicalModelingRoute: MathematicalModelingRoute,
+  MktRoute: MktRoute,
   ModelRoute: ModelRoute,
   MonitoringRoute: MonitoringRoute,
   NatijalarRoute: NatijalarRoute,
