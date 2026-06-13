@@ -1,9 +1,18 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { categories } from "@/data/tavsiyalar";
 import { BookOpen, Compass, GitBranch, GraduationCap, ClipboardList, ArrowRight } from "lucide-react";
 
 const iconMap = { BookOpen, Compass, GitBranch, GraduationCap, ClipboardList } as const;
+
+const directRoutes: Record<string, string> = {
+  knowing: "/timss-knowing",
+  applying: "/timss-applying",
+  reasoning: "/timss-reasoning",
+  formulate: "/pisa-formulate",
+  employ: "/pisa-employ",
+  interpret: "/pisa-interpret",
+};
 
 export const Route = createFileRoute("/tavsiyalar")({
   head: () => ({
@@ -16,6 +25,7 @@ export const Route = createFileRoute("/tavsiyalar")({
 });
 
 function Page() {
+  const navigate = useNavigate();
   return (
     <SiteLayout>
       <PageHeader
@@ -38,25 +48,54 @@ function Page() {
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {cat.items.map((item) => (
-                  <Link
-                    key={item.slug}
-                    to="/tavsiyalar/$slug"
-                    params={{ slug: item.slug }}
-                    className="group rounded-2xl border bg-card p-6 shadow-card hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col"
-                  >
-                    <span className="text-xs uppercase tracking-wider text-accent font-medium mb-2">{cat.title}</span>
-                    <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground flex-1">{item.short}</p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                      Batafsil <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                ))}
+                {cat.items.map((item) => {
+                  const target = directRoutes[item.slug];
+                  const go = () => {
+                    if (target) navigate({ to: target });
+                    else navigate({ to: "/tavsiyalar/$slug", params: { slug: item.slug } });
+                  };
+                  return (
+                    <div
+                      key={item.slug}
+                      role="button"
+                      tabIndex={0}
+                      onClick={go}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          go();
+                        }
+                      }}
+                      className="group rounded-2xl border bg-card p-6 shadow-card hover:shadow-elegant transition-all hover:-translate-y-1 flex flex-col cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      <span className="text-xs uppercase tracking-wider text-accent font-medium mb-2">{cat.title}</span>
+                      <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground flex-1">{item.short}</p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          go();
+                        }}
+                        className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary cursor-pointer self-start hover:underline"
+                      >
+                        Batafsil <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           );
         })}
+        <div className="sr-only">
+          <Link to="/timss-knowing">k</Link>
+          <Link to="/timss-applying">a</Link>
+          <Link to="/timss-reasoning">r</Link>
+          <Link to="/pisa-formulate">f</Link>
+          <Link to="/pisa-employ">e</Link>
+          <Link to="/pisa-interpret">i</Link>
+        </div>
       </section>
     </SiteLayout>
   );
