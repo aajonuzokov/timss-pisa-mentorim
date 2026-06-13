@@ -4,6 +4,34 @@ import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+
+const mathComponents: { name: string; desc: string }[] = [
+  {
+    name: "Matematik bilim",
+    desc: "Talabaning matematik tushunchalar, qonuniyatlar, amallar va protseduralar haqidagi bilimlarini ifodalaydi. Ushbu komponent TIMSS dasturining Knowing domeni bilan bog'liq bo'lib, matematik tayyorgarlikning kognitiv asosini tashkil etadi.",
+  },
+  {
+    name: "Matematik tafakkur",
+    desc: "Matematik muammolarni tahlil qilish, mantiqiy fikrlash, umumlashtirish va xulosa chiqarish qobiliyatlarini qamrab oladi. Mazkur komponent TIMSS dasturining Reasoning domeni bilan uzviy bog'liq.",
+  },
+  {
+    name: "Matematik savodxonlik",
+    desc: "Real hayotiy vaziyatlarni matematik nuqtai nazardan tushunish, matematik ifodalash va natijalarni talqin qilish qobiliyatini tavsiflaydi. Ushbu komponent PISA dasturining Formulate, Employ va Interpret kompetensiyalariga asoslanadi.",
+  },
+  {
+    name: "Matematik modellashtirish",
+    desc: "Real muammolarni matematik modelga o'tkazish, model asosida yechim ishlab chiqish va natijalarni amaliy vaziyatga qayta tatbiq etish jarayonlarini o'z ichiga oladi. TIMSS Applying va Reasoning hamda PISA Formulate va Employ kompetensiyalarini integratsiyalovchi komponent hisoblanadi.",
+  },
+  {
+    name: "Matematik-metodik kompetentlik",
+    desc: "Matematik mazmunni o'qitish jarayoniga moslashtirish, tushuntirish, topshiriqlarni loyihalash va o'quvchilarning xatolarini tahlil qilish qobiliyatlarini ifodalaydi. Ushbu komponent Mathematical Knowledge for Teaching (MKT) transformatsiya mexanizmi asosida shakllanadi.",
+  },
+  {
+    name: "Refleksiv faoliyat",
+    desc: "Talabaning o'z o'quv va kasbiy faoliyatini tahlil qilish, baholash va takomillashtirishga qaratilgan faoliyatini ifodalaydi. Ushbu komponent individual rivojlanish trayektoriyasini shakllantirish va diagnostik monitoring natijalarini tahlil qilish bilan bog'liq.",
+  },
+];
 
 export const Route = createFileRoute("/model")({
   head: () => ({
