@@ -149,7 +149,7 @@ function Page() {
       </section>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           {active && (
             <>
               <DialogHeader>
@@ -167,20 +167,28 @@ function Page() {
                 </DialogDescription>
               </DialogHeader>
               <div className="mt-2">
-                <h4 className="font-semibold mb-3">Tarkibiy komponentlar:</h4>
-                <ul className="space-y-2">
-                  {active.components.map((c, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      <span>{c}</span>
-                    </li>
+                <h4 className="font-semibold mb-3">Matematik tayyorgarlik komponentlari:</h4>
+                <Accordion type="single" collapsible className="w-full">
+                  {mathComponents.map((c, idx) => (
+                    <AccordionItem key={idx} value={`item-${idx}`}>
+                      <AccordionTrigger className="text-left font-bold text-foreground">
+                        {idx + 1}. {c.name}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-sm leading-relaxed text-foreground/85">
+                        {c.desc}
+                      </AccordionContent>
+                    </AccordionItem>
                   ))}
-                </ul>
+                </Accordion>
+                <p className="mt-5 text-xs text-center italic text-muted-foreground border-t pt-4">
+                  TIMSS/PISA va MKT asosidagi matematik tayyorgarlik modeli
+                </p>
               </div>
             </>
           )}
         </DialogContent>
       </Dialog>
+
     </SiteLayout>
   );
 }
