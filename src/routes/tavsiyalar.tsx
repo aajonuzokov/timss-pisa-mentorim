@@ -12,6 +12,9 @@ const directRoutes: Record<string, string> = {
   formulate: "/pisa-formulate",
   employ: "/pisa-employ",
   interpret: "/pisa-interpret",
+  modellashtirish: "/mathematical-modeling",
+  mkt: "/mkt",
+  diagnostika: "/assessment",
 };
 
 export const Route = createFileRoute("/tavsiyalar")({
@@ -95,6 +98,9 @@ function Page() {
           <Link to="/pisa-formulate">f</Link>
           <Link to="/pisa-employ">e</Link>
           <Link to="/pisa-interpret">i</Link>
+          <Link to="/mathematical-modeling">m</Link>
+          <Link to="/mkt">x</Link>
+          <Link to="/assessment">d</Link>
         </div>
       </section>
     </SiteLayout>
