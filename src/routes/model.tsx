@@ -4,6 +4,34 @@ import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+
+const mathComponents: { name: string; desc: string }[] = [
+  {
+    name: "Matematik bilim",
+    desc: "Talabaning matematik tushunchalar, qonuniyatlar, amallar va protseduralar haqidagi bilimlarini ifodalaydi. Ushbu komponent TIMSS dasturining Knowing domeni bilan bog'liq bo'lib, matematik tayyorgarlikning kognitiv asosini tashkil etadi.",
+  },
+  {
+    name: "Matematik tafakkur",
+    desc: "Matematik muammolarni tahlil qilish, mantiqiy fikrlash, umumlashtirish va xulosa chiqarish qobiliyatlarini qamrab oladi. Mazkur komponent TIMSS dasturining Reasoning domeni bilan uzviy bog'liq.",
+  },
+  {
+    name: "Matematik savodxonlik",
+    desc: "Real hayotiy vaziyatlarni matematik nuqtai nazardan tushunish, matematik ifodalash va natijalarni talqin qilish qobiliyatini tavsiflaydi. Ushbu komponent PISA dasturining Formulate, Employ va Interpret kompetensiyalariga asoslanadi.",
+  },
+  {
+    name: "Matematik modellashtirish",
+    desc: "Real muammolarni matematik modelga o'tkazish, model asosida yechim ishlab chiqish va natijalarni amaliy vaziyatga qayta tatbiq etish jarayonlarini o'z ichiga oladi. TIMSS Applying va Reasoning hamda PISA Formulate va Employ kompetensiyalarini integratsiyalovchi komponent hisoblanadi.",
+  },
+  {
+    name: "Matematik-metodik kompetentlik",
+    desc: "Matematik mazmunni o'qitish jarayoniga moslashtirish, tushuntirish, topshiriqlarni loyihalash va o'quvchilarning xatolarini tahlil qilish qobiliyatlarini ifodalaydi. Ushbu komponent Mathematical Knowledge for Teaching (MKT) transformatsiya mexanizmi asosida shakllanadi.",
+  },
+  {
+    name: "Refleksiv faoliyat",
+    desc: "Talabaning o'z o'quv va kasbiy faoliyatini tahlil qilish, baholash va takomillashtirishga qaratilgan faoliyatini ifodalaydi. Ushbu komponent individual rivojlanish trayektoriyasini shakllantirish va diagnostik monitoring natijalarini tahlil qilish bilan bog'liq.",
+  },
+];
 
 export const Route = createFileRoute("/model")({
   head: () => ({
@@ -121,7 +149,7 @@ function Page() {
       </section>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           {active && (
             <>
               <DialogHeader>
@@ -139,20 +167,28 @@ function Page() {
                 </DialogDescription>
               </DialogHeader>
               <div className="mt-2">
-                <h4 className="font-semibold mb-3">Tarkibiy komponentlar:</h4>
-                <ul className="space-y-2">
-                  {active.components.map((c, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      <span>{c}</span>
-                    </li>
+                <h4 className="font-semibold mb-3">Matematik tayyorgarlik komponentlari:</h4>
+                <Accordion type="single" collapsible className="w-full">
+                  {mathComponents.map((c, idx) => (
+                    <AccordionItem key={idx} value={`item-${idx}`}>
+                      <AccordionTrigger className="text-left font-bold text-foreground">
+                        {idx + 1}. {c.name}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-sm leading-relaxed text-foreground/85">
+                        {c.desc}
+                      </AccordionContent>
+                    </AccordionItem>
                   ))}
-                </ul>
+                </Accordion>
+                <p className="mt-5 text-xs text-center italic text-muted-foreground border-t pt-4">
+                  TIMSS/PISA va MKT asosidagi matematik tayyorgarlik modeli
+                </p>
               </div>
             </>
           )}
         </DialogContent>
       </Dialog>
+
     </SiteLayout>
   );
 }
