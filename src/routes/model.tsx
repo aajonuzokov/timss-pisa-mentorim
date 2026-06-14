@@ -5,6 +5,7 @@ import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 
 type MathComponent = {
   name: string;
