@@ -224,23 +224,63 @@ function Page() {
                 </DialogDescription>
               </DialogHeader>
               <div className="mt-2">
-                <h4 className="font-semibold mb-3">Matematik tayyorgarlik komponentlari:</h4>
+                <h4 className="font-semibold mb-3 text-base">
+                  Bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligi komponentlari
+                </h4>
                 <Accordion type="single" collapsible className="w-full">
                   {mathComponents.map((c, idx) => (
                     <AccordionItem key={idx} value={`item-${idx}`}>
                       <AccordionTrigger className="text-left font-bold text-foreground">
                         {idx + 1}. {c.name}
                       </AccordionTrigger>
-                      <AccordionContent className="text-sm leading-relaxed text-foreground/85">
-                        {c.desc}
+                      <AccordionContent className="text-sm leading-relaxed text-foreground/85 space-y-4">
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+                            Komponent tavsifi
+                          </div>
+                          <p>{c.desc}</p>
+                        </div>
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <div className="rounded-lg border bg-primary/5 p-3">
+                            <Badge className="mb-2">TIMSS</Badge>
+                            <p className="text-sm">{c.timss}</p>
+                          </div>
+                          <div className="rounded-lg border bg-secondary/40 p-3">
+                            <Badge variant="secondary" className="mb-2">PISA</Badge>
+                            <p className="text-sm">{c.pisa}</p>
+                          </div>
+                        </div>
+                        <div className="rounded-lg border border-dashed p-3">
+                          <Badge variant="outline" className="mb-2">MKT transformatsiyasi</Badge>
+                          <p className="text-sm">{c.mkt}</p>
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                            Diagnostik indikatorlar
+                          </div>
+                          <ul className="list-disc pl-5 space-y-1">
+                            {c.indicators.map((it, i) => (
+                              <li key={i}>{it}</li>
+                            ))}
+                          </ul>
+                        </div>
                       </AccordionContent>
                     </AccordionItem>
                   ))}
                 </Accordion>
-                <p className="mt-5 text-xs text-center italic text-muted-foreground border-t pt-4">
+                <div className="mt-6 rounded-xl border bg-gradient-to-br from-primary/5 to-secondary/30 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">
+                    Ilmiy-metodik asos
+                  </div>
+                  <p className="text-sm leading-relaxed text-foreground/85">
+                    Mazkur komponentlar TIMSS va PISA xalqaro baholash dasturlari kompetensiyalari hamda Mathematical Knowledge for Teaching (MKT) transformatsiya mexanizmi integratsiyasi asosida ishlab chiqilgan bo'lib, bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligi modelining tarkibiy qismlarini tashkil etadi.
+                  </p>
+                </div>
+                <p className="mt-4 text-xs text-center italic text-muted-foreground border-t pt-4">
                   TIMSS/PISA va MKT asosidagi matematik tayyorgarlik modeli
                 </p>
               </div>
+
             </>
           )}
         </DialogContent>
