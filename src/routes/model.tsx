@@ -221,9 +221,88 @@ function Page() {
                   </div>
                 </div>
                 <DialogDescription className="text-base leading-relaxed pt-2 text-foreground/80">
-                  {active.full}
+                  {active.title === "Mazmuniy blok"
+                    ? "Mazmuniy blok bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligini rivojlantirishga xizmat qiluvchi nazariy, amaliy va metodik mazmunni birlashtiradi. Blok TIMSS va PISA xalqaro baholash dasturlari kompetensiyalari hamda Mathematical Knowledge for Teaching (MKT) yondashuvi integratsiyasi asosida shakllantirilgan."
+                    : active.full}
                 </DialogDescription>
               </DialogHeader>
+              {active.title === "Mazmuniy blok" ? (
+                <div className="mt-2">
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="timss-content">
+                      <AccordionTrigger className="text-left font-bold">TIMSS mazmuniy sohalari</AccordionTrigger>
+                      <AccordionContent className="space-y-2 text-sm">
+                        {[
+                          ["Sonlar", "Natural, butun, ratsional sonlar, ular ustida amallar va sonli munosabatlar."],
+                          ["Algebra", "Ifoda, tenglama, funksiya va qonuniyatlar bilan ishlash."],
+                          ["Geometriya", "Shakllar, fazoviy munosabatlar, o'lchov va geometrik xossalar."],
+                          ["Ma'lumotlar va ehtimollik", "Ma'lumotlarni to'plash, taqdim etish, tahlil qilish va ehtimollik baholash."],
+                        ].map(([n, d]) => (
+                          <div key={n} className="rounded-lg border p-3"><div className="font-semibold mb-1">{n}</div><p className="text-foreground/80">{d}</p></div>
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="timss-cog">
+                      <AccordionTrigger className="text-left font-bold">TIMSS kognitiv domenlari</AccordionTrigger>
+                      <AccordionContent className="space-y-2 text-sm">
+                        {[
+                          ["Knowing", "Matematik faktlar, tushunchalar va protseduralarni bilish."],
+                          ["Applying", "Bilimlarni tanish va yangi vaziyatlarda qo'llash."],
+                          ["Reasoning", "Mantiqiy fikrlash, tahlil qilish va nostandart masalalarni yechish."],
+                        ].map(([n, d]) => (
+                          <div key={n} className="rounded-lg border p-3"><Badge className="mb-1">{n}</Badge><p className="text-foreground/80">{d}</p></div>
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="pisa-comp">
+                      <AccordionTrigger className="text-left font-bold">PISA matematik savodxonlik kompetensiyalari</AccordionTrigger>
+                      <AccordionContent className="space-y-2 text-sm">
+                        {[
+                          ["Formulate", "Real vaziyatni matematik shaklga keltirish va modellashtirish."],
+                          ["Employ", "Matematik tushuncha, fakt, protsedura va mulohazalarni qo'llash."],
+                          ["Interpret", "Matematik natijalarni real kontekstda talqin qilish va baholash."],
+                        ].map(([n, d]) => (
+                          <div key={n} className="rounded-lg border p-3"><Badge variant="secondary" className="mb-1">{n}</Badge><p className="text-foreground/80">{d}</p></div>
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="mkt">
+                      <AccordionTrigger className="text-left font-bold">MKT (Mathematical Knowledge for Teaching)</AccordionTrigger>
+                      <AccordionContent className="space-y-2 text-sm">
+                        {[
+                          ["Subject Matter Knowledge (SMK)", "O'qituvchining matematik mazmunni chuqur va tizimli bilishi: umumiy, ixtisoslashgan va gorizontal matematik bilimlar."],
+                          ["Pedagogical Content Knowledge (PCK)", "Matematik mazmunni o'quvchilarga moslab o'qitish bilimi: o'quvchini tushunish, o'qitish va o'quv dasturi bilan bog'liq bilimlar."],
+                        ].map(([n, d]) => (
+                          <div key={n} className="rounded-lg border border-dashed p-3"><Badge variant="outline" className="mb-1">{n}</Badge><p className="text-foreground/80">{d}</p></div>
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="math-prep">
+                      <AccordionTrigger className="text-left font-bold">Matematik tayyorgarlik komponentlari</AccordionTrigger>
+                      <AccordionContent>
+                        <Accordion type="single" collapsible className="w-full">
+                          {[
+                            ["Matematik bilim", "Matematik tushunchalar, qonuniyatlar va usullar haqidagi tizimli bilimlar majmuasi bo'lib, bo'lajak o'qituvchining kasbiy faoliyati uchun nazariy asos vazifasini bajaradi. Mazkur komponent TIMSS Knowing domeni hamda MKTning Subject Matter Knowledge qismi bilan bog'liq."],
+                            ["Matematik tafakkur", "Mantiqiy fikrlash, tahlil, sintez, umumlashtirish va isbotlash qobiliyatlarini qamrab oluvchi intellektual faoliyatdir. U TIMSS Reasoning domeni va PISA Interpret kompetensiyasi bilan uzviy bog'langan."],
+                            ["Matematik savodxonlik", "Real hayotiy vaziyatlarni matematik nuqtai nazardan tushunish, tahlil qilish va talqin etish qobiliyatidir. PISA matematik savodxonlik konsepsiyasi va TIMSS Applying domeni asosida shakllanadi."],
+                            ["Matematik modellashtirish", "Real muammoni matematik modelga aylantirish, yechim topish va natijani amaliy kontekstga qaytarish jarayonidir. Komponent PISA Formulate-Employ-Interpret siklini to'liq aks ettiradi."],
+                            ["Matematik-metodik kompetentlik", "Matematik bilimlarni pedagogik mazmunga transformatsiya qilish va o'qitish texnologiyalariga aylantirish qobiliyatidir. MKTning Pedagogical Content Knowledge sohasi bilan bevosita bog'liq."],
+                            ["Refleksiv faoliyat", "Talabaning o'z o'quv va kasbiy faoliyatini tahlil qilish, baholash hamda takomillashtirish jarayonidir. Bu komponent o'qituvchining uzluksiz kasbiy rivojlanishini ta'minlaydi."],
+                          ].map(([n, d], i) => (
+                            <AccordionItem key={n} value={`mp-${i}`}>
+                              <AccordionTrigger className="text-left font-bold">{i + 1}. {n}</AccordionTrigger>
+                              <AccordionContent className="text-sm text-foreground/85 leading-relaxed">{d}</AccordionContent>
+                            </AccordionItem>
+                          ))}
+                        </Accordion>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                  <p className="mt-4 text-xs text-center italic text-muted-foreground border-t pt-4">
+                    TIMSS/PISA va MKT asosidagi matematik tayyorgarlik modeli
+                  </p>
+                </div>
+              ) : (
               <div className="mt-2">
                 <h4 className="font-semibold mb-3 text-base">
                   Bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligi komponentlari
@@ -281,6 +360,7 @@ function Page() {
                   TIMSS/PISA va MKT asosidagi matematik tayyorgarlik modeli
                 </p>
               </div>
+              )}
 
             </>
           )}
