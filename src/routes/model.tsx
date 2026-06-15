@@ -1,11 +1,104 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X } from "lucide-react";
+import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X, Users, FileText, Lightbulb, FolderKanban, Monitor, BookMarked, BarChart3, RefreshCw, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+
+type TexComponent = {
+  name: string;
+  desc: string;
+  timss: string;
+  pisa: string;
+  mkt: string;
+  indicators: string[];
+  tools: string[];
+  progress: number;
+};
+
+const texComponents: TexComponent[] = [
+  {
+    name: "Matematik bilim",
+    desc: "Matematik tushuncha, fakt, qonuniyat va protseduralarni tizimli o'zlashtirish jarayonini ta'minlovchi kognitiv asos. Texnologik blokda bu komponent interaktiv ma'ruza, vizualizatsiya va elektron resurslar orqali shakllantiriladi.",
+    timss: "Knowing — matematik faktlar, tushunchalar va protseduralarni bilish domeniga to'liq mos keladi.",
+    pisa: "Formulate bosqichining kognitiv tayanchi sifatida xizmat qiladi.",
+    mkt: "Subject Matter Knowledge (SMK) — Common Content Knowledge va Specialized Content Knowledge qatlamlari.",
+    indicators: [
+      "Matematik tushunchalarni to'g'ri ta'riflashi",
+      "Qoidalar va formulalardan xatosiz foydalanishi",
+      "Matematik terminologiyani izchil qo'llashi",
+    ],
+    tools: ["Diagnostik test (TIMSS Knowing)", "Interaktiv kvizlar (Mentorim)", "Konseptual xaritalar"],
+    progress: 78,
+  },
+  {
+    name: "Matematik tafakkur",
+    desc: "Tahlil, sintez, umumlashtirish, isbotlash va nostandart masalalarni yechishga qaratilgan intellektual faoliyat. Texnologik blokda muammoli ta'lim va keys-stadi metodlari orqali rivojlantiriladi.",
+    timss: "Reasoning — mantiqiy mulohaza, isbotlash va murakkab kontekstda fikrlash domeniga muvofiq.",
+    pisa: "Interpret — matematik natijalarni tahlil qilish va baholash bosqichi bilan bog'liq.",
+    mkt: "Specialized Content Knowledge (SMK) va Knowledge of Content and Students (PCK) integratsiyasi.",
+    indicators: [
+      "Mantiqiy zanjir va isbot qura olishi",
+      "Nostandart muammoga strategiya tanlashi",
+      "Matematik munosabatlar va qonuniyatlarni aniqlay olishi",
+    ],
+    tools: ["PISA Reasoning topshiriqlari", "Keys-stadi tahlili", "Refleksiv jurnal (E-Portfolio)"],
+    progress: 71,
+  },
+  {
+    name: "Matematik savodxonlik",
+    desc: "Real hayotiy kontekstdagi vaziyatlarni matematik tarjima qilish, modellashtirish va talqin etish qobiliyati. Mazkur komponent matematik modellashtirish jarayonini (Formulate → Employ → Interpret siklini) o'z tarkibida qamrab oladi.",
+    timss: "Applying — matematik bilimlarni yangi va amaliy vaziyatlarda qo'llash domeni.",
+    pisa: "Formulate · Employ · Interpret — matematik savodxonlikning to'liq jarayonli sikli, modellashtirish bosqichini ham qamrab oladi.",
+    mkt: "PCK — Knowledge of Content and Teaching: amaliy kontekstli topshiriqlarni o'qitishga moslashtirish.",
+    indicators: [
+      "Real vaziyatni matematik modelga aylantirishi (Formulate)",
+      "Modelni qo'llab natija olishi (Employ)",
+      "Natijani amaliy kontekstda talqin qilishi (Interpret)",
+      "Modellashtirish siklini to'liq amalga oshirishi",
+    ],
+    tools: ["PISA kontekstli topshiriqlar banki", "Loyiha metodi natijalari", "Mentorim — modellashtirish topshiriqlari"],
+    progress: 74,
+  },
+  {
+    name: "Matematik-metodik kompetentlik",
+    desc: "Matematik mazmunni pedagogik transformatsiya qilish, topshiriqlar loyihalash, o'quvchilar xatolarini tahlil qilish va metodik qaror qabul qilish qobiliyati. Texnologik blokning yakuniy integrativ natijasi.",
+    timss: "Knowing · Applying · Reasoning — uchta kognitiv domen integratsiyasi asosida metodik qarorlar.",
+    pisa: "Formulate · Employ · Interpret — to'liq sikl bo'yicha o'quvchilarning matematik savodxonligini rivojlantirish metodikasi.",
+    mkt: "Pedagogical Content Knowledge (PCK): Knowledge of Content and Students, Teaching va Curriculum — SMK → PCK transformatsiyasi.",
+    indicators: [
+      "TIMSS/PISA standartlariga mos topshiriq loyihalashi",
+      "O'quvchilar tipik xatolarini tahlil qila olishi",
+      "Differensial metodik strategiyani tanlay olishi",
+      "E-Portfolio orqali kasbiy refleksiyani amalga oshirishi",
+    ],
+    tools: ["Metodik loyiha himoyasi", "E-Portfolio ekspert bahosi", "Mentorim — kasbiy diagnostika"],
+    progress: 68,
+  },
+];
+
+const texSections: { icon: typeof Users; title: string; desc: string }[] = [
+  { icon: Users, title: "Interaktiv metodlar", desc: "Hamkorlikda o'qitish, dialogik muloqot, didaktik o'yinlar orqali talabaning faol o'rganish pozitsiyasini ta'minlash." },
+  { icon: FileText, title: "TIMSS/PISA topshiriqlari", desc: "Xalqaro baholash dasturlari standartlariga muvofiq tuzilgan kognitiv va kontekstli topshiriqlar banki." },
+  { icon: BookMarked, title: "Keys-stadi", desc: "Real pedagogik vaziyatlarni tahlil qilish orqali metodik qaror qabul qilish ko'nikmasini shakllantirish." },
+  { icon: Lightbulb, title: "Muammoli ta'lim", desc: "Talabani matematik muammo qo'yish, gipoteza ilgari surish va isbotlash bosqichlariga jalb etish." },
+  { icon: FolderKanban, title: "Loyiha metodi", desc: "Integrativ matematik-metodik loyihalar orqali modellashtirish va tadqiqotchilik faoliyatini rivojlantirish." },
+  { icon: Monitor, title: "Mentorim platformasi", desc: "Raqamli o'quv-metodik muhit: topshiriqlar, diagnostika, monitoring va mentor-talaba o'zaro aloqasi." },
+  { icon: BookOpen, title: "E-Portfolio", desc: "Talabaning matematik-metodik tayyorgarligi dinamikasini aks ettiruvchi elektron kasbiy portfolio." },
+];
+
+const flowSteps: { icon: typeof Activity; label: string }[] = [
+  { icon: BookOpen, label: "O'quv faoliyati" },
+  { icon: Monitor, label: "Mentorim platformasi" },
+  { icon: BookMarked, label: "E-Portfolio" },
+  { icon: Activity, label: "Diagnostika" },
+  { icon: BarChart3, label: "Feedback" },
+  { icon: RefreshCw, label: "Korreksiya" },
+  { icon: CheckCircle2, label: "Natija" },
+];
 
 type MathComponent = {
   name: string;
@@ -300,6 +393,142 @@ function Page() {
                   </Accordion>
                   <p className="mt-4 text-xs text-center italic text-muted-foreground border-t pt-4">
                     TIMSS/PISA va MKT asosidagi matematik tayyorgarlik modeli
+                  </p>
+                </div>
+              ) : active.title === "Jarayonli (texnologik) blok" ? (
+                <div className="mt-2 space-y-6">
+                  <div>
+                    <h4 className="font-bold text-base mb-1">Texnologik blokning matematik tayyorgarlik komponentlari</h4>
+                    <p className="text-xs text-muted-foreground mb-3">TIMSS + PISA + MKT integratsiyasi asosida (Matematik modellashtirish — Matematik savodxonlik tarkibida).</p>
+                    <Accordion type="single" collapsible className="w-full">
+                      {texComponents.map((c, idx) => (
+                        <AccordionItem key={idx} value={`tex-${idx}`}>
+                          <AccordionTrigger className="text-left font-bold">
+                            <div className="flex-1 pr-3">
+                              <div>{idx + 1}. {c.name}</div>
+                              <div className="mt-2 flex items-center gap-2">
+                                <Progress value={c.progress} className="h-1.5 flex-1" />
+                                <span className="text-xs font-medium text-muted-foreground tabular-nums">{c.progress}%</span>
+                              </div>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="text-sm leading-relaxed text-foreground/85 space-y-4">
+                            <div>
+                              <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Ilmiy tavsif</div>
+                              <p>{c.desc}</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-3">
+                              <div className="rounded-lg border bg-primary/5 p-3">
+                                <Badge className="mb-2">TIMSS</Badge>
+                                <p className="text-sm">{c.timss}</p>
+                              </div>
+                              <div className="rounded-lg border bg-secondary/40 p-3">
+                                <Badge variant="secondary" className="mb-2">PISA</Badge>
+                                <p className="text-sm">{c.pisa}</p>
+                              </div>
+                            </div>
+                            <div className="rounded-lg border border-dashed p-3">
+                              <Badge variant="outline" className="mb-2">MKT (SMK → PCK)</Badge>
+                              <p className="text-sm">{c.mkt}</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              <div>
+                                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">Indikatorlar</div>
+                                <ul className="list-disc pl-5 space-y-1">
+                                  {c.indicators.map((it, i) => <li key={i}>{it}</li>)}
+                                </ul>
+                              </div>
+                              <div>
+                                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">Baholash vositalari</div>
+                                <ul className="list-disc pl-5 space-y-1">
+                                  {c.tools.map((it, i) => <li key={i}>{it}</li>)}
+                                </ul>
+                              </div>
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-base mb-3">Texnologik blok tarkibiy bo'limlari</h4>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {texSections.map((s, i) => {
+                        const Icon = s.icon;
+                        return (
+                          <div key={i} className="rounded-xl border p-3 bg-card hover:border-primary/50 transition">
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground">
+                                <Icon className="w-4 h-4" />
+                              </div>
+                              <div className="font-semibold text-sm">{s.title}</div>
+                            </div>
+                            <p className="text-xs text-foreground/75 leading-relaxed">{s.desc}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-secondary/30 p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">TIMSS · PISA · MKT integratsiyasi</div>
+                    <div className="grid sm:grid-cols-3 gap-3 text-xs">
+                      <div className="rounded-lg bg-background/60 border p-2">
+                        <div className="font-semibold mb-1">TIMSS kompetensiyalari</div>
+                        <div className="flex flex-wrap gap-1"><Badge variant="outline">Knowing</Badge><Badge variant="outline">Applying</Badge><Badge variant="outline">Reasoning</Badge></div>
+                      </div>
+                      <div className="rounded-lg bg-background/60 border p-2">
+                        <div className="font-semibold mb-1">PISA jarayonlari</div>
+                        <div className="flex flex-wrap gap-1"><Badge variant="outline">Formulate</Badge><Badge variant="outline">Employ</Badge><Badge variant="outline">Interpret</Badge></div>
+                      </div>
+                      <div className="rounded-lg bg-background/60 border p-2">
+                        <div className="font-semibold mb-1">MKT tarkiblari</div>
+                        <div className="flex flex-wrap gap-1"><Badge variant="outline">SMK</Badge><Badge variant="outline">PCK</Badge></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-base mb-1">Texnologik → Diagnostik-monitoring oqimi</h4>
+                    <p className="text-xs text-muted-foreground mb-3">Jarayonli blokdan diagnostik-monitoring blokiga o'tuvchi metodik sikl.</p>
+                    <div className="rounded-xl border bg-card p-4">
+                      <div className="flex flex-col items-center gap-1.5">
+                        {flowSteps.map((st, i) => {
+                          const Icon = st.icon;
+                          return (
+                            <div key={i} className="w-full flex flex-col items-center">
+                              <div className="w-full max-w-xs rounded-lg border bg-background px-3 py-2 flex items-center gap-2 shadow-sm">
+                                <div className="w-7 h-7 rounded-md bg-gradient-hero flex items-center justify-center text-primary-foreground">
+                                  <Icon className="w-3.5 h-3.5" />
+                                </div>
+                                <span className="text-sm font-medium">{st.label}</span>
+                              </div>
+                              {i < flowSteps.length - 1 && <ArrowDown className="w-4 h-4 text-primary my-0.5" />}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-base mb-3">Statistik monitoring paneli</h4>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {texComponents.map((c, i) => (
+                        <div key={i} className="rounded-lg border p-3 bg-card">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-semibold">{c.name}</span>
+                            <span className="text-xs tabular-nums text-muted-foreground">{c.progress}%</span>
+                          </div>
+                          <Progress value={c.progress} className="h-2" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-center italic text-muted-foreground border-t pt-4">
+                    Jarayonli (texnologik) blok — TIMSS, PISA va MKT integratsiyasi asosida ishlab chiqilgan PhD dissertatsiya modelining tarkibiy qismi
                   </p>
                 </div>
               ) : (
