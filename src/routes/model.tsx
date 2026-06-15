@@ -1,11 +1,104 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X } from "lucide-react";
+import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X, Users, FileText, Lightbulb, FolderKanban, Monitor, BookMarked, BarChart3, RefreshCw, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+
+type TexComponent = {
+  name: string;
+  desc: string;
+  timss: string;
+  pisa: string;
+  mkt: string;
+  indicators: string[];
+  tools: string[];
+  progress: number;
+};
+
+const texComponents: TexComponent[] = [
+  {
+    name: "Matematik bilim",
+    desc: "Matematik tushuncha, fakt, qonuniyat va protseduralarni tizimli o'zlashtirish jarayonini ta'minlovchi kognitiv asos. Texnologik blokda bu komponent interaktiv ma'ruza, vizualizatsiya va elektron resurslar orqali shakllantiriladi.",
+    timss: "Knowing — matematik faktlar, tushunchalar va protseduralarni bilish domeniga to'liq mos keladi.",
+    pisa: "Formulate bosqichining kognitiv tayanchi sifatida xizmat qiladi.",
+    mkt: "Subject Matter Knowledge (SMK) — Common Content Knowledge va Specialized Content Knowledge qatlamlari.",
+    indicators: [
+      "Matematik tushunchalarni to'g'ri ta'riflashi",
+      "Qoidalar va formulalardan xatosiz foydalanishi",
+      "Matematik terminologiyani izchil qo'llashi",
+    ],
+    tools: ["Diagnostik test (TIMSS Knowing)", "Interaktiv kvizlar (Mentorim)", "Konseptual xaritalar"],
+    progress: 78,
+  },
+  {
+    name: "Matematik tafakkur",
+    desc: "Tahlil, sintez, umumlashtirish, isbotlash va nostandart masalalarni yechishga qaratilgan intellektual faoliyat. Texnologik blokda muammoli ta'lim va keys-stadi metodlari orqali rivojlantiriladi.",
+    timss: "Reasoning — mantiqiy mulohaza, isbotlash va murakkab kontekstda fikrlash domeniga muvofiq.",
+    pisa: "Interpret — matematik natijalarni tahlil qilish va baholash bosqichi bilan bog'liq.",
+    mkt: "Specialized Content Knowledge (SMK) va Knowledge of Content and Students (PCK) integratsiyasi.",
+    indicators: [
+      "Mantiqiy zanjir va isbot qura olishi",
+      "Nostandart muammoga strategiya tanlashi",
+      "Matematik munosabatlar va qonuniyatlarni aniqlay olishi",
+    ],
+    tools: ["PISA Reasoning topshiriqlari", "Keys-stadi tahlili", "Refleksiv jurnal (E-Portfolio)"],
+    progress: 71,
+  },
+  {
+    name: "Matematik savodxonlik",
+    desc: "Real hayotiy kontekstdagi vaziyatlarni matematik tarjima qilish, modellashtirish va talqin etish qobiliyati. Mazkur komponent matematik modellashtirish jarayonini (Formulate → Employ → Interpret siklini) o'z tarkibida qamrab oladi.",
+    timss: "Applying — matematik bilimlarni yangi va amaliy vaziyatlarda qo'llash domeni.",
+    pisa: "Formulate · Employ · Interpret — matematik savodxonlikning to'liq jarayonli sikli, modellashtirish bosqichini ham qamrab oladi.",
+    mkt: "PCK — Knowledge of Content and Teaching: amaliy kontekstli topshiriqlarni o'qitishga moslashtirish.",
+    indicators: [
+      "Real vaziyatni matematik modelga aylantirishi (Formulate)",
+      "Modelni qo'llab natija olishi (Employ)",
+      "Natijani amaliy kontekstda talqin qilishi (Interpret)",
+      "Modellashtirish siklini to'liq amalga oshirishi",
+    ],
+    tools: ["PISA kontekstli topshiriqlar banki", "Loyiha metodi natijalari", "Mentorim — modellashtirish topshiriqlari"],
+    progress: 74,
+  },
+  {
+    name: "Matematik-metodik kompetentlik",
+    desc: "Matematik mazmunni pedagogik transformatsiya qilish, topshiriqlar loyihalash, o'quvchilar xatolarini tahlil qilish va metodik qaror qabul qilish qobiliyati. Texnologik blokning yakuniy integrativ natijasi.",
+    timss: "Knowing · Applying · Reasoning — uchta kognitiv domen integratsiyasi asosida metodik qarorlar.",
+    pisa: "Formulate · Employ · Interpret — to'liq sikl bo'yicha o'quvchilarning matematik savodxonligini rivojlantirish metodikasi.",
+    mkt: "Pedagogical Content Knowledge (PCK): Knowledge of Content and Students, Teaching va Curriculum — SMK → PCK transformatsiyasi.",
+    indicators: [
+      "TIMSS/PISA standartlariga mos topshiriq loyihalashi",
+      "O'quvchilar tipik xatolarini tahlil qila olishi",
+      "Differensial metodik strategiyani tanlay olishi",
+      "E-Portfolio orqali kasbiy refleksiyani amalga oshirishi",
+    ],
+    tools: ["Metodik loyiha himoyasi", "E-Portfolio ekspert bahosi", "Mentorim — kasbiy diagnostika"],
+    progress: 68,
+  },
+];
+
+const texSections: { icon: typeof Users; title: string; desc: string }[] = [
+  { icon: Users, title: "Interaktiv metodlar", desc: "Hamkorlikda o'qitish, dialogik muloqot, didaktik o'yinlar orqali talabaning faol o'rganish pozitsiyasini ta'minlash." },
+  { icon: FileText, title: "TIMSS/PISA topshiriqlari", desc: "Xalqaro baholash dasturlari standartlariga muvofiq tuzilgan kognitiv va kontekstli topshiriqlar banki." },
+  { icon: BookMarked, title: "Keys-stadi", desc: "Real pedagogik vaziyatlarni tahlil qilish orqali metodik qaror qabul qilish ko'nikmasini shakllantirish." },
+  { icon: Lightbulb, title: "Muammoli ta'lim", desc: "Talabani matematik muammo qo'yish, gipoteza ilgari surish va isbotlash bosqichlariga jalb etish." },
+  { icon: FolderKanban, title: "Loyiha metodi", desc: "Integrativ matematik-metodik loyihalar orqali modellashtirish va tadqiqotchilik faoliyatini rivojlantirish." },
+  { icon: Monitor, title: "Mentorim platformasi", desc: "Raqamli o'quv-metodik muhit: topshiriqlar, diagnostika, monitoring va mentor-talaba o'zaro aloqasi." },
+  { icon: BookOpen, title: "E-Portfolio", desc: "Talabaning matematik-metodik tayyorgarligi dinamikasini aks ettiruvchi elektron kasbiy portfolio." },
+];
+
+const flowSteps: { icon: typeof Activity; label: string }[] = [
+  { icon: BookOpen, label: "O'quv faoliyati" },
+  { icon: Monitor, label: "Mentorim platformasi" },
+  { icon: BookMarked, label: "E-Portfolio" },
+  { icon: Activity, label: "Diagnostika" },
+  { icon: BarChart3, label: "Feedback" },
+  { icon: RefreshCw, label: "Korreksiya" },
+  { icon: CheckCircle2, label: "Natija" },
+];
 
 type MathComponent = {
   name: string;
