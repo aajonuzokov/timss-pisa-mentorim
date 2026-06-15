@@ -395,6 +395,142 @@ function Page() {
                     TIMSS/PISA va MKT asosidagi matematik tayyorgarlik modeli
                   </p>
                 </div>
+              ) : active.title === "Jarayonli (texnologik) blok" ? (
+                <div className="mt-2 space-y-6">
+                  <div>
+                    <h4 className="font-bold text-base mb-1">Texnologik blokning matematik tayyorgarlik komponentlari</h4>
+                    <p className="text-xs text-muted-foreground mb-3">TIMSS + PISA + MKT integratsiyasi asosida (Matematik modellashtirish — Matematik savodxonlik tarkibida).</p>
+                    <Accordion type="single" collapsible className="w-full">
+                      {texComponents.map((c, idx) => (
+                        <AccordionItem key={idx} value={`tex-${idx}`}>
+                          <AccordionTrigger className="text-left font-bold">
+                            <div className="flex-1 pr-3">
+                              <div>{idx + 1}. {c.name}</div>
+                              <div className="mt-2 flex items-center gap-2">
+                                <Progress value={c.progress} className="h-1.5 flex-1" />
+                                <span className="text-xs font-medium text-muted-foreground tabular-nums">{c.progress}%</span>
+                              </div>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="text-sm leading-relaxed text-foreground/85 space-y-4">
+                            <div>
+                              <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Ilmiy tavsif</div>
+                              <p>{c.desc}</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-3">
+                              <div className="rounded-lg border bg-primary/5 p-3">
+                                <Badge className="mb-2">TIMSS</Badge>
+                                <p className="text-sm">{c.timss}</p>
+                              </div>
+                              <div className="rounded-lg border bg-secondary/40 p-3">
+                                <Badge variant="secondary" className="mb-2">PISA</Badge>
+                                <p className="text-sm">{c.pisa}</p>
+                              </div>
+                            </div>
+                            <div className="rounded-lg border border-dashed p-3">
+                              <Badge variant="outline" className="mb-2">MKT (SMK → PCK)</Badge>
+                              <p className="text-sm">{c.mkt}</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-4">
+                              <div>
+                                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">Indikatorlar</div>
+                                <ul className="list-disc pl-5 space-y-1">
+                                  {c.indicators.map((it, i) => <li key={i}>{it}</li>)}
+                                </ul>
+                              </div>
+                              <div>
+                                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">Baholash vositalari</div>
+                                <ul className="list-disc pl-5 space-y-1">
+                                  {c.tools.map((it, i) => <li key={i}>{it}</li>)}
+                                </ul>
+                              </div>
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-base mb-3">Texnologik blok tarkibiy bo'limlari</h4>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {texSections.map((s, i) => {
+                        const Icon = s.icon;
+                        return (
+                          <div key={i} className="rounded-xl border p-3 bg-card hover:border-primary/50 transition">
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground">
+                                <Icon className="w-4 h-4" />
+                              </div>
+                              <div className="font-semibold text-sm">{s.title}</div>
+                            </div>
+                            <p className="text-xs text-foreground/75 leading-relaxed">{s.desc}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-secondary/30 p-4">
+                    <div className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">TIMSS · PISA · MKT integratsiyasi</div>
+                    <div className="grid sm:grid-cols-3 gap-3 text-xs">
+                      <div className="rounded-lg bg-background/60 border p-2">
+                        <div className="font-semibold mb-1">TIMSS kompetensiyalari</div>
+                        <div className="flex flex-wrap gap-1"><Badge variant="outline">Knowing</Badge><Badge variant="outline">Applying</Badge><Badge variant="outline">Reasoning</Badge></div>
+                      </div>
+                      <div className="rounded-lg bg-background/60 border p-2">
+                        <div className="font-semibold mb-1">PISA jarayonlari</div>
+                        <div className="flex flex-wrap gap-1"><Badge variant="outline">Formulate</Badge><Badge variant="outline">Employ</Badge><Badge variant="outline">Interpret</Badge></div>
+                      </div>
+                      <div className="rounded-lg bg-background/60 border p-2">
+                        <div className="font-semibold mb-1">MKT tarkiblari</div>
+                        <div className="flex flex-wrap gap-1"><Badge variant="outline">SMK</Badge><Badge variant="outline">PCK</Badge></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-base mb-1">Texnologik → Diagnostik-monitoring oqimi</h4>
+                    <p className="text-xs text-muted-foreground mb-3">Jarayonli blokdan diagnostik-monitoring blokiga o'tuvchi metodik sikl.</p>
+                    <div className="rounded-xl border bg-card p-4">
+                      <div className="flex flex-col items-center gap-1.5">
+                        {flowSteps.map((st, i) => {
+                          const Icon = st.icon;
+                          return (
+                            <div key={i} className="w-full flex flex-col items-center">
+                              <div className="w-full max-w-xs rounded-lg border bg-background px-3 py-2 flex items-center gap-2 shadow-sm">
+                                <div className="w-7 h-7 rounded-md bg-gradient-hero flex items-center justify-center text-primary-foreground">
+                                  <Icon className="w-3.5 h-3.5" />
+                                </div>
+                                <span className="text-sm font-medium">{st.label}</span>
+                              </div>
+                              {i < flowSteps.length - 1 && <ArrowDown className="w-4 h-4 text-primary my-0.5" />}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-base mb-3">Statistik monitoring paneli</h4>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {texComponents.map((c, i) => (
+                        <div key={i} className="rounded-lg border p-3 bg-card">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-semibold">{c.name}</span>
+                            <span className="text-xs tabular-nums text-muted-foreground">{c.progress}%</span>
+                          </div>
+                          <Progress value={c.progress} className="h-2" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-center italic text-muted-foreground border-t pt-4">
+                    Jarayonli (texnologik) blok — TIMSS, PISA va MKT integratsiyasi asosida ishlab chiqilgan PhD dissertatsiya modelining tarkibiy qismi
+                  </p>
+                </div>
               ) : (
               <div className="mt-2">
                 <h4 className="font-semibold mb-3 text-base">
