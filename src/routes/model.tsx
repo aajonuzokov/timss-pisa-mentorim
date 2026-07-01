@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import React, { useState } from "react";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X, Users, FileText, Lightbulb, FolderKanban, Monitor, BookMarked, BarChart3, RefreshCw, CheckCircle2, MessageSquare, TrendingUp, FileDown, GraduationCap, UserCheck, Sparkles } from "lucide-react";
+import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X, Users, FileText, Lightbulb, FolderKanban, Monitor, BookMarked, BarChart3, RefreshCw, CheckCircle2, MessageSquare, TrendingUp, FileDown, GraduationCap, UserCheck, Sparkles, Brain, Layers, Compass, Repeat, Trophy, CalendarClock, Wand2, ArrowRight, ClipboardList, Gauge, Radar as RadarIcon, Rocket, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, BarChart, Bar } from "recharts";
 
 type TexComponent = {
   name: string;
@@ -384,7 +384,7 @@ function Page() {
       </section>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className={`${active?.title === "Diagnostik-monitoring blok" ? "max-w-6xl" : "max-w-2xl"} max-h-[90vh] overflow-y-auto`}>
           {active && (
             <>
               <DialogHeader>
@@ -686,252 +686,406 @@ function Page() {
   );
 }
 
+// ============================================================
+// Diagnostic-Monitoring Academic Learning Analytics Dashboard
+// ============================================================
+
+type ReadinessComp = {
+  key: string;
+  name: string;
+  icon: typeof Brain;
+  score: number;
+  indicators: number;
+  assessments: number;
+  criteria: string[];
+  indicatorList: string[];
+  tools: string[];
+  recommendation: string;
+};
+
+const readinessComponents: ReadinessComp[] = [
+  { key: "knowledge", name: "Matematik bilim", icon: BookOpen, score: 82, indicators: 12, assessments: 8,
+    criteria: ["Tushunchalarni bilish", "Faktlar va qoidalar", "Protseduralar", "Terminologiya"],
+    indicatorList: ["Ta'riflarni to'g'ri ifodalash", "Formulalar tanlovi", "Hisoblash aniqligi"],
+    tools: ["TIMSS Knowing test", "Interaktiv kvizlar", "Konseptual xaritalar"],
+    recommendation: "Bilim darajasi yuqori — chuqurlashtirilgan modullarni tavsiya etamiz." },
+  { key: "thinking", name: "Matematik tafakkur", icon: Brain, score: 71, indicators: 10, assessments: 6,
+    criteria: ["Mantiqiy mulohaza", "Tahlil va sintez", "Isbotlash"],
+    indicatorList: ["Zanjirli xulosa", "Nostandart yechim", "Umumlashtirish"],
+    tools: ["TIMSS Reasoning", "Keys-stadi", "Refleksiv jurnal"],
+    recommendation: "Reasoning kompetensiyasini TIMSS Level-3 topshiriqlari orqali mustahkamlash." },
+  { key: "literacy", name: "Matematik savodxonlik", icon: Compass, score: 74, indicators: 11, assessments: 7,
+    criteria: ["Formulate", "Employ", "Interpret"],
+    indicatorList: ["Real vaziyatni modelga aylantirish", "Yechim olish", "Talqin qilish"],
+    tools: ["PISA kontekstli banklar", "Loyiha metodi", "Mentorim topshiriqlari"],
+    recommendation: "Interpret bosqichi bo'yicha refleksiv topshiriqlar sonini oshirish." },
+  { key: "modeling", name: "Matematik modellashtirish", icon: Layers, score: 69, indicators: 9, assessments: 5,
+    criteria: ["Model tuzish", "Yechim jarayoni", "Amaliyotga tatbiq"],
+    indicatorList: ["Modelni loyihalash", "Parametrlarni aniqlash", "Natijani validatsiyalash"],
+    tools: ["PISA Formulate", "Loyiha ishlari", "Simulyatsiya modullari"],
+    recommendation: "Formulate bosqichi bo'yicha qo'shimcha kontekstli treninglar." },
+  { key: "mmk", name: "Matematik-metodik kompetentlik", icon: GraduationCap, score: 68, indicators: 13, assessments: 6,
+    criteria: ["Topshiriq loyihalash", "Xatolar tahlili", "Metodik qaror", "Refleksiya"],
+    indicatorList: ["TIMSS/PISA loyihalash", "Differensial metodika", "Kasbiy refleksiya"],
+    tools: ["Metodik loyiha himoyasi", "E-Portfolio", "Mentorim diagnostika"],
+    recommendation: "SMK → PCK transformatsiyasi bo'yicha modullarni kengaytirish." },
+  { key: "reflective", name: "Refleksiv kompetentlik", icon: RefreshCw, score: 65, indicators: 8, assessments: 5,
+    criteria: ["Metakognitsiya", "Kasbiy o'z-o'zini baholash", "Rivojlanish rejasi"],
+    indicatorList: ["Faoliyat tahlili", "Xatolar ustida ishlash", "Rivojlanish trayektoriyasi"],
+    tools: ["E-Portfolio yozuvlari", "Refleksiv esse", "Mentor sessiyalari"],
+    recommendation: "Oylik refleksiv sessiyalarni majburiy formatga o'tkazish." },
+];
+
+const levelOf = (score: number) =>
+  score >= 71
+    ? { label: "Yuqori", color: "text-emerald-700", bg: "bg-emerald-50", ring: "ring-emerald-200", dot: "bg-emerald-500" }
+    : score >= 56
+    ? { label: "O'rta", color: "text-amber-700", bg: "bg-amber-50", ring: "ring-amber-200", dot: "bg-amber-500" }
+    : { label: "Past", color: "text-rose-700", bg: "bg-rose-50", ring: "ring-rose-200", dot: "bg-rose-500" };
+
+const summaryCards: { icon: typeof Target; title: string; text: string; tone: string }[] = [
+  { icon: Target, title: "Maqsad", text: "Matematik tayyorgarlikning bosqichma-bosqich diagnostikasi va monitoringi.", tone: "from-blue-500/10 to-blue-500/0 border-blue-200" },
+  { icon: ClipboardList, title: "Baholash obyektlari", text: "6 ta matematik tayyorgarlik komponenti, 63 indikator, 37 baholash.", tone: "from-indigo-500/10 to-indigo-500/0 border-indigo-200" },
+  { icon: Gauge, title: "Monitoring strategiyasi", text: "Kirish → Oraliq → Yakuniy formativ va summativ baholash sikli.", tone: "from-violet-500/10 to-violet-500/0 border-violet-200" },
+  { icon: Trophy, title: "Kutilayotgan natija", text: "TIMSS · PISA · MKT standartlariga muvofiq metodik kompetentlik.", tone: "from-fuchsia-500/10 to-fuchsia-500/0 border-fuchsia-200" },
+];
+
+const digitalEnv: { icon: typeof Monitor; title: string; status: string; state: "active" | "sync" | "ready" }[] = [
+  { icon: FolderKanban, title: "E-Portfolio", status: "82% to'ldirilgan", state: "active" },
+  { icon: MessageSquare, title: "Feedback tizimi", status: "12 ta yangi izoh", state: "sync" },
+  { icon: BookMarked, title: "Baholash tarixi", status: "37 ta yozuv", state: "ready" },
+  { icon: BarChart3, title: "Learning Analytics", status: "Real-time", state: "active" },
+  { icon: Monitor, title: "Mentorim Dashboard", status: "Ulangan", state: "active" },
+];
+
+const stateStyle = {
+  active: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
+  sync: "bg-amber-500/10 text-amber-700 border-amber-200",
+  ready: "bg-blue-500/10 text-blue-700 border-blue-200",
+};
+
+const timelineStages: { key: "initial" | "mid" | "final"; label: string; date: string; icon: typeof CalendarClock; status: string; score: number }[] = [
+  { key: "initial", label: "Kirish diagnostikasi", date: "Sentabr", icon: Rocket, status: "Yakunlangan", score: 55 },
+  { key: "mid", label: "Oraliq monitoring", date: "Dekabr", icon: Activity, status: "Yakunlangan", score: 65 },
+  { key: "final", label: "Yakuniy nazorat", date: "May", icon: ShieldCheck, status: "Jarayonda", score: 73 },
+];
+
+const timelineChartData = [
+  { stage: "Kirish", score: 55 },
+  { stage: "1-oraliq", score: 60 },
+  { stage: "Oraliq", score: 65 },
+  { stage: "2-oraliq", score: 69 },
+  { stage: "Yakuniy", score: 73 },
+];
+
+const timssPisaBarData = [
+  { name: "Knowing / Formulate", TIMSS: 82, PISA: 74 },
+  { name: "Applying / Employ", TIMSS: 74, PISA: 71 },
+  { name: "Reasoning / Interpret", TIMSS: 71, PISA: 68 },
+];
+
+const competencyFlow: { title: string; items: string[]; icon: typeof Award; accent: string }[] = [
+  { title: "TIMSS", items: ["Knowing", "Applying", "Reasoning"], icon: BookOpen, accent: "from-blue-600 to-blue-500" },
+  { title: "PISA", items: ["Formulate", "Employ", "Interpret"], icon: Compass, accent: "from-indigo-600 to-indigo-500" },
+  { title: "MKT", items: ["SMK", "PCK"], icon: Brain, accent: "from-violet-600 to-violet-500" },
+  { title: "Matematik tayyorgarlik", items: ["6 komponent", "Integrativ natija"], icon: Award, accent: "from-fuchsia-600 to-purple-600" },
+];
+
 function DiagnosticView() {
   const [reportOpen, setReportOpen] = useState(false);
+  const avg = Math.round(readinessComponents.reduce((s, c) => s + c.score, 0) / readinessComponents.length);
+  const totalIndicators = readinessComponents.reduce((s, c) => s + c.indicators, 0);
+  const totalAssessments = readinessComponents.reduce((s, c) => s + c.assessments, 0);
+  const radarData = readinessComponents.map((c) => ({ subject: c.name.replace("Matematik ", "M. "), score: c.score, full: 100 }));
 
-  const downloadSvg = () => {
-    const svg = document.getElementById("diag-chart-svg");
-    if (!svg) return;
-    const serializer = new XMLSerializer();
-    const src = serializer.serializeToString(svg);
-    const blob = new Blob([src], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "diagnostik-monitoring.svg";
-    a.click();
-    URL.revokeObjectURL(url);
-  };
+  const aiRecs = readinessComponents
+    .slice()
+    .sort((a, b) => a.score - b.score)
+    .slice(0, 3)
+    .map((c) => ({ name: c.name, text: c.recommendation, score: c.score }));
 
   return (
-    <div className="mt-2 space-y-6">
-      <p className="text-sm text-foreground/80 leading-relaxed border-l-4 border-primary/40 pl-3 italic">
-        Mazkur blok matematik tayyorgarlikning matematik bilim, matematik tafakkur, matematik savodxonlik va
-        matematik-metodik kompetentlik komponentlarini baholash, monitoring qilish hamda rivojlanish
-        dinamikasini kuzatishga xizmat qiladi.
-      </p>
-
-      {/* 1. Baholash mezonlari */}
-      <section>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">1</div>
-          <h4 className="font-bold text-base">Baholash mezonlari</h4>
+    <div className="mt-2 space-y-8 text-slate-800">
+      {/* Header stat strip */}
+      <div className="rounded-2xl border border-indigo-100 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 p-5">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 grid place-items-center text-white shadow-md">
+              <Gauge className="w-6 h-6" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-xs font-semibold uppercase tracking-widest text-indigo-700">Academic Learning Analytics</div>
+              <div className="text-lg font-bold truncate">Diagnostik-monitoring dashboard</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-3 text-center">
+            <StatCell label="Umumiy ball" value={`${avg}%`} tone="text-blue-700" />
+            <StatCell label="Indikatorlar" value={totalIndicators} tone="text-indigo-700" />
+            <StatCell label="Baholashlar" value={totalAssessments} tone="text-violet-700" />
+          </div>
         </div>
-        <div className="grid sm:grid-cols-2 gap-3 mb-3">
-          {diagComponents.map((c, i) => (
-            <div key={i} className="rounded-xl border p-3 bg-card hover:border-primary/50 hover:shadow-md transition">
-              <div className="flex items-center justify-between mb-2">
-                <div className="font-semibold text-sm">{c.name}</div>
-                <Badge variant="outline" className="tabular-nums">{c.score}%</Badge>
+      </div>
+
+      {/* Section 1: Academic Summary */}
+      <Section n={1} title="Akademik xulosa" icon={ClipboardList}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {summaryCards.map((s, i) => (
+            <div key={i} className={`rounded-2xl border bg-gradient-to-br ${s.tone} p-4 shadow-sm hover:shadow-md transition`}>
+              <div className="w-9 h-9 rounded-lg bg-white/80 grid place-items-center text-indigo-700 shadow-sm mb-3">
+                <s.icon className="w-4.5 h-4.5" />
               </div>
-              <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground mb-2">
-                <div>Mezonlar: <span className="font-semibold text-foreground">{c.criteria}</span></div>
-                <div>Indikatorlar: <span className="font-semibold text-foreground">{c.indicators}</span></div>
-              </div>
-              <Progress value={c.score} className="h-1.5" />
+              <div className="font-semibold text-sm mb-1">{s.title}</div>
+              <p className="text-xs text-slate-600 leading-relaxed">{s.text}</p>
             </div>
           ))}
         </div>
-        <Accordion type="single" collapsible className="w-full">
-          {diagComponents.map((c, i) => (
-            <AccordionItem key={i} value={`diag-${i}`}>
-              <AccordionTrigger className="text-left font-semibold text-sm">
-                {c.name} — batafsil
-              </AccordionTrigger>
-              <AccordionContent className="text-sm space-y-3">
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Mezonlar</div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {c.criteriaList.map((x, j) => <Badge key={j} variant="secondary">{x}</Badge>)}
+      </Section>
+
+      {/* Section 2: Readiness Dashboard */}
+      <Section n={2} title="Matematik tayyorgarlik dashboard" icon={Gauge}>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {readinessComponents.map((c) => {
+            const lv = levelOf(c.score);
+            const Icon = c.icon;
+            return (
+              <div key={c.key} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-lg hover:border-indigo-200 transition">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-100 to-violet-100 grid place-items-center text-indigo-700">
+                    <Icon className="w-4.5 h-4.5" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold truncate">{c.name}</div>
+                    <div className={`text-[11px] font-medium ${lv.color}`}>{lv.label} daraja</div>
+                  </div>
+                  <div className="text-lg font-bold tabular-nums text-slate-900">{c.score}%</div>
+                </div>
+                <Progress value={c.score} className="h-2 mb-3" />
+                <div className="grid grid-cols-2 gap-2 text-[11px]">
+                  <div className="rounded-md bg-slate-50 border border-slate-100 px-2 py-1.5">
+                    <div className="text-slate-500">Indikatorlar</div>
+                    <div className="font-semibold text-slate-800">{c.indicators}</div>
+                  </div>
+                  <div className="rounded-md bg-slate-50 border border-slate-100 px-2 py-1.5">
+                    <div className="text-slate-500">Baholashlar</div>
+                    <div className="font-semibold text-slate-800">{c.assessments}</div>
                   </div>
                 </div>
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Indikatorlar</div>
-                  <ul className="list-disc pl-5 space-y-0.5 text-foreground/85">
-                    {c.indicatorsList.map((x, j) => <li key={j}>{x}</li>)}
-                  </ul>
-                </div>
-                <div className="rounded-lg border bg-primary/5 p-3">
-                  <div className="text-xs font-semibold uppercase tracking-wide text-primary mb-1">Baholash natijalari</div>
-                  <p className="text-foreground/85">{c.results}</p>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </section>
-
-      {/* 2. Rivojlanish darajalari */}
-      <section>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">2</div>
-          <h4 className="font-bold text-base">Rivojlanish darajalari</h4>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-3">
-          {diagLevels.map((l, i) => {
-            const active = l.name === currentLevel.name;
-            return (
-              <div key={i} className={`rounded-xl border p-3 transition ${l.color} ${active ? "ring-2 ring-offset-2 ring-primary shadow-md scale-[1.02]" : "opacity-70 hover:opacity-100"}`}>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className={`w-2.5 h-2.5 rounded-full ${l.dot}`} />
-                  <span className="font-semibold text-sm">{l.name}</span>
-                </div>
-                <div className="text-xs tabular-nums">{l.range}</div>
-                {active && <div className="mt-2 text-xs font-semibold">← Joriy natija: {avgScore}%</div>}
               </div>
             );
           })}
         </div>
-      </section>
+      </Section>
 
-      {/* 3. E-Portfolio */}
-      <section>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">3</div>
-          <h4 className="font-bold text-base">E-Portfolio</h4>
-        </div>
-        <div className="rounded-xl border p-4 bg-gradient-to-br from-primary/5 to-secondary/30">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <FolderKanban className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold">Talaba elektron portfoliosi</span>
-            </div>
-            <Badge className="tabular-nums">
-              {Math.round(portfolioItems.reduce((s, p) => s + p.value, 0) / portfolioItems.length)}%
-            </Badge>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {portfolioItems.map((p, i) => (
-              <div key={i} className="rounded-lg bg-background/70 border p-2.5">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-medium">{p.label}</span>
-                  <span className="text-xs tabular-nums text-muted-foreground">{p.value}%</span>
-                </div>
-                <Progress value={p.value} className="h-1.5" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Feedback mexanizmi */}
-      <section>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">4</div>
-          <h4 className="font-bold text-base">Feedback mexanizmi</h4>
-        </div>
-        <div className="grid sm:grid-cols-3 gap-2 mb-3">
-          {[
-            ["O'qituvchi", "Talaba"],
-            ["Talaba", "O'qituvchi"],
-            ["Mentor", "Talaba"],
-          ].map(([a, b], i) => (
-            <div key={i} className="rounded-lg border p-2.5 bg-card text-center text-xs font-medium">
-              <span>{a}</span> <span className="text-primary">→</span> <span>{b}</span>
-            </div>
-          ))}
-        </div>
-        <div className="rounded-xl border bg-card p-4">
-          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Feedback tarixi</div>
-          <ol className="relative border-l-2 border-primary/30 ml-2 space-y-4">
-            {feedbackTimeline.map((f, i) => {
+      {/* Section 3: Competency Framework */}
+      <Section n={3} title="Kompetentlik freymvorki" icon={Layers}>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-stretch">
+            {competencyFlow.map((f, i) => {
               const Icon = f.icon;
               return (
-                <li key={i} className="ml-4">
-                  <span className="absolute -left-[11px] w-5 h-5 rounded-full bg-gradient-hero flex items-center justify-center text-primary-foreground">
-                    <Icon className="w-3 h-3" />
-                  </span>
-                  <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <Badge variant="outline" className="text-[10px]">{f.date}</Badge>
-                    <span className="text-xs font-semibold">{f.from} <span className="text-primary">→</span> {f.to}</span>
+                <div key={f.title} className="contents">
+                  <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-3">
+                    <div className={`inline-flex items-center gap-2 rounded-lg px-2.5 py-1 text-white text-xs font-semibold bg-gradient-to-r ${f.accent} shadow-sm mb-2`}>
+                      <Icon className="w-3.5 h-3.5" /> {f.title}
+                    </div>
+                    <ul className="space-y-1">
+                      {f.items.map((it) => (
+                        <li key={it} className="text-xs text-slate-700 flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" /> {it}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-sm text-foreground/85">{f.text}</p>
-                </li>
+                  {i < competencyFlow.length - 1 && (
+                    <div className="hidden lg:flex items-center justify-center text-indigo-400">
+                      <ArrowRight className="w-5 h-5" />
+                    </div>
+                  )}
+                </div>
               );
             })}
-          </ol>
+          </div>
+          <div className="mt-4 flex items-center gap-2 justify-center text-[11px] text-slate-500">
+            <Sparkles className="w-3.5 h-3.5 text-violet-500" />
+            TIMSS · PISA · MKT integratsiyasi asosidagi matematik tayyorgarlik modeli
+          </div>
         </div>
-      </section>
+      </Section>
 
-      {/* 5. Statistik monitoring */}
-      <section>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">5</div>
-          <h4 className="font-bold text-base">Statistik monitoring — o'sish dinamikasi</h4>
-        </div>
-        <div className="rounded-xl border bg-card p-4">
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={monitoringData} margin={{ top: 5, right: 10, left: -15, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
-                <XAxis dataKey="stage" fontSize={11} />
-                <YAxis fontSize={11} domain={[0, 100]} />
+      {/* Section 4: Learning Analytics */}
+      <Section n={4} title="Learning Analytics" icon={BarChart3}>
+        <div className="grid lg:grid-cols-2 gap-3">
+          <ChartCard title="Komponentlar radar" icon={RadarIcon}>
+            <ResponsiveContainer width="100%" height={260}>
+              <RadarChart data={radarData} outerRadius="75%">
+                <PolarGrid stroke="#e2e8f0" />
+                <PolarAngleAxis dataKey="subject" tick={{ fontSize: 10, fill: "#475569" }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fontSize: 9, fill: "#94a3b8" }} />
+                <Radar name="Natija" dataKey="score" stroke="#6366f1" fill="#818cf8" fillOpacity={0.45} />
+                <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+              </RadarChart>
+            </ResponsiveContainer>
+          </ChartCard>
+
+          <ChartCard title="TIMSS vs PISA natijalari" icon={BarChart3}>
+            <ResponsiveContainer width="100%" height={260}>
+              <BarChart data={timssPisaBarData} margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#475569" }} />
+                <YAxis tick={{ fontSize: 10, fill: "#94a3b8" }} domain={[0, 100]} />
                 <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
-                <Line type="monotone" dataKey="bilim" name="Bilim" stroke="#3b82f6" strokeWidth={2} />
-                <Line type="monotone" dataKey="tafakkur" name="Tafakkur" stroke="#8b5cf6" strokeWidth={2} />
-                <Line type="monotone" dataKey="savodxonlik" name="Savodxonlik" stroke="#06b6d4" strokeWidth={2} />
-                <Line type="monotone" dataKey="metodik" name="Metodik kompetentlik" stroke="#ec4899" strokeWidth={2} />
+                <Bar dataKey="TIMSS" fill="#3b82f6" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="PISA" fill="#8b5cf6" radius={[6, 6, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </ChartCard>
+
+          <ChartCard title="Vaqt bo'yicha o'sish dinamikasi" icon={TrendingUp} className="lg:col-span-2">
+            <ResponsiveContainer width="100%" height={220}>
+              <LineChart data={timelineChartData} margin={{ top: 8, right: 16, left: -18, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#8b5cf6" />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="stage" tick={{ fontSize: 11, fill: "#475569" }} />
+                <YAxis tick={{ fontSize: 10, fill: "#94a3b8" }} domain={[0, 100]} />
+                <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+                <Line type="monotone" dataKey="score" stroke="url(#lineGrad)" strokeWidth={3} dot={{ r: 4, fill: "#6366f1" }} />
               </LineChart>
             </ResponsiveContainer>
+          </ChartCard>
+        </div>
+      </Section>
+
+      {/* Section 5: Diagnostic Indicators */}
+      <Section n={5} title="Diagnostik indikatorlar" icon={ClipboardList}>
+        <div className="rounded-2xl border border-slate-200 bg-white p-2">
+          <Accordion type="single" collapsible className="w-full">
+            {readinessComponents.map((c, i) => {
+              const lv = levelOf(c.score);
+              const Icon = c.icon;
+              return (
+                <AccordionItem key={c.key} value={`ri-${i}`} className="border-b last:border-b-0">
+                  <AccordionTrigger className="px-3 hover:no-underline">
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-100 to-violet-100 grid place-items-center text-indigo-700 shrink-0">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <span className="font-semibold text-sm truncate">{c.name}</span>
+                      <Badge variant="outline" className={`ml-auto mr-3 ${lv.color} border-current/30`}>{lv.label} · {c.score}%</Badge>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-3">
+                    <div className="grid md:grid-cols-2 gap-3">
+                      <IndicatorBlock title="Baholash mezonlari" items={c.criteria} tone="bg-blue-50 border-blue-100 text-blue-700" />
+                      <IndicatorBlock title="Indikatorlar" items={c.indicatorList} tone="bg-indigo-50 border-indigo-100 text-indigo-700" />
+                      <IndicatorBlock title="Baholash vositalari" items={c.tools} tone="bg-violet-50 border-violet-100 text-violet-700" />
+                      <div className="rounded-lg border border-fuchsia-100 bg-fuchsia-50 p-3">
+                        <div className="text-[11px] font-semibold uppercase tracking-wide text-fuchsia-700 mb-1.5 flex items-center gap-1.5">
+                          <Wand2 className="w-3.5 h-3.5" /> Tavsiya
+                        </div>
+                        <p className="text-xs text-slate-700 leading-relaxed">{c.recommendation}</p>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
+        </div>
+      </Section>
+
+      {/* Section 6: Monitoring Timeline */}
+      <Section n={6} title="Monitoring vaqt jadvali" icon={CalendarClock}>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5">
+          <div className="relative">
+            <div className="absolute left-0 right-0 top-6 h-0.5 bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-500 rounded-full" />
+            <div className="grid grid-cols-3 gap-4 relative">
+              {timelineStages.map((s) => {
+                const Icon = s.icon;
+                const done = s.status === "Yakunlangan";
+                return (
+                  <div key={s.key} className="text-center">
+                    <div className={`w-12 h-12 mx-auto rounded-full grid place-items-center shadow-md ring-4 ring-white ${done ? "bg-gradient-to-br from-blue-600 to-indigo-600 text-white" : "bg-white border-2 border-violet-400 text-violet-600"}`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div className="mt-3 text-sm font-semibold">{s.label}</div>
+                    <div className="text-[11px] text-slate-500">{s.date}</div>
+                    <Badge variant="outline" className={`mt-2 ${done ? "text-emerald-700 border-emerald-200 bg-emerald-50" : "text-amber-700 border-amber-200 bg-amber-50"}`}>
+                      {s.status} · {s.score}%
+                    </Badge>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 mt-3 text-center text-xs">
-            {monitoringData.map((s, i) => (
-              <div key={i} className="rounded-lg border bg-background/60 p-2">
-                <div className="font-semibold">{s.stage} diagnostika</div>
-                <div className="text-muted-foreground tabular-nums">
-                  o'rtacha {Math.round((s.bilim + s.tafakkur + s.savodxonlik + s.metodik) / 4)}%
+        </div>
+      </Section>
+
+      {/* Section 7: Digital Environment */}
+      <Section n={7} title="Raqamli muhit" icon={Monitor}>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          {digitalEnv.map((d, i) => {
+            const Icon = d.icon;
+            return (
+              <div key={i} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-100 to-violet-100 grid place-items-center text-indigo-700">
+                    <Icon className="w-4.5 h-4.5" />
+                  </div>
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium ${stateStyle[d.state]}`}>
+                    {d.state === "active" ? "● Faol" : d.state === "sync" ? "◐ Sync" : "○ Tayyor"}
+                  </span>
                 </div>
+                <div className="text-sm font-semibold mb-0.5">{d.title}</div>
+                <div className="text-[11px] text-slate-500">{d.status}</div>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* Section 8: AI Recommendations */}
+      <Section n={8} title="AI tavsiyalari" icon={Wand2}>
+        <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 p-5">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 grid place-items-center text-white shadow-md">
+              <Zap className="w-4.5 h-4.5" />
+            </div>
+            <div>
+              <div className="text-sm font-semibold">Avtomatik shakllantirilgan tavsiyalar</div>
+              <div className="text-[11px] text-slate-500">Baholash natijalari asosida — eng past 3 komponent</div>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-3">
+            {aiRecs.map((r, i) => (
+              <div key={i} className="rounded-xl bg-white border border-violet-100 p-4 shadow-sm">
+                <div className="flex items-center justify-between mb-2">
+                  <Badge className="bg-gradient-to-r from-violet-600 to-indigo-600">Tavsiya {i + 1}</Badge>
+                  <span className="text-xs font-bold text-slate-800 tabular-nums">{r.score}%</span>
+                </div>
+                <div className="text-sm font-semibold mb-1.5">{r.name}</div>
+                <p className="text-xs text-slate-600 leading-relaxed">{r.text}</p>
               </div>
             ))}
           </div>
-          <div className="mt-3 flex justify-end">
-            <Button variant="outline" size="sm" onClick={downloadSvg}>
-              <FileDown className="w-3.5 h-3.5 mr-1.5" /> SVG eksport
+          <div className="mt-4 flex justify-end">
+            <Button onClick={() => setReportOpen(true)} className="bg-gradient-to-r from-blue-600 to-violet-600 hover:opacity-90">
+              <FileText className="w-4 h-4 mr-2" /> Analitik hisobot
             </Button>
           </div>
-          <div id="diag-chart-svg-wrap" className="hidden">
-            <svg id="diag-chart-svg" xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
-              <rect width="600" height="300" fill="white"/>
-              <text x="20" y="30" fontFamily="Manrope" fontSize="14" fontWeight="700">Diagnostik-monitoring dinamikasi</text>
-              {monitoringData.map((s, i) => (
-                <text key={i} x={100 + i * 180} y="280" fontSize="12" textAnchor="middle">{s.stage}</text>
-              ))}
-              {(["bilim","tafakkur","savodxonlik","metodik"] as const).map((k, ki) => {
-                const colors = ["#3b82f6","#8b5cf6","#06b6d4","#ec4899"];
-                const pts = monitoringData.map((s, i) => `${100 + i * 180},${260 - s[k] * 2}`).join(" ");
-                return <polyline key={k} fill="none" stroke={colors[ki]} strokeWidth="2" points={pts} />;
-              })}
-            </svg>
-          </div>
         </div>
-      </section>
+      </Section>
 
-      {/* 6. Analitik hisobot */}
-      <section>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">6</div>
-          <h4 className="font-bold text-base">Analitik hisobot</h4>
-        </div>
-        <div className="rounded-xl border p-4 bg-card flex items-center justify-between flex-wrap gap-3">
-          <div className="text-sm text-foreground/80">
-            Talaba matematik tayyorgarligining barcha komponentlari, darajalari va rivojlanish
-            dinamikasini o'z ichiga oluvchi to'liq analitik hisobotni yarating.
-          </div>
-          <Button onClick={() => setReportOpen(true)}>
-            <FileText className="w-4 h-4 mr-2" /> Hisobot yaratish
-          </Button>
-        </div>
-      </section>
-
-      <p className="text-xs text-center italic text-muted-foreground border-t pt-4">
-        Diagnostik-monitoring blok — PhD dissertatsiya doirasida ishlab chiqilgan matematik
-        tayyorgarlikni baholash va kuzatish tizimi (TIMSS · PISA · MKT integratsiyasi)
+      <p className="text-[11px] text-center italic text-slate-500 border-t pt-4">
+        Diagnostik-monitoring dashboard — PhD dissertatsiya doirasidagi TIMSS · PISA · MKT integratsiyasi
       </p>
 
+      {/* Report modal (unchanged) */}
       <Dialog open={reportOpen} onOpenChange={setReportOpen}>
         <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
@@ -952,65 +1106,35 @@ function DiagnosticView() {
                 <thead>
                   <tr className="bg-gray-100">
                     <th className="border p-2 text-left">Komponent</th>
-                    <th className="border p-2">Mezonlar</th>
                     <th className="border p-2">Indikatorlar</th>
+                    <th className="border p-2">Baholashlar</th>
                     <th className="border p-2">Natija (%)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {diagComponents.map((c, i) => (
-                    <tr key={i}>
+                  {readinessComponents.map((c) => (
+                    <tr key={c.key}>
                       <td className="border p-2">{c.name}</td>
-                      <td className="border p-2 text-center">{c.criteria}</td>
                       <td className="border p-2 text-center">{c.indicators}</td>
+                      <td className="border p-2 text-center">{c.assessments}</td>
                       <td className="border p-2 text-center font-semibold">{c.score}%</td>
                     </tr>
                   ))}
                   <tr className="bg-gray-50 font-semibold">
                     <td className="border p-2">O'rtacha</td>
-                    <td className="border p-2 text-center">—</td>
-                    <td className="border p-2 text-center">—</td>
-                    <td className="border p-2 text-center">{avgScore}%</td>
+                    <td className="border p-2 text-center">{totalIndicators}</td>
+                    <td className="border p-2 text-center">{totalAssessments}</td>
+                    <td className="border p-2 text-center">{avg}%</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div>
-              <div className="font-bold mb-2">2. Rivojlanish darajasi</div>
-              <p>Joriy o'rtacha ko'rsatkich: <b>{avgScore}%</b> — <b>{currentLevel.name}</b> ({currentLevel.range}).</p>
-            </div>
-            <div>
-              <div className="font-bold mb-2">3. Rivojlanish dinamikasi</div>
-              <table className="w-full border-collapse text-xs">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border p-2">Bosqich</th>
-                    <th className="border p-2">Bilim</th>
-                    <th className="border p-2">Tafakkur</th>
-                    <th className="border p-2">Savodxonlik</th>
-                    <th className="border p-2">Metodik</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {monitoringData.map((s, i) => (
-                    <tr key={i}>
-                      <td className="border p-2 font-medium">{s.stage}</td>
-                      <td className="border p-2 text-center">{s.bilim}%</td>
-                      <td className="border p-2 text-center">{s.tafakkur}%</td>
-                      <td className="border p-2 text-center">{s.savodxonlik}%</td>
-                      <td className="border p-2 text-center">{s.metodik}%</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div>
-              <div className="font-bold mb-2">4. Tavsiyalar</div>
+              <div className="font-bold mb-2">2. AI tavsiyalari</div>
               <ul className="list-disc pl-5 space-y-1">
-                <li>Matematik-metodik kompetentlik komponenti bo'yicha qo'shimcha PCK modullarini kiritish.</li>
-                <li>PISA Interpret bosqichi bo'yicha refleksiv topshiriqlar sonini oshirish.</li>
-                <li>E-Portfolio doirasida sertifikatlar va loyihalar ulushini kengaytirish.</li>
-                <li>Mentorlik tizimini kuchaytirish va feedback davriyligini oylik rejimga o'tkazish.</li>
+                {aiRecs.map((r, i) => (
+                  <li key={i}><b>{r.name}</b> — {r.text}</li>
+                ))}
               </ul>
             </div>
             <div className="text-xs text-gray-500 border-t pt-2 text-right">
@@ -1028,4 +1152,61 @@ function DiagnosticView() {
     </div>
   );
 }
+
+function Section({ n, title, icon: Icon, children }: { n: number; title: string; icon: typeof Target; children: React.ReactNode }) {
+  return (
+    <section>
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 text-white grid place-items-center text-xs font-bold shadow-md">
+          {n}
+        </div>
+        <div className="flex items-center gap-2">
+          <Icon className="w-4.5 h-4.5 text-indigo-600" />
+          <h4 className="font-bold text-base text-slate-900">{title}</h4>
+        </div>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function StatCell({ label, value, tone }: { label: string; value: string | number; tone: string }) {
+  return (
+    <div className="rounded-xl bg-white/80 backdrop-blur border border-white shadow-sm px-3 py-2">
+      <div className={`text-lg font-bold tabular-nums ${tone}`}>{value}</div>
+      <div className="text-[10px] uppercase tracking-wider text-slate-500 font-medium">{label}</div>
+    </div>
+  );
+}
+
+function ChartCard({ title, icon: Icon, children, className }: { title: string; icon: typeof BarChart3; children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`rounded-2xl border border-slate-200 bg-white p-4 shadow-sm ${className ?? ""}`}>
+      <div className="flex items-center gap-2 mb-3">
+        <Icon className="w-4 h-4 text-indigo-600" />
+        <div className="text-sm font-semibold text-slate-800">{title}</div>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function IndicatorBlock({ title, items, tone }: { title: string; items: string[]; tone: string }) {
+  return (
+    <div className={`rounded-lg border p-3 ${tone.split(" ").filter(c => c.startsWith("bg-") || c.startsWith("border-")).join(" ")}`}>
+      <div className={`text-[11px] font-semibold uppercase tracking-wide mb-1.5 ${tone.split(" ").filter(c => c.startsWith("text-")).join(" ")}`}>
+        {title}
+      </div>
+      <ul className="space-y-1">
+        {items.map((it, i) => (
+          <li key={i} className="text-xs text-slate-700 flex items-start gap-1.5">
+            <CheckCircle2 className="w-3 h-3 text-emerald-500 mt-0.5 shrink-0" />
+            <span>{it}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 
