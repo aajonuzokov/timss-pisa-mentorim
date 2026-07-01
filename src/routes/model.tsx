@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X, Users, FileText, Lightbulb, FolderKanban, Monitor, BookMarked, BarChart3, RefreshCw, CheckCircle2 } from "lucide-react";
+import { Target, BookOpen, Cog, Activity, Award, ArrowDown, X, Users, FileText, Lightbulb, FolderKanban, Monitor, BookMarked, BarChart3, RefreshCw, CheckCircle2, MessageSquare, TrendingUp, FileDown, GraduationCap, UserCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
 
 type TexComponent = {
   name: string;
@@ -99,6 +100,89 @@ const flowSteps: { icon: typeof Activity; label: string }[] = [
   { icon: RefreshCw, label: "Korreksiya" },
   { icon: CheckCircle2, label: "Natija" },
 ];
+
+type DiagComponent = {
+  name: string;
+  criteria: number;
+  indicators: number;
+  score: number;
+  criteriaList: string[];
+  indicatorsList: string[];
+  results: string;
+};
+
+const diagComponents: DiagComponent[] = [
+  {
+    name: "Matematik bilim",
+    criteria: 4,
+    indicators: 12,
+    score: 78,
+    criteriaList: ["Tushunchalarni bilish", "Faktlar va qoidalar", "Protseduralarni qo'llash", "Terminologiya"],
+    indicatorsList: ["Ta'riflarni to'g'ri ifodalash", "Formulalarni tanlash", "Hisoblash aniqligi", "Belgilashlar bilan ishlash"],
+    results: "Talabalar TIMSS Knowing domeni bo'yicha o'rtacha 78% ko'rsatkichga erishgan.",
+  },
+  {
+    name: "Matematik tafakkur",
+    criteria: 3,
+    indicators: 10,
+    score: 71,
+    criteriaList: ["Mantiqiy mulohaza", "Tahlil va sintez", "Isbotlash"],
+    indicatorsList: ["Zanjirli xulosa qurishi", "Nostandart yechim topishi", "Qonuniyatlarni umumlashtirishi"],
+    results: "TIMSS Reasoning domeni bo'yicha rivojlanish dinamikasi ijobiy.",
+  },
+  {
+    name: "Matematik savodxonlik",
+    criteria: 3,
+    indicators: 11,
+    score: 74,
+    criteriaList: ["Formulate", "Employ", "Interpret"],
+    indicatorsList: ["Real vaziyatni modelga aylantirishi", "Modelni qo'llab natija olishi", "Natijani talqin qilishi"],
+    results: "PISA matematik savodxonlik ko'rsatkichi yetarli darajada.",
+  },
+  {
+    name: "Matematik-metodik kompetentlik",
+    criteria: 4,
+    indicators: 13,
+    score: 68,
+    criteriaList: ["Topshiriq loyihalash", "Xatolar tahlili", "Metodik qaror", "Refleksiya"],
+    indicatorsList: ["TIMSS/PISA topshiriqlari yaratishi", "Differensial metodika tanlashi", "E-Portfolio yuritishi", "Kasbiy o'zini baholashi"],
+    results: "MKT (SMK → PCK) transformatsiyasi bosqichida.",
+  },
+];
+
+const diagLevels: { color: string; dot: string; name: string; range: string; min: number; max: number }[] = [
+  { color: "bg-rose-500/10 border-rose-500/30 text-rose-700 dark:text-rose-300", dot: "bg-rose-500", name: "Past daraja", range: "0–55%", min: 0, max: 55 },
+  { color: "bg-amber-500/10 border-amber-500/30 text-amber-700 dark:text-amber-300", dot: "bg-amber-500", name: "O'rta daraja", range: "56–70%", min: 56, max: 70 },
+  { color: "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300", dot: "bg-emerald-500", name: "Yetarli daraja", range: "71–85%", min: 71, max: 85 },
+  { color: "bg-blue-500/10 border-blue-500/30 text-blue-700 dark:text-blue-300", dot: "bg-blue-500", name: "Yuqori daraja", range: "86–100%", min: 86, max: 100 },
+];
+
+const portfolioItems: { label: string; value: number }[] = [
+  { label: "Bajarilgan topshiriqlar", value: 82 },
+  { label: "Loyiha ishlari", value: 70 },
+  { label: "TIMSS topshiriqlari", value: 76 },
+  { label: "PISA topshiriqlari", value: 72 },
+  { label: "Refleksiv yozuvlar", value: 65 },
+  { label: "Sertifikatlar", value: 58 },
+];
+
+const feedbackTimeline: { from: string; to: string; date: string; text: string; icon: typeof Users }[] = [
+  { from: "O'qituvchi", to: "Talaba", date: "Sentabr", text: "Boshlang'ich diagnostika natijalari bo'yicha individual tavsiyalar.", icon: GraduationCap },
+  { from: "Talaba", to: "O'qituvchi", date: "Oktabr", text: "Modellashtirish topshiriqlari bo'yicha savol va refleksiya.", icon: UserCheck },
+  { from: "Mentor", to: "Talaba", date: "Noyabr", text: "E-Portfolio ekspertizasi va PISA topshiriqlariga korreksiya.", icon: Sparkles },
+  { from: "O'qituvchi", to: "Talaba", date: "Dekabr", text: "Oraliq diagnostika: reasoning domeni bo'yicha treninglar.", icon: GraduationCap },
+  { from: "Mentor", to: "Talaba", date: "Yanvar", text: "Yakuniy diagnostika oldidan metodik loyiha himoyasi tavsiyalari.", icon: Sparkles },
+];
+
+const monitoringData = [
+  { stage: "Boshlang'ich", bilim: 52, tafakkur: 48, savodxonlik: 50, metodik: 44 },
+  { stage: "Oraliq", bilim: 66, tafakkur: 60, savodxonlik: 63, metodik: 56 },
+  { stage: "Yakuniy", bilim: 78, tafakkur: 71, savodxonlik: 74, metodik: 68 },
+];
+
+const avgScore = Math.round(diagComponents.reduce((s, c) => s + c.score, 0) / diagComponents.length);
+const currentLevel = diagLevels.find((l) => avgScore >= l.min && avgScore <= l.max) ?? diagLevels[0];
+
 
 type MathComponent = {
   name: string;
@@ -531,6 +615,8 @@ function Page() {
                     Jarayonli (texnologik) blok — TIMSS, PISA va MKT integratsiyasi asosida ishlab chiqilgan PhD dissertatsiya modelining tarkibiy qismi
                   </p>
                 </div>
+              ) : active.title === "Diagnostik-monitoring blok" ? (
+                <DiagnosticView />
               ) : (
               <div className="mt-2">
                 <h4 className="font-semibold mb-3 text-base">
@@ -599,3 +685,347 @@ function Page() {
     </SiteLayout>
   );
 }
+
+function DiagnosticView() {
+  const [reportOpen, setReportOpen] = useState(false);
+
+  const downloadSvg = () => {
+    const svg = document.getElementById("diag-chart-svg");
+    if (!svg) return;
+    const serializer = new XMLSerializer();
+    const src = serializer.serializeToString(svg);
+    const blob = new Blob([src], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "diagnostik-monitoring.svg";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <div className="mt-2 space-y-6">
+      <p className="text-sm text-foreground/80 leading-relaxed border-l-4 border-primary/40 pl-3 italic">
+        Mazkur blok matematik tayyorgarlikning matematik bilim, matematik tafakkur, matematik savodxonlik va
+        matematik-metodik kompetentlik komponentlarini baholash, monitoring qilish hamda rivojlanish
+        dinamikasini kuzatishga xizmat qiladi.
+      </p>
+
+      {/* 1. Baholash mezonlari */}
+      <section>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">1</div>
+          <h4 className="font-bold text-base">Baholash mezonlari</h4>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-3 mb-3">
+          {diagComponents.map((c, i) => (
+            <div key={i} className="rounded-xl border p-3 bg-card hover:border-primary/50 hover:shadow-md transition">
+              <div className="flex items-center justify-between mb-2">
+                <div className="font-semibold text-sm">{c.name}</div>
+                <Badge variant="outline" className="tabular-nums">{c.score}%</Badge>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground mb-2">
+                <div>Mezonlar: <span className="font-semibold text-foreground">{c.criteria}</span></div>
+                <div>Indikatorlar: <span className="font-semibold text-foreground">{c.indicators}</span></div>
+              </div>
+              <Progress value={c.score} className="h-1.5" />
+            </div>
+          ))}
+        </div>
+        <Accordion type="single" collapsible className="w-full">
+          {diagComponents.map((c, i) => (
+            <AccordionItem key={i} value={`diag-${i}`}>
+              <AccordionTrigger className="text-left font-semibold text-sm">
+                {c.name} — batafsil
+              </AccordionTrigger>
+              <AccordionContent className="text-sm space-y-3">
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Mezonlar</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {c.criteriaList.map((x, j) => <Badge key={j} variant="secondary">{x}</Badge>)}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Indikatorlar</div>
+                  <ul className="list-disc pl-5 space-y-0.5 text-foreground/85">
+                    {c.indicatorsList.map((x, j) => <li key={j}>{x}</li>)}
+                  </ul>
+                </div>
+                <div className="rounded-lg border bg-primary/5 p-3">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-primary mb-1">Baholash natijalari</div>
+                  <p className="text-foreground/85">{c.results}</p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+
+      {/* 2. Rivojlanish darajalari */}
+      <section>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">2</div>
+          <h4 className="font-bold text-base">Rivojlanish darajalari</h4>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-3">
+          {diagLevels.map((l, i) => {
+            const active = l.name === currentLevel.name;
+            return (
+              <div key={i} className={`rounded-xl border p-3 transition ${l.color} ${active ? "ring-2 ring-offset-2 ring-primary shadow-md scale-[1.02]" : "opacity-70 hover:opacity-100"}`}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className={`w-2.5 h-2.5 rounded-full ${l.dot}`} />
+                  <span className="font-semibold text-sm">{l.name}</span>
+                </div>
+                <div className="text-xs tabular-nums">{l.range}</div>
+                {active && <div className="mt-2 text-xs font-semibold">← Joriy natija: {avgScore}%</div>}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 3. E-Portfolio */}
+      <section>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">3</div>
+          <h4 className="font-bold text-base">E-Portfolio</h4>
+        </div>
+        <div className="rounded-xl border p-4 bg-gradient-to-br from-primary/5 to-secondary/30">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <FolderKanban className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold">Talaba elektron portfoliosi</span>
+            </div>
+            <Badge className="tabular-nums">
+              {Math.round(portfolioItems.reduce((s, p) => s + p.value, 0) / portfolioItems.length)}%
+            </Badge>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {portfolioItems.map((p, i) => (
+              <div key={i} className="rounded-lg bg-background/70 border p-2.5">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-xs font-medium">{p.label}</span>
+                  <span className="text-xs tabular-nums text-muted-foreground">{p.value}%</span>
+                </div>
+                <Progress value={p.value} className="h-1.5" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Feedback mexanizmi */}
+      <section>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">4</div>
+          <h4 className="font-bold text-base">Feedback mexanizmi</h4>
+        </div>
+        <div className="grid sm:grid-cols-3 gap-2 mb-3">
+          {[
+            ["O'qituvchi", "Talaba"],
+            ["Talaba", "O'qituvchi"],
+            ["Mentor", "Talaba"],
+          ].map(([a, b], i) => (
+            <div key={i} className="rounded-lg border p-2.5 bg-card text-center text-xs font-medium">
+              <span>{a}</span> <span className="text-primary">→</span> <span>{b}</span>
+            </div>
+          ))}
+        </div>
+        <div className="rounded-xl border bg-card p-4">
+          <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Feedback tarixi</div>
+          <ol className="relative border-l-2 border-primary/30 ml-2 space-y-4">
+            {feedbackTimeline.map((f, i) => {
+              const Icon = f.icon;
+              return (
+                <li key={i} className="ml-4">
+                  <span className="absolute -left-[11px] w-5 h-5 rounded-full bg-gradient-hero flex items-center justify-center text-primary-foreground">
+                    <Icon className="w-3 h-3" />
+                  </span>
+                  <div className="flex items-center gap-2 flex-wrap mb-1">
+                    <Badge variant="outline" className="text-[10px]">{f.date}</Badge>
+                    <span className="text-xs font-semibold">{f.from} <span className="text-primary">→</span> {f.to}</span>
+                  </div>
+                  <p className="text-sm text-foreground/85">{f.text}</p>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {/* 5. Statistik monitoring */}
+      <section>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">5</div>
+          <h4 className="font-bold text-base">Statistik monitoring — o'sish dinamikasi</h4>
+        </div>
+        <div className="rounded-xl border bg-card p-4">
+          <div className="h-64">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={monitoringData} margin={{ top: 5, right: 10, left: -15, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="#3b82f6"/><stop offset="100%" stopColor="#8b5cf6"/></linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
+                <XAxis dataKey="stage" fontSize={11} />
+                <YAxis fontSize={11} domain={[0, 100]} />
+                <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
+                <Legend wrapperStyle={{ fontSize: 11 }} />
+                <Line type="monotone" dataKey="bilim" name="Bilim" stroke="#3b82f6" strokeWidth={2} />
+                <Line type="monotone" dataKey="tafakkur" name="Tafakkur" stroke="#8b5cf6" strokeWidth={2} />
+                <Line type="monotone" dataKey="savodxonlik" name="Savodxonlik" stroke="#06b6d4" strokeWidth={2} />
+                <Line type="monotone" dataKey="metodik" name="Metodik kompetentlik" stroke="#ec4899" strokeWidth={2} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="grid grid-cols-3 gap-2 mt-3 text-center text-xs">
+            {monitoringData.map((s, i) => (
+              <div key={i} className="rounded-lg border bg-background/60 p-2">
+                <div className="font-semibold">{s.stage} diagnostika</div>
+                <div className="text-muted-foreground tabular-nums">
+                  o'rtacha {Math.round((s.bilim + s.tafakkur + s.savodxonlik + s.metodik) / 4)}%
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex justify-end">
+            <Button variant="outline" size="sm" onClick={downloadSvg}>
+              <FileDown className="w-3.5 h-3.5 mr-1.5" /> SVG eksport
+            </Button>
+          </div>
+          <div id="diag-chart-svg-wrap" className="hidden">
+            <svg id="diag-chart-svg" xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
+              <rect width="600" height="300" fill="white"/>
+              <text x="20" y="30" fontFamily="Manrope" fontSize="14" fontWeight="700">Diagnostik-monitoring dinamikasi</text>
+              {monitoringData.map((s, i) => (
+                <text key={i} x={100 + i * 180} y="280" fontSize="12" textAnchor="middle">{s.stage}</text>
+              ))}
+              {(["bilim","tafakkur","savodxonlik","metodik"] as const).map((k, ki) => {
+                const colors = ["#3b82f6","#8b5cf6","#06b6d4","#ec4899"];
+                const pts = monitoringData.map((s, i) => `${100 + i * 180},${260 - s[k] * 2}`).join(" ");
+                return <polyline key={k} fill="none" stroke={colors[ki]} strokeWidth="2" points={pts} />;
+              })}
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Analitik hisobot */}
+      <section>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center text-primary-foreground text-xs font-bold">6</div>
+          <h4 className="font-bold text-base">Analitik hisobot</h4>
+        </div>
+        <div className="rounded-xl border p-4 bg-card flex items-center justify-between flex-wrap gap-3">
+          <div className="text-sm text-foreground/80">
+            Talaba matematik tayyorgarligining barcha komponentlari, darajalari va rivojlanish
+            dinamikasini o'z ichiga oluvchi to'liq analitik hisobotni yarating.
+          </div>
+          <Button onClick={() => setReportOpen(true)}>
+            <FileText className="w-4 h-4 mr-2" /> Hisobot yaratish
+          </Button>
+        </div>
+      </section>
+
+      <p className="text-xs text-center italic text-muted-foreground border-t pt-4">
+        Diagnostik-monitoring blok — PhD dissertatsiya doirasida ishlab chiqilgan matematik
+        tayyorgarlikni baholash va kuzatish tizimi (TIMSS · PISA · MKT integratsiyasi)
+      </p>
+
+      <Dialog open={reportOpen} onOpenChange={setReportOpen}>
+        <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-xl">Analitik hisobot — PDF ko'rinishi</DialogTitle>
+            <DialogDescription>
+              Bo'lajak boshlang'ich sinf o'qituvchisining matematik tayyorgarligi bo'yicha diagnostik hisobot
+            </DialogDescription>
+          </DialogHeader>
+          <div id="report-preview" className="bg-white text-black rounded-lg border p-6 space-y-5 text-sm font-serif">
+            <div className="text-center border-b pb-3">
+              <div className="text-xs uppercase tracking-widest text-gray-500">Diagnostik-monitoring tizimi</div>
+              <div className="text-lg font-bold mt-1">Matematik tayyorgarlik analitik hisoboti</div>
+              <div className="text-xs text-gray-600 mt-1">TIMSS · PISA · MKT integratsiyasi asosida</div>
+            </div>
+            <div>
+              <div className="font-bold mb-2">1. Komponentlar natijalari</div>
+              <table className="w-full border-collapse text-xs">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border p-2 text-left">Komponent</th>
+                    <th className="border p-2">Mezonlar</th>
+                    <th className="border p-2">Indikatorlar</th>
+                    <th className="border p-2">Natija (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {diagComponents.map((c, i) => (
+                    <tr key={i}>
+                      <td className="border p-2">{c.name}</td>
+                      <td className="border p-2 text-center">{c.criteria}</td>
+                      <td className="border p-2 text-center">{c.indicators}</td>
+                      <td className="border p-2 text-center font-semibold">{c.score}%</td>
+                    </tr>
+                  ))}
+                  <tr className="bg-gray-50 font-semibold">
+                    <td className="border p-2">O'rtacha</td>
+                    <td className="border p-2 text-center">—</td>
+                    <td className="border p-2 text-center">—</td>
+                    <td className="border p-2 text-center">{avgScore}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <div className="font-bold mb-2">2. Rivojlanish darajasi</div>
+              <p>Joriy o'rtacha ko'rsatkich: <b>{avgScore}%</b> — <b>{currentLevel.name}</b> ({currentLevel.range}).</p>
+            </div>
+            <div>
+              <div className="font-bold mb-2">3. Rivojlanish dinamikasi</div>
+              <table className="w-full border-collapse text-xs">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border p-2">Bosqich</th>
+                    <th className="border p-2">Bilim</th>
+                    <th className="border p-2">Tafakkur</th>
+                    <th className="border p-2">Savodxonlik</th>
+                    <th className="border p-2">Metodik</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {monitoringData.map((s, i) => (
+                    <tr key={i}>
+                      <td className="border p-2 font-medium">{s.stage}</td>
+                      <td className="border p-2 text-center">{s.bilim}%</td>
+                      <td className="border p-2 text-center">{s.tafakkur}%</td>
+                      <td className="border p-2 text-center">{s.savodxonlik}%</td>
+                      <td className="border p-2 text-center">{s.metodik}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <div className="font-bold mb-2">4. Tavsiyalar</div>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>Matematik-metodik kompetentlik komponenti bo'yicha qo'shimcha PCK modullarini kiritish.</li>
+                <li>PISA Interpret bosqichi bo'yicha refleksiv topshiriqlar sonini oshirish.</li>
+                <li>E-Portfolio doirasida sertifikatlar va loyihalar ulushini kengaytirish.</li>
+                <li>Mentorlik tizimini kuchaytirish va feedback davriyligini oylik rejimga o'tkazish.</li>
+              </ul>
+            </div>
+            <div className="text-xs text-gray-500 border-t pt-2 text-right">
+              Hisobot avtomatik shakllantirildi — diagnostik-monitoring tizimi
+            </div>
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" onClick={() => setReportOpen(false)}>Yopish</Button>
+            <Button onClick={() => window.print()}>
+              <FileDown className="w-4 h-4 mr-2" /> PDF yuklab olish
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
