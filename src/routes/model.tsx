@@ -384,7 +384,7 @@ function Page() {
       </section>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className={`${active?.title === "Diagnostik-monitoring blok" ? "max-w-6xl" : "max-w-2xl"} max-h-[90vh] overflow-y-auto`}>
           {active && (
             <>
               <DialogHeader>
