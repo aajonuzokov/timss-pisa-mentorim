@@ -615,6 +615,8 @@ function Page() {
                     Jarayonli (texnologik) blok — TIMSS, PISA va MKT integratsiyasi asosida ishlab chiqilgan PhD dissertatsiya modelining tarkibiy qismi
                   </p>
                 </div>
+              ) : active.title === "Diagnostik-monitoring blok" ? (
+                <DiagnosticView />
               ) : (
               <div className="mt-2">
                 <h4 className="font-semibold mb-3 text-base">
