@@ -101,6 +101,89 @@ const flowSteps: { icon: typeof Activity; label: string }[] = [
   { icon: CheckCircle2, label: "Natija" },
 ];
 
+type DiagComponent = {
+  name: string;
+  criteria: number;
+  indicators: number;
+  score: number;
+  criteriaList: string[];
+  indicatorsList: string[];
+  results: string;
+};
+
+const diagComponents: DiagComponent[] = [
+  {
+    name: "Matematik bilim",
+    criteria: 4,
+    indicators: 12,
+    score: 78,
+    criteriaList: ["Tushunchalarni bilish", "Faktlar va qoidalar", "Protseduralarni qo'llash", "Terminologiya"],
+    indicatorsList: ["Ta'riflarni to'g'ri ifodalash", "Formulalarni tanlash", "Hisoblash aniqligi", "Belgilashlar bilan ishlash"],
+    results: "Talabalar TIMSS Knowing domeni bo'yicha o'rtacha 78% ko'rsatkichga erishgan.",
+  },
+  {
+    name: "Matematik tafakkur",
+    criteria: 3,
+    indicators: 10,
+    score: 71,
+    criteriaList: ["Mantiqiy mulohaza", "Tahlil va sintez", "Isbotlash"],
+    indicatorsList: ["Zanjirli xulosa qurishi", "Nostandart yechim topishi", "Qonuniyatlarni umumlashtirishi"],
+    results: "TIMSS Reasoning domeni bo'yicha rivojlanish dinamikasi ijobiy.",
+  },
+  {
+    name: "Matematik savodxonlik",
+    criteria: 3,
+    indicators: 11,
+    score: 74,
+    criteriaList: ["Formulate", "Employ", "Interpret"],
+    indicatorsList: ["Real vaziyatni modelga aylantirishi", "Modelni qo'llab natija olishi", "Natijani talqin qilishi"],
+    results: "PISA matematik savodxonlik ko'rsatkichi yetarli darajada.",
+  },
+  {
+    name: "Matematik-metodik kompetentlik",
+    criteria: 4,
+    indicators: 13,
+    score: 68,
+    criteriaList: ["Topshiriq loyihalash", "Xatolar tahlili", "Metodik qaror", "Refleksiya"],
+    indicatorsList: ["TIMSS/PISA topshiriqlari yaratishi", "Differensial metodika tanlashi", "E-Portfolio yuritishi", "Kasbiy o'zini baholashi"],
+    results: "MKT (SMK → PCK) transformatsiyasi bosqichida.",
+  },
+];
+
+const diagLevels: { color: string; dot: string; name: string; range: string; min: number; max: number }[] = [
+  { color: "bg-rose-500/10 border-rose-500/30 text-rose-700 dark:text-rose-300", dot: "bg-rose-500", name: "Past daraja", range: "0–55%", min: 0, max: 55 },
+  { color: "bg-amber-500/10 border-amber-500/30 text-amber-700 dark:text-amber-300", dot: "bg-amber-500", name: "O'rta daraja", range: "56–70%", min: 56, max: 70 },
+  { color: "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300", dot: "bg-emerald-500", name: "Yetarli daraja", range: "71–85%", min: 71, max: 85 },
+  { color: "bg-blue-500/10 border-blue-500/30 text-blue-700 dark:text-blue-300", dot: "bg-blue-500", name: "Yuqori daraja", range: "86–100%", min: 86, max: 100 },
+];
+
+const portfolioItems: { label: string; value: number }[] = [
+  { label: "Bajarilgan topshiriqlar", value: 82 },
+  { label: "Loyiha ishlari", value: 70 },
+  { label: "TIMSS topshiriqlari", value: 76 },
+  { label: "PISA topshiriqlari", value: 72 },
+  { label: "Refleksiv yozuvlar", value: 65 },
+  { label: "Sertifikatlar", value: 58 },
+];
+
+const feedbackTimeline: { from: string; to: string; date: string; text: string; icon: typeof Users }[] = [
+  { from: "O'qituvchi", to: "Talaba", date: "Sentabr", text: "Boshlang'ich diagnostika natijalari bo'yicha individual tavsiyalar.", icon: GraduationCap },
+  { from: "Talaba", to: "O'qituvchi", date: "Oktabr", text: "Modellashtirish topshiriqlari bo'yicha savol va refleksiya.", icon: UserCheck },
+  { from: "Mentor", to: "Talaba", date: "Noyabr", text: "E-Portfolio ekspertizasi va PISA topshiriqlariga korreksiya.", icon: Sparkles },
+  { from: "O'qituvchi", to: "Talaba", date: "Dekabr", text: "Oraliq diagnostika: reasoning domeni bo'yicha treninglar.", icon: GraduationCap },
+  { from: "Mentor", to: "Talaba", date: "Yanvar", text: "Yakuniy diagnostika oldidan metodik loyiha himoyasi tavsiyalari.", icon: Sparkles },
+];
+
+const monitoringData = [
+  { stage: "Boshlang'ich", bilim: 52, tafakkur: 48, savodxonlik: 50, metodik: 44 },
+  { stage: "Oraliq", bilim: 66, tafakkur: 60, savodxonlik: 63, metodik: 56 },
+  { stage: "Yakuniy", bilim: 78, tafakkur: 71, savodxonlik: 74, metodik: 68 },
+];
+
+const avgScore = Math.round(diagComponents.reduce((s, c) => s + c.score, 0) / diagComponents.length);
+const currentLevel = diagLevels.find((l) => avgScore >= l.min && avgScore <= l.max) ?? diagLevels[0];
+
+
 type MathComponent = {
   name: string;
   desc: string;
