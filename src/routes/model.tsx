@@ -728,7 +728,7 @@ const levelOf = (score: number) =>
 
 const summaryCards: { icon: typeof Target; title: string; text: string; tone: string }[] = [
   { icon: Target, title: "Maqsad", text: "Matematik tayyorgarlikning bosqichma-bosqich diagnostikasi va monitoringi.", tone: "from-blue-500/10 to-blue-500/0 border-blue-200" },
-  { icon: ClipboardList, title: "Baholash obyektlari", text: "6 ta matematik tayyorgarlik komponenti, 63 indikator, 37 baholash.", tone: "from-indigo-500/10 to-indigo-500/0 border-indigo-200" },
+  { icon: ClipboardList, title: "Baholash obyektlari", text: "5 ta matematik tayyorgarlik komponenti, 63 indikator, 37 baholash.", tone: "from-indigo-500/10 to-indigo-500/0 border-indigo-200" },
   { icon: Gauge, title: "Monitoring strategiyasi", text: "Kirish → Oraliq → Yakuniy formativ va summativ baholash sikli.", tone: "from-violet-500/10 to-violet-500/0 border-violet-200" },
   { icon: Trophy, title: "Kutilayotgan natija", text: "TIMSS · PISA · MKT standartlariga muvofiq metodik kompetentlik.", tone: "from-fuchsia-500/10 to-fuchsia-500/0 border-fuchsia-200" },
 ];
@@ -771,7 +771,7 @@ const competencyFlow: { title: string; items: string[]; icon: typeof Award; acce
   { title: "TIMSS", items: ["Knowing", "Applying", "Reasoning"], icon: BookOpen, accent: "from-blue-600 to-blue-500" },
   { title: "PISA", items: ["Formulate", "Employ", "Interpret"], icon: Compass, accent: "from-indigo-600 to-indigo-500" },
   { title: "MKT", items: ["SMK", "PCK"], icon: Brain, accent: "from-violet-600 to-violet-500" },
-  { title: "Matematik tayyorgarlik", items: ["6 komponent", "Integrativ natija"], icon: Award, accent: "from-fuchsia-600 to-purple-600" },
+  { title: "Matematik tayyorgarlik", items: ["5 komponent", "Integrativ natija"], icon: Award, accent: "from-fuchsia-600 to-purple-600" },
 ];
 
 function DiagnosticView() {
