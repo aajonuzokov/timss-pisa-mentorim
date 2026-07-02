@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { BookMarked, Download, Search, X } from "lucide-react";
+import { BookMarked, Download, Search, X, BookOpen, Info } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export const Route = createFileRoute("/kutubxona")({
@@ -20,13 +20,45 @@ type Book = {
   category: string;
   annotation: string;
   cover?: string;
+  fileUrl?: string;   // direct PDF URL (used for both download and reader)
+  readerUrl?: string; // optional separate online reader URL
 };
 
 const books: Book[] = [
-  { title: "TIMSS 2023 Assessment Frameworks", author: "Mullis I.V.S., Martin M.O.", year: 2021, category: "TIMSS", annotation: "TIMSS xalqaro baholash dasturining mazmuniy va kognitiv sohalari, baholash mezonlari hamda metodologik asoslarini yorituvchi asosiy hujjat." },
-  { title: "PISA 2022 Mathematics Framework", author: "OECD", year: 2022, category: "PISA", annotation: "PISA matematik savodxonlik konsepsiyasi, baholash tamoyillari va topshiriqlar tizimining tavsifi." },
-  { title: "TIMSS Encyclopedia: Education Policy and Curriculum", author: "IEA", year: 2023, category: "TIMSS", annotation: "TIMSS tadqiqotlarida ishtirok etuvchi mamlakatlarning ta'lim tizimi va o'quv dasturlariga oid ma'lumotlar." },
-  { title: "PISA 2022 Results", author: "OECD", year: 2023, category: "PISA", annotation: "PISA natijalari, mamlakatlar kesimidagi tahlillar va matematik savodxonlik ko'rsatkichlari." },
+  {
+    title: "TIMSS 2023 Assessment Frameworks",
+    author: "Mullis I.V.S., Martin M.O.",
+    year: 2021,
+    category: "TIMSS",
+    annotation: "TIMSS xalqaro baholash dasturining mazmuniy va kognitiv sohalari, baholash mezonlari hamda metodologik asoslarini yorituvchi asosiy hujjat.",
+    fileUrl: "https://timss2023.org/frameworks/wp-content/uploads/sites/3/2021/12/TIMSS-2023-Assessment-Frameworks.pdf",
+  },
+  {
+    title: "PISA 2022 Mathematics Framework",
+    author: "OECD",
+    year: 2022,
+    category: "PISA",
+    annotation: "PISA matematik savodxonlik konsepsiyasi, baholash tamoyillari va topshiriqlar tizimining tavsifi.",
+    fileUrl: "https://pisa2022-maths.oecd.org/files/PISA%202022%20Mathematics%20Framework%20Draft.pdf",
+    readerUrl: "https://pisa2022-maths.oecd.org/",
+  },
+  {
+    title: "TIMSS Encyclopedia: Education Policy and Curriculum",
+    author: "IEA",
+    year: 2023,
+    category: "TIMSS",
+    annotation: "TIMSS tadqiqotlarida ishtirok etuvchi mamlakatlarning ta'lim tizimi va o'quv dasturlariga oid ma'lumotlar.",
+    readerUrl: "https://timssandpirls.bc.edu/timss2019/encyclopedia/",
+  },
+  {
+    title: "PISA 2022 Results (Volume I)",
+    author: "OECD",
+    year: 2023,
+    category: "PISA",
+    annotation: "PISA natijalari, mamlakatlar kesimidagi tahlillar va matematik savodxonlik ko'rsatkichlari.",
+    fileUrl: "https://www.oecd.org/publication/pisa-2022-results/volume-I/downloads/PISA2022_Vol1_full-report.pdf",
+    readerUrl: "https://www.oecd.org/publication/pisa-2022-results/",
+  },
   { title: "Boshlang'ich sinflarda matematika o'qitish metodikasi", author: "Jumayev M.E.", year: 2020, category: "Metodika", annotation: "Boshlang'ich sinflarda matematika ta'limining nazariy va metodik asoslari." },
   { title: "Matematika o'qitish metodikasi", author: "Bikbayeva N.U.", year: 2021, category: "Metodika", annotation: "Matematik ta'lim jarayonini tashkil etishning zamonaviy metodlari." },
   { title: "Matematik savodxonlikni shakllantirish", author: "Abdullayeva B.", year: 2019, category: "Matematik savodxonlik", annotation: "O'quvchilarning matematik savodxonligini rivojlantirish usullari." },
@@ -67,6 +99,28 @@ function Cover({ book }: { book: Book }) {
       )}
     </div>
   );
+}
+
+function slugify(s: string) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 80);
+}
+
+function downloadPdf(book: Book) {
+  if (!book.fileUrl) return;
+  const a = document.createElement("a");
+  a.href = book.fileUrl;
+  a.download = `${slugify(book.title)}.pdf`;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+function openReader(book: Book) {
+  const url = book.readerUrl ?? book.fileUrl;
+  if (!url) return;
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 function Page() {
@@ -118,28 +172,48 @@ function Page() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map((b, i) => (
-          <article key={i} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
-            <Cover book={b} />
-            <div className="mt-4 flex-1 flex flex-col">
-              <div className="text-xs text-accent font-medium uppercase tracking-wider mb-1">{b.category}</div>
-              <h3 className="font-semibold leading-snug mb-1 line-clamp-2">{b.title}</h3>
-              <p className="text-sm text-muted-foreground mb-2">{b.author} · {b.year}</p>
-              <p className="text-sm leading-relaxed line-clamp-3 mb-4">{b.annotation}</p>
-              <div className="mt-auto flex gap-2">
-                <button
-                  onClick={() => setActive(b)}
-                  className="flex-1 px-3 py-2 rounded-full border text-sm font-medium hover:bg-muted transition"
-                >
-                  Batafsil
-                </button>
-                <button className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition">
-                  <Download className="w-4 h-4" /> PDF
-                </button>
+        {filtered.map((b, i) => {
+          const hasPdf = Boolean(b.fileUrl);
+          const canRead = Boolean(b.fileUrl || b.readerUrl);
+          return (
+            <article key={i} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
+              <Cover book={b} />
+              <div className="mt-4 flex-1 flex flex-col">
+                <div className="text-xs text-accent font-medium uppercase tracking-wider mb-1">{b.category}</div>
+                <h3 className="font-semibold leading-snug mb-1 line-clamp-2">{b.title}</h3>
+                <p className="text-sm text-muted-foreground mb-2">{b.author} · {b.year}</p>
+                <p className="text-sm leading-relaxed line-clamp-3 mb-4">{b.annotation}</p>
+                {!hasPdf && !canRead && (
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3 p-2 rounded-lg bg-muted/60">
+                    <Info className="w-3.5 h-3.5" /> PDF tez orada yuklanadi
+                  </div>
+                )}
+                <div className="mt-auto flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setActive(b)}
+                    className="flex-1 min-w-[110px] px-3 py-2 rounded-full border text-sm font-medium hover:bg-muted transition"
+                  >
+                    Batafsil
+                  </button>
+                  <button
+                    onClick={() => openReader(b)}
+                    disabled={!canRead}
+                    className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full border border-primary/30 text-primary text-sm font-medium hover:bg-primary/5 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    <BookOpen className="w-4 h-4" /> O'qish
+                  </button>
+                  <button
+                    onClick={() => downloadPdf(b)}
+                    disabled={!hasPdf}
+                    className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    <Download className="w-4 h-4" /> PDF
+                  </button>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
         {filtered.length === 0 && (
           <div className="col-span-full text-center py-16 text-muted-foreground">Hech narsa topilmadi. Boshqa kalit so'z yoki kategoriya tanlang.</div>
         )}
@@ -167,9 +241,30 @@ function Page() {
                   <div className="text-muted-foreground mb-1">Annotatsiya:</div>
                   <p className="leading-relaxed">{active.annotation}</p>
                 </div>
-                <button className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition">
-                  <Download className="w-4 h-4" /> PDF yuklab olish
-                </button>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {(active.fileUrl || active.readerUrl) ? (
+                    <>
+                      <button
+                        onClick={() => openReader(active)}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/30 text-primary font-medium hover:bg-primary/5 transition"
+                      >
+                        <BookOpen className="w-4 h-4" /> Onlayn o'qish
+                      </button>
+                      {active.fileUrl && (
+                        <button
+                          onClick={() => downloadPdf(active)}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
+                        >
+                          <Download className="w-4 h-4" /> PDF yuklab olish
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-muted/60">
+                      <Info className="w-4 h-4" /> PDF tez orada yuklanadi
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
