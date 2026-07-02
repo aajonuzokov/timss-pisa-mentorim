@@ -219,27 +219,16 @@ const mathComponents: MathComponent[] = [
     ],
   },
   {
-    name: "Matematik savodxonlik",
-    desc: "Real hayotiy vaziyatlarni matematik jihatdan tushunish va talqin qilish qobiliyatidir.",
-    timss: "Applying",
-    pisa: "Formulate, Employ, Interpret",
-    mkt: "Matematik mazmunni amaliy vaziyatlar bilan bog'lab o'qitish.",
-    indicators: [
-      "Real vaziyatlarni matematiklashtirish",
-      "Matematik natijalarni talqin qilish",
-      "Hayotiy masalalarni yechish",
-    ],
-  },
-  {
-    name: "Matematik modellashtirish",
-    desc: "Real muammolarni matematik modelga o'tkazish, model asosida yechim topish va natijalarni amaliy vaziyatga qayta tatbiq etish jarayonlarini qamrab oladi.",
+    name: "Matematik savodxonlik (matematik modellashtirish ko'nikmalarini o'z ichiga oladi)",
+    desc: "Real hayotiy vaziyatlarni matematik jihatdan tushunish, tahlil qilish va talqin qilish qobiliyati. Mazkur komponent matematik modellashtirish jarayonini — Formulate → Employ → Interpret siklini — mustaqil komponent sifatida emas, balki matematik savodxonlikning tarkibiy ko'nikmasi sifatida qamrab oladi.",
     timss: "Applying, Reasoning",
-    pisa: "Formulate, Employ",
-    mkt: "Matematik modellarni boshlang'ich sinf o'quvchilariga mos metodik topshiriqlarga aylantirish.",
+    pisa: "Formulate, Employ, Interpret",
+    mkt: "Matematik mazmunni amaliy vaziyatlar bilan bog'lab o'qitish; matematik modellarni boshlang'ich sinf o'quvchilariga mos metodik topshiriqlarga aylantirish.",
     indicators: [
-      "Model tuzish",
-      "Model asosida yechim ishlab chiqish",
-      "Natijalarni amaliyotga tatbiq etish",
+      "Real vaziyatlarni matematiklashtirish (Formulate)",
+      "Matematik model tuzish va yechim ishlab chiqish (Employ)",
+      "Natijalarni talqin qilish va amaliyotga tatbiq etish (Interpret)",
+      "Modellashtirish siklini yaxlit amalga oshirish",
     ],
   },
   {
@@ -461,8 +450,7 @@ function Page() {
                           {[
                             ["Matematik bilim", "Matematik tushunchalar, qonuniyatlar va usullar haqidagi tizimli bilimlar majmuasi bo'lib, bo'lajak o'qituvchining kasbiy faoliyati uchun nazariy asos vazifasini bajaradi. Mazkur komponent TIMSS Knowing domeni hamda MKTning Subject Matter Knowledge qismi bilan bog'liq."],
                             ["Matematik tafakkur", "Mantiqiy fikrlash, tahlil, sintez, umumlashtirish va isbotlash qobiliyatlarini qamrab oluvchi intellektual faoliyatdir. U TIMSS Reasoning domeni va PISA Interpret kompetensiyasi bilan uzviy bog'langan."],
-                            ["Matematik savodxonlik", "Real hayotiy vaziyatlarni matematik nuqtai nazardan tushunish, tahlil qilish va talqin etish qobiliyatidir. PISA matematik savodxonlik konsepsiyasi va TIMSS Applying domeni asosida shakllanadi."],
-                            ["Matematik modellashtirish", "Real muammoni matematik modelga aylantirish, yechim topish va natijani amaliy kontekstga qaytarish jarayonidir. Komponent PISA Formulate-Employ-Interpret siklini to'liq aks ettiradi."],
+                            ["Matematik savodxonlik (matematik modellashtirish ko'nikmalarini o'z ichiga oladi)", "Real hayotiy vaziyatlarni matematik nuqtai nazardan tushunish, tahlil qilish va talqin etish qobiliyatidir. Matematik modellashtirish mustaqil komponent emas, balki ushbu komponentning tarkibiy ko'nikmasi sifatida PISA Formulate–Employ–Interpret siklini to'liq aks ettiradi."],
                             ["Matematik-metodik kompetentlik", "Matematik bilimlarni pedagogik mazmunga transformatsiya qilish va o'qitish texnologiyalariga aylantirish qobiliyatidir. MKTning Pedagogical Content Knowledge sohasi bilan bevosita bog'liq."],
                             ["Refleksiv faoliyat", "Talabaning o'z o'quv va kasbiy faoliyatini tahlil qilish, baholash hamda takomillashtirish jarayonidir. Bu komponent o'qituvchining uzluksiz kasbiy rivojlanishini ta'minlaydi."],
                           ].map(([n, d], i) => (
@@ -714,16 +702,11 @@ const readinessComponents: ReadinessComp[] = [
     indicatorList: ["Zanjirli xulosa", "Nostandart yechim", "Umumlashtirish"],
     tools: ["TIMSS Reasoning", "Keys-stadi", "Refleksiv jurnal"],
     recommendation: "Reasoning kompetensiyasini TIMSS Level-3 topshiriqlari orqali mustahkamlash." },
-  { key: "literacy", name: "Matematik savodxonlik", icon: Compass, score: 74, indicators: 11, assessments: 7,
-    criteria: ["Formulate", "Employ", "Interpret"],
-    indicatorList: ["Real vaziyatni modelga aylantirish", "Yechim olish", "Talqin qilish"],
-    tools: ["PISA kontekstli banklar", "Loyiha metodi", "Mentorim topshiriqlari"],
-    recommendation: "Interpret bosqichi bo'yicha refleksiv topshiriqlar sonini oshirish." },
-  { key: "modeling", name: "Matematik modellashtirish", icon: Layers, score: 69, indicators: 9, assessments: 5,
-    criteria: ["Model tuzish", "Yechim jarayoni", "Amaliyotga tatbiq"],
-    indicatorList: ["Modelni loyihalash", "Parametrlarni aniqlash", "Natijani validatsiyalash"],
-    tools: ["PISA Formulate", "Loyiha ishlari", "Simulyatsiya modullari"],
-    recommendation: "Formulate bosqichi bo'yicha qo'shimcha kontekstli treninglar." },
+  { key: "literacy", name: "Matematik savodxonlik (matematik modellashtirish ko'nikmalari bilan)", icon: Compass, score: 72, indicators: 20, assessments: 12,
+    criteria: ["Formulate", "Employ", "Interpret", "Modellashtirish sikli"],
+    indicatorList: ["Real vaziyatni matematik modelga aylantirish (Formulate)", "Modelni qo'llab yechim olish (Employ)", "Natijani talqin qilish (Interpret)", "Modelni validatsiyalash va amaliyotga tatbiq etish"],
+    tools: ["PISA kontekstli banklar", "Loyiha metodi", "Mentorim modellashtirish topshiriqlari", "Simulyatsiya modullari"],
+    recommendation: "Formulate va Interpret bosqichlari bo'yicha kontekstli hamda refleksiv modellashtirish topshiriqlari sonini oshirish." },
   { key: "mmk", name: "Matematik-metodik kompetentlik", icon: GraduationCap, score: 68, indicators: 13, assessments: 6,
     criteria: ["Topshiriq loyihalash", "Xatolar tahlili", "Metodik qaror", "Refleksiya"],
     indicatorList: ["TIMSS/PISA loyihalash", "Differensial metodika", "Kasbiy refleksiya"],
@@ -745,7 +728,7 @@ const levelOf = (score: number) =>
 
 const summaryCards: { icon: typeof Target; title: string; text: string; tone: string }[] = [
   { icon: Target, title: "Maqsad", text: "Matematik tayyorgarlikning bosqichma-bosqich diagnostikasi va monitoringi.", tone: "from-blue-500/10 to-blue-500/0 border-blue-200" },
-  { icon: ClipboardList, title: "Baholash obyektlari", text: "6 ta matematik tayyorgarlik komponenti, 63 indikator, 37 baholash.", tone: "from-indigo-500/10 to-indigo-500/0 border-indigo-200" },
+  { icon: ClipboardList, title: "Baholash obyektlari", text: "5 ta matematik tayyorgarlik komponenti, 63 indikator, 37 baholash.", tone: "from-indigo-500/10 to-indigo-500/0 border-indigo-200" },
   { icon: Gauge, title: "Monitoring strategiyasi", text: "Kirish → Oraliq → Yakuniy formativ va summativ baholash sikli.", tone: "from-violet-500/10 to-violet-500/0 border-violet-200" },
   { icon: Trophy, title: "Kutilayotgan natija", text: "TIMSS · PISA · MKT standartlariga muvofiq metodik kompetentlik.", tone: "from-fuchsia-500/10 to-fuchsia-500/0 border-fuchsia-200" },
 ];
@@ -788,7 +771,7 @@ const competencyFlow: { title: string; items: string[]; icon: typeof Award; acce
   { title: "TIMSS", items: ["Knowing", "Applying", "Reasoning"], icon: BookOpen, accent: "from-blue-600 to-blue-500" },
   { title: "PISA", items: ["Formulate", "Employ", "Interpret"], icon: Compass, accent: "from-indigo-600 to-indigo-500" },
   { title: "MKT", items: ["SMK", "PCK"], icon: Brain, accent: "from-violet-600 to-violet-500" },
-  { title: "Matematik tayyorgarlik", items: ["6 komponent", "Integrativ natija"], icon: Award, accent: "from-fuchsia-600 to-purple-600" },
+  { title: "Matematik tayyorgarlik", items: ["5 komponent", "Integrativ natija"], icon: Award, accent: "from-fuchsia-600 to-purple-600" },
 ];
 
 function DiagnosticView() {
