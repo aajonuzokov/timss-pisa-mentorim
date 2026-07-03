@@ -135,7 +135,11 @@ function Page() {
     const q = query.trim().toLowerCase();
     return books.filter((b) => {
       const matchCat = cat === "Barchasi" || b.category === cat;
-      const matchQ = !q || b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q);
+      const matchQ =
+        !q ||
+        b.title.toLowerCase().includes(q) ||
+        b.author.toLowerCase().includes(q) ||
+        b.category.toLowerCase().includes(q);
       return matchCat && matchQ;
     });
   }, [query, cat, books]);
