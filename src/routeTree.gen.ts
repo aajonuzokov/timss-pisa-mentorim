@@ -14,6 +14,7 @@ import { Route as TimssKnowingRouteImport } from './routes/timss-knowing'
 import { Route as TimssApplyingRouteImport } from './routes/timss-applying'
 import { Route as TimssRouteImport } from './routes/timss'
 import { Route as TavsiyalarRouteImport } from './routes/tavsiyalar'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as QollanmaRouteImport } from './routes/qollanma'
 import { Route as PisaInterpretRouteImport } from './routes/pisa-interpret'
 import { Route as PisaFormulateRouteImport } from './routes/pisa-formulate'
@@ -54,6 +55,11 @@ const TimssRoute = TimssRouteImport.update({
 const TavsiyalarRoute = TavsiyalarRouteImport.update({
   id: '/tavsiyalar',
   path: '/tavsiyalar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QollanmaRoute = QollanmaRouteImport.update({
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/pisa-formulate': typeof PisaFormulateRoute
   '/pisa-interpret': typeof PisaInterpretRoute
   '/qollanma': typeof QollanmaRoute
+  '/resources': typeof ResourcesRoute
   '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
@@ -176,6 +183,7 @@ export interface FileRoutesByTo {
   '/pisa-formulate': typeof PisaFormulateRoute
   '/pisa-interpret': typeof PisaInterpretRoute
   '/qollanma': typeof QollanmaRoute
+  '/resources': typeof ResourcesRoute
   '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   '/pisa-formulate': typeof PisaFormulateRoute
   '/pisa-interpret': typeof PisaInterpretRoute
   '/qollanma': typeof QollanmaRoute
+  '/resources': typeof ResourcesRoute
   '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
@@ -225,6 +234,7 @@ export interface FileRouteTypes {
     | '/pisa-formulate'
     | '/pisa-interpret'
     | '/qollanma'
+    | '/resources'
     | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
@@ -248,6 +258,7 @@ export interface FileRouteTypes {
     | '/pisa-formulate'
     | '/pisa-interpret'
     | '/qollanma'
+    | '/resources'
     | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
@@ -271,6 +282,7 @@ export interface FileRouteTypes {
     | '/pisa-formulate'
     | '/pisa-interpret'
     | '/qollanma'
+    | '/resources'
     | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
@@ -295,6 +307,7 @@ export interface RootRouteChildren {
   PisaFormulateRoute: typeof PisaFormulateRoute
   PisaInterpretRoute: typeof PisaInterpretRoute
   QollanmaRoute: typeof QollanmaRoute
+  ResourcesRoute: typeof ResourcesRoute
   TavsiyalarRoute: typeof TavsiyalarRouteWithChildren
   TimssRoute: typeof TimssRoute
   TimssApplyingRoute: typeof TimssApplyingRoute
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/tavsiyalar'
       fullPath: '/tavsiyalar'
       preLoaderRoute: typeof TavsiyalarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/qollanma': {
@@ -482,6 +502,7 @@ const rootRouteChildren: RootRouteChildren = {
   PisaFormulateRoute: PisaFormulateRoute,
   PisaInterpretRoute: PisaInterpretRoute,
   QollanmaRoute: QollanmaRoute,
+  ResourcesRoute: ResourcesRoute,
   TavsiyalarRoute: TavsiyalarRouteWithChildren,
   TimssRoute: TimssRoute,
   TimssApplyingRoute: TimssApplyingRoute,

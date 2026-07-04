@@ -31,7 +31,7 @@ type Resource = {
 
 const FILTERS: (Source | "All")[] = ["All", "TIMSS", "PISA", "Dissertation", "Article"];
 
-const sourceStyles: Record<Source, { badge: string; icon: JSX.Element; ring: string }> = {
+const sourceStyles: Record<Source, { badge: string; icon: React.ReactNode; ring: string }> = {
   TIMSS: {
     badge: "bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300",
     ring: "ring-blue-500/20",
