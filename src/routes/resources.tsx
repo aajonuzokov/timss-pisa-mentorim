@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Search, Loader2, BookOpen, GraduationCap, FileText, Library } from "lucide-react";
+import type React from "react";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
