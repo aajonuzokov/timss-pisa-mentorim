@@ -56,6 +56,36 @@ export type Database = {
         }
         Relationships: []
       }
+      resources: {
+        Row: {
+          authors: string
+          created_at: string
+          description: string
+          id: string
+          source: string
+          title: string
+          year: number
+        }
+        Insert: {
+          authors: string
+          created_at?: string
+          description: string
+          id?: string
+          source: string
+          title: string
+          year: number
+        }
+        Update: {
+          authors?: string
+          created_at?: string
+          description?: string
+          id?: string
+          source?: string
+          title?: string
+          year?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
