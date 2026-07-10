@@ -60,45 +60,28 @@ function slugify(s: string) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 80);
 }
 
-/** Resolve a stored pdf_url to an actual URL: external http(s) URL passes through,
- *  otherwise treat as a storage object path in the private `books` bucket and sign it. */
-async function resolvePdfUrl(pdf_url: string): Promise<string | null> {
-  if (/^https?:\/\//i.test(pdf_url)) return pdf_url;
-  const { data, error } = await supabase.storage.from("books").createSignedUrl(pdf_url, 3600);
-  if (error) {
-    console.error(error);
-    return null;
-  }
-  return data.signedUrl;
-}
-
-async function openReader(book: Book) {
-  const src = book.reader_url ?? book.pdf_url;
-  if (!src) return;
-  try {
-    const url = /^https?:\/\//i.test(src) ? src : await resolvePdfUrl(src);
-    if (!url) throw new Error("URL not available");
-    window.open(url, "_blank", "noopener,noreferrer");
-  } catch (e) {
-    toast.error("Faylni ochib bo'lmadi. Tarmoq yoki fayl mavjudligini tekshiring.");
-  }
+function openReader(book: Book) {
+  if (!book.pdf_url) return;
+  window.open(book.pdf_url, "_blank");
 }
 
 async function downloadPdf(book: Book) {
   if (!book.pdf_url) return;
   try {
-    const url = await resolvePdfUrl(book.pdf_url);
-    if (!url) throw new Error("URL not available");
+    const response = await fetch(book.pdf_url);
+    if (!response.ok) throw new Error("Download failed");
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url;
+    a.href = blobUrl;
     a.download = `${slugify(book.title)}.pdf`;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
     document.body.appendChild(a);
     a.click();
     a.remove();
-  } catch (e) {
-    toast.error("PDF yuklab bo'lmadi. Iltimos qayta urinib ko'ring.");
+    URL.revokeObjectURL(blobUrl);
+  } catch {
+    toast.error("PDF yuklab bo'lmadi.");
+    window.open(book.pdf_url, "_blank");
   }
 }
 
