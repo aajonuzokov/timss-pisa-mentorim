@@ -56,35 +56,24 @@ function Cover({ book }: { book: Book }) {
   );
 }
 
-function slugify(s: string) {
-  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 80);
-}
-
 function openReader(book: Book) {
-  console.log("[kutubxona] O'qish:", book.title, "→", book.pdf_url);
   if (!book.pdf_url) {
     toast.error("PDF mavjud emas.");
     return;
   }
+  console.log(book.pdf_url);
+  console.log("[kutubxona] final URL:", book.pdf_url);
   window.open(book.pdf_url, "_blank", "noopener,noreferrer");
 }
 
 function downloadPdf(book: Book) {
-  console.log("[kutubxona] PDF:", book.title, "→", book.pdf_url);
   if (!book.pdf_url) {
     toast.error("PDF mavjud emas.");
     return;
   }
-  // Direct link — avoids CORS from cross-origin fetch(). Browser handles
-  // download or inline view based on Content-Disposition / MIME.
-  const a = document.createElement("a");
-  a.href = book.pdf_url;
-  a.download = `${slugify(book.title)}.pdf`;
-  a.target = "_blank";
-  a.rel = "noopener noreferrer";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+  console.log(book.pdf_url);
+  console.log("[kutubxona] final URL:", book.pdf_url);
+  window.open(book.pdf_url, "_blank", "noopener,noreferrer");
 }
 
 function Page() {
@@ -174,7 +163,7 @@ function Page() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((b) => {
               const hasPdf = Boolean(b.pdf_url);
-              const canRead = Boolean(b.pdf_url || b.reader_url);
+              const canRead = Boolean(b.pdf_url);
               return (
                 <article key={b.id} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
                   <Cover book={b} />
@@ -244,7 +233,7 @@ function Page() {
                   <p className="leading-relaxed">{active.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {(active.pdf_url || active.reader_url) ? (
+                  {active.pdf_url ? (
                     <>
                       <button
                         onClick={() => openReader(active)}
