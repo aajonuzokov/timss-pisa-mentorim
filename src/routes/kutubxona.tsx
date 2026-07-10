@@ -61,28 +61,30 @@ function slugify(s: string) {
 }
 
 function openReader(book: Book) {
-  if (!book.pdf_url) return;
-  window.open(book.pdf_url, "_blank");
+  console.log("[kutubxona] O'qish:", book.title, "→", book.pdf_url);
+  if (!book.pdf_url) {
+    toast.error("PDF mavjud emas.");
+    return;
+  }
+  window.open(book.pdf_url, "_blank", "noopener,noreferrer");
 }
 
-async function downloadPdf(book: Book) {
-  if (!book.pdf_url) return;
-  try {
-    const response = await fetch(book.pdf_url);
-    if (!response.ok) throw new Error("Download failed");
-    const blob = await response.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = blobUrl;
-    a.download = `${slugify(book.title)}.pdf`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(blobUrl);
-  } catch {
-    toast.error("PDF yuklab bo'lmadi.");
-    window.open(book.pdf_url, "_blank");
+function downloadPdf(book: Book) {
+  console.log("[kutubxona] PDF:", book.title, "→", book.pdf_url);
+  if (!book.pdf_url) {
+    toast.error("PDF mavjud emas.");
+    return;
   }
+  // Direct link — avoids CORS from cross-origin fetch(). Browser handles
+  // download or inline view based on Content-Disposition / MIME.
+  const a = document.createElement("a");
+  a.href = book.pdf_url;
+  a.download = `${slugify(book.title)}.pdf`;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
 }
 
 function Page() {
