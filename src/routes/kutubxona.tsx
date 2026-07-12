@@ -56,18 +56,17 @@ function Cover({ book }: { book: Book }) {
   );
 }
 
-// Prefer source_url (official landing page) over pdf_url to avoid broken direct PDF links.
 function resolveUrl(book: Book): string | null {
-  return book.source_url || book.pdf_url || null;
+  return book.pdf_url || book.source_url || null;
 }
 
 function openSource(book: Book) {
-  const url = resolveUrl(book);
+  const url = book.pdf_url || book.source_url;
   if (!url) {
     toast.error("Manba mavjud emas.");
     return;
   }
-  console.log("[kutubxona] opening:", book.title, url);
+  console.log("Opening:", url);
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
@@ -157,7 +156,9 @@ function Page() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((b) => {
-              const canOpen = Boolean(resolveUrl(b));
+              const hasPdf = !!b.pdf_url;
+              const hasSource = !!b.source_url;
+              const canRead = hasPdf || hasSource;
               return (
                 <article key={b.id} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
                   <Cover book={b} />
@@ -166,7 +167,15 @@ function Page() {
                     <h3 className="font-semibold leading-snug mb-1 line-clamp-2">{b.title}</h3>
                     <p className="text-sm text-muted-foreground mb-2">{b.author} · {b.year}</p>
                     <p className="text-sm leading-relaxed line-clamp-3 mb-4">{b.description}</p>
-                    {!canOpen && (
+                    {canRead ? (
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                        {hasPdf ? (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted">PDF</span>
+                        ) : (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted">📖 Official Source</span>
+                        )}
+                      </div>
+                    ) : (
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3 p-2 rounded-lg bg-muted/60">
                         <Info className="w-3.5 h-3.5" /> Manba tez orada yuklanadi
                       </div>
@@ -180,7 +189,7 @@ function Page() {
                       </button>
                       <button
                         onClick={() => openSource(b)}
-                        disabled={!canOpen}
+                        disabled={!canRead}
                         className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         <BookOpen className="w-4 h-4" /> O'qish
@@ -220,18 +229,30 @@ function Page() {
                   <p className="leading-relaxed">{active.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {resolveUrl(active) ? (
-                    <button
-                      onClick={() => openSource(active)}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
-                    >
-                      <BookOpen className="w-4 h-4" /> Manbaga o'tish
-                    </button>
-                  ) : (
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-muted/60">
-                      <Info className="w-4 h-4" /> Manba tez orada yuklanadi
-                    </div>
-                  )}
+                  {(() => {
+                    const hasPdf = !!active.pdf_url;
+                    const hasSource = !!active.source_url;
+                    const canRead = hasPdf || hasSource;
+                    return canRead ? (
+                      <>
+                        {hasPdf ? (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted text-xs text-muted-foreground">PDF</span>
+                        ) : (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted text-xs text-muted-foreground">📖 Official Source</span>
+                        )}
+                        <button
+                          onClick={() => openSource(active)}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
+                        >
+                          <BookOpen className="w-4 h-4" /> O'qish
+                        </button>
+                      </>
+                    ) : (
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-muted/60">
+                        <Info className="w-4 h-4" /> Manba tez orada yuklanadi
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             </div>
