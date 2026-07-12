@@ -156,7 +156,9 @@ function Page() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((b) => {
-              const canOpen = Boolean(resolveUrl(b));
+              const hasPdf = !!b.pdf_url;
+              const hasSource = !!b.source_url;
+              const canRead = hasPdf || hasSource;
               return (
                 <article key={b.id} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
                   <Cover book={b} />
@@ -165,7 +167,15 @@ function Page() {
                     <h3 className="font-semibold leading-snug mb-1 line-clamp-2">{b.title}</h3>
                     <p className="text-sm text-muted-foreground mb-2">{b.author} · {b.year}</p>
                     <p className="text-sm leading-relaxed line-clamp-3 mb-4">{b.description}</p>
-                    {!canOpen && (
+                    {canRead ? (
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                        {hasPdf ? (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted">PDF</span>
+                        ) : (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted">📖 Official Source</span>
+                        )}
+                      </div>
+                    ) : (
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3 p-2 rounded-lg bg-muted/60">
                         <Info className="w-3.5 h-3.5" /> Manba tez orada yuklanadi
                       </div>
@@ -179,7 +189,7 @@ function Page() {
                       </button>
                       <button
                         onClick={() => openSource(b)}
-                        disabled={!canOpen}
+                        disabled={!canRead}
                         className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         <BookOpen className="w-4 h-4" /> O'qish
