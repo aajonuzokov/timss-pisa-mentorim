@@ -56,18 +56,17 @@ function Cover({ book }: { book: Book }) {
   );
 }
 
-// Prefer source_url (official landing page) over pdf_url to avoid broken direct PDF links.
 function resolveUrl(book: Book): string | null {
-  return book.source_url || book.pdf_url || null;
+  return book.pdf_url || book.source_url || null;
 }
 
 function openSource(book: Book) {
-  const url = resolveUrl(book);
+  const url = book.pdf_url || book.source_url;
   if (!url) {
     toast.error("Manba mavjud emas.");
     return;
   }
-  console.log("[kutubxona] opening:", book.title, url);
+  console.log("Opening:", url);
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
