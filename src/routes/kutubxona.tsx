@@ -229,18 +229,30 @@ function Page() {
                   <p className="leading-relaxed">{active.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {resolveUrl(active) ? (
-                    <button
-                      onClick={() => openSource(active)}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
-                    >
-                      <BookOpen className="w-4 h-4" /> Manbaga o'tish
-                    </button>
-                  ) : (
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-muted/60">
-                      <Info className="w-4 h-4" /> Manba tez orada yuklanadi
-                    </div>
-                  )}
+                  {(() => {
+                    const hasPdf = !!active.pdf_url;
+                    const hasSource = !!active.source_url;
+                    const canRead = hasPdf || hasSource;
+                    return canRead ? (
+                      <>
+                        {hasPdf ? (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted text-xs text-muted-foreground">PDF</span>
+                        ) : (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted text-xs text-muted-foreground">📖 Official Source</span>
+                        )}
+                        <button
+                          onClick={() => openSource(active)}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
+                        >
+                          <BookOpen className="w-4 h-4" /> O'qish
+                        </button>
+                      </>
+                    ) : (
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-muted/60">
+                        <Info className="w-4 h-4" /> Manba tez orada yuklanadi
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             </div>
