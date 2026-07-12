@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { BookMarked, Download, Search, X, BookOpen, Info, Loader2 } from "lucide-react";
+import { BookMarked, Search, X, BookOpen, Info, Loader2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -24,7 +24,7 @@ type Book = {
   description: string;
   cover_image: string | null;
   pdf_url: string | null;
-  reader_url: string | null;
+  source_url: string | null;
 };
 
 const categories = ["Barchasi", "TIMSS", "PISA", "Metodika", "Pedagogika", "Matematik savodxonlik", "Dissertatsiyalar"] as const;
@@ -56,24 +56,19 @@ function Cover({ book }: { book: Book }) {
   );
 }
 
-function openReader(book: Book) {
-  if (!book.pdf_url) {
-    toast.error("PDF mavjud emas.");
-    return;
-  }
-  console.log(book.pdf_url);
-  console.log("[kutubxona] final URL:", book.pdf_url);
-  window.open(book.pdf_url, "_blank", "noopener,noreferrer");
+// Prefer source_url (official landing page) over pdf_url to avoid broken direct PDF links.
+function resolveUrl(book: Book): string | null {
+  return book.source_url || book.pdf_url || null;
 }
 
-function downloadPdf(book: Book) {
-  if (!book.pdf_url) {
-    toast.error("PDF mavjud emas.");
+function openSource(book: Book) {
+  const url = resolveUrl(book);
+  if (!url) {
+    toast.error("Manba mavjud emas.");
     return;
   }
-  console.log(book.pdf_url);
-  console.log("[kutubxona] final URL:", book.pdf_url);
-  window.open(book.pdf_url, "_blank", "noopener,noreferrer");
+  console.log("[kutubxona] opening:", book.title, url);
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 function Page() {
@@ -90,7 +85,7 @@ function Page() {
       setLoading(true);
       const { data, error } = await supabase
         .from("books")
-        .select("id, title, author, year, category, description, cover_image, pdf_url, reader_url")
+        .select("id, title, author, year, category, description, cover_image, pdf_url, source_url")
         .order("sort_order", { ascending: true });
       if (cancelled) return;
       if (error) {
@@ -162,8 +157,7 @@ function Page() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((b) => {
-              const hasPdf = Boolean(b.pdf_url);
-              const canRead = Boolean(b.pdf_url);
+              const canOpen = Boolean(resolveUrl(b));
               return (
                 <article key={b.id} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
                   <Cover book={b} />
@@ -172,9 +166,9 @@ function Page() {
                     <h3 className="font-semibold leading-snug mb-1 line-clamp-2">{b.title}</h3>
                     <p className="text-sm text-muted-foreground mb-2">{b.author} · {b.year}</p>
                     <p className="text-sm leading-relaxed line-clamp-3 mb-4">{b.description}</p>
-                    {!hasPdf && !canRead && (
+                    {!canOpen && (
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3 p-2 rounded-lg bg-muted/60">
-                        <Info className="w-3.5 h-3.5" /> PDF tez orada yuklanadi
+                        <Info className="w-3.5 h-3.5" /> Manba tez orada yuklanadi
                       </div>
                     )}
                     <div className="mt-auto flex flex-wrap gap-2">
@@ -185,18 +179,11 @@ function Page() {
                         Batafsil
                       </button>
                       <button
-                        onClick={() => openReader(b)}
-                        disabled={!canRead}
-                        className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full border border-primary/30 text-primary text-sm font-medium hover:bg-primary/5 transition disabled:opacity-40 disabled:cursor-not-allowed"
-                      >
-                        <BookOpen className="w-4 h-4" /> O'qish
-                      </button>
-                      <button
-                        onClick={() => downloadPdf(b)}
-                        disabled={!hasPdf}
+                        onClick={() => openSource(b)}
+                        disabled={!canOpen}
                         className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition disabled:opacity-40 disabled:cursor-not-allowed"
                       >
-                        <Download className="w-4 h-4" /> PDF
+                        <BookOpen className="w-4 h-4" /> O'qish
                       </button>
                     </div>
                   </div>
@@ -233,26 +220,16 @@ function Page() {
                   <p className="leading-relaxed">{active.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {active.pdf_url ? (
-                    <>
-                      <button
-                        onClick={() => openReader(active)}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/30 text-primary font-medium hover:bg-primary/5 transition"
-                      >
-                        <BookOpen className="w-4 h-4" /> Onlayn o'qish
-                      </button>
-                      {active.pdf_url && (
-                        <button
-                          onClick={() => downloadPdf(active)}
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
-                        >
-                          <Download className="w-4 h-4" /> PDF yuklab olish
-                        </button>
-                      )}
-                    </>
+                  {resolveUrl(active) ? (
+                    <button
+                      onClick={() => openSource(active)}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
+                    >
+                      <BookOpen className="w-4 h-4" /> Manbaga o'tish
+                    </button>
                   ) : (
                     <div className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-muted/60">
-                      <Info className="w-4 h-4" /> PDF tez orada yuklanadi
+                      <Info className="w-4 h-4" /> Manba tez orada yuklanadi
                     </div>
                   )}
                 </div>
