@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { BookMarked, Search, X, BookOpen, Info, Loader2 } from "lucide-react";
+import { BookMarked, Search, X, BookOpen, Info, Loader2, FileText, ExternalLink, Download } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -187,13 +187,37 @@ function Page() {
                       >
                         Batafsil
                       </button>
-                      <button
-                        onClick={() => openSource(b)}
-                        disabled={!canRead}
-                        className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition disabled:opacity-40 disabled:cursor-not-allowed"
-                      >
-                        <BookOpen className="w-4 h-4" /> O'qish
-                      </button>
+                      {hasPdf && (
+                        <a
+                          href={b.pdf_url!}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition"
+                        >
+                          <FileText className="w-4 h-4" /> PDF
+                        </a>
+                      )}
+                      {hasSource && (
+                        <a
+                          href={b.source_url!}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full border text-sm font-medium hover:bg-muted transition"
+                        >
+                          <ExternalLink className="w-4 h-4" /> Manba
+                        </a>
+                      )}
+                      {hasPdf && (
+                        <a
+                          href={b.pdf_url!}
+                          download
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full border text-sm font-medium hover:bg-muted transition"
+                        >
+                          <Download className="w-4 h-4" /> Yuklab olish
+                        </a>
+                      )}
                     </div>
                   </div>
                 </article>
