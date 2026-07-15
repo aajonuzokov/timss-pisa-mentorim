@@ -156,9 +156,9 @@ function Page() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((b) => {
-              const hasPdf = !!b.pdf_url;
-              const hasSource = !!b.source_url;
-              const canRead = hasPdf || hasSource;
+              const hasPdf = typeof b.pdf_url === "string" && b.pdf_url.trim().length > 0;
+              const hasSource = typeof b.source_url === "string" && b.source_url.trim().length > 0;
+              const canOpen = typeof resolveUrl(b) === "string" && resolveUrl(b)!.trim().length > 0;
               return (
                 <article key={b.id} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
                   <Cover book={b} />
@@ -167,7 +167,7 @@ function Page() {
                     <h3 className="font-semibold leading-snug mb-1 line-clamp-2">{b.title}</h3>
                     <p className="text-sm text-muted-foreground mb-2">{b.author} · {b.year}</p>
                     <p className="text-sm leading-relaxed line-clamp-3 mb-4">{b.description}</p>
-                    {canRead ? (
+                    {canOpen ? (
                       <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                         {hasPdf ? (
                           <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted">PDF</span>
@@ -254,10 +254,10 @@ function Page() {
                 </div>
                 <div className="flex flex-wrap gap-2 pt-2">
                   {(() => {
-                    const hasPdf = !!active.pdf_url;
-                    const hasSource = !!active.source_url;
-                    const canRead = hasPdf || hasSource;
-                    return canRead ? (
+                    const hasPdf = typeof active.pdf_url === "string" && active.pdf_url.trim().length > 0;
+                    const hasSource = typeof active.source_url === "string" && active.source_url.trim().length > 0;
+                    const canOpen = typeof resolveUrl(active) === "string" && resolveUrl(active)!.trim().length > 0;
+                    return canOpen ? (
                       <>
                         {hasPdf ? (
                           <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted text-xs text-muted-foreground">PDF</span>
