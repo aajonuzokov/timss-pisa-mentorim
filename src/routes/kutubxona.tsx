@@ -60,14 +60,28 @@ function resolveUrl(book: Book): string | null {
   return book.pdf_url || book.source_url || null;
 }
 
-function openSource(book: Book) {
-  const url = book.pdf_url || book.source_url;
-  if (!url) {
-    toast.error("Manba mavjud emas.");
+function openUrl(url: string | null | undefined, label: string) {
+  const cleanUrl = typeof url === "string" ? url.trim() : "";
+  if (!cleanUrl) {
+    toast.error(`${label} uchun havola topilmadi.`);
     return;
   }
-  console.log("Opening:", url);
-  window.open(url, "_blank", "noopener,noreferrer");
+
+  let newWindow: Window | null = null;
+  try {
+    newWindow = window.open(cleanUrl, "_blank", "noopener,noreferrer");
+  } catch {
+    toast.error(`${label} ochilmadi. Brauzer havolasini blokladi yoki xatolik yuz berdi.`);
+    return;
+  }
+
+  if (!newWindow || newWindow.closed) {
+    toast.error(`${label} yangi oynada ochilmadi. Popup bloklaganini tekshiring.`);
+  }
+}
+
+function openSource(book: Book) {
+  openUrl(book.pdf_url || book.source_url, "O'qish");
 }
 
 function Page() {
