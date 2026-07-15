@@ -202,14 +202,12 @@ function Page() {
                         Batafsil
                       </button>
                       {hasPdf && (
-                        <a
-                          href={b.pdf_url!}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
+                          onClick={() => openUrl(b.pdf_url, "PDF")}
                           className="flex-1 min-w-[110px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition"
                         >
                           <FileText className="w-4 h-4" /> PDF
-                        </a>
+                        </button>
                       )}
                       {hasSource && (
                         <a
