@@ -93,23 +93,42 @@ function Page() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let cancelled = false;
+    const abortController = new AbortController();
+    let mounted = true;
+
     (async () => {
       setLoading(true);
-      const { data, error } = await supabase
-        .from("books")
-        .select("id, title, author, year, category, description, cover_image, pdf_url, source_url")
-        .order("sort_order", { ascending: true });
-      if (cancelled) return;
-      if (error) {
-        setError(error.message);
-      } else {
-        setBooks((data ?? []) as Book[]);
+      setError(null);
+      try {
+        const { data, error } = await supabase
+          .from("books")
+          .select("id, title, author, year, category, description, cover_image, pdf_url, source_url, sort_order")
+          .order("sort_order", { ascending: true })
+          .abortSignal(abortController.signal);
+
+        if (!mounted || abortController.signal.aborted) return;
+
+        if (error) {
+          setError(error.message);
+          setBooks([]);
+        } else {
+          console.log("[kutubxona] fresh books fetched:", (data ?? []).length);
+          setBooks((data ?? []) as Book[]);
+        }
+      } catch (err) {
+        if (!mounted || abortController.signal.aborted) return;
+        setError(err instanceof Error ? err.message : "Noma'lum xatolik");
+        setBooks([]);
+      } finally {
+        if (mounted && !abortController.signal.aborted) {
+          setLoading(false);
+        }
       }
-      setLoading(false);
     })();
+
     return () => {
-      cancelled = true;
+      mounted = false;
+      abortController.abort();
     };
   }, []);
 
