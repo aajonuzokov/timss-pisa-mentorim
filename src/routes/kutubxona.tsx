@@ -150,6 +150,11 @@ function Page() {
     });
   }, [query, cat, books]);
 
+  const categories = useMemo(
+    () => ["Barchasi", ...Array.from(new Set(books.map((b) => b.category)))],
+    [books],
+  );
+
   return (
     <SiteLayout>
       <PageHeader eyebrow="Adabiyotlar" title="Elektron kutubxona" description="TIMSS, PISA va boshlang'ich matematika metodikasiga oid tanlangan adabiyotlar." />
