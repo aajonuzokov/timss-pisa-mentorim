@@ -27,16 +27,21 @@ type Book = {
   source_url: string | null;
 };
 
-const categories = ["Barchasi", "TIMSS", "PISA", "Metodika", "Pedagogika", "Matematik savodxonlik", "Dissertatsiyalar"] as const;
-
 const categoryColors: Record<string, string> = {
   TIMSS: "from-blue-500 to-indigo-600",
   PISA: "from-violet-500 to-fuchsia-600",
+  Methodology: "from-emerald-500 to-teal-600",
   Metodika: "from-emerald-500 to-teal-600",
+  Pedagogy: "from-amber-500 to-orange-600",
   Pedagogika: "from-amber-500 to-orange-600",
+  "Mathematical Literacy": "from-rose-500 to-pink-600",
   "Matematik savodxonlik": "from-rose-500 to-pink-600",
+  Assessment: "from-cyan-500 to-sky-600",
+  "Digital Education": "from-indigo-500 to-blue-600",
+  Dissertation: "from-slate-600 to-slate-800",
   Dissertatsiyalar: "from-slate-600 to-slate-800",
 };
+
 
 function Cover({ book }: { book: Book }) {
   const gradient = categoryColors[book.category] ?? "from-primary to-accent";
@@ -86,7 +91,7 @@ function openSource(book: Book) {
 
 function Page() {
   const [query, setQuery] = useState("");
-  const [cat, setCat] = useState<(typeof categories)[number]>("Barchasi");
+  const [cat, setCat] = useState<string>("Barchasi");
   const [active, setActive] = useState<Book | null>(null);
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
@@ -145,6 +150,11 @@ function Page() {
     });
   }, [query, cat, books]);
 
+  const categories = useMemo(
+    () => ["Barchasi", ...Array.from(new Set(books.map((b) => b.category)))],
+    [books],
+  );
+
   return (
     <SiteLayout>
       <PageHeader eyebrow="Adabiyotlar" title="Elektron kutubxona" description="TIMSS, PISA va boshlang'ich matematika metodikasiga oid tanlangan adabiyotlar." />
@@ -189,9 +199,15 @@ function Page() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((b) => {
-              const hasPdf = typeof b.pdf_url === "string" && b.pdf_url.trim().length > 0;
-              const hasSource = typeof b.source_url === "string" && b.source_url.trim().length > 0;
-              const canOpen = typeof resolveUrl(b) === "string" && resolveUrl(b)!.trim().length > 0;
+              const hasPdf = Boolean(b.pdf_url);
+              const hasSource = Boolean(b.source_url);
+              const canOpen = hasPdf || hasSource;
+              console.log({
+                title: b.title,
+                category: b.category,
+                pdf_url: b.pdf_url,
+                showPdfButton: Boolean(b.pdf_url),
+              });
               return (
                 <article key={b.id} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
                   <Cover book={b} />
@@ -285,9 +301,9 @@ function Page() {
                 </div>
                 <div className="flex flex-wrap gap-2 pt-2">
                   {(() => {
-                    const hasPdf = typeof active.pdf_url === "string" && active.pdf_url.trim().length > 0;
-                    const hasSource = typeof active.source_url === "string" && active.source_url.trim().length > 0;
-                    const canOpen = typeof resolveUrl(active) === "string" && resolveUrl(active)!.trim().length > 0;
+                    const hasPdf = Boolean(active.pdf_url);
+                    const hasSource = Boolean(active.source_url);
+                    const canOpen = hasPdf || hasSource;
                     return canOpen ? (
                       <>
                         {hasPdf ? (
