@@ -27,16 +27,21 @@ type Book = {
   source_url: string | null;
 };
 
-const categories = ["Barchasi", "TIMSS", "PISA", "Metodika", "Pedagogika", "Matematik savodxonlik", "Dissertatsiyalar"] as const;
-
 const categoryColors: Record<string, string> = {
   TIMSS: "from-blue-500 to-indigo-600",
   PISA: "from-violet-500 to-fuchsia-600",
+  Methodology: "from-emerald-500 to-teal-600",
   Metodika: "from-emerald-500 to-teal-600",
+  Pedagogy: "from-amber-500 to-orange-600",
   Pedagogika: "from-amber-500 to-orange-600",
+  "Mathematical Literacy": "from-rose-500 to-pink-600",
   "Matematik savodxonlik": "from-rose-500 to-pink-600",
+  Assessment: "from-cyan-500 to-sky-600",
+  "Digital Education": "from-indigo-500 to-blue-600",
+  Dissertation: "from-slate-600 to-slate-800",
   Dissertatsiyalar: "from-slate-600 to-slate-800",
 };
+
 
 function Cover({ book }: { book: Book }) {
   const gradient = categoryColors[book.category] ?? "from-primary to-accent";
