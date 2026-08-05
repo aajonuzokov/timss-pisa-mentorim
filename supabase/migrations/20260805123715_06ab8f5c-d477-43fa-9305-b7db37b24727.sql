@@ -1,0 +1,1 @@
+UPDATE public.books SET pdf_url = 'https://gzfytmzjbvbtaolqcvun.supabase.co/storage/v1/object/public/books/matematika_oqitish_metodikasi_2022.pdf' WHERE title = 'Boshlang''ich sinflarda matematika o''qitish metodikasi';
