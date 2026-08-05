@@ -301,9 +301,9 @@ function Page() {
                 </div>
                 <div className="flex flex-wrap gap-2 pt-2">
                   {(() => {
-                    const hasPdf = typeof active.pdf_url === "string" && active.pdf_url.trim().length > 0;
-                    const hasSource = typeof active.source_url === "string" && active.source_url.trim().length > 0;
-                    const canOpen = typeof resolveUrl(active) === "string" && resolveUrl(active)!.trim().length > 0;
+                    const hasPdf = Boolean(active.pdf_url);
+                    const hasSource = Boolean(active.source_url);
+                    const canOpen = hasPdf || hasSource;
                     return canOpen ? (
                       <>
                         {hasPdf ? (
