@@ -91,7 +91,7 @@ function openSource(book: Book) {
 
 function Page() {
   const [query, setQuery] = useState("");
-  const [cat, setCat] = useState<(typeof categories)[number]>("Barchasi");
+  const [cat, setCat] = useState<string>("Barchasi");
   const [active, setActive] = useState<Book | null>(null);
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
