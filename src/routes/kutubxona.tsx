@@ -199,14 +199,15 @@ function Page() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((b) => {
-              const hasPdf = Boolean(b.pdf_url);
-              const hasSource = Boolean(b.source_url);
+              const hasPdf = typeof b.pdf_url === "string" && b.pdf_url.trim() !== "";
+              const hasSource = typeof b.source_url === "string" && b.source_url.trim() !== "";
               const canOpen = hasPdf || hasSource;
               console.log({
                 title: b.title,
-                category: b.category,
                 pdf_url: b.pdf_url,
-                showPdfButton: Boolean(b.pdf_url),
+                source_url: b.source_url,
+                showPdf: hasPdf,
+                showSource: hasSource,
               });
               return (
                 <article key={b.id} className="flex flex-col p-5 rounded-2xl border bg-card shadow-card hover:-translate-y-0.5 hover:shadow-elegant transition">
