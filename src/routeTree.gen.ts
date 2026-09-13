@@ -26,6 +26,7 @@ import { Route as ModelRouteImport } from './routes/model'
 import { Route as MktRouteImport } from './routes/mkt'
 import { Route as MathematicalModelingRouteImport } from './routes/mathematical-modeling'
 import { Route as KutubxonaRouteImport } from './routes/kutubxona'
+import { Route as ElektronTalimResursiRouteImport } from './routes/elektron-talim-resursi'
 import { Route as DolzarblikRouteImport } from './routes/dolzarblik'
 import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as AloqaRouteImport } from './routes/aloqa'
@@ -117,6 +118,11 @@ const KutubxonaRoute = KutubxonaRouteImport.update({
   path: '/kutubxona',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ElektronTalimResursiRoute = ElektronTalimResursiRouteImport.update({
+  id: '/elektron-talim-resursi',
+  path: '/elektron-talim-resursi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DolzarblikRoute = DolzarblikRouteImport.update({
   id: '/dolzarblik',
   path: '/dolzarblik',
@@ -148,6 +154,7 @@ export interface FileRoutesByFullPath {
   '/aloqa': typeof AloqaRoute
   '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
+  '/elektron-talim-resursi': typeof ElektronTalimResursiRoute
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByTo {
   '/aloqa': typeof AloqaRoute
   '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
+  '/elektron-talim-resursi': typeof ElektronTalimResursiRoute
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
@@ -197,6 +205,7 @@ export interface FileRoutesById {
   '/aloqa': typeof AloqaRoute
   '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
+  '/elektron-talim-resursi': typeof ElektronTalimResursiRoute
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/aloqa'
     | '/assessment'
     | '/dolzarblik'
+    | '/elektron-talim-resursi'
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
@@ -247,6 +257,7 @@ export interface FileRouteTypes {
     | '/aloqa'
     | '/assessment'
     | '/dolzarblik'
+    | '/elektron-talim-resursi'
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
@@ -271,6 +282,7 @@ export interface FileRouteTypes {
     | '/aloqa'
     | '/assessment'
     | '/dolzarblik'
+    | '/elektron-talim-resursi'
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
@@ -296,6 +308,7 @@ export interface RootRouteChildren {
   AloqaRoute: typeof AloqaRoute
   AssessmentRoute: typeof AssessmentRoute
   DolzarblikRoute: typeof DolzarblikRoute
+  ElektronTalimResursiRoute: typeof ElektronTalimResursiRoute
   KutubxonaRoute: typeof KutubxonaRoute
   MathematicalModelingRoute: typeof MathematicalModelingRoute
   MktRoute: typeof MktRoute
@@ -436,6 +449,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KutubxonaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/elektron-talim-resursi': {
+      id: '/elektron-talim-resursi'
+      path: '/elektron-talim-resursi'
+      fullPath: '/elektron-talim-resursi'
+      preLoaderRoute: typeof ElektronTalimResursiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dolzarblik': {
       id: '/dolzarblik'
       path: '/dolzarblik'
@@ -491,6 +511,7 @@ const rootRouteChildren: RootRouteChildren = {
   AloqaRoute: AloqaRoute,
   AssessmentRoute: AssessmentRoute,
   DolzarblikRoute: DolzarblikRoute,
+  ElektronTalimResursiRoute: ElektronTalimResursiRoute,
   KutubxonaRoute: KutubxonaRoute,
   MathematicalModelingRoute: MathematicalModelingRoute,
   MktRoute: MktRoute,
