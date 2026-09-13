@@ -13,6 +13,7 @@ const navItems = [
   { to: "/monitoring", label: "Monitoring" },
   { to: "/tavsiyalar", label: "Tavsiyalar" },
   { to: "/kutubxona", label: "Kutubxona" },
+  { to: "/elektron-talim-resursi", label: "Elektron ta'lim resursi" },
   { to: "/aloqa", label: "Aloqa" },
 ] as const;
 
@@ -28,7 +29,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <div className="w-9 h-9 rounded-xl flex items-center justify-center text-primary-foreground font-bold bg-gradient-hero">T</div>
             <span className="font-display text-lg font-semibold hidden sm:inline">TIMSS·PISA</span>
           </Link>
-          <nav className="hidden lg:flex items-center gap-1 text-sm">
+          <nav className="hidden xl:flex items-center gap-1 text-sm">
             {navItems.map((n) => {
               const active = pathname === n.to;
               return (
@@ -43,7 +44,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             })}
           </nav>
           <button
-            className="lg:hidden p-2 rounded-md hover:bg-muted"
+            className="xl:hidden p-2 rounded-md hover:bg-muted"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -51,7 +52,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           </button>
         </div>
         {open && (
-          <nav className="lg:hidden border-t bg-background">
+          <nav className="xl:hidden border-t bg-background">
             <div className="max-w-7xl mx-auto px-4 py-3 grid grid-cols-2 gap-2 text-sm">
               {navItems.map((n) => {
                 const active = pathname === n.to;
