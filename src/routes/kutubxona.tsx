@@ -23,6 +23,7 @@ type Book = {
   category: string;
   description: string;
   cover_image: string | null;
+  cover_url: string | null;
   pdf_url: string | null;
   source_url: string | null;
 };
@@ -47,8 +48,8 @@ function Cover({ book }: { book: Book }) {
   const gradient = categoryColors[book.category] ?? "from-primary to-accent";
   return (
     <div className={`relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-gradient-to-br ${gradient} flex flex-col justify-between p-4 text-white shadow-card`}>
-      {book.cover_image ? (
-        <img src={book.cover_image} alt={book.title} className="absolute inset-0 w-full h-full object-cover" />
+      {(book.cover_image || book.cover_url) ? (
+        <img src={book.cover_image || book.cover_url!} alt={book.title} className="absolute inset-0 w-full h-full object-cover" />
       ) : (
         <>
           <div className="text-[10px] uppercase tracking-widest opacity-80">{book.category}</div>
@@ -107,7 +108,8 @@ function Page() {
       try {
         const { data, error } = await supabase
           .from("books")
-          .select("id, title, author, year, category, description, cover_image, pdf_url, source_url, sort_order")
+          .select("id, title, author, year, category, description, cover_image, cover_url, pdf_url, source_url, order_index, sort_order")
+          .order("order_index", { ascending: true })
           .order("sort_order", { ascending: true })
           .abortSignal(abortController.signal);
 
