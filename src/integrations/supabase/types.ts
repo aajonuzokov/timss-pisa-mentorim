@@ -95,6 +95,51 @@ export type Database = {
         }
         Relationships: []
       }
+      test_results: {
+        Row: {
+          answers: Json
+          completed_at: string
+          course: string
+          full_name: string
+          id: string
+          level: string
+          percentage: number
+          score: number
+          started_at: string
+          test_type: string
+          total_questions: number
+          university: string
+        }
+        Insert: {
+          answers?: Json
+          completed_at?: string
+          course: string
+          full_name: string
+          id?: string
+          level: string
+          percentage: number
+          score: number
+          started_at: string
+          test_type: string
+          total_questions: number
+          university: string
+        }
+        Update: {
+          answers?: Json
+          completed_at?: string
+          course?: string
+          full_name?: string
+          id?: string
+          level?: string
+          percentage?: number
+          score?: number
+          started_at?: string
+          test_type?: string
+          total_questions?: number
+          university?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
