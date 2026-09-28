@@ -68,7 +68,7 @@ function Page() {
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-20">
-        <Quiz key={cat} questions={all[cat]} label={cats.find((c) => c.key === cat)!.title} />
+        <Quiz key={cat} questions={all[cat]} label={cats.find((c) => c.key === cat)!.title} testType={cat === "knowing" ? "TIMSS - Bilish" : cat === "applying" ? "TIMSS - Qo'llash" : "TIMSS - Mulohaza yuritish"} />
       </section>
     </SiteLayout>
   );

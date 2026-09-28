@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, XCircle, RefreshCw, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export type Question = {
   id: string;
@@ -16,12 +18,19 @@ type Props = {
   questions: Question[];
   label?: string;
   pageSize?: number;
+  testType?: string;
 };
 
-export function Quiz({ questions, label = "Topshiriqlar", pageSize = 10 }: Props) {
+const levelOf = (pct: number) =>
+  pct >= 80 ? "A'lo daraja" : pct >= 60 ? "Yaxshi daraja" : pct >= 40 ? "O'rta daraja" : "Quyi daraja — qaytadan urinib ko'ring";
+
+export function Quiz({ questions, label = "Topshiriqlar", pageSize = 10, testType }: Props) {
   const [page, setPage] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
+  const [participant, setParticipant] = useState({ full_name: "", university: "", course: "" });
+  const [saving, setSaving] = useState(false);
 
   const totalPages = Math.max(1, Math.ceil(questions.length / pageSize));
   const start = page * pageSize;
@@ -47,10 +56,52 @@ export function Quiz({ questions, label = "Topshiriqlar", pageSize = 10 }: Props
     setAnswers({});
     setSubmitted(false);
     setPage(0);
+    setStartedAt(new Date().toISOString());
+  };
+
+  const participantValid =
+    participant.full_name.trim() !== "" && participant.university.trim() !== "" && participant.course.trim() !== "";
+
+  const submit = async () => {
+    if (!participantValid) {
+      toast.error("Iltimos, F.I.Sh., universitet va kursni kiriting.");
+      return;
+    }
+    setSaving(true);
+    const { error } = await supabase.from("test_results").insert({
+      full_name: participant.full_name.trim(),
+      university: participant.university.trim(),
+      course: participant.course.trim(),
+      test_type: testType ?? label,
+      score: result.correct,
+      total_questions: result.total,
+      percentage: result.pct,
+      level: levelOf(result.pct),
+      answers,
+      started_at: startedAt,
+      completed_at: new Date().toISOString(),
+    });
+    setSaving(false);
+    setSubmitted(true);
+    if (error) {
+      console.error("[test_results] save failed", error);
+      toast.error("Natijani saqlashda xatolik yuz berdi.");
+    } else {
+      toast.success("Natija saqlandi");
+    }
   };
 
   return (
     <div className="space-y-6">
+      <div className="p-5 rounded-2xl border bg-card shadow-card">
+        <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-3">Ishtirokchi ma'lumotlari</div>
+        <div className="grid sm:grid-cols-3 gap-3">
+          <input required disabled={submitted} maxLength={200} className="px-4 py-2.5 rounded-lg border bg-background" placeholder="F.I.Sh. *" value={participant.full_name} onChange={(e) => setParticipant({ ...participant, full_name: e.target.value })} />
+          <input required disabled={submitted} maxLength={200} className="px-4 py-2.5 rounded-lg border bg-background" placeholder="Universitet *" value={participant.university} onChange={(e) => setParticipant({ ...participant, university: e.target.value })} />
+          <input required disabled={submitted} maxLength={50} className="px-4 py-2.5 rounded-lg border bg-background" placeholder="Kurs *" value={participant.course} onChange={(e) => setParticipant({ ...participant, course: e.target.value })} />
+        </div>
+      </div>
+
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 p-5 rounded-2xl border bg-card shadow-card">
         <div>
           <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider">{label}</div>
@@ -136,8 +187,8 @@ export function Quiz({ questions, label = "Topshiriqlar", pageSize = 10 }: Props
             <div className="text-sm text-muted-foreground">
               Barcha sahifalardagi savollarga javob bering, so'ng natijani tekshiring.
             </div>
-            <Button onClick={() => setSubmitted(true)} disabled={result.answered === 0}>
-              Natijani tekshirish
+            <Button onClick={submit} disabled={result.answered === 0 || saving || !participantValid}>
+              {saving ? "Saqlanmoqda..." : "Natijani tekshirish"}
             </Button>
           </>
         ) : (
@@ -151,7 +202,7 @@ export function Quiz({ questions, label = "Topshiriqlar", pageSize = 10 }: Props
                   Natija: {result.correct} / {result.total} ({result.pct}%)
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  {result.pct >= 80 ? "A'lo daraja" : result.pct >= 60 ? "Yaxshi daraja" : result.pct >= 40 ? "O'rta daraja" : "Quyi daraja — qaytadan urinib ko'ring"}
+                  {levelOf(result.pct)}
                 </div>
               </div>
             </div>
