@@ -18,6 +18,6 @@ export const Route = createFileRoute("/assessment")({
     const { tavsiya } = Route.useLoaderData() as { tavsiya: Tavsiya };
     return <TavsiyaView tavsiya={tavsiya} />;
   },
-  errorComponent: ({ error }) => <div className="p-8">Xatolik: {error.message}</div>,
+  errorComponent: ({ error }: { error: Error }) => <div className="p-8">Xatolik: {error.message}</div>,
   notFoundComponent: () => <div className="p-8">Tavsiya topilmadi.</div>,
 });
