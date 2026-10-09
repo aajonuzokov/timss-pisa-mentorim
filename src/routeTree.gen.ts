@@ -9,128 +9,33 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TimssReasoningRouteImport } from './routes/timss-reasoning'
-import { Route as TimssKnowingRouteImport } from './routes/timss-knowing'
-import { Route as TimssApplyingRouteImport } from './routes/timss-applying'
-import { Route as TimssRouteImport } from './routes/timss'
-import { Route as TavsiyalarRouteImport } from './routes/tavsiyalar'
-import { Route as ResourcesRouteImport } from './routes/resources'
-import { Route as QollanmaRouteImport } from './routes/qollanma'
-import { Route as PisaInterpretRouteImport } from './routes/pisa-interpret'
-import { Route as PisaFormulateRouteImport } from './routes/pisa-formulate'
-import { Route as PisaEmployRouteImport } from './routes/pisa-employ'
-import { Route as PisaRouteImport } from './routes/pisa'
-import { Route as NatijalarRouteImport } from './routes/natijalar'
-import { Route as MonitoringRouteImport } from './routes/monitoring'
-import { Route as ModelRouteImport } from './routes/model'
-import { Route as MktRouteImport } from './routes/mkt'
-import { Route as MathematicalModelingRouteImport } from './routes/mathematical-modeling'
-import { Route as KutubxonaRouteImport } from './routes/kutubxona'
-import { Route as ElektronTalimResursiRouteImport } from './routes/elektron-talim-resursi'
-import { Route as DolzarblikRouteImport } from './routes/dolzarblik'
-import { Route as AssessmentRouteImport } from './routes/assessment'
-import { Route as AloqaRouteImport } from './routes/aloqa'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AloqaRouteImport } from './routes/aloqa'
+import { Route as AssessmentRouteImport } from './routes/assessment'
+import { Route as DolzarblikRouteImport } from './routes/dolzarblik'
+import { Route as ElektronTalimResursiRouteImport } from './routes/elektron-talim-resursi'
+import { Route as KutubxonaRouteImport } from './routes/kutubxona'
+import { Route as MathematicalModelingRouteImport } from './routes/mathematical-modeling'
+import { Route as MktRouteImport } from './routes/mkt'
+import { Route as ModelRouteImport } from './routes/model'
+import { Route as MonitoringRouteImport } from './routes/monitoring'
+import { Route as NatijalarRouteImport } from './routes/natijalar'
+import { Route as PisaRouteImport } from './routes/pisa'
+import { Route as PisaEmployRouteImport } from './routes/pisa-employ'
+import { Route as PisaFormulateRouteImport } from './routes/pisa-formulate'
+import { Route as PisaInterpretRouteImport } from './routes/pisa-interpret'
+import { Route as QollanmaRouteImport } from './routes/qollanma'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as TavsiyalarRouteImport } from './routes/tavsiyalar'
+import { Route as TimssRouteImport } from './routes/timss'
+import { Route as TimssApplyingRouteImport } from './routes/timss-applying'
+import { Route as TimssKnowingRouteImport } from './routes/timss-knowing'
+import { Route as TimssReasoningRouteImport } from './routes/timss-reasoning'
 import { Route as TavsiyalarSlugRouteImport } from './routes/tavsiyalar.$slug'
 
-const TimssReasoningRoute = TimssReasoningRouteImport.update({
-  id: '/timss-reasoning',
-  path: '/timss-reasoning',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TimssKnowingRoute = TimssKnowingRouteImport.update({
-  id: '/timss-knowing',
-  path: '/timss-knowing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TimssApplyingRoute = TimssApplyingRouteImport.update({
-  id: '/timss-applying',
-  path: '/timss-applying',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TimssRoute = TimssRouteImport.update({
-  id: '/timss',
-  path: '/timss',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TavsiyalarRoute = TavsiyalarRouteImport.update({
-  id: '/tavsiyalar',
-  path: '/tavsiyalar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResourcesRoute = ResourcesRouteImport.update({
-  id: '/resources',
-  path: '/resources',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QollanmaRoute = QollanmaRouteImport.update({
-  id: '/qollanma',
-  path: '/qollanma',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PisaInterpretRoute = PisaInterpretRouteImport.update({
-  id: '/pisa-interpret',
-  path: '/pisa-interpret',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PisaFormulateRoute = PisaFormulateRouteImport.update({
-  id: '/pisa-formulate',
-  path: '/pisa-formulate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PisaEmployRoute = PisaEmployRouteImport.update({
-  id: '/pisa-employ',
-  path: '/pisa-employ',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PisaRoute = PisaRouteImport.update({
-  id: '/pisa',
-  path: '/pisa',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NatijalarRoute = NatijalarRouteImport.update({
-  id: '/natijalar',
-  path: '/natijalar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MonitoringRoute = MonitoringRouteImport.update({
-  id: '/monitoring',
-  path: '/monitoring',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ModelRoute = ModelRouteImport.update({
-  id: '/model',
-  path: '/model',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MktRoute = MktRouteImport.update({
-  id: '/mkt',
-  path: '/mkt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MathematicalModelingRoute = MathematicalModelingRouteImport.update({
-  id: '/mathematical-modeling',
-  path: '/mathematical-modeling',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KutubxonaRoute = KutubxonaRouteImport.update({
-  id: '/kutubxona',
-  path: '/kutubxona',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ElektronTalimResursiRoute = ElektronTalimResursiRouteImport.update({
-  id: '/elektron-talim-resursi',
-  path: '/elektron-talim-resursi',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DolzarblikRoute = DolzarblikRouteImport.update({
-  id: '/dolzarblik',
-  path: '/dolzarblik',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AssessmentRoute = AssessmentRouteImport.update({
-  id: '/assessment',
-  path: '/assessment',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AloqaRoute = AloqaRouteImport.update({
@@ -138,9 +43,104 @@ const AloqaRoute = AloqaRouteImport.update({
   path: '/aloqa',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AssessmentRoute = AssessmentRouteImport.update({
+  id: '/assessment',
+  path: '/assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DolzarblikRoute = DolzarblikRouteImport.update({
+  id: '/dolzarblik',
+  path: '/dolzarblik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ElektronTalimResursiRoute = ElektronTalimResursiRouteImport.update({
+  id: '/elektron-talim-resursi',
+  path: '/elektron-talim-resursi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KutubxonaRoute = KutubxonaRouteImport.update({
+  id: '/kutubxona',
+  path: '/kutubxona',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MathematicalModelingRoute = MathematicalModelingRouteImport.update({
+  id: '/mathematical-modeling',
+  path: '/mathematical-modeling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MktRoute = MktRouteImport.update({
+  id: '/mkt',
+  path: '/mkt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModelRoute = ModelRouteImport.update({
+  id: '/model',
+  path: '/model',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonitoringRoute = MonitoringRouteImport.update({
+  id: '/monitoring',
+  path: '/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NatijalarRoute = NatijalarRouteImport.update({
+  id: '/natijalar',
+  path: '/natijalar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PisaRoute = PisaRouteImport.update({
+  id: '/pisa',
+  path: '/pisa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PisaEmployRoute = PisaEmployRouteImport.update({
+  id: '/pisa-employ',
+  path: '/pisa-employ',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PisaFormulateRoute = PisaFormulateRouteImport.update({
+  id: '/pisa-formulate',
+  path: '/pisa-formulate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PisaInterpretRoute = PisaInterpretRouteImport.update({
+  id: '/pisa-interpret',
+  path: '/pisa-interpret',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QollanmaRoute = QollanmaRouteImport.update({
+  id: '/qollanma',
+  path: '/qollanma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TavsiyalarRoute = TavsiyalarRouteImport.update({
+  id: '/tavsiyalar',
+  path: '/tavsiyalar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimssRoute = TimssRouteImport.update({
+  id: '/timss',
+  path: '/timss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimssApplyingRoute = TimssApplyingRouteImport.update({
+  id: '/timss-applying',
+  path: '/timss-applying',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimssKnowingRoute = TimssKnowingRouteImport.update({
+  id: '/timss-knowing',
+  path: '/timss-knowing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimssReasoningRoute = TimssReasoningRouteImport.update({
+  id: '/timss-reasoning',
+  path: '/timss-reasoning',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TavsiyalarSlugRoute = TavsiyalarSlugRouteImport.update({
@@ -330,144 +330,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/timss-reasoning': {
-      id: '/timss-reasoning'
-      path: '/timss-reasoning'
-      fullPath: '/timss-reasoning'
-      preLoaderRoute: typeof TimssReasoningRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/timss-knowing': {
-      id: '/timss-knowing'
-      path: '/timss-knowing'
-      fullPath: '/timss-knowing'
-      preLoaderRoute: typeof TimssKnowingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/timss-applying': {
-      id: '/timss-applying'
-      path: '/timss-applying'
-      fullPath: '/timss-applying'
-      preLoaderRoute: typeof TimssApplyingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/timss': {
-      id: '/timss'
-      path: '/timss'
-      fullPath: '/timss'
-      preLoaderRoute: typeof TimssRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tavsiyalar': {
-      id: '/tavsiyalar'
-      path: '/tavsiyalar'
-      fullPath: '/tavsiyalar'
-      preLoaderRoute: typeof TavsiyalarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/resources': {
-      id: '/resources'
-      path: '/resources'
-      fullPath: '/resources'
-      preLoaderRoute: typeof ResourcesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/qollanma': {
-      id: '/qollanma'
-      path: '/qollanma'
-      fullPath: '/qollanma'
-      preLoaderRoute: typeof QollanmaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pisa-interpret': {
-      id: '/pisa-interpret'
-      path: '/pisa-interpret'
-      fullPath: '/pisa-interpret'
-      preLoaderRoute: typeof PisaInterpretRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pisa-formulate': {
-      id: '/pisa-formulate'
-      path: '/pisa-formulate'
-      fullPath: '/pisa-formulate'
-      preLoaderRoute: typeof PisaFormulateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pisa-employ': {
-      id: '/pisa-employ'
-      path: '/pisa-employ'
-      fullPath: '/pisa-employ'
-      preLoaderRoute: typeof PisaEmployRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pisa': {
-      id: '/pisa'
-      path: '/pisa'
-      fullPath: '/pisa'
-      preLoaderRoute: typeof PisaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/natijalar': {
-      id: '/natijalar'
-      path: '/natijalar'
-      fullPath: '/natijalar'
-      preLoaderRoute: typeof NatijalarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/monitoring': {
-      id: '/monitoring'
-      path: '/monitoring'
-      fullPath: '/monitoring'
-      preLoaderRoute: typeof MonitoringRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/model': {
-      id: '/model'
-      path: '/model'
-      fullPath: '/model'
-      preLoaderRoute: typeof ModelRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mkt': {
-      id: '/mkt'
-      path: '/mkt'
-      fullPath: '/mkt'
-      preLoaderRoute: typeof MktRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mathematical-modeling': {
-      id: '/mathematical-modeling'
-      path: '/mathematical-modeling'
-      fullPath: '/mathematical-modeling'
-      preLoaderRoute: typeof MathematicalModelingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kutubxona': {
-      id: '/kutubxona'
-      path: '/kutubxona'
-      fullPath: '/kutubxona'
-      preLoaderRoute: typeof KutubxonaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/elektron-talim-resursi': {
-      id: '/elektron-talim-resursi'
-      path: '/elektron-talim-resursi'
-      fullPath: '/elektron-talim-resursi'
-      preLoaderRoute: typeof ElektronTalimResursiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dolzarblik': {
-      id: '/dolzarblik'
-      path: '/dolzarblik'
-      fullPath: '/dolzarblik'
-      preLoaderRoute: typeof DolzarblikRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/assessment': {
-      id: '/assessment'
-      path: '/assessment'
-      fullPath: '/assessment'
-      preLoaderRoute: typeof AssessmentRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aloqa': {
@@ -477,11 +344,144 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AloqaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/assessment': {
+      id: '/assessment'
+      path: '/assessment'
+      fullPath: '/assessment'
+      preLoaderRoute: typeof AssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dolzarblik': {
+      id: '/dolzarblik'
+      path: '/dolzarblik'
+      fullPath: '/dolzarblik'
+      preLoaderRoute: typeof DolzarblikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/elektron-talim-resursi': {
+      id: '/elektron-talim-resursi'
+      path: '/elektron-talim-resursi'
+      fullPath: '/elektron-talim-resursi'
+      preLoaderRoute: typeof ElektronTalimResursiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kutubxona': {
+      id: '/kutubxona'
+      path: '/kutubxona'
+      fullPath: '/kutubxona'
+      preLoaderRoute: typeof KutubxonaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mathematical-modeling': {
+      id: '/mathematical-modeling'
+      path: '/mathematical-modeling'
+      fullPath: '/mathematical-modeling'
+      preLoaderRoute: typeof MathematicalModelingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mkt': {
+      id: '/mkt'
+      path: '/mkt'
+      fullPath: '/mkt'
+      preLoaderRoute: typeof MktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/model': {
+      id: '/model'
+      path: '/model'
+      fullPath: '/model'
+      preLoaderRoute: typeof ModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monitoring': {
+      id: '/monitoring'
+      path: '/monitoring'
+      fullPath: '/monitoring'
+      preLoaderRoute: typeof MonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/natijalar': {
+      id: '/natijalar'
+      path: '/natijalar'
+      fullPath: '/natijalar'
+      preLoaderRoute: typeof NatijalarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pisa': {
+      id: '/pisa'
+      path: '/pisa'
+      fullPath: '/pisa'
+      preLoaderRoute: typeof PisaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pisa-employ': {
+      id: '/pisa-employ'
+      path: '/pisa-employ'
+      fullPath: '/pisa-employ'
+      preLoaderRoute: typeof PisaEmployRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pisa-formulate': {
+      id: '/pisa-formulate'
+      path: '/pisa-formulate'
+      fullPath: '/pisa-formulate'
+      preLoaderRoute: typeof PisaFormulateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pisa-interpret': {
+      id: '/pisa-interpret'
+      path: '/pisa-interpret'
+      fullPath: '/pisa-interpret'
+      preLoaderRoute: typeof PisaInterpretRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qollanma': {
+      id: '/qollanma'
+      path: '/qollanma'
+      fullPath: '/qollanma'
+      preLoaderRoute: typeof QollanmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tavsiyalar': {
+      id: '/tavsiyalar'
+      path: '/tavsiyalar'
+      fullPath: '/tavsiyalar'
+      preLoaderRoute: typeof TavsiyalarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timss': {
+      id: '/timss'
+      path: '/timss'
+      fullPath: '/timss'
+      preLoaderRoute: typeof TimssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timss-applying': {
+      id: '/timss-applying'
+      path: '/timss-applying'
+      fullPath: '/timss-applying'
+      preLoaderRoute: typeof TimssApplyingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timss-knowing': {
+      id: '/timss-knowing'
+      path: '/timss-knowing'
+      fullPath: '/timss-knowing'
+      preLoaderRoute: typeof TimssKnowingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timss-reasoning': {
+      id: '/timss-reasoning'
+      path: '/timss-reasoning'
+      fullPath: '/timss-reasoning'
+      preLoaderRoute: typeof TimssReasoningRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tavsiyalar/$slug': {
