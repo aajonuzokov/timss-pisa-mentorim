@@ -734,11 +734,11 @@ const summaryCards: { icon: typeof Target; title: string; text: string; tone: st
 ];
 
 const digitalEnv: { icon: typeof Monitor; title: string; status: string; state: "active" | "sync" | "ready" }[] = [
-  { icon: FolderKanban, title: "E-Portfolio", status: "82% to'ldirilgan", state: "active" },
-  { icon: MessageSquare, title: "Feedback tizimi", status: "12 ta yangi izoh", state: "sync" },
-  { icon: BookMarked, title: "Baholash tarixi", status: "37 ta yozuv", state: "ready" },
-  { icon: BarChart3, title: "Learning Analytics", status: "Real-time", state: "active" },
-  { icon: Monitor, title: "Mentorim Dashboard", status: "Ulangan", state: "active" },
+  { icon: FolderKanban, title: "E-Portfolio", status: "Rejada", state: "sync" },
+  { icon: MessageSquare, title: "Feedback tizimi", status: "Diagnostik hisobot", state: "active" },
+  { icon: BookMarked, title: "Baholash tarixi", status: "Monitoring (CSV)", state: "ready" },
+  { icon: BarChart3, title: "Learning Analytics", status: "Monitoring: statistika", state: "active" },
+  { icon: Monitor, title: "Mentorim Dashboard", status: "Monitoring sahifasi", state: "active" },
 ];
 
 const stateStyle = {
@@ -789,6 +789,9 @@ function DiagnosticView() {
 
   return (
     <div className="mt-2 space-y-8 text-slate-800">
+      <div className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+        <b>Namunaviy ko'rinish.</b> Bu paneldagi foizlar va ko'rsatkichlar diagnostika modelini tushuntirish uchun berilgan illyustratsiya, platformada yig'ilgan haqiqiy natija emas. Haqiqiy natijalar va statistik tahlil <a href="/monitoring" className="underline font-medium">Monitoring</a> sahifasida.
+      </div>
       {/* Header stat strip */}
       <div className="rounded-2xl border border-indigo-100 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 p-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -1021,7 +1024,7 @@ function DiagnosticView() {
                     <Icon className="w-4.5 h-4.5" />
                   </div>
                   <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium ${stateStyle[d.state]}`}>
-                    {d.state === "active" ? "● Faol" : d.state === "sync" ? "◐ Sync" : "○ Tayyor"}
+                    {d.state === "active" ? "● Faol" : d.state === "sync" ? "◐ Rejada" : "○ Tayyor"}
                   </span>
                 </div>
                 <div className="text-sm font-semibold mb-0.5">{d.title}</div>

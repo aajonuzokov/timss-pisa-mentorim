@@ -1,3 +1,7 @@
+import timssData from "@/data/timss.json";
+import pisaData from "@/data/pisa.json";
+import released from "@/data/released.json";
+import { allTavsiyalar } from "@/data/tavsiyalar";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { BookOpen, Target, FlaskConical, BarChart3, Library, Mail } from "lucide-react";
@@ -16,13 +20,20 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-// Raqamlar kod bilan tekshiriladi: src/data/timss.json (250), src/data/pisa.json (150),
-// src/data/tavsiyalar.ts (11 ta tavsiya), src/data/bank.ts (40 ta diagnostika mavzusi).
+// Raqamlar ma'lumot fayllaridan hisoblanadi.
+const bankCount = (o: Record<string, unknown[]>) =>
+  Object.values(o).reduce((n, v) => n + v.length, 0);
 const stats = [
-  { n: "250", label: "TIMSS topshiriqlari" },
-  { n: "150", label: "PISA topshiriqlari" },
-  { n: "11", label: "Metodik tavsiyalar" },
-  { n: "40", label: "Diagnostika mavzulari" },
+  {
+    n: String(bankCount(timssData as Record<string, unknown[]>)),
+    label: "TIMSS mashq topshiriqlari",
+  },
+  { n: String((pisaData as unknown[]).length), label: "PISA mashq topshiriqlari" },
+  {
+    n: String(bankCount(released as Record<string, unknown[]>)),
+    label: "Rasmiy namunaviy topshiriqlar",
+  },
+  { n: String(allTavsiyalar.length), label: "Metodik tavsiyalar" },
 ];
 
 const sections = [

@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   CheckCircle2,
@@ -21,6 +21,24 @@ import {
 } from "@/lib/answers";
 import { levelOf, pctOf } from "@/lib/levels";
 import { DiagnosticReport } from "@/components/DiagnosticReport";
+import {
+  GROUP_LABEL,
+  META_KEY,
+  STAGE_LABEL,
+  clearDraft,
+  generateCode,
+  isValidCode,
+  loadDraft,
+  loadProfile,
+  normalizeCode,
+  saveDraft,
+  saveProfile,
+  emptyParticipant,
+  type Group,
+  type Meta,
+  type Participant,
+  type Stage,
+} from "@/lib/participant";
 
 export type Question = {
   id: string;
@@ -51,22 +69,60 @@ type Props = {
   testKey: TestKey;
   label?: string;
   pageSize?: number;
+  /** Bosqich sahifa tomonidan belgilansa (masalan, kirish/yakuniy test), tanlov ko'rsatilmaydi. */
+  stage?: Stage;
 };
 
 const COURSES = ["1", "2", "3", "4", "Magistratura"];
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
-export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10 }: Props) {
+export function Quiz({
+  questions,
+  testKey,
+  label = "Topshiriqlar",
+  pageSize = 10,
+  stage: fixedStage,
+}: Props) {
   const [page, setPage] = useState(0);
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
   const [submitted, setSubmitted] = useState(false);
   const [triedSubmit, setTriedSubmit] = useState(false);
   const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
   const [completedAt, setCompletedAt] = useState<string>("");
-  const [participant, setParticipant] = useState({ full_name: "", university: "", course: "" });
+  const [participant, setParticipant] = useState<Participant>(emptyParticipant);
+  const [stage, setStage] = useState<Stage>(fixedStage ?? "mashq");
   const [saveState, setSaveState] = useState<SaveState>("idle");
+  const [restored, setRestored] = useState(0);
+  const [hydrated, setHydrated] = useState(false);
   const topRef = useRef<HTMLDivElement>(null);
+  const draftKey = `${testKey}:${fixedStage ?? "any"}`;
+
+  // Brauzerda saqlangan profil va tugallanmagan javoblarni tiklash (faqat mijoz tomonda).
+  useEffect(() => {
+    const prof = loadProfile();
+    setParticipant({ ...prof, code: prof.code || generateCode() });
+    const d = loadDraft(draftKey);
+    if (d && Object.keys(d.answers).length) {
+      setAnswers(d.answers);
+      setStartedAt(d.startedAt);
+      setPage(Math.min(d.page, Math.max(0, Math.ceil(questions.length / pageSize) - 1)));
+      setRestored(Object.keys(d.answers).length);
+    }
+    setHydrated(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draftKey]);
+
+  useEffect(() => {
+    if (hydrated) saveProfile(participant);
+  }, [participant, hydrated]);
+
+  // Har bir javobdan keyin qoralama saqlanadi: sahifa yangilansa ham javoblar yo'qolmaydi.
+  useEffect(() => {
+    if (!hydrated || submitted) return;
+    if (Object.keys(answers).length === 0) return;
+    saveDraft(draftKey, { answers, startedAt, page, savedAt: new Date().toISOString() });
+  }, [answers, page, startedAt, hydrated, submitted, draftKey]);
 
   const totalPages = Math.max(1, Math.ceil(questions.length / pageSize));
   const start = page * pageSize;
@@ -83,10 +139,13 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
   const remaining = result.total - result.answered;
   const firstUnanswered = questions.findIndex((q) => !isAnswered(answers[q.id]));
 
+  const codeValid = isValidCode(participant.code);
   const participantValid =
     participant.full_name.trim().length >= 3 &&
     participant.university.trim() !== "" &&
-    participant.course !== "";
+    participant.course !== "" &&
+    codeValid &&
+    participant.consent;
 
   const scrollTop = () => topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -101,6 +160,8 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
   };
 
   const reset = () => {
+    clearDraft(draftKey);
+    setRestored(0);
     setAnswers({});
     setSubmitted(false);
     setTriedSubmit(false);
@@ -121,7 +182,16 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
       total_questions: result.total,
       percentage: result.pct,
       level: levelOf(result.pct),
-      answers,
+      answers: {
+        ...answers,
+        [META_KEY]: {
+          code: participant.code,
+          stage,
+          group: participant.group,
+          consent: participant.consent,
+          v: 1,
+        } satisfies Meta,
+      },
       started_at: startedAt,
       completed_at: doneAt,
     });
@@ -133,6 +203,7 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
       );
     } else {
       setSaveState("saved");
+      clearDraft(draftKey);
       toast.success("Natija saqlandi");
     }
   };
@@ -140,7 +211,11 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
   const submit = async () => {
     setTriedSubmit(true);
     if (!participantValid) {
-      toast.error("Iltimos, F.I.Sh., universitet va kursni kiriting.");
+      toast.error(
+        participant.consent
+          ? "Iltimos, F.I.Sh., universitet, kurs va ishtirokchi kodini to'g'ri kiriting."
+          : "Natijani yuborish uchun ma'lumotlardan foydalanishga rozilik belgilang.",
+      );
       scrollTop();
       return;
     }
@@ -232,6 +307,92 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
               ))}
             </select>
           </div>
+          <div className="grid sm:grid-cols-3 gap-3 mt-3">
+            <label className="text-sm">
+              <span className="block text-xs text-muted-foreground mb-1">
+                Ishtirokchi kodi * (tashkilotchi bergan kod yoki avtomatik kod)
+              </span>
+              <input
+                required
+                maxLength={20}
+                className={`w-full px-4 py-2.5 rounded-lg border bg-background font-mono tracking-wide ${triedSubmit && !codeValid ? "border-red-500" : ""}`}
+                aria-label="Ishtirokchi kodi"
+                value={participant.code}
+                onChange={(e) =>
+                  setParticipant({ ...participant, code: normalizeCode(e.target.value) })
+                }
+              />
+            </label>
+            {fixedStage ? (
+              <div className="text-sm">
+                <span className="block text-xs text-muted-foreground mb-1">Bosqich</span>
+                <div className="px-4 py-2.5 rounded-lg border bg-muted/50">
+                  {STAGE_LABEL[fixedStage]}
+                </div>
+              </div>
+            ) : (
+              <label className="text-sm">
+                <span className="block text-xs text-muted-foreground mb-1">Bosqich</span>
+                <select
+                  className="w-full px-4 py-2.5 rounded-lg border bg-background"
+                  aria-label="Bosqich"
+                  value={stage}
+                  onChange={(e) => setStage(e.target.value as Stage)}
+                >
+                  {(Object.keys(STAGE_LABEL) as Stage[]).map((k) => (
+                    <option key={k} value={k}>
+                      {STAGE_LABEL[k]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+            <label className="text-sm">
+              <span className="block text-xs text-muted-foreground mb-1">Guruh (ixtiyoriy)</span>
+              <select
+                className="w-full px-4 py-2.5 rounded-lg border bg-background"
+                aria-label="Guruh"
+                value={participant.group}
+                onChange={(e) => setParticipant({ ...participant, group: e.target.value as Group })}
+              >
+                {(Object.keys(GROUP_LABEL) as Group[]).map((k) => (
+                  <option key={k} value={k}>
+                    {GROUP_LABEL[k]}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Kodni yozib qo'ying: kirish va yakuniy testda bir xil kod kiritilsa, natijalaringiz
+            o'zaro solishtiriladi. Kod shu qurilmada eslab qolinadi.
+          </p>
+          <label
+            className={`mt-3 flex items-start gap-2 text-sm p-3 rounded-lg border ${triedSubmit && !participant.consent ? "border-red-500" : ""}`}
+          >
+            <input
+              type="checkbox"
+              className="mt-1"
+              checked={participant.consent}
+              aria-label="Rozilik"
+              onChange={(e) => setParticipant({ ...participant, consent: e.target.checked })}
+            />
+            <span>
+              Test natijam va kiritgan ma'lumotlarim faqat ilmiy-tadqiqot maqsadida,
+              umumlashtirilgan holda (ismim oshkor qilinmasdan) ishlatilishiga roziman. *
+            </span>
+          </label>
+        </div>
+      )}
+
+      {!submitted && restored > 0 && (
+        <div className="p-4 rounded-2xl border border-primary/30 bg-primary/5 text-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <span>
+            Avvalgi urinishingizdagi {restored} ta javob tiklandi. Davom ettirishingiz mumkin.
+          </span>
+          <Button variant="outline" size="sm" onClick={reset}>
+            Boshidan boshlash
+          </Button>
         </div>
       )}
 
