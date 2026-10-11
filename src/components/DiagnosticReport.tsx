@@ -3,8 +3,16 @@ import { Printer, TrendingUp, Target, BookOpen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PROCESS_LABEL, TEST_TAVSIYA, TOPICS, isPisa, isReleased, type TestKey } from "@/data/bank";
 import type { AnswerValue } from "@/lib/answers";
-import { diagnose, splitStrengths, type BankQuestion, type Row } from "@/lib/diagnostics";
-import { LEVELS, levelClass, levelInfo, levelText } from "@/lib/levels";
+import {
+  componentRows,
+  diagnose,
+  splitStrengths,
+  type BankQuestion,
+  type Row,
+} from "@/lib/diagnostics";
+import { LEVELS, WEAK_MAX, levelClass, levelInfo, levelText } from "@/lib/levels";
+import { COMPONENTS, componentOf, type ComponentScores } from "@/lib/components";
+import { isCorrect } from "@/lib/answers";
 
 type Props = {
   testKey: TestKey;
@@ -46,15 +54,38 @@ export function Bars({ rows }: { rows: Row[] }) {
   );
 }
 
-export function LevelLegend() {
+export function LevelLegend({ points = false }: { points?: boolean }) {
   return (
     <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
-      {LEVELS.map((l, i) => (
+      {[...LEVELS].reverse().map((l) => (
         <span key={l.key} className="inline-flex items-center gap-1.5">
           <span className={`w-2.5 h-2.5 rounded-full ${levelClass[l.key]}`} />
-          {l.short} ({i === 0 ? `≥ ${l.min}%` : `${l.min}–${LEVELS[i - 1].min - 1}%`})
+          {l.short} ({l.range}
+          {points ? `; ${l.points}` : ""})
         </span>
       ))}
+    </div>
+  );
+}
+
+/** Matematik tayyorgarlikning 5 komponenti bo'yicha profil. */
+export function ComponentProfile({
+  scores,
+  unit = "to'g'ri",
+}: {
+  scores: ComponentScores;
+  unit?: string;
+}) {
+  const rows = componentRows(scores);
+  const missing = COMPONENTS.filter((c) => !scores[c.key]?.max);
+  return (
+    <div>
+      <Bars rows={rows} />
+      <p className="mt-3 text-xs text-muted-foreground">
+        Har bir komponent bo'yicha {unit} ulushi.
+        {missing.length > 0 &&
+          ` Bu testda o'lchanmagan: ${missing.map((c) => c.label).join(", ")}. Ular Tajriba-sinov bo'limidagi diagnostik testda (Ilova 1) baholanadi.`}
+      </p>
     </div>
   );
 }
@@ -72,7 +103,15 @@ export function DiagnosticReport({
   const { strong, weak } = splitStrengths(d.byTopic);
   const tavsiya = TEST_TAVSIYA[testKey];
   const processRows = d.byProcess.map((r) => ({ ...r, label: PROCESS_LABEL[r.key] ?? r.key }));
-  const weakFormulate = processRows.some((r) => r.key === "formulate" && r.pct < 60);
+  const weakFormulate = processRows.some((r) => r.key === "formulate" && r.pct <= WEAK_MAX);
+  const comp: ComponentScores = {};
+  for (const q of questions) {
+    const k = componentOf(testKey, q);
+    if (!k) continue;
+    const c = (comp[k] ??= { score: 0, max: 0 });
+    c.max++;
+    if (isCorrect(q as Parameters<typeof isCorrect>[0], answers[q.id])) c.score++;
+  }
   const dt = new Date(completedAt);
   const two = (n: number) => String(n).padStart(2, "0");
   const date = `${two(dt.getDate())}.${two(dt.getMonth() + 1)}.${dt.getFullYear()}, ${two(dt.getHours())}:${two(dt.getMinutes())}`;
@@ -112,6 +151,15 @@ export function DiagnosticReport({
             <Printer className="w-4 h-4 mr-2" /> Chop etish / PDF
           </Button>
         </div>
+      </div>
+
+      <div className="p-6 rounded-2xl border bg-card shadow-card">
+        <h3 className="font-semibold text-lg">Matematik tayyorgarlik komponentlari</h3>
+        <p className="text-sm text-muted-foreground mt-1 mb-5">
+          Dissertatsiyadagi 5 komponentli model bo'yicha: matematik bilim, tafakkur, savodxonlik,
+          matematik-metodik kompetentlik va refleksiv faoliyat.
+        </p>
+        <ComponentProfile scores={comp} />
       </div>
 
       <div className="p-6 rounded-2xl border bg-card shadow-card">
@@ -155,7 +203,7 @@ export function DiagnosticReport({
             </ul>
           ) : (
             <p className="mt-3 text-sm text-muted-foreground">
-              Hozircha 80% va undan yuqori natijali mavzu yo'q.
+              Hozircha yuqori darajadagi (75% dan yuqori) mavzu yo'q.
             </p>
           )}
         </div>
@@ -223,9 +271,9 @@ export function DiagnosticReport({
           </ol>
         ) : (
           <p className="mt-3 text-sm text-muted-foreground">
-            Barcha mavzularda natija 60% dan yuqori. Keyingi qadam: xatolar bo'lgan savollarning
-            izohlarini ko'rib chiqing va shu mavzularni o'quvchiga qanday tushuntirishingizni
-            rejalashtiring.
+            Past darajadagi (50% va undan past) mavzu yo'q. Keyingi qadam: xatolar bo'lgan
+            savollarning izohlarini ko'rib chiqing va shu mavzularni o'quvchiga qanday
+            tushuntirishingizni rejalashtiring.
           </p>
         )}
         <p className="mt-5 text-xs text-muted-foreground flex gap-1.5">

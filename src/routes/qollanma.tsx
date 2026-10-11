@@ -86,9 +86,18 @@ function Page() {
               <code>1/2</code>) to'g'ri tushuniladi.
             </li>
             <li>
-              <b>Natija.</b> Yuborgandan keyin mavzular bo'yicha diagnostika, kuchli va
-              rivojlantirish kerak bo'lgan tomonlar hamda tavsiyalar chiqadi. "Chop etish / PDF"
-              tugmasi bilan hisobotni saqlang.
+              <b>Natija.</b> Yuborgandan keyin matematik tayyorgarlikning 5 komponenti va mavzular
+              bo'yicha diagnostika, kuchli va rivojlantirish kerak bo'lgan tomonlar hamda tavsiyalar
+              chiqadi. Daraja: past (≤ 50%), o'rta (51–75%), yuqori (&gt; 75%).
+            </li>
+            <li>
+              <b>Refleksiya va E-portfolio.</b> Har bir testdan keyin "Nima qiyin bo'ldi?" va
+              "Keyingi qadamim" savollariga qisqa javob yozing.{" "}
+              <Link to="/portfolio" className="text-primary hover:underline">
+                E-portfolio
+              </Link>{" "}
+              sahifasini ishtirokchi kodi va o'zingiz tanlagan PIN (4–8 raqam) bilan oching:
+              natijalar tarixi, komponentlar dinamikasi, o'qituvchi izohi va tavsiyalar shu yerda.
             </li>
           </ol>
         </Section>
@@ -97,7 +106,7 @@ function Page() {
           <ol className="list-decimal pl-5 space-y-2">
             <li>
               <b>Kodlar ro'yxati.</b> Har bir ishtirokchiga kod bering (masalan, <code>T-001</code>{" "}
-              … <code>T-186</code>) va ism–kod ro'yxatini alohida saqlang. Platformada ism bilan
+              … <code>T-360</code>) va ism–kod ro'yxatini alohida saqlang. Platformada ism bilan
               birga faqat kod tahlil qilinadi.
             </li>
             <li>
@@ -105,17 +114,18 @@ function Page() {
               <Link to="/sinov" className="text-primary hover:underline">
                 Tajriba-sinov
               </Link>{" "}
-              bo'limida "Kirish testi (A shakl)" — 30 ta topshiriq, taxminan 40–50 daqiqa. Imkon
-              bo'lsa, auditoriyada bir vaqtda o'tkazing.
+              bo'limida "Kirish testi (A shakl)" — dissertatsiyaning diagnostik testi (Ilova 1): 20
+              ta ochiq topshiriq, 6 blok, har biri 0–2 ball, jami 40 ball; taxminan 60–80 daqiqa.
+              Imkon bo'lsa, auditoriyada bir vaqtda o'tkazing.
             </li>
             <li>
               <b>Tajriba davri.</b> Talabalar metodik tavsiyalar, rasmiy topshiriqlar va mashq
               testlari bilan ishlaydi (dars yoki mustaqil ish sifatida).
             </li>
             <li>
-              <b>Yakuniy test.</b> "Yakuniy test (B shakl)" — xuddi shu kod bilan. A va B shakllar
-              soha, javob turi va qiyinlik bo'yicha teng tanlangan, shuning uchun o'sish yodlash
-              hisobiga bo'lmaydi.
+              <b>Yakuniy test.</b> "Yakuniy test (B shakl)" — xuddi shu kod bilan. B shakl A ning
+              parallel varianti: har bir topshiriq bloki, komponenti, talabi va rubrikasi bir xil,
+              sonlar va vaziyatlar boshqa, shuning uchun o'sish yodlash hisobiga bo'lmaydi.
             </li>
             <li>
               <b>Nazorat guruhi (ixtiyoriy).</b> Platformadan foydalanmagan guruh ham kirish va
@@ -129,28 +139,52 @@ function Page() {
           </ol>
         </Section>
 
-        <Section icon={LineChart} title="3. Natijalarni tahlil qilish">
+        <Section icon={LineChart} title="3. O'qituvchi kabineti va natijalarni tahlil qilish">
           <ol className="list-decimal pl-5 space-y-2">
             <li>
-              Lovable loyihasida Cloud → Database → <code>test_results</code> jadvalini CSV formatda
-              eksport qiling.
+              <b>O'qituvchi hisobi (bir marta).</b>{" "}
+              <Link to="/kabinet" className="text-primary hover:underline">
+                O'qituvchi kabineti
+              </Link>{" "}
+              sahifasida "Hisobim yo'q" orqali email va parol bilan ro'yxatdan o'ting. So'ng
+              administrator Lovable Cloud → Database → SQL bo'limida sahifada ko'rsatilgan{" "}
+              <code>INSERT INTO public.teachers …</code> buyrug'ini bajaradi. Shundan keyingina
+              hisob natijalarni ko'radi.
+            </li>
+            <li>
+              <b>Rubrika bo'yicha baholash.</b> Kabinetdagi "Rubrika bo'yicha baholash" ro'yxatidan
+              ishni tanlang va har bir topshiriqqa Ilova 5 mezonlari bo'yicha 2, 1 yoki 0 ball
+              qo'ying (izoh ixtiyoriy). Hisoblash qismlari avtomatik tekshiriladi — bu dastlabki
+              ball, uni o'zgartirishingiz mumkin. Daraja: 0–20 past, 21–30 o'rta, 31–40 yuqori.
+            </li>
+            <li>
+              <b>E-portfolio.</b> "Ishtirokchilar" bo'limida talabaning natijalar tarixi va
+              refleksiyalarini ko'rib, izoh va individual tavsiya yozing; ular talabaning
+              portfoliosida chiqadi. PIN unutilgan bo'lsa, shu yerda bekor qiling.
             </li>
             <li>
               <Link to="/monitoring" className="text-primary hover:underline">
                 Monitoring
               </Link>{" "}
-              sahifasiga faylni yuklang. Fayl faqat brauzerda qayta ishlanadi.
+              sahifasida "Bazadan jonli yuklash" tugmasini bosing (CSV eksport shart emas). CSV fayl
+              yuklash ham ishlaydi, lekin unda rubrika ballari bo'lmaydi.
             </li>
             <li>
               <b>Tajriba-sinov jadvali:</b> kirish va yakuniy o'rtacha natija, o'sish, 95% ishonch
               oralig'i, bog'liq tanlanmalar t-mezoni, p-qiymat va Cohen dz effekt kattaligi;
-              guruhlar bo'lsa, Welch t-mezoni. Daraja taqsimoti (A'lo, Yaxshi, O'rta, Quyi) oldin va
+              guruhlar bo'lsa, Welch t-mezoni. Daraja taqsimoti (past, o'rta, yuqori) oldin va
               keyin.
             </li>
             <li>
+              <b>Komponentlar kesimida:</b> 5 komponent bo'yicha M ± SD, tajriba va nazorat
+              guruhlari uchun Welch t-mezoni va Cohen d (dissertatsiyadagi 3.6-jadval ko'rinishida),
+              kirish bosqichida — guruhlarning boshlang'ich tengligi.
+            </li>
+            <li>
               <b>Test sifati:</b> har bir savolning qiyinligi va ajratish kuchi, testning KR-20
-              ishonchlilik koeffitsiyenti. Pilot sinovdan keyin "qayta ko'rib chiqish kerak" belgisi
-              tushgan savollarni mutaxassis bilan ko'rib chiqing.
+              ishonchlilik koeffitsiyenti (diagnostik testda — Cronbach alfa). Pilot sinovdan keyin
+              "qayta ko'rib chiqish kerak" belgisi tushgan savollarni mutaxassis bilan ko'rib
+              chiqing.
             </li>
             <li>"Tahlilni CSV yuklab olish" tugmasi bilan jadvalni dissertatsiya uchun saqlang.</li>
           </ol>

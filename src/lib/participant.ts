@@ -104,25 +104,25 @@ export const loadProfile = (): Participant => {
 
 export const saveProfile = (p: Participant) => storage.set(PROFILE_KEY, JSON.stringify(p));
 
-export type Draft = {
-  answers: Record<string, number | string>;
+export type Draft<T = number | string> = {
+  answers: Record<string, T>;
   startedAt: string;
   page: number;
   savedAt: string;
 };
 
-export const loadDraft = (key: string): Draft | null => {
+export const loadDraft = <T = number | string>(key: string): Draft<T> | null => {
   const raw = storage.get(DRAFT_PREFIX + key);
   if (!raw) return null;
   try {
-    const d = JSON.parse(raw) as Draft;
+    const d = JSON.parse(raw) as Draft<T>;
     return d && typeof d.answers === "object" ? d : null;
   } catch {
     return null;
   }
 };
 
-export const saveDraft = (key: string, d: Draft) =>
+export const saveDraft = <T>(key: string, d: Draft<T>) =>
   storage.set(DRAFT_PREFIX + key, JSON.stringify(d));
 
 export const clearDraft = (key: string) => storage.remove(DRAFT_PREFIX + key);

@@ -191,23 +191,28 @@ const corr = (x: number[], y: number[]) => {
 };
 
 /**
- * matrix[person][item] = 1 (to'g'ri) yoki 0. Har bir savol uchun qiyinlik va ajratish kuchi,
- * butun test uchun KR-20 ishonchlilik koeffitsiyenti (dixotomik savollar uchun Cronbach alfa).
+ * matrix[person][item] = ball (dixotomik savolda 0/1, diagnostik testda 0–2).
+ * Har bir savol uchun qiyinlik (o'rtacha ball / maksimal ball) va ajratish kuchi,
+ * butun test uchun Cronbach alfa (dixotomik savollarda u KR-20 ga teng).
  */
-export const itemAnalysis = (ids: string[], matrix: number[][]) => {
+export const itemAnalysis = (ids: string[], matrix: number[][], itemMax = 1) => {
   const n = matrix.length;
   const k = ids.length;
   const totals = matrix.map((row) => row.reduce((s, v) => s + v, 0));
+  const popVar = (xs: number[]) => {
+    const m = mean(xs);
+    return xs.length ? xs.reduce((acc, x) => acc + (x - m) ** 2, 0) / xs.length : NaN;
+  };
+  let sumItemVar = 0;
   const items: ItemStat[] = ids.map((id, j) => {
     const col = matrix.map((row) => row[j]);
     const rest = totals.map((t, i) => t - col[i]);
-    return { id, p: mean(col), r: corr(col, rest), n };
+    sumItemVar += popVar(col);
+    return { id, p: mean(col) / itemMax, r: corr(col, rest), n };
   });
-  // p·q populyatsiya dispersiyasi bo'lgani uchun umumiy ball dispersiyasi ham n ga bo'linadi.
-  const mt = mean(totals);
-  const varTotal = n > 1 ? totals.reduce((acc, t) => acc + (t - mt) ** 2, 0) / n : NaN;
-  const pq = items.reduce((s, it) => s + it.p * (1 - it.p), 0);
-  const kr20 = k > 1 && varTotal > 0 ? (k / (k - 1)) * (1 - pq / varTotal) : NaN;
+  // Savol dispersiyalari populyatsiya dispersiyasi bo'lgani uchun umumiy ball dispersiyasi ham n ga bo'linadi.
+  const varTotal = n > 1 ? popVar(totals) : NaN;
+  const kr20 = k > 1 && varTotal > 0 ? (k / (k - 1)) * (1 - sumItemVar / varTotal) : NaN;
   return { items, kr20, n, k };
 };
 

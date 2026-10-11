@@ -1,31 +1,34 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Upload, Download, ShieldCheck, Users, ListChecks, Gauge, FilterX } from "lucide-react";
+import {
+  Upload,
+  Download,
+  ShieldCheck,
+  Users,
+  ListChecks,
+  Gauge,
+  FilterX,
+  DatabaseZap,
+} from "lucide-react";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
-import { Bars, LevelLegend } from "@/components/DiagnosticReport";
-import {
-  BANK_VERSION,
-  RELEASED_VERSION,
-  TEST_TYPES,
-  isPisa,
-  topicLabel,
-  PROCESS_LABEL,
-  type TestKey,
-} from "@/data/bank";
+import { Bars, ComponentProfile, LevelLegend } from "@/components/DiagnosticReport";
+import { TEST_TYPES, isDiag, isPisa, topicLabel, PROCESS_LABEL, type TestKey } from "@/data/bank";
 import { answerText, isAnswered } from "@/lib/answers";
-import { ItemAnalysis, PrePostAnalysis } from "@/components/ResearchAnalysis";
+import { ComponentAnalysis, ItemAnalysis, PrePostAnalysis } from "@/components/ResearchAnalysis";
+import { COMPONENTS, componentPct, type ComponentScores } from "@/lib/components";
+import { rowToRecord, rubricMapOf } from "@/lib/db";
+import { loadResults, loadRubric, useTeacher } from "@/lib/teacher";
 import { GROUP_LABEL, STAGE_LABEL } from "@/lib/participant";
 import {
-  BANK_R1,
-  BANK_V2,
   buildAttempts,
+  defaultBanks,
   isCorrect,
   loadBankV1,
   neededVersions,
   parseCsv,
   type Attempt,
-  type Bank,
+  type RubricMap,
 } from "@/lib/results";
 import { LEVELS, levelInfo, levelText, pctOf } from "@/lib/levels";
 import type { Row } from "@/lib/diagnostics";
@@ -44,10 +47,12 @@ export const Route = createFileRoute("/monitoring")({
   component: Page,
 });
 
-/** Tajriba-sinov rejasidagi ishtirokchilar soni. */
-const PLANNED_PARTICIPANTS = 186;
+/** Tajriba-sinov rejasidagi ishtirokchilar soni (dissertatsiya: 180 TG + 180 NG). */
+const PLANNED_PARTICIPANTS = 360;
 
 const TEST_ORDER: TestKey[] = [
+  "diag-a",
+  "diag-b",
   "knowing",
   "applying",
   "reasoning",
@@ -74,12 +79,13 @@ const groupRows = (
   const acc = new Map<string, { correct: number; total: number }>();
   for (const a of attempts)
     for (const q of a.questions) {
-      if (!isAnswered(a.answers[q.id])) continue;
+      // Oddiy testda javobsiz savollar hisobga olinmaydi; diagnostik testda bo'sh javob 0 ball.
+      if (!a.diag && !isAnswered(a.answers[q.id])) continue;
       const k = keyOf(q);
       if (!k) continue;
       const cur = acc.get(k) ?? { correct: 0, total: 0 };
-      cur.total++;
-      if (isCorrect(q, a.answers[q.id])) cur.correct++;
+      cur.total += a.itemMax;
+      cur.correct += a.itemPoints[q.id] ?? 0;
       acc.set(k, cur);
     }
   return [...acc.entries()]
@@ -102,7 +108,17 @@ function Page() {
   const [excludeTest, setExcludeTest] = useState(true);
   const [onlyComplete, setOnlyComplete] = useState(true);
   const [onlyCounted, setOnlyCounted] = useState(true);
-  const [test, setTest] = useState<TestKey>("knowing");
+  const [test, setTest] = useState<TestKey>("diag-a");
+  const [loadingDb, setLoadingDb] = useState(false);
+  const teacher = useTeacher();
+
+  const build = async (rows: Record<string, string>[], rubric?: RubricMap) => {
+    const banks = defaultBanks();
+    if (neededVersions(rows).has("v1")) banks.v1 = await loadBankV1();
+    const built = buildAttempts(rows, banks, rubric);
+    setAttempts(built.attempts);
+    setSkipped(built.skipped);
+  };
 
   const onFile = async (file: File) => {
     setError("");
@@ -113,15 +129,25 @@ function Page() {
           "Fayl test_results jadvali eksportiga o'xshamaydi (answers va test_type ustunlari topilmadi).",
         );
       }
-      const banks: Record<string, Bank> = { [BANK_VERSION]: BANK_V2, [RELEASED_VERSION]: BANK_R1 };
-      if (neededVersions(rows).has("v1")) banks.v1 = await loadBankV1();
-      const built = buildAttempts(rows, banks);
-      setAttempts(built.attempts);
-      setSkipped(built.skipped);
+      await build(rows);
       setFileName(file.name);
     } catch (e) {
       setAttempts(null);
       setError(e instanceof Error ? e.message : "Faylni o'qib bo'lmadi.");
+    }
+  };
+
+  const onDb = async () => {
+    setError("");
+    setLoadingDb(true);
+    try {
+      const [rows, rubric] = await Promise.all([loadResults(), loadRubric()]);
+      await build(rows.map(rowToRecord), rubricMapOf(rubric));
+      setFileName(`Bazadan: ${rows.length} ta yozuv, ${new Date().toLocaleTimeString()}`);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Bazadan o'qib bo'lmadi.");
+    } finally {
+      setLoadingDb(false);
     }
   };
 
@@ -151,13 +177,30 @@ function Page() {
         key: k,
         count: list.length,
         avg: list.length ? Math.round(list.reduce((s, a) => s + a.pct, 0) / list.length) : 0,
+        avgPoints: list.length ? list.reduce((s, a) => s + a.correct, 0) / list.length : 0,
         levels,
       };
-    });
+    }).filter((t) => t.count > 0 || isDiag(t.key));
     return { people: people.size, allPeople: allPeople.size, avg, perTest };
   }, [included, attempts]);
 
   const forTest = included.filter((a) => a.testKey === test);
+  const groupComponents = useMemo(() => {
+    const acc: ComponentScores = {};
+    for (const a of forTest)
+      for (const [k, v] of Object.entries(a.components) as [
+        keyof ComponentScores,
+        { score: number; max: number },
+      ][]) {
+        const c = (acc[k] ??= { score: 0, max: 0 });
+        c.score += v.score;
+        c.max += v.max;
+      }
+    return acc;
+  }, [forTest]);
+  const visibleTests = TEST_ORDER.filter(
+    (k) => isDiag(k) || (attempts ?? []).some((a) => a.testKey === k),
+  );
   const topicRows = groupRows(forTest, topicKey, topicLabel);
   const processRows = isPisa(test)
     ? groupRows(
@@ -170,16 +213,23 @@ function Page() {
   const hardest = useMemo(() => {
     const byQ = new Map<
       string,
-      { q: Attempt["questions"][number]; n: number; ok: number; wrong: Map<string, number> }
+      {
+        q: Attempt["questions"][number];
+        n: number;
+        ok: number;
+        wrong: Map<string, number>;
+        max: number;
+      }
     >();
     for (const a of forTest)
       for (const q of a.questions) {
         const ch = a.answers[q.id];
-        if (!isAnswered(ch)) continue;
+        if (!a.diag && !isAnswered(ch)) continue;
         const key = `${a.version}|${q.id}`;
-        const cur = byQ.get(key) ?? { q, n: 0, ok: 0, wrong: new Map() };
+        const cur = byQ.get(key) ?? { q, n: 0, ok: 0, wrong: new Map(), max: a.itemMax };
         cur.n++;
-        if (isCorrect(q, ch)) cur.ok++;
+        if (a.diag) cur.ok += a.itemPoints[q.id] ?? 0;
+        else if (isCorrect(q, ch)) cur.ok++;
         else {
           const w = typeof ch === "string" ? ch.trim() : String(ch);
           cur.wrong.set(w, (cur.wrong.get(w) ?? 0) + 1);
@@ -192,7 +242,7 @@ function Page() {
         const top = [...x.wrong.entries()].sort((a, b) => b[1] - a[1])[0];
         return {
           ...x,
-          pct: pctOf(x.ok, x.n),
+          pct: pctOf(x.ok, x.n * x.max),
           commonWrong: top ? (x.q.answer ? top[0] : x.q.options[Number(top[0])]) : "",
         };
       })
@@ -222,13 +272,21 @@ function Page() {
       "Foiz",
       "Daraja",
       "Yakunlangan",
+      ...COMPONENTS.map((c) => `${c.short} (%)`),
+      "Avtomatik ball",
+      "Rubrika bilan baholangan",
       ...topics.map(topicLabel),
     ];
     const lines = included.map((a) => {
       const perTopic = topics.map((t) => {
-        const qs = a.questions.filter((q) => q.topic === t && isAnswered(a.answers[q.id]));
+        const qs = a.questions.filter(
+          (q) => q.topic === t && (a.diag || isAnswered(a.answers[q.id])),
+        );
         return qs.length
-          ? pctOf(qs.filter((q) => isCorrect(q, a.answers[q.id])).length, qs.length)
+          ? pctOf(
+              qs.reduce((s, q) => s + (a.itemPoints[q.id] ?? 0), 0),
+              qs.length * a.itemMax,
+            )
           : "";
       });
       return [
@@ -248,6 +306,12 @@ function Page() {
         a.pct,
         levelInfo(a.pct).short,
         a.completedAt,
+        ...COMPONENTS.map((c) => {
+          const v = componentPct(a.components[c.key]);
+          return Number.isFinite(v) ? v : "";
+        }),
+        a.diag ? a.diag.auto : "",
+        a.diag ? `${a.diag.rubricCount}/${a.nItems}` : "",
         ...perTopic,
       ];
     });
@@ -291,13 +355,30 @@ function Page() {
                 }}
               />
             </label>
+            {teacher.isTeacher && (
+              <Button className="mt-5 ml-3" variant="outline" onClick={onDb} disabled={loadingDb}>
+                <DatabaseZap className="w-4 h-4 mr-2" />
+                {loadingDb ? "Yuklanmoqda…" : "Bazadan jonli yuklash"}
+              </Button>
+            )}
             {fileName && <span className="ml-3 text-sm text-muted-foreground">{fileName}</span>}
+            {!teacher.loading && !teacher.isTeacher && (
+              <p className="mt-3 text-sm">
+                O'qituvchi sifatida{" "}
+                <Link to="/kabinet" className="text-primary hover:underline">
+                  kabinetga kirsangiz
+                </Link>
+                , natijalar CSV eksportisiz, bazadan to'g'ridan-to'g'ri va rubrika ballari bilan
+                yuklanadi.
+              </p>
+            )}
             {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
             <p className="mt-4 text-xs text-muted-foreground flex gap-1.5">
               <ShieldCheck className="w-4 h-4 shrink-0" />
-              Fayl faqat shu brauzerda qayta ishlanadi va hech qayerga yuborilmaydi. Natijalar
-              bazadan ochiq o'qilmaydi, shuning uchun ishtirokchilarning shaxsiy ma'lumotlari
-              himoyalangan.
+              Fayl faqat shu brauzerda qayta ishlanadi va hech qayerga yuborilmaydi. Natijalarni
+              bazadan faqat ro'yxatga kiritilgan o'qituvchi o'qiy oladi, shuning uchun
+              ishtirokchilarning shaxsiy ma'lumotlari himoyalangan. CSV faylda o'qituvchi rubrikasi
+              bo'lmaydi: diagnostik test ochiq javoblari avtomatik dastlabki ball bilan hisoblanadi.
             </p>
           </div>
           <div className="p-6 rounded-2xl border bg-card shadow-card">
@@ -406,6 +487,11 @@ function Page() {
                       <td className="px-4 py-3 text-right tabular-nums">{t.count}</td>
                       <td className="px-4 py-3 text-right tabular-nums">
                         {t.count ? `${t.avg}%` : "—"}
+                        {t.count > 0 && isDiag(t.key) && (
+                          <div className="text-xs text-muted-foreground">
+                            {t.avgPoints.toFixed(1).replace(".", ",")} / 40 ball
+                          </div>
+                        )}
                       </td>
                       {t.levels.map((n, i) => (
                         <td key={i} className="px-4 py-3 text-right tabular-nums">
@@ -422,7 +508,7 @@ function Page() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <h2 className="font-semibold text-lg">Guruh diagnostikasi</h2>
                 <div className="flex flex-wrap gap-2">
-                  {TEST_ORDER.map((k) => (
+                  {visibleTests.map((k) => (
                     <button
                       key={k}
                       onClick={() => setTest(k)}
@@ -436,14 +522,28 @@ function Page() {
               {forTest.length ? (
                 <div className="mt-5 grid lg:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="font-medium mb-1">Mavzular bo'yicha to'g'ri javoblar ulushi</h3>
+                    <h3 className="font-medium mb-1">Matematik tayyorgarlik komponentlari</h3>
                     <p className="text-sm text-muted-foreground mb-4">
-                      {forTest.length} ta urinish. Eng past natijali mavzular yuqorida.
+                      {forTest.length} ta urinish bo'yicha umumiy profil.
                     </p>
-                    <Bars rows={topicRows} />
+                    <ComponentProfile
+                      scores={groupComponents}
+                      unit={isDiag(test) ? "to'plangan ball" : "to'g'ri javoblar"}
+                    />
                     <div className="mt-4">
-                      <LevelLegend />
+                      <LevelLegend points={isDiag(test)} />
                     </div>
+                    {!isDiag(test) && (
+                      <div className="mt-8">
+                        <h3 className="font-medium mb-1">
+                          Mavzular bo'yicha to'g'ri javoblar ulushi
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Eng past natijali mavzular yuqorida.
+                        </p>
+                        <Bars rows={topicRows} />
+                      </div>
+                    )}
                     {isPisa(test) && processRows.length > 0 && (
                       <div className="mt-8">
                         <h3 className="font-medium mb-3">PISA jarayonlari</h3>
@@ -460,8 +560,9 @@ function Page() {
                   <div>
                     <h3 className="font-medium mb-1">Eng qiyin 10 ta savol</h3>
                     <p className="text-sm text-muted-foreground mb-4">
-                      To'g'ri javoblar ulushi eng past bo'lgan savollar va eng ko'p tanlangan xato
-                      javob.
+                      {isDiag(test)
+                        ? "O'rtacha bali eng past bo'lgan topshiriqlar (maksimal ballga nisbatan)."
+                        : "To'g'ri javoblar ulushi eng past bo'lgan savollar va eng ko'p tanlangan xato javob."}
                     </p>
                     {!hardest.length && (
                       <p className="text-sm text-muted-foreground">
@@ -473,12 +574,16 @@ function Page() {
                         <li key={`${h.q.id}-${h.n}`} className="border-b pb-3 last:border-0">
                           <div className="flex justify-between gap-3">
                             <span className="font-medium">
-                              {h.q.id} · {topicLabel(h.q.topic ?? "")}
+                              {h.q.title && isDiag(test) ? h.q.title : h.q.id} ·{" "}
+                              {topicLabel(h.q.topic ?? "")}
                             </span>
                             <span
                               className={`tabular-nums font-semibold ${levelText[levelInfo(h.pct).key]}`}
                             >
-                              {h.ok}/{h.n} ({h.pct}%)
+                              {h.max > 1
+                                ? `${(h.ok / h.n).toFixed(1).replace(".", ",")}/${h.max} ball`
+                                : `${h.ok}/${h.n}`}{" "}
+                              ({h.pct}%)
                             </span>
                           </div>
                           <p className="text-muted-foreground mt-0.5">{h.q.q}</p>
@@ -501,6 +606,8 @@ function Page() {
             </div>
 
             <PrePostAnalysis attempts={attempts.filter((a) => a.status !== "sinov")} />
+
+            <ComponentAnalysis attempts={attempts.filter((a) => a.status !== "sinov")} />
 
             <ItemAnalysis attempts={attempts.filter((a) => a.status !== "sinov")} test={test} />
 
@@ -551,9 +658,14 @@ function Page() {
                         </td>
                         <td className="px-4 py-3 text-right tabular-nums whitespace-nowrap">
                           {a.correct}/{a.total} ({a.pct}%)
-                          {a.answered < a.total && (
+                          {a.answered < a.nItems && (
                             <div className="text-xs text-muted-foreground">
                               {a.answered} ta javob
+                            </div>
+                          )}
+                          {a.diag && (
+                            <div className="text-xs text-muted-foreground">
+                              rubrika: {a.diag.rubricCount}/{a.nItems}
                             </div>
                           )}
                         </td>
