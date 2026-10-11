@@ -11,7 +11,7 @@ type Props = {
   testLabel: string;
   questions: BankQuestion[];
   answers: Record<string, AnswerValue>;
-  participant: { full_name: string; university: string; course: string };
+  participant: { full_name: string; university: string; course: string; code?: string };
   completedAt: string;
 };
 
@@ -94,6 +94,12 @@ export function DiagnosticReport({
               {participant.course === "Magistratura"
                 ? participant.course
                 : `${participant.course}-kurs`}
+              {participant.code && (
+                <>
+                  {" "}
+                  · Kod: <span className="font-mono">{participant.code}</span>
+                </>
+              )}
               <br />
               {date}
             </div>
@@ -121,7 +127,7 @@ export function DiagnosticReport({
         </div>
       </div>
 
-      {isPisa(testKey) && (
+      {(isPisa(testKey) || processRows.length > 0) && (
         <div className="p-6 rounded-2xl border bg-card shadow-card">
           <h3 className="font-semibold text-lg">PISA jarayonlari bo'yicha</h3>
           <p className="text-sm text-muted-foreground mt-1 mb-5">

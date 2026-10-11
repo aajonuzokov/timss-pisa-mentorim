@@ -15,9 +15,13 @@ export type TestKey =
   | "r-knowing"
   | "r-applying"
   | "r-reasoning"
-  | "r-pisa";
+  | "r-pisa"
+  | "sinov-a"
+  | "sinov-b";
 
-export const isReleased = (k: TestKey) => k.startsWith("r-");
+export const isReleased = (k: TestKey) => k.startsWith("r-") || k.startsWith("sinov-");
+/** Kirish/yakuniy taqqoslash uchun "oila": A va B parallel shakllari bitta oila. */
+export const familyOf = (k: TestKey) => (k.startsWith("sinov-") ? "sinov" : k);
 export const isPisa = (k: TestKey) => k === "pisa" || k === "r-pisa";
 
 /** test_type qiymatiga versiya qo'shiladi: "TIMSS - Bilish · v2". Versiyasiz yozuvlar — v1. */
@@ -38,6 +42,8 @@ export const TEST_TYPES: Record<TestKey, string> = {
   "r-applying": "Rasmiy TIMSS - Qo'llash",
   "r-reasoning": "Rasmiy TIMSS - Mulohaza yuritish",
   "r-pisa": "Rasmiy PISA",
+  "sinov-a": "Sinov testi A",
+  "sinov-b": "Sinov testi B",
 };
 
 export const testKeyOf = (base: string): TestKey | undefined =>
@@ -53,6 +59,8 @@ export const TEST_TAVSIYA: Record<TestKey, { slug: string; title: string }> = {
   "r-applying": { slug: "applying", title: "Applying kompetensiyasi" },
   "r-reasoning": { slug: "reasoning", title: "Reasoning kompetensiyasi" },
   "r-pisa": { slug: "employ", title: "Employ kompetensiyasi" },
+  "sinov-a": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
+  "sinov-b": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
 };
 
 export type TopicInfo = { label: string; tip: string };

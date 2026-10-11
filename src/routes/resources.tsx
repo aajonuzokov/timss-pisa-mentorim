@@ -9,9 +9,16 @@ export const Route = createFileRoute("/resources")({
   head: () => ({
     meta: [
       { title: "Virtual Library — TIMSS / PISA Resources" },
-      { name: "description", content: "A virtual academic library of TIMSS, PISA, dissertations, and articles on mathematical literacy." },
+      {
+        name: "description",
+        content:
+          "A virtual academic library of TIMSS, PISA, dissertations, and articles on mathematical literacy.",
+      },
       { property: "og:title", content: "TIMSS / PISA Virtual Library" },
-      { property: "og:description", content: "Searchable academic resources: TIMSS, PISA, dissertations, articles." },
+      {
+        property: "og:description",
+        content: "Searchable academic resources: TIMSS, PISA, dissertations, articles.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -28,6 +35,8 @@ type Resource = {
   year: number;
   source: Source;
   description: string;
+  /** Manbaga havola (migratsiyadan keyin mavjud). */
+  url?: string | null;
 };
 
 const FILTERS: (Source | "All")[] = ["All", "TIMSS", "PISA", "Dissertation", "Article"];
@@ -68,7 +77,7 @@ function Page() {
       setLoading(true);
       const { data, error } = await supabase
         .from("resources")
-        .select("id, title, authors, year, source, description")
+        .select("*")
         .order("year", { ascending: false });
       if (cancelled) return;
       if (error) setError(error.message);
@@ -126,11 +135,15 @@ function Page() {
                 key={f}
                 onClick={() => setFilter(f)}
                 className={`px-4 py-1.5 rounded-full text-sm border transition inline-flex items-center gap-2 ${
-                  active ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-muted"
+                  active
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-card hover:bg-muted"
                 }`}
               >
                 <span>{f}</span>
-                <span className={`text-[11px] px-1.5 py-0.5 rounded-full ${active ? "bg-primary-foreground/20" : "bg-muted"}`}>
+                <span
+                  className={`text-[11px] px-1.5 py-0.5 rounded-full ${active ? "bg-primary-foreground/20" : "bg-muted"}`}
+                >
                   {counts[f] ?? 0}
                 </span>
               </button>
@@ -160,7 +173,9 @@ function Page() {
                   className={`group flex flex-col p-5 rounded-2xl border bg-card shadow-sm hover:-translate-y-0.5 hover:shadow-lg transition ring-1 ${s.ring}`}
                 >
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${s.badge}`}>
+                    <span
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${s.badge}`}
+                    >
                       {s.icon}
                       {r.source}
                     </span>
@@ -168,7 +183,19 @@ function Page() {
                   </div>
                   <h3 className="font-semibold leading-snug mb-1.5 line-clamp-3">{r.title}</h3>
                   <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{r.authors}</p>
-                  <p className="text-sm leading-relaxed text-muted-foreground line-clamp-4">{r.description}</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground line-clamp-4">
+                    {r.description}
+                  </p>
+                  {r.url && (
+                    <a
+                      href={r.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 text-sm font-medium text-primary hover:underline"
+                    >
+                      Manbani ochish →
+                    </a>
+                  )}
                 </article>
               );
             })}

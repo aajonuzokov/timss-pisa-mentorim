@@ -4,10 +4,12 @@
 import timssV2 from "@/data/timss.json";
 import pisaV2 from "@/data/pisa.json";
 import released from "@/data/released.json";
+import forms from "@/data/forms.json";
 import { parseTestType, processOfId, testKeyOf, topicOfId, type TestKey } from "@/data/bank";
 import type { Question } from "@/components/Quiz";
 import { pctOf } from "@/lib/levels";
 import { isAnswered, isCorrect, type AnswerValue } from "@/lib/answers";
+import { readMeta, type Group, type Stage } from "@/lib/participant";
 
 export { isCorrect };
 
@@ -32,11 +34,21 @@ export const BANK_V2: Bank = toBank(timssV2 as Record<string, Question[]>, pisaV
 
 const R = released as unknown as Record<string, Question[]>;
 /** Rasmiy namunaviy topshiriqlar (r1). */
+const byId = new Map(Object.values(R).flatMap((qs) => qs.map((q) => [q.id, q] as const)));
+const form = (ids: string[]) => ids.map((id) => byId.get(id)!).filter(Boolean);
+
+/** Kirish (A) va yakuniy (B) sinov testlari: qiyinlik, soha va javob turi bo'yicha muvozanatlangan. */
+export const FORM_A = form(forms.A);
+export const FORM_B = form(forms.B);
+
+/** Rasmiy namunaviy topshiriqlar (r1). */
 export const BANK_R1: Bank = {
   "r-knowing": R.knowing,
   "r-applying": R.applying,
   "r-reasoning": R.reasoning,
   "r-pisa": R.pisa,
+  "sinov-a": FORM_A,
+  "sinov-b": FORM_B,
 };
 
 let v1Promise: Promise<Bank> | null = null;
@@ -104,6 +116,15 @@ export type Attempt = {
   completedAt: string;
   status: Status;
   personKey: string;
+  /** Ishtirokchi kodi (yangi yozuvlarda), bosqich va guruh. */
+  code: string;
+  stage: Stage;
+  group: Group;
+  /**
+   * Hisobga olinadigan urinish: har bir ishtirokchi, test va bosqich uchun birinchi to'liq urinish.
+   * Qolganlari mashq sifatida ko'riladi.
+   */
+  counted: boolean;
 };
 
 const TEST_NAME = /\btest\b|sinov|tekshiruv/i;
@@ -144,6 +165,9 @@ export const buildAttempts = (
       (r.full_name ?? "").trim().length < 3 ||
       answered === 0 ||
       Number(r.total_questions) !== total;
+    const meta = readMeta(answers as Record<string, unknown>);
+    const code = typeof meta.code === "string" ? meta.code : "";
+    const nameKey = `${(r.full_name ?? "").trim().toLowerCase().replace(/\s+/g, " ")}|${(r.university ?? "").trim().toLowerCase()}`;
     attempts.push({
       id: r.id,
       full_name: (r.full_name ?? "").trim(),
@@ -161,9 +185,23 @@ export const buildAttempts = (
       storedScore: Number(r.score),
       completedAt: r.completed_at,
       status: isTest ? "sinov" : answered < total ? "toliq-emas" : "toliq",
-      personKey: `${(r.full_name ?? "").trim().toLowerCase().replace(/\s+/g, " ")}|${(r.university ?? "").trim().toLowerCase()}`,
+      personKey: code ? `kod:${code}` : nameKey,
+      code,
+      stage: meta.stage === "kirish" || meta.stage === "yakuniy" ? meta.stage : "mashq",
+      group: meta.group === "tajriba" || meta.group === "nazorat" ? meta.group : "",
+      counted: false,
     });
   }
+  // Qayta topshirish qoidasi: har bir (ishtirokchi, test, bosqich) uchun birinchi to'liq urinish.
+  const firstDone = new Map<string, Attempt>();
+  for (const a of [...attempts].sort((x, y) =>
+    (x.completedAt ?? "").localeCompare(y.completedAt ?? ""),
+  )) {
+    if (a.status !== "toliq") continue;
+    const k = `${a.personKey}|${a.testKey}|${a.stage}`;
+    if (!firstDone.has(k)) firstDone.set(k, a);
+  }
+  for (const a of firstDone.values()) a.counted = true;
   attempts.sort((a, b) => (b.completedAt ?? "").localeCompare(a.completedAt ?? ""));
   return { attempts, skipped };
 };

@@ -27,6 +27,7 @@ import { Route as PisaInterpretRouteImport } from './routes/pisa-interpret'
 import { Route as QollanmaRouteImport } from './routes/qollanma'
 import { Route as RasmiyRouteImport } from './routes/rasmiy'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as SinovRouteImport } from './routes/sinov'
 import { Route as TavsiyalarRouteImport } from './routes/tavsiyalar'
 import { Route as TimssRouteImport } from './routes/timss'
 import { Route as TimssApplyingRouteImport } from './routes/timss-applying'
@@ -124,6 +125,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
   path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SinovRoute = SinovRouteImport.update({
+  id: '/sinov',
+  path: '/sinov',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TavsiyalarRoute = TavsiyalarRouteImport.update({
   id: '/tavsiyalar',
   path: '/tavsiyalar',
@@ -174,6 +180,7 @@ export interface FileRoutesByFullPath {
   '/qollanma': typeof QollanmaRoute
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
+  '/sinov': typeof SinovRoute
   '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/qollanma': typeof QollanmaRoute
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
+  '/sinov': typeof SinovRoute
   '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
@@ -227,6 +235,7 @@ export interface FileRoutesById {
   '/qollanma': typeof QollanmaRoute
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
+  '/sinov': typeof SinovRoute
   '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
@@ -255,6 +264,7 @@ export interface FileRouteTypes {
     | '/qollanma'
     | '/rasmiy'
     | '/resources'
+    | '/sinov'
     | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
@@ -281,6 +291,7 @@ export interface FileRouteTypes {
     | '/qollanma'
     | '/rasmiy'
     | '/resources'
+    | '/sinov'
     | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
@@ -307,6 +318,7 @@ export interface FileRouteTypes {
     | '/qollanma'
     | '/rasmiy'
     | '/resources'
+    | '/sinov'
     | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
@@ -334,6 +346,7 @@ export interface RootRouteChildren {
   QollanmaRoute: typeof QollanmaRoute
   RasmiyRoute: typeof RasmiyRoute
   ResourcesRoute: typeof ResourcesRoute
+  SinovRoute: typeof SinovRoute
   TavsiyalarRoute: typeof TavsiyalarRouteWithChildren
   TimssRoute: typeof TimssRoute
   TimssApplyingRoute: typeof TimssApplyingRoute
@@ -469,6 +482,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sinov': {
+      id: '/sinov'
+      path: '/sinov'
+      fullPath: '/sinov'
+      preLoaderRoute: typeof SinovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tavsiyalar': {
       id: '/tavsiyalar'
       path: '/tavsiyalar'
@@ -545,6 +565,7 @@ const rootRouteChildren: RootRouteChildren = {
   QollanmaRoute: QollanmaRoute,
   RasmiyRoute: RasmiyRoute,
   ResourcesRoute: ResourcesRoute,
+  SinovRoute: SinovRoute,
   TavsiyalarRoute: TavsiyalarRouteWithChildren,
   TimssRoute: TimssRoute,
   TimssApplyingRoute: TimssApplyingRoute,

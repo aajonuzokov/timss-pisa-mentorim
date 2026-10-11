@@ -13,7 +13,9 @@ import {
   PROCESS_LABEL,
   type TestKey,
 } from "@/data/bank";
-import { isAnswered } from "@/lib/answers";
+import { answerText, isAnswered } from "@/lib/answers";
+import { ItemAnalysis, PrePostAnalysis } from "@/components/ResearchAnalysis";
+import { GROUP_LABEL, STAGE_LABEL } from "@/lib/participant";
 import {
   BANK_R1,
   BANK_V2,
@@ -54,6 +56,8 @@ const TEST_ORDER: TestKey[] = [
   "r-applying",
   "r-reasoning",
   "r-pisa",
+  "sinov-a",
+  "sinov-b",
 ];
 
 const STATUS_LABEL: Record<Attempt["status"], string> = {
@@ -97,6 +101,7 @@ function Page() {
   const [error, setError] = useState("");
   const [excludeTest, setExcludeTest] = useState(true);
   const [onlyComplete, setOnlyComplete] = useState(true);
+  const [onlyCounted, setOnlyCounted] = useState(true);
   const [test, setTest] = useState<TestKey>("knowing");
 
   const onFile = async (file: File) => {
@@ -124,9 +129,11 @@ function Page() {
     () =>
       (attempts ?? []).filter(
         (a) =>
-          !(excludeTest && a.status === "sinov") && !(onlyComplete && a.status === "toliq-emas"),
+          !(excludeTest && a.status === "sinov") &&
+          !(onlyComplete && a.status === "toliq-emas") &&
+          !(onlyCounted && a.status === "toliq" && !a.counted),
       ),
-    [attempts, excludeTest, onlyComplete],
+    [attempts, excludeTest, onlyComplete, onlyCounted],
   );
 
   const stats = useMemo(() => {
@@ -200,6 +207,10 @@ function Page() {
     ] as string[];
     const header = [
       "F.I.Sh.",
+      "Kod",
+      "Bosqich",
+      "Guruh",
+      "Hisobga olingan",
       "Universitet",
       "Kurs",
       "Test",
@@ -222,6 +233,10 @@ function Page() {
       });
       return [
         a.full_name,
+        a.code,
+        STAGE_LABEL[a.stage],
+        GROUP_LABEL[a.group],
+        a.counted ? "ha" : "yo'q",
         a.university,
         a.course,
         a.testBase,
@@ -327,6 +342,14 @@ function Page() {
                 />
                 Faqat to'liq yechilgan testlar
               </label>
+              <label className="inline-flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={onlyCounted}
+                  onChange={(e) => setOnlyCounted(e.target.checked)}
+                />
+                Qayta topshirishlarni hisobga olmaslik (birinchi to'liq urinish)
+              </label>
               <Button
                 variant="outline"
                 size="sm"
@@ -425,9 +448,12 @@ function Page() {
                       <div className="mt-8">
                         <h3 className="font-medium mb-3">PISA jarayonlari</h3>
                         <Bars rows={processRows} />
-                        <p className="mt-3 text-xs text-muted-foreground">
-                          Interpret jarayoni bo'yicha savollar bankda hozircha yo'q.
-                        </p>
+                        {test === "pisa" && (
+                          <p className="mt-3 text-xs text-muted-foreground">
+                            v2 bankida Interpret jarayoni bo'yicha savollar yo'q; ular rasmiy
+                            topshiriqlar bo'limida bor.
+                          </p>
+                        )}
                       </div>
                     )}
                   </div>
@@ -458,7 +484,7 @@ function Page() {
                           <p className="text-muted-foreground mt-0.5">{h.q.q}</p>
                           {h.commonWrong && (
                             <p className="text-xs mt-1">
-                              To'g'ri: <b>{h.q.options[h.q.correctIndex]}</b> · Ko'p tanlangan xato:{" "}
+                              To'g'ri: <b>{answerText(h.q)}</b> · Ko'p tanlangan xato:{" "}
                               <b>{h.commonWrong}</b>
                             </p>
                           )}
@@ -474,11 +500,17 @@ function Page() {
               )}
             </div>
 
+            <PrePostAnalysis attempts={attempts.filter((a) => a.status !== "sinov")} />
+
+            <ItemAnalysis attempts={attempts.filter((a) => a.status !== "sinov")} test={test} />
+
             <div className="overflow-x-auto rounded-2xl border bg-card shadow-card">
               <table className="w-full text-sm">
                 <thead className="bg-muted">
                   <tr className="text-left">
                     <th className="px-4 py-3 font-semibold">Ishtirokchi</th>
+                    <th className="px-4 py-3 font-semibold">Kod</th>
+                    <th className="px-4 py-3 font-semibold">Bosqich</th>
                     <th className="px-4 py-3 font-semibold">Universitet</th>
                     <th className="px-4 py-3 font-semibold">Kurs</th>
                     <th className="px-4 py-3 font-semibold">Test</th>
@@ -495,6 +527,22 @@ function Page() {
                     return (
                       <tr key={a.id} className={`border-t ${shown ? "" : "opacity-50"}`}>
                         <td className="px-4 py-3 font-medium">{a.full_name}</td>
+                        <td className="px-4 py-3 font-mono text-xs">{a.code || "—"}</td>
+                        <td className="px-4 py-3 whitespace-nowrap">
+                          {a.stage === "mashq"
+                            ? "Mashq"
+                            : a.stage === "kirish"
+                              ? "Kirish"
+                              : "Yakuniy"}
+                          {a.group && (
+                            <div className="text-xs text-muted-foreground">
+                              {GROUP_LABEL[a.group]}
+                            </div>
+                          )}
+                          {a.status === "toliq" && !a.counted && (
+                            <div className="text-xs text-muted-foreground">qayta topshirish</div>
+                          )}
+                        </td>
                         <td className="px-4 py-3">{a.university}</td>
                         <td className="px-4 py-3">{a.course}</td>
                         <td className="px-4 py-3 whitespace-nowrap">
