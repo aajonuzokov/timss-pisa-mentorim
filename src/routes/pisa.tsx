@@ -7,7 +7,11 @@ export const Route = createFileRoute("/pisa")({
   head: () => ({
     meta: [
       { title: "PISA topshiriqlari — TIMSS/PISA Platformasi" },
-      { name: "description", content: "Real hayotiy vaziyatlarga asoslangan 50 ta PISA matematik savodxonlik topshirig'i." },
+      {
+        name: "description",
+        content:
+          "Real hayotiy vaziyatlarga asoslangan 150 ta PISA matematik savodxonlik topshirig'i.",
+      },
     ],
   }),
   component: Page,
@@ -23,7 +27,7 @@ function Page() {
         description="Programme for International Student Assessment (PISA) dasturining shaxsiy, jamiyat, kasbiy va ilmiy kontekstdagi matematik savodxonlik topshiriqlari. Har bir topshiriqda savol, variantlar, to'g'ri javob va izoh keltirilgan."
       />
       <section className="max-w-5xl mx-auto px-6 py-12">
-        <Quiz questions={questions} label="PISA topshiriqlari" testType="PISA" />
+        <Quiz questions={questions} label="PISA topshiriqlari" testKey="pisa" />
       </section>
     </SiteLayout>
   );

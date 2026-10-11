@@ -9,7 +9,11 @@ export const Route = createFileRoute("/timss")({
   head: () => ({
     meta: [
       { title: "TIMSS topshiriqlari — TIMSS/PISA Platformasi" },
-      { name: "description", content: "TIMSSning Bilish, Qo'llash va Mulohaza yuritish kognitiv sohalari bo'yicha 250 ta test savoli." },
+      {
+        name: "description",
+        content:
+          "TIMSSning Bilish, Qo'llash va Mulohaza yuritish kognitiv sohalari bo'yicha 250 ta test savoli.",
+      },
     ],
   }),
   component: Page,
@@ -18,9 +22,27 @@ export const Route = createFileRoute("/timss")({
 type Cat = "knowing" | "applying" | "reasoning";
 
 const cats: { key: Cat; title: string; subtitle: string; desc: string; icon: typeof Brain }[] = [
-  { key: "knowing", title: "Bilish (Knowing)", subtitle: "Faktlar va tushunchalar", desc: "Faktlar, jarayonlar va tushunchalarni eslab qolish, tanish va aniqlash.", icon: Brain },
-  { key: "applying", title: "Qo'llash (Applying)", subtitle: "Tanish vaziyatlar", desc: "Bilimlardan tanish vaziyatlarda foydalanish, masalalarni yechish va hisoblash.", icon: Wrench },
-  { key: "reasoning", title: "Mulohaza yuritish (Reasoning)", subtitle: "Tahlil va asoslash", desc: "Notanish vaziyatlarni tahlil qilish, umumlashtirish, isbotlash va xulosa chiqarish.", icon: Lightbulb },
+  {
+    key: "knowing",
+    title: "Bilish (Knowing)",
+    subtitle: "Faktlar va tushunchalar",
+    desc: "Faktlar, jarayonlar va tushunchalarni eslab qolish, tanish va aniqlash.",
+    icon: Brain,
+  },
+  {
+    key: "applying",
+    title: "Qo'llash (Applying)",
+    subtitle: "Tanish vaziyatlar",
+    desc: "Bilimlardan tanish vaziyatlarda foydalanish, masalalarni yechish va hisoblash.",
+    icon: Wrench,
+  },
+  {
+    key: "reasoning",
+    title: "Mulohaza yuritish (Reasoning)",
+    subtitle: "Tahlil va asoslash",
+    desc: "Notanish vaziyatlarni tahlil qilish, umumlashtirish, isbotlash va xulosa chiqarish.",
+    icon: Lightbulb,
+  },
 ];
 
 function Page() {
@@ -61,14 +83,21 @@ function Page() {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
-              <div className="mt-3 text-sm font-semibold text-primary">{totals[c.key]} ta savol</div>
+              <div className="mt-3 text-sm font-semibold text-primary">
+                {totals[c.key]} ta savol
+              </div>
             </button>
           );
         })}
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-20">
-        <Quiz key={cat} questions={all[cat]} label={cats.find((c) => c.key === cat)!.title} testType={cat === "knowing" ? "TIMSS - Bilish" : cat === "applying" ? "TIMSS - Qo'llash" : "TIMSS - Mulohaza yuritish"} />
+        <Quiz
+          key={cat}
+          questions={all[cat]}
+          label={cats.find((c) => c.key === cat)!.title}
+          testKey={cat}
+        />
       </section>
     </SiteLayout>
   );
