@@ -1,5 +1,6 @@
 import { processOfId, topicLabel, topicOfId } from "@/data/bank";
-import { pctOf } from "@/lib/levels";
+import { STRONG_ABOVE, WEAK_MAX, pctOf } from "@/lib/levels";
+import { COMPONENTS, type ComponentScores } from "@/lib/components";
 import { isAnswered, isCorrect, type AnswerValue, type OpenAnswer } from "@/lib/answers";
 
 export type BankQuestion = {
@@ -9,6 +10,7 @@ export type BankQuestion = {
   answer?: OpenAnswer;
   topic?: string;
   process?: string;
+  component?: import("@/lib/components").ComponentKey;
 };
 
 export type Row = { key: string; label: string; correct: number; total: number; pct: number };
@@ -54,8 +56,21 @@ export const diagnose = (questions: BankQuestion[], answers: Record<string, Answ
   };
 };
 
-/** Kuchli (≥ 80%) va rivojlantirish kerak (< 60%) bo'lgan mavzular. */
+/** Kuchli (yuqori daraja, > 75%) va rivojlantirish kerak (past daraja, ≤ 50%) bo'lgan mavzular. */
 export const splitStrengths = (rows: Row[]) => ({
-  strong: rows.filter((r) => r.pct >= 80).sort((a, b) => b.pct - a.pct),
-  weak: rows.filter((r) => r.pct < 60),
+  strong: rows.filter((r) => r.pct > STRONG_ABOVE).sort((a, b) => b.pct - a.pct),
+  weak: rows.filter((r) => r.pct <= WEAK_MAX),
 });
+
+/** Komponentlar bo'yicha qatorlar (dissertatsiyadagi tartibda, faqat o'lchanganlari). */
+export const componentRows = (scores: ComponentScores): Row[] =>
+  COMPONENTS.filter((c) => scores[c.key]?.max).map((c) => {
+    const v = scores[c.key]!;
+    return {
+      key: c.key,
+      label: c.label,
+      correct: v.score,
+      total: v.max,
+      pct: pctOf(v.score, v.max),
+    };
+  });

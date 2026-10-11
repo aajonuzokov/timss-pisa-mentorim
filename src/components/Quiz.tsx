@@ -9,7 +9,6 @@ import {
   AlertCircle,
   GraduationCap,
 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { TEST_TYPES, versionOf, withVersion, type TestKey } from "@/data/bank";
 import {
@@ -22,23 +21,22 @@ import {
 import { levelOf, pctOf } from "@/lib/levels";
 import { DiagnosticReport } from "@/components/DiagnosticReport";
 import {
-  GROUP_LABEL,
   META_KEY,
-  STAGE_LABEL,
   clearDraft,
   generateCode,
-  isValidCode,
   loadDraft,
   loadProfile,
-  normalizeCode,
   saveDraft,
   saveProfile,
   emptyParticipant,
-  type Group,
   type Meta,
   type Participant,
   type Stage,
 } from "@/lib/participant";
+import { ParticipantForm, isParticipantValid } from "@/components/ParticipantForm";
+import { ReflectionForm } from "@/components/ReflectionForm";
+import { newResultId, saveResult } from "@/lib/saveResult";
+import type { ComponentKey } from "@/lib/components";
 
 export type Question = {
   id: string;
@@ -50,6 +48,8 @@ export type Question = {
   context?: string;
   topic?: string;
   process?: string;
+  /** Matematik tayyorgarlik komponenti (bo'lmasa test turidan aniqlanadi). */
+  component?: ComponentKey;
   /** Ochiq javobli savol: ishtirokchi javobni yozadi. */
   answer?: OpenAnswer;
   /** Rasm (SVG, platforma ichida tayyorlangan). */
@@ -73,8 +73,6 @@ type Props = {
   stage?: Stage;
 };
 
-const COURSES = ["1", "2", "3", "4", "Magistratura"];
-
 type SaveState = "idle" | "saving" | "saved" | "error";
 
 export function Quiz({
@@ -95,6 +93,7 @@ export function Quiz({
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [restored, setRestored] = useState(0);
   const [hydrated, setHydrated] = useState(false);
+  const [resultId, setResultId] = useState("");
   const topRef = useRef<HTMLDivElement>(null);
   const draftKey = `${testKey}:${fixedStage ?? "any"}`;
 
@@ -139,13 +138,7 @@ export function Quiz({
   const remaining = result.total - result.answered;
   const firstUnanswered = questions.findIndex((q) => !isAnswered(answers[q.id]));
 
-  const codeValid = isValidCode(participant.code);
-  const participantValid =
-    participant.full_name.trim().length >= 3 &&
-    participant.university.trim() !== "" &&
-    participant.course !== "" &&
-    codeValid &&
-    participant.consent;
+  const participantValid = isParticipantValid(participant);
 
   const scrollTop = () => topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -171,13 +164,16 @@ export function Quiz({
     scrollTop();
   };
 
-  const save = async (doneAt: string) => {
+  const testType = withVersion(TEST_TYPES[testKey], versionOf(testKey));
+
+  const save = async (doneAt: string, id: string) => {
     setSaveState("saving");
-    const { error } = await supabase.from("test_results").insert({
+    const { error } = await saveResult({
+      id,
       full_name: participant.full_name.trim(),
       university: participant.university.trim(),
       course: participant.course,
-      test_type: withVersion(TEST_TYPES[testKey], versionOf(testKey)),
+      test_type: testType,
       score: result.correct,
       total_questions: result.total,
       percentage: result.pct,
@@ -224,10 +220,12 @@ export function Quiz({
       return;
     }
     const doneAt = new Date().toISOString();
+    const id = newResultId();
     setCompletedAt(doneAt);
+    setResultId(id);
     setSubmitted(true);
     scrollTop();
-    await save(doneAt);
+    await save(doneAt, id);
   };
 
   return (
@@ -240,7 +238,7 @@ export function Quiz({
                 <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
                 Natija hali saqlanmadi. Sahifani yopmang va qayta yuboring.
               </div>
-              <Button size="sm" onClick={() => save(completedAt)}>
+              <Button size="sm" onClick={() => save(completedAt, resultId)}>
                 Qayta yuborish
               </Button>
             </div>
@@ -253,6 +251,9 @@ export function Quiz({
             participant={participant}
             completedAt={completedAt}
           />
+          {saveState === "saved" && (
+            <ReflectionForm code={participant.code} resultId={resultId} testType={testType} />
+          )}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-5 rounded-2xl border bg-card shadow-card print:hidden">
             <div className="text-sm text-muted-foreground">
               {saveState === "saved" && "Natija saqlandi. "}
@@ -267,122 +268,14 @@ export function Quiz({
       )}
 
       {!submitted && (
-        <div
-          className={`p-5 rounded-2xl border bg-card shadow-card ${triedSubmit && !participantValid ? "border-red-500" : ""}`}
-        >
-          <div className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-3">
-            Ishtirokchi ma'lumotlari
-          </div>
-          <div className="grid sm:grid-cols-3 gap-3">
-            <input
-              required
-              maxLength={200}
-              className="px-4 py-2.5 rounded-lg border bg-background"
-              placeholder="F.I.Sh. *"
-              aria-label="F.I.Sh."
-              value={participant.full_name}
-              onChange={(e) => setParticipant({ ...participant, full_name: e.target.value })}
-            />
-            <input
-              required
-              maxLength={200}
-              className="px-4 py-2.5 rounded-lg border bg-background"
-              placeholder="Universitet *"
-              aria-label="Universitet"
-              value={participant.university}
-              onChange={(e) => setParticipant({ ...participant, university: e.target.value })}
-            />
-            <select
-              required
-              className="px-4 py-2.5 rounded-lg border bg-background"
-              aria-label="Kurs"
-              value={participant.course}
-              onChange={(e) => setParticipant({ ...participant, course: e.target.value })}
-            >
-              <option value="">Kurs *</option>
-              {COURSES.map((c) => (
-                <option key={c} value={c}>
-                  {c === "Magistratura" ? c : `${c}-kurs`}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-3 mt-3">
-            <label className="text-sm">
-              <span className="block text-xs text-muted-foreground mb-1">
-                Ishtirokchi kodi * (tashkilotchi bergan kod yoki avtomatik kod)
-              </span>
-              <input
-                required
-                maxLength={20}
-                className={`w-full px-4 py-2.5 rounded-lg border bg-background font-mono tracking-wide ${triedSubmit && !codeValid ? "border-red-500" : ""}`}
-                aria-label="Ishtirokchi kodi"
-                value={participant.code}
-                onChange={(e) =>
-                  setParticipant({ ...participant, code: normalizeCode(e.target.value) })
-                }
-              />
-            </label>
-            {fixedStage ? (
-              <div className="text-sm">
-                <span className="block text-xs text-muted-foreground mb-1">Bosqich</span>
-                <div className="px-4 py-2.5 rounded-lg border bg-muted/50">
-                  {STAGE_LABEL[fixedStage]}
-                </div>
-              </div>
-            ) : (
-              <label className="text-sm">
-                <span className="block text-xs text-muted-foreground mb-1">Bosqich</span>
-                <select
-                  className="w-full px-4 py-2.5 rounded-lg border bg-background"
-                  aria-label="Bosqich"
-                  value={stage}
-                  onChange={(e) => setStage(e.target.value as Stage)}
-                >
-                  {(Object.keys(STAGE_LABEL) as Stage[]).map((k) => (
-                    <option key={k} value={k}>
-                      {STAGE_LABEL[k]}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            )}
-            <label className="text-sm">
-              <span className="block text-xs text-muted-foreground mb-1">Guruh (ixtiyoriy)</span>
-              <select
-                className="w-full px-4 py-2.5 rounded-lg border bg-background"
-                aria-label="Guruh"
-                value={participant.group}
-                onChange={(e) => setParticipant({ ...participant, group: e.target.value as Group })}
-              >
-                {(Object.keys(GROUP_LABEL) as Group[]).map((k) => (
-                  <option key={k} value={k}>
-                    {GROUP_LABEL[k]}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Kodni yozib qo'ying: kirish va yakuniy testda bir xil kod kiritilsa, natijalaringiz
-            o'zaro solishtiriladi. Kod shu qurilmada eslab qolinadi.
-          </p>
-          <label
-            className={`mt-3 flex items-start gap-2 text-sm p-3 rounded-lg border ${triedSubmit && !participant.consent ? "border-red-500" : ""}`}
-          >
-            <input
-              type="checkbox"
-              className="mt-1"
-              checked={participant.consent}
-              aria-label="Rozilik"
-              onChange={(e) => setParticipant({ ...participant, consent: e.target.checked })}
-            />
-            <span>
-              Test natijam va kiritgan ma'lumotlarim faqat ilmiy-tadqiqot maqsadida,
-              umumlashtirilgan holda (ismim oshkor qilinmasdan) ishlatilishiga roziman. *
-            </span>
-          </label>
-        </div>
+        <ParticipantForm
+          participant={participant}
+          setParticipant={setParticipant}
+          stage={stage}
+          setStage={setStage}
+          fixedStage={fixedStage}
+          triedSubmit={triedSubmit}
+        />
       )}
 
       {!submitted && restored > 0 && (

@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
 import { FlaskConical, Sigma } from "lucide-react";
-import { TEST_TYPES, familyOf, type TestKey } from "@/data/bank";
+import { TEST_TYPES, familyOf, isDiag, type TestKey } from "@/data/bank";
 import type { Attempt } from "@/lib/results";
-import { isCorrect } from "@/lib/answers";
+import { COMPONENTS, type ComponentKey } from "@/lib/components";
+import { diagItemById } from "@/data/diag";
 import { GROUP_LABEL, type Group } from "@/lib/participant";
 import { LEVELS, levelInfo } from "@/lib/levels";
 import {
@@ -10,15 +11,28 @@ import {
   fmtNum,
   fmtP,
   itemAnalysis,
+  mean,
   pairedT,
+  sd,
   welchT,
   type PairedResult,
 } from "@/lib/stats";
 
 const FAMILY_LABEL = (f: string) =>
-  f === "sinov" ? "Tajriba-sinov testi (A → B)" : (TEST_TYPES[f as TestKey] ?? f);
+  f === "diag"
+    ? "Diagnostik test, Ilova 1 (A → B)"
+    : f === "sinov"
+      ? "Rasmiy topshiriqlar sinov testi (A → B)"
+      : (TEST_TYPES[f as TestKey] ?? f);
 
-type Pair = { personKey: string; group: Group; pre: number; post: number };
+type Pair = {
+  personKey: string;
+  group: Group;
+  pre: number;
+  post: number;
+  preA: Attempt;
+  postA: Attempt;
+};
 
 const buildPairs = (attempts: Attempt[]) => {
   const byFamily = new Map<string, Map<string, { pre?: Attempt; post?: Attempt }>>();
@@ -44,13 +58,18 @@ const buildPairs = (attempts: Attempt[]) => {
           group: v.post.group || v.pre.group,
           pre: v.pre.pct,
           post: v.post.pct,
+          preA: v.pre,
+          postA: v.post,
         });
       else if (v.pre) preOnly++;
       else postOnly++;
     }
     out.push({ family, pairs, preOnly, postOnly });
   }
-  return out.sort((a, b) => b.pairs.length - a.pairs.length);
+  return out.sort(
+    (a, b) =>
+      Number(b.family === "diag") - Number(a.family === "diag") || b.pairs.length - a.pairs.length,
+  );
 };
 
 function PairedRow({ label, r }: { label: string; r: PairedResult | null }) {
@@ -222,12 +241,15 @@ export function ItemAnalysis({ attempts, test }: { attempts: Attempt[]; test: Te
     for (const a of list) byVer.set(a.version, [...(byVer.get(a.version) ?? []), a]);
     const [version, group] = [...byVer.entries()].sort((a, b) => b[1].length - a[1].length)[0];
     const qs = group[0].questions;
-    const matrix = group.map((a) => qs.map((q) => (isCorrect(q, a.answers[q.id]) ? 1 : 0)));
+    const itemMax = group[0].itemMax;
+    const matrix = group.map((a) => qs.map((q) => a.itemPoints[q.id] ?? 0));
     return {
       version,
+      itemMax,
       ...itemAnalysis(
         qs.map((q) => q.id),
         matrix,
+        itemMax,
       ),
     };
   }, [attempts, test]);
@@ -246,7 +268,9 @@ export function ItemAnalysis({ attempts, test }: { attempts: Attempt[]; test: Te
         <>
           <div className="mt-3 grid sm:grid-cols-3 gap-3 text-sm">
             <div className="p-4 rounded-xl border">
-              <div className="text-muted-foreground">Ishonchlilik (KR-20)</div>
+              <div className="text-muted-foreground">
+                Ishonchlilik ({res.itemMax > 1 ? "Cronbach alfa" : "KR-20"})
+              </div>
               <div className="text-2xl font-bold tabular-nums">{fmtNum(res.kr20, 2)}</div>
               <div className="text-xs text-muted-foreground">≥ 0,70 — qoniqarli</div>
             </div>
@@ -284,7 +308,9 @@ export function ItemAnalysis({ attempts, test }: { attempts: Attempt[]; test: Te
                 <thead className="bg-muted sticky top-0">
                   <tr className="text-left">
                     <th className="px-3 py-2">Savol</th>
-                    <th className="px-3 py-2 text-right">Qiyinlik (to'g'ri %)</th>
+                    <th className="px-3 py-2 text-right">
+                      {res.itemMax > 1 ? "Qiyinlik (o'rtacha ball, %)" : "Qiyinlik (to'g'ri %)"}
+                    </th>
                     <th className="px-3 py-2 text-right">Ajratish kuchi (r)</th>
                     <th className="px-3 py-2">Xulosa</th>
                   </tr>
@@ -298,7 +324,11 @@ export function ItemAnalysis({ attempts, test }: { attempts: Attempt[]; test: Te
                     ].filter(Boolean);
                     return (
                       <tr key={it.id} className="border-t">
-                        <td className="px-3 py-2 font-medium">{it.id}</td>
+                        <td className="px-3 py-2 font-medium">
+                          {diagItemById.get(it.id)
+                            ? `${diagItemById.get(it.id)!.n}. ${diagItemById.get(it.id)!.title}`
+                            : it.id}
+                        </td>
                         <td className="px-3 py-2 text-right">{Math.round(it.p * 100)}%</td>
                         <td className="px-3 py-2 text-right">{fmtNum(it.r, 2)}</td>
                         <td
@@ -314,11 +344,185 @@ export function ItemAnalysis({ attempts, test }: { attempts: Attempt[]; test: Te
             </div>
           )}
           <p className="mt-3 text-xs text-muted-foreground">
-            Qiyinlik — savolga to'g'ri javob berganlar ulushi; ajratish kuchi — savol natijasi bilan
-            qolgan savollar yig'indisi orasidagi korrelyatsiya (≥ 0,20 — yaxshi). KR-20 — dixotomik
-            savollar uchun Cronbach alfa.
+            Qiyinlik — savol bo'yicha o'rtacha ball maksimal ballga nisbatan (dixotomik savolda —
+            to'g'ri javob berganlar ulushi); ajratish kuchi — savol bali bilan qolgan savollar
+            yig'indisi orasidagi korrelyatsiya (≥ 0,20 — yaxshi). Cronbach alfa dixotomik savollarda
+            KR-20 ga teng.
+            {isDiag(test) &&
+              " Diagnostik testda ballar o'qituvchi rubrikasi bo'yicha (baholanmagan topshiriqlarda — avtomatik dastlabki ball)."}
           </p>
         </>
+      )}
+    </div>
+  );
+}
+
+/** Komponent bo'yicha qiymat: diagnostik testda — ball, boshqa testlarda — foiz. */
+const compVal = (a: Attempt, k: ComponentKey) => {
+  const c = a.components[k];
+  if (!c || !c.max) return NaN;
+  return a.diag ? c.score : (c.score / c.max) * 100;
+};
+
+const ms = (xs: number[]) => (xs.length ? `${fmtNum(mean(xs), 2)} ± ${fmtNum(sd(xs), 2)}` : "—");
+
+/**
+ * Komponentlar kesimida natijalar (dissertatsiyadagi 3.6-jadval ko'rinishida): har bir bosqichda
+ * tajriba va nazorat guruhlarining M ± SD, Welch t-mezoni va Cohen d; guruhlar bo'lmasa —
+ * kirish va yakuniy natija juftlari.
+ */
+export function ComponentAnalysis({ attempts }: { attempts: Attempt[] }) {
+  const families = useMemo(() => buildPairs(attempts), [attempts]);
+  const [sel, setSel] = useState<string>("");
+  const fam = families.find((f) => f.family === sel) ?? families[0];
+  const counted = useMemo(
+    () =>
+      attempts.filter(
+        (a) => a.counted && a.stage !== "mashq" && fam && familyOf(a.testKey) === fam.family,
+      ),
+    [attempts, fam],
+  );
+  if (!fam) return null;
+  const isPoints = counted.some((a) => a.diag);
+  const unit = isPoints ? "ball" : "%";
+  const comps = COMPONENTS.filter((c) => counted.some((a) => a.components[c.key]?.max));
+  const maxOf = (k: ComponentKey) => counted.find((a) => a.components[k]?.max)?.components[k]?.max;
+  const hasGroups =
+    counted.some((a) => a.group === "tajriba") && counted.some((a) => a.group === "nazorat");
+  const vals = (k: ComponentKey, stage: "kirish" | "yakuniy", g?: Group) =>
+    counted
+      .filter((a) => a.stage === stage && (g === undefined || a.group === g))
+      .map((a) => compVal(a, k))
+      .filter(Number.isFinite);
+
+  return (
+    <div className="p-6 rounded-2xl border bg-card shadow-card">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <h2 className="font-semibold text-lg">Komponentlar kesimida natijalar</h2>
+        {families.length > 1 && (
+          <div className="flex flex-wrap gap-2">
+            {families.map((f) => (
+              <button
+                key={f.family}
+                onClick={() => setSel(f.family)}
+                className={`px-3 py-1.5 rounded-lg border text-sm ${f.family === fam.family ? "bg-primary text-primary-foreground border-primary" : "hover:bg-muted"}`}
+              >
+                {FAMILY_LABEL(f.family)}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      <p className="text-sm text-muted-foreground mt-1">
+        {FAMILY_LABEL(fam.family)}. Qiymatlar: M ± SD ({unit}).{" "}
+        {hasGroups
+          ? "Har bir bosqichda tajriba (TG) va nazorat (NG) guruhlari Welch t-mezoni bilan taqqoslanadi; kirish bosqichidagi taqqoslash guruhlarning boshlang'ich tengligini ko'rsatadi."
+          : "Guruhlar belgilanmagan: kirish va yakuniy natijalar bir ishtirokchi bo'yicha juftlab taqqoslanadi."}
+      </p>
+      <div className="mt-4 overflow-x-auto">
+        {hasGroups ? (
+          <table className="w-full text-sm">
+            <thead className="bg-muted">
+              <tr className="text-left">
+                <th className="px-3 py-2">Komponent</th>
+                <th className="px-3 py-2">Bosqich</th>
+                <th className="px-3 py-2 text-right">TG</th>
+                <th className="px-3 py-2 text-right">NG</th>
+                <th className="px-3 py-2 text-right">t</th>
+                <th className="px-3 py-2 text-right">p</th>
+                <th className="px-3 py-2 text-right">Cohen d</th>
+              </tr>
+            </thead>
+            <tbody className="tabular-nums">
+              {comps.flatMap((c) =>
+                (["kirish", "yakuniy"] as const).map((st, i) => {
+                  const tg = vals(c.key, st, "tajriba");
+                  const ng = vals(c.key, st, "nazorat");
+                  const w = welchT(tg, ng);
+                  return (
+                    <tr key={c.key + st} className={i === 0 ? "border-t" : ""}>
+                      <td className="px-3 py-2 font-medium">
+                        {i === 0 && (
+                          <>
+                            {c.label}
+                            {isPoints && (
+                              <span className="text-muted-foreground font-normal">
+                                {" "}
+                                (max {maxOf(c.key)})
+                              </span>
+                            )}
+                          </>
+                        )}
+                      </td>
+                      <td className="px-3 py-2">{st === "kirish" ? "Kirish" : "Yakuniy"}</td>
+                      <td className="px-3 py-2 text-right whitespace-nowrap">
+                        {ms(tg)} <span className="text-muted-foreground">n={tg.length}</span>
+                      </td>
+                      <td className="px-3 py-2 text-right whitespace-nowrap">
+                        {ms(ng)} <span className="text-muted-foreground">n={ng.length}</span>
+                      </td>
+                      <td className="px-3 py-2 text-right">{w ? fmtNum(w.t, 2) : "—"}</td>
+                      <td className="px-3 py-2 text-right">{w ? fmtP(w.p) : "—"}</td>
+                      <td className="px-3 py-2 text-right whitespace-nowrap">
+                        {w ? `${fmtNum(w.d, 2)} (${effectLabel(w.d)})` : "—"}
+                      </td>
+                    </tr>
+                  );
+                }),
+              )}
+            </tbody>
+          </table>
+        ) : (
+          <table className="w-full text-sm">
+            <thead className="bg-muted">
+              <tr className="text-left">
+                <th className="px-3 py-2">Komponent</th>
+                <th className="px-3 py-2 text-right">n</th>
+                <th className="px-3 py-2 text-right">Kirish</th>
+                <th className="px-3 py-2 text-right">Yakuniy</th>
+                <th className="px-3 py-2 text-right">t</th>
+                <th className="px-3 py-2 text-right">p</th>
+                <th className="px-3 py-2 text-right">dz</th>
+              </tr>
+            </thead>
+            <tbody className="tabular-nums">
+              {comps.map((c) => {
+                const ps = fam.pairs
+                  .map((p) => [compVal(p.preA, c.key), compVal(p.postA, c.key)])
+                  .filter(([a, b]) => Number.isFinite(a) && Number.isFinite(b));
+                const pre = ps.map((p) => p[0]);
+                const post = ps.map((p) => p[1]);
+                const r = pairedT(pre, post);
+                return (
+                  <tr key={c.key} className="border-t">
+                    <td className="px-3 py-2 font-medium">
+                      {c.label}
+                      {isPoints && (
+                        <span className="text-muted-foreground font-normal">
+                          {" "}
+                          (max {maxOf(c.key)})
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-3 py-2 text-right">{ps.length}</td>
+                    <td className="px-3 py-2 text-right whitespace-nowrap">{ms(pre)}</td>
+                    <td className="px-3 py-2 text-right whitespace-nowrap">{ms(post)}</td>
+                    <td className="px-3 py-2 text-right">{r ? fmtNum(r.t, 2) : "—"}</td>
+                    <td className="px-3 py-2 text-right">{r ? fmtP(r.p) : "—"}</td>
+                    <td className="px-3 py-2 text-right whitespace-nowrap">
+                      {r ? `${fmtNum(r.dz, 2)} (${effectLabel(r.dz)})` : "—"}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+      </div>
+      {!counted.length && (
+        <p className="mt-3 text-sm text-muted-foreground">
+          Bu test bo'yicha kirish yoki yakuniy bosqichdagi hisobga olinadigan urinish yo'q.
+        </p>
       )}
     </div>
   );

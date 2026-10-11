@@ -5,7 +5,18 @@ import timssV2 from "@/data/timss.json";
 import pisaV2 from "@/data/pisa.json";
 import released from "@/data/released.json";
 import forms from "@/data/forms.json";
-import { parseTestType, processOfId, testKeyOf, topicOfId, type TestKey } from "@/data/bank";
+import { DIAG_FORMS, DIAG_MAX, type DiagItem } from "@/data/diag";
+import {
+  DIAG_TEST_VERSION,
+  isDiag,
+  parseTestType,
+  processOfId,
+  testKeyOf,
+  topicOfId,
+  type TestKey,
+} from "@/data/bank";
+import { componentOf, type ComponentScores } from "@/lib/components";
+import { scoreDiag } from "@/lib/diagScore";
 import type { Question } from "@/components/Quiz";
 import { pctOf } from "@/lib/levels";
 import { isAnswered, isCorrect, type AnswerValue } from "@/lib/answers";
@@ -50,6 +61,37 @@ export const BANK_R1: Bank = {
   "sinov-a": FORM_A,
   "sinov-b": FORM_B,
 };
+
+/** Diagnostik test topshiriqlari umumiy savol ko'rinishida (monitoring jadvallari uchun). */
+export const diagAsQuestions = (items: DiagItem[]): Question[] =>
+  items.map((it) => ({
+    id: it.id,
+    q: it.q,
+    options: [],
+    correctIndex: -1,
+    explain: it.expected,
+    title: it.title,
+    topic: it.component,
+    component: it.component,
+  }));
+
+/** Dissertatsiyaning diagnostik testi (d1): A — kirish, B — yakuniy. */
+export const BANK_D1: Bank = {
+  "diag-a": diagAsQuestions(DIAG_FORMS.A),
+  "diag-b": diagAsQuestions(DIAG_FORMS.B),
+};
+
+const DIAG_ITEMS: Partial<Record<TestKey, DiagItem[]>> = {
+  "diag-a": DIAG_FORMS.A,
+  "diag-b": DIAG_FORMS.B,
+};
+
+/** Barcha mavjud banklar (v1 dan tashqari: u kerak bo'lganda alohida yuklanadi). */
+export const defaultBanks = (): Record<string, Bank> => ({
+  v2: BANK_V2,
+  r1: BANK_R1,
+  [DIAG_TEST_VERSION]: BANK_D1,
+});
 
 let v1Promise: Promise<Bank> | null = null;
 export const loadBankV1 = () =>
@@ -108,10 +150,21 @@ export type Attempt = {
   version: string;
   answers: Record<string, AnswerValue>;
   questions: Question[];
+  /** To'plangan ball (oddiy testda — to'g'ri javoblar soni, diagnostik testda — 0–40 ball). */
   correct: number;
   answered: number;
+  /** Maksimal ball (oddiy testda — savollar soni, diagnostik testda — 40). */
   total: number;
+  /** Topshiriqlar soni. */
+  nItems: number;
   pct: number;
+  /** Har bir topshiriq bo'yicha ball va maksimal ball (0/1 yoki 0–2). */
+  itemPoints: Record<string, number>;
+  itemMax: number;
+  /** Matematik tayyorgarlik komponentlari bo'yicha ball. */
+  components: ComponentScores;
+  /** Diagnostik test: avtomatik ball va o'qituvchi baholagan topshiriqlar soni. */
+  diag?: { auto: number; rubricCount: number };
   storedScore: number;
   completedAt: string;
   status: Status;
@@ -135,9 +188,13 @@ export const normalizeCourse = (c: string) => {
   return m ? m[0] : c.trim();
 };
 
+/** Rubrika ballari: natija ID → topshiriq ID → ball (0–2). */
+export type RubricMap = Map<string, Record<string, number>>;
+
 export const buildAttempts = (
   rows: Record<string, string>[],
   banks: Record<string, Bank>,
+  rubric: RubricMap = new Map(),
 ): { attempts: Attempt[]; skipped: number } => {
   const attempts: Attempt[] = [];
   let skipped = 0;
@@ -156,9 +213,38 @@ export const buildAttempts = (
     } catch {
       answers = {};
     }
-    const answered = questions.filter((q) => isAnswered(answers[q.id])).length;
-    const correct = questions.filter((q) => isCorrect(q, answers[q.id])).length;
-    const total = questions.length;
+    const diagItems = DIAG_ITEMS[testKey];
+    let answered: number;
+    let correct: number;
+    let total: number;
+    let itemPoints: Record<string, number>;
+    let components: ComponentScores;
+    let diag: Attempt["diag"];
+    if (diagItems && isDiag(testKey)) {
+      const d = scoreDiag(diagItems, answers, rubric.get(r.id));
+      answered = d.answered;
+      correct = d.total;
+      total = DIAG_MAX;
+      itemPoints = Object.fromEntries(Object.entries(d.byItem).map(([k, v]) => [k, v.points]));
+      components = d.components;
+      diag = { auto: d.auto, rubricCount: d.rubricCount };
+    } else {
+      answered = questions.filter((q) => isAnswered(answers[q.id])).length;
+      itemPoints = Object.fromEntries(
+        questions.map((q) => [q.id, isCorrect(q, answers[q.id]) ? 1 : 0]),
+      );
+      correct = Object.values(itemPoints).reduce((s, v) => s + v, 0);
+      total = questions.length;
+      components = {};
+      for (const q of questions) {
+        const k = componentOf(testKey, q);
+        if (!k) continue;
+        const c = (components[k] ??= { score: 0, max: 0 });
+        c.max += 1;
+        c.score += itemPoints[q.id];
+      }
+    }
+    const nItems = questions.length;
     const isTest =
       TEST_NAME.test(r.full_name ?? "") ||
       TEST_NAME.test(r.university ?? "") ||
@@ -181,10 +267,16 @@ export const buildAttempts = (
       correct,
       answered,
       total,
+      nItems,
       pct: pctOf(correct, total),
+      itemPoints,
+      itemMax: diag ? 2 : 1,
+      components,
+      diag,
       storedScore: Number(r.score),
       completedAt: r.completed_at,
-      status: isTest ? "sinov" : answered < total ? "toliq-emas" : "toliq",
+      // Diagnostik testda bo'sh qoldirilgan topshiriq 0 ball oladi: yuborilgan har bir ish to'liq.
+      status: isTest ? "sinov" : !diag && answered < nItems ? "toliq-emas" : "toliq",
       personKey: code ? `kod:${code}` : nameKey,
       code,
       stage: meta.stage === "kirish" || meta.stage === "yakuniy" ? meta.stage : "mashq",

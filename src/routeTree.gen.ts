@@ -14,6 +14,7 @@ import { Route as AloqaRouteImport } from './routes/aloqa'
 import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as DolzarblikRouteImport } from './routes/dolzarblik'
 import { Route as ElektronTalimResursiRouteImport } from './routes/elektron-talim-resursi'
+import { Route as KabinetRouteImport } from './routes/kabinet'
 import { Route as KutubxonaRouteImport } from './routes/kutubxona'
 import { Route as MathematicalModelingRouteImport } from './routes/mathematical-modeling'
 import { Route as MktRouteImport } from './routes/mkt'
@@ -24,6 +25,7 @@ import { Route as PisaRouteImport } from './routes/pisa'
 import { Route as PisaEmployRouteImport } from './routes/pisa-employ'
 import { Route as PisaFormulateRouteImport } from './routes/pisa-formulate'
 import { Route as PisaInterpretRouteImport } from './routes/pisa-interpret'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as QollanmaRouteImport } from './routes/qollanma'
 import { Route as RasmiyRouteImport } from './routes/rasmiy'
 import { Route as ResourcesRouteImport } from './routes/resources'
@@ -58,6 +60,11 @@ const DolzarblikRoute = DolzarblikRouteImport.update({
 const ElektronTalimResursiRoute = ElektronTalimResursiRouteImport.update({
   id: '/elektron-talim-resursi',
   path: '/elektron-talim-resursi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KabinetRoute = KabinetRouteImport.update({
+  id: '/kabinet',
+  path: '/kabinet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KutubxonaRoute = KutubxonaRouteImport.update({
@@ -108,6 +115,11 @@ const PisaFormulateRoute = PisaFormulateRouteImport.update({
 const PisaInterpretRoute = PisaInterpretRouteImport.update({
   id: '/pisa-interpret',
   path: '/pisa-interpret',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QollanmaRoute = QollanmaRouteImport.update({
@@ -167,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
   '/elektron-talim-resursi': typeof ElektronTalimResursiRoute
+  '/kabinet': typeof KabinetRoute
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
@@ -177,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/pisa-employ': typeof PisaEmployRoute
   '/pisa-formulate': typeof PisaFormulateRoute
   '/pisa-interpret': typeof PisaInterpretRoute
+  '/portfolio': typeof PortfolioRoute
   '/qollanma': typeof QollanmaRoute
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
@@ -194,6 +208,7 @@ export interface FileRoutesByTo {
   '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
   '/elektron-talim-resursi': typeof ElektronTalimResursiRoute
+  '/kabinet': typeof KabinetRoute
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
@@ -204,6 +219,7 @@ export interface FileRoutesByTo {
   '/pisa-employ': typeof PisaEmployRoute
   '/pisa-formulate': typeof PisaFormulateRoute
   '/pisa-interpret': typeof PisaInterpretRoute
+  '/portfolio': typeof PortfolioRoute
   '/qollanma': typeof QollanmaRoute
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
@@ -222,6 +238,7 @@ export interface FileRoutesById {
   '/assessment': typeof AssessmentRoute
   '/dolzarblik': typeof DolzarblikRoute
   '/elektron-talim-resursi': typeof ElektronTalimResursiRoute
+  '/kabinet': typeof KabinetRoute
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
@@ -232,6 +249,7 @@ export interface FileRoutesById {
   '/pisa-employ': typeof PisaEmployRoute
   '/pisa-formulate': typeof PisaFormulateRoute
   '/pisa-interpret': typeof PisaInterpretRoute
+  '/portfolio': typeof PortfolioRoute
   '/qollanma': typeof QollanmaRoute
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
@@ -251,6 +269,7 @@ export interface FileRouteTypes {
     | '/assessment'
     | '/dolzarblik'
     | '/elektron-talim-resursi'
+    | '/kabinet'
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
@@ -261,6 +280,7 @@ export interface FileRouteTypes {
     | '/pisa-employ'
     | '/pisa-formulate'
     | '/pisa-interpret'
+    | '/portfolio'
     | '/qollanma'
     | '/rasmiy'
     | '/resources'
@@ -278,6 +298,7 @@ export interface FileRouteTypes {
     | '/assessment'
     | '/dolzarblik'
     | '/elektron-talim-resursi'
+    | '/kabinet'
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
@@ -288,6 +309,7 @@ export interface FileRouteTypes {
     | '/pisa-employ'
     | '/pisa-formulate'
     | '/pisa-interpret'
+    | '/portfolio'
     | '/qollanma'
     | '/rasmiy'
     | '/resources'
@@ -305,6 +327,7 @@ export interface FileRouteTypes {
     | '/assessment'
     | '/dolzarblik'
     | '/elektron-talim-resursi'
+    | '/kabinet'
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
@@ -315,6 +338,7 @@ export interface FileRouteTypes {
     | '/pisa-employ'
     | '/pisa-formulate'
     | '/pisa-interpret'
+    | '/portfolio'
     | '/qollanma'
     | '/rasmiy'
     | '/resources'
@@ -333,6 +357,7 @@ export interface RootRouteChildren {
   AssessmentRoute: typeof AssessmentRoute
   DolzarblikRoute: typeof DolzarblikRoute
   ElektronTalimResursiRoute: typeof ElektronTalimResursiRoute
+  KabinetRoute: typeof KabinetRoute
   KutubxonaRoute: typeof KutubxonaRoute
   MathematicalModelingRoute: typeof MathematicalModelingRoute
   MktRoute: typeof MktRoute
@@ -343,6 +368,7 @@ export interface RootRouteChildren {
   PisaEmployRoute: typeof PisaEmployRoute
   PisaFormulateRoute: typeof PisaFormulateRoute
   PisaInterpretRoute: typeof PisaInterpretRoute
+  PortfolioRoute: typeof PortfolioRoute
   QollanmaRoute: typeof QollanmaRoute
   RasmiyRoute: typeof RasmiyRoute
   ResourcesRoute: typeof ResourcesRoute
@@ -389,6 +415,13 @@ declare module '@tanstack/react-router' {
       path: '/elektron-talim-resursi'
       fullPath: '/elektron-talim-resursi'
       preLoaderRoute: typeof ElektronTalimResursiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kabinet': {
+      id: '/kabinet'
+      path: '/kabinet'
+      fullPath: '/kabinet'
+      preLoaderRoute: typeof KabinetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kutubxona': {
@@ -459,6 +492,13 @@ declare module '@tanstack/react-router' {
       path: '/pisa-interpret'
       fullPath: '/pisa-interpret'
       preLoaderRoute: typeof PisaInterpretRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/qollanma': {
@@ -552,6 +592,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssessmentRoute: AssessmentRoute,
   DolzarblikRoute: DolzarblikRoute,
   ElektronTalimResursiRoute: ElektronTalimResursiRoute,
+  KabinetRoute: KabinetRoute,
   KutubxonaRoute: KutubxonaRoute,
   MathematicalModelingRoute: MathematicalModelingRoute,
   MktRoute: MktRoute,
@@ -562,6 +603,7 @@ const rootRouteChildren: RootRouteChildren = {
   PisaEmployRoute: PisaEmployRoute,
   PisaFormulateRoute: PisaFormulateRoute,
   PisaInterpretRoute: PisaInterpretRoute,
+  PortfolioRoute: PortfolioRoute,
   QollanmaRoute: QollanmaRoute,
   RasmiyRoute: RasmiyRoute,
   ResourcesRoute: ResourcesRoute,

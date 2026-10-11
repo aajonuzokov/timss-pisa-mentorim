@@ -3,6 +3,8 @@
 // v1 banki (2026-10-11 gacha ishlatilgan) src/data/v1/ papkasida o'zgarishsiz saqlanadi —
 // eski natijalarni qayta hisoblash uchun kerak.
 
+import { COMPONENTS } from "@/lib/components";
+
 export const BANK_VERSION = "v2";
 /** Rasmiy namunaviy (released) topshiriqlar to'plami versiyasi. */
 export const RELEASED_VERSION = "r1";
@@ -17,19 +19,27 @@ export type TestKey =
   | "r-reasoning"
   | "r-pisa"
   | "sinov-a"
-  | "sinov-b";
+  | "sinov-b"
+  | "diag-a"
+  | "diag-b";
+
+/** Dissertatsiyaning diagnostik testi (Ilova 1) versiyasi. */
+export const DIAG_TEST_VERSION = "d1";
+export const isDiag = (k: TestKey) => k.startsWith("diag-");
 
 export const isReleased = (k: TestKey) => k.startsWith("r-") || k.startsWith("sinov-");
 /** Kirish/yakuniy taqqoslash uchun "oila": A va B parallel shakllari bitta oila. */
-export const familyOf = (k: TestKey) => (k.startsWith("sinov-") ? "sinov" : k);
+export const familyOf = (k: TestKey) =>
+  k.startsWith("sinov-") ? "sinov" : k.startsWith("diag-") ? "diag" : k;
 export const isPisa = (k: TestKey) => k === "pisa" || k === "r-pisa";
 
 /** test_type qiymatiga versiya qo'shiladi: "TIMSS - Bilish · v2". Versiyasiz yozuvlar — v1. */
 export const withVersion = (testType: string, version = BANK_VERSION) => `${testType} · ${version}`;
-export const versionOf = (k: TestKey) => (isReleased(k) ? RELEASED_VERSION : BANK_VERSION);
+export const versionOf = (k: TestKey) =>
+  isDiag(k) ? DIAG_TEST_VERSION : isReleased(k) ? RELEASED_VERSION : BANK_VERSION;
 
 export const parseTestType = (raw: string): { base: string; version: string } => {
-  const m = /^(.*?)\s*·\s*([vr]\d+)$/.exec(raw.trim());
+  const m = /^(.*?)\s*·\s*([vrd]\d+)$/.exec(raw.trim());
   return m ? { base: m[1], version: m[2] } : { base: raw.trim(), version: "v1" };
 };
 
@@ -44,6 +54,8 @@ export const TEST_TYPES: Record<TestKey, string> = {
   "r-pisa": "Rasmiy PISA",
   "sinov-a": "Sinov testi A",
   "sinov-b": "Sinov testi B",
+  "diag-a": "Diagnostik test A",
+  "diag-b": "Diagnostik test B",
 };
 
 export const testKeyOf = (base: string): TestKey | undefined =>
@@ -61,6 +73,8 @@ export const TEST_TAVSIYA: Record<TestKey, { slug: string; title: string }> = {
   "r-pisa": { slug: "employ", title: "Employ kompetensiyasi" },
   "sinov-a": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
   "sinov-b": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
+  "diag-a": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
+  "diag-b": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
 };
 
 export type TopicInfo = { label: string; tip: string };
@@ -269,6 +283,9 @@ export const TOPICS: Record<string, TopicInfo> = {
     tip: "Diagramma va statistik xulosalarni tanqidiy o'qing: o'q boshlanishi, tanlanma va ehtimollik talqiniga e'tibor bering.",
   },
 };
+
+// Diagnostik testda "mavzu" o'rnida matematik tayyorgarlik komponenti ishlatiladi.
+for (const c of COMPONENTS) TOPICS[c.key] ??= { label: c.label, tip: c.tip };
 
 export const topicLabel = (t: string) => TOPICS[t]?.label ?? t;
 
