@@ -18,8 +18,40 @@ const shuffle = (arr) => {
   return a;
 };
 
-const makeOptions = (correct, distractors) => {
-  const opts = shuffle([correct, ...distractors]);
+// v2: chalg'ituvchi variantlar har doim 3 ta, bir-biridan va to'g'ri javobdan farqli.
+// Takrorlangan variant o'rniga to'g'ri javobga yaqin yangi qiymat yasaladi.
+const bump = (correct, k) => {
+  const frac = /^(\d+)\/(\d+)$/.exec(correct);
+  if (frac) return `${frac[1]}/${+frac[2] + k}`;
+  const num = /^(\d+(?:\.\d+)?)(.*)$/.exec(correct);
+  if (!num) return null;
+  const n = parseFloat(num[1]);
+  const step = n >= 10000 ? 1000 : n >= 1000 ? 100 : n >= 100 ? 10 : 1;
+  const sign = k % 2 === 1 ? 1 : -1;
+  let v = n + sign * Math.ceil(k / 2) * step;
+  if (v <= 0) v = n + Math.ceil(k / 2) * step * 2;
+  const decimals = (num[1].split(".")[1] || "").length;
+  return `${decimals ? v.toFixed(decimals) : v}${num[2]}`;
+};
+
+const makeOptions = (correct, distractors, extra = []) => {
+  const seen = new Set([correct]);
+  const ds = [];
+  for (const d of [...distractors, ...extra]) {
+    if (ds.length < 3 && !seen.has(d)) {
+      seen.add(d);
+      ds.push(d);
+    }
+  }
+  for (let k = 1; ds.length < 3; k++) {
+    const alt = bump(correct, k);
+    if (alt === null || k > 50) throw new Error(`Variant yetishmadi: ${correct}`);
+    if (!seen.has(alt)) {
+      seen.add(alt);
+      ds.push(alt);
+    }
+  }
+  const opts = shuffle([correct, ...ds]);
   return { options: opts, correctIndex: opts.indexOf(correct) };
 };
 
@@ -90,12 +122,19 @@ const knowingGenerators = [
   },
   // shape recognition
   () => {
+    // v2: har bir tavsifga faqat bitta variant mos keladi
+    // ("Kvadrat" to'g'ri to'rtburchak savolidan olib tashlandi, chunki kvadrat ham to'g'ri to'rtburchak).
     const shapes = [
       ["3 ta tomoni va 3 ta burchagi bor", "Uchburchak", ["Kvadrat", "Beshburchak", "Aylana"]],
-      ["4 ta teng tomoni va 4 ta to'g'ri burchagi bor", "Kvadrat", ["To'g'ri to'rtburchak", "Romb", "Trapetsiya"]],
-      ["Qarama-qarshi tomonlari teng va parallel, burchaklari to'g'ri", "To'g'ri to'rtburchak", ["Kvadrat", "Parallelogramm", "Trapetsiya"]],
+      ["4 ta teng tomoni va 4 ta to'g'ri burchagi bor", "Kvadrat", ["Trapetsiya", "Uchburchak", "Beshburchak"]],
+      ["Qarama-qarshi tomonlari teng va parallel, 4 ta burchagi to'g'ri, qo'shni tomonlari esa teng emas", "To'g'ri to'rtburchak", ["Trapetsiya", "Uchburchak", "Olti burchak"]],
       ["5 ta tomoni bor ko'pburchak", "Beshburchak", ["Olti burchak", "To'rtburchak", "Uchburchak"]],
       ["6 ta tomoni bor ko'pburchak", "Olti burchak", ["Beshburchak", "Sakkiz burchak", "Uchburchak"]],
+      ["7 ta tomoni bor ko'pburchak", "Yetti burchak", ["Olti burchak", "Sakkiz burchak", "Beshburchak"]],
+      ["8 ta tomoni bor ko'pburchak", "Sakkiz burchak", ["Olti burchak", "Yetti burchak", "To'rtburchak"]],
+      ["Faqat bir juft qarama-qarshi tomonlari parallel bo'lgan", "Trapetsiya", ["Kvadrat", "Uchburchak", "Beshburchak"]],
+      ["Barcha nuqtalari markazdan bir xil uzoqlikda joylashgan yopiq egri chiziq bilan chegaralangan", "Doira", ["Kvadrat", "Uchburchak", "Trapetsiya"]],
+      ["3 ta tomoni bor va burchaklaridan biri to'g'ri burchak", "To'g'ri burchakli uchburchak", ["Kvadrat", "Trapetsiya", "Beshburchak"]],
     ];
     const [desc, ans, dist] = pick(shapes);
     const { options, correctIndex } = makeOptions(ans, dist);
@@ -115,6 +154,12 @@ const knowingGenerators = [
       ["1 daqiqa necha soniya?", "60 soniya", ["100 soniya", "24 soniya", "1000 soniya"]],
       ["1 sutka necha soat?", "24 soat", ["12 soat", "60 soat", "100 soat"]],
       ["1 litr necha millilitr?", "1000 ml", ["100 ml", "10 ml", "60 ml"]],
+      ["1 santimetr necha millimetr?", "10 mm", ["100 mm", "1000 mm", "60 mm"]],
+      ["1 detsimetr necha santimetr?", "10 sm", ["100 sm", "1000 sm", "60 sm"]],
+      ["1 tonna necha kilogramm?", "1000 kg", ["100 kg", "10 kg", "10 000 kg"]],
+      ["1 hafta necha kun?", "7 kun", ["10 kun", "5 kun", "30 kun"]],
+      ["1 yil necha oy?", "12 oy", ["10 oy", "24 oy", "365 oy"]],
+      ["1 asr necha yil?", "100 yil", ["10 yil", "1000 yil", "50 yil"]],
     ];
     const [q, ans, dist] = pick(conv);
     const { options, correctIndex } = makeOptions(ans, dist);
@@ -122,13 +167,21 @@ const knowingGenerators = [
   },
   // even/odd, divisibility
   () => {
+    // v2: "Juft" va "Murakkab son" bir vaqtda to'g'ri bo'lib qolmasligi uchun
+    // to'rtta variant ikki belgini birga beradi va faqat bittasi to'g'ri.
     const n = ri(10, 999);
     const isEven = n % 2 === 0;
-    const { options, correctIndex } = makeOptions(isEven ? "Juft" : "Toq", ["Tub son", "Murakkab son", isEven ? "Toq" : "Juft"].slice(0, 3));
+    let divisor = 0;
+    for (let i = 2; i * i <= n; i++) if (n % i === 0) { divisor = i; break; }
+    const isPrime = divisor === 0;
+    const label = (e, p) => `${e ? "Juft" : "Toq"} va ${p ? "tub" : "murakkab"} son`;
+    const correct = label(isEven, isPrime);
+    const all = [label(true, true), label(true, false), label(false, true), label(false, false)];
+    const { options, correctIndex } = makeOptions(correct, all.filter((x) => x !== correct));
     return {
-      q: `${n} soni qanday son?`,
+      q: `${n} soni haqida qaysi tasdiq to'g'ri?`,
       options, correctIndex,
-      explain: `${n} ning oxirgi raqami ${n % 10}, demak son ${isEven ? "juft" : "toq"}.`,
+      explain: `${n} ning oxirgi raqami ${n % 10}, demak son ${isEven ? "juft" : "toq"}. ${isPrime ? `${n} faqat 1 ga va o'ziga bo'linadi, demak tub son.` : `${n} soni ${divisor} ga bo'linadi (${n} = ${divisor} · ${n / divisor}), demak murakkab son.`}`,
     };
   },
   // rounding
@@ -370,7 +423,11 @@ const reasoningGenerators = [
   },
   // analyze chart
   () => {
-    const vals = [ri(10, 30), ri(10, 30), ri(10, 30), ri(10, 30)];
+    // v2: eng katta qiymat yagona bo'lishi shart (aks holda ikki to'g'ri javob chiqadi)
+    let vals;
+    do {
+      vals = [ri(10, 30), ri(10, 30), ri(10, 30), ri(10, 30)];
+    } while (vals.filter((x) => x === Math.max(...vals)).length > 1);
     const days = ["Du", "Se", "Ch", "Pa"];
     const max = Math.max(...vals);
     const idx = vals.indexOf(max);
@@ -485,7 +542,7 @@ const pisaGenerators = [
   },
   // salary tax
   () => {
-    const sal = pick([3000000, 4500000, 6000000, 7500000]);
+    const sal = ri(25, 90) * 100000;
     const t = 12;
     const tax = sal * t / 100;
     const net = sal - tax;
@@ -501,7 +558,7 @@ const pisaGenerators = [
   // distance and time
   () => {
     const v = pick([60, 80, 100, 120]);
-    const s = v * pick([3, 4, 5]);
+    const s = v * pick([2, 3, 4, 5, 6]);
     const t = s / v;
     const { options, correctIndex } = makeOptions(`${t} soat`, [`${s} soat`, `${v / t} soat`, `${t + 1} soat`]);
     return {
@@ -558,26 +615,39 @@ const pisaGenerators = [
   },
 ];
 
-// Generate
-const genN = (gens, n, prefix) => {
+// Mavzu nomlari: generatorlar tartibi bilan bir xil. ID raqami → mavzu: ((n − 1) mod 10).
+// Ro'yxat src/data/bank.ts dagi mavzular bilan mos bo'lishi kerak.
+const knowingTopics = ["place-value", "compare", "multiply", "divide", "fraction", "shapes", "units", "number-type", "rounding", "time"];
+const applyingTopics = ["perimeter", "area", "word-multiply", "word-divide", "percent", "fraction-of", "money", "distance", "average", "change"];
+const reasoningTopics = ["pattern", "age-logic", "square", "multi-step", "divisibility", "sum-diff", "proportion", "chart", "probability", "equation"];
+const pisaTopics = ["discount", "fuel", "schedule", "water", "recipe", "salary", "travel", "population", "savings", "garden"];
+// PISA jarayoni: pisa_domen_tasnifi_v1.md da tasdiqlangan tasnif (Avtobus jadvali — Formulate, qolganlari — Employ).
+// Interpret savollari bankda yo'q; ular metodik tasdiqdan keyin alohida qo'shiladi.
+const pisaProcess = { schedule: "formulate" };
+
+// v2: bitta testda bir xil savol (matn va variantlar) takrorlanmaydi
+const genN = (gens, topics, n, prefix, extra = () => ({})) => {
   const out = [];
+  const seenText = new Set();
   for (let i = 0; i < n; i++) {
     const g = gens[i % gens.length];
-    const item = g();
-    out.push({ id: `${prefix}-${i + 1}`, ...item });
+    let item;
+    for (let tries = 0; ; tries++) {
+      item = g();
+      const key = `${item.q}|${[...item.options].sort().join("|")}`;
+      if (!seenText.has(key)) { seenText.add(key); break; }
+      if (tries > 200) throw new Error(`Noyob savol yaratib bo'lmadi: ${prefix}-${i + 1}`);
+    }
+    const topic = topics[i % topics.length];
+    out.push({ id: `${prefix}-${i + 1}`, topic, ...extra(topic), ...item });
   }
   return out;
 };
 
-const timssKnowing = genN(knowingGenerators, 84, "K");
-const timssApplying = genN(applyingGenerators, 83, "A");
-const timssReasoning = genN(reasoningGenerators, 83, "R");
-
-const pisa = [];
-for (let i = 0; i < 150; i++) {
-  const g = pisaGenerators[i % pisaGenerators.length];
-  pisa.push({ id: `P-${i + 1}`, ...g() });
-}
+const timssKnowing = genN(knowingGenerators, knowingTopics, 84, "K");
+const timssApplying = genN(applyingGenerators, applyingTopics, 83, "A");
+const timssReasoning = genN(reasoningGenerators, reasoningTopics, 83, "R");
+const pisa = genN(pisaGenerators, pisaTopics, 150, "P", (t) => ({ process: pisaProcess[t] ?? "employ" }));
 
 const timssData = {
   knowing: timssKnowing,

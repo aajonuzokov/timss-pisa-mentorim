@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "P-1",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 50000 so'm turadi. Bayramda 25% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "37500 so'm",
+      "49975 so'm",
+      "42500 so'm",
+      "62500 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "Chegirma summasi: 50000 · 0.25 = 12500. Yangi narx: 50000 − 12500 = 37500 so'm."
+  },
+  {
+    "id": "P-2",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 900 km masofani bosib o'tadi va har 100 km ga 6 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "54 so'm",
+      "648000 so'm",
+      "10800000 so'm",
+      "658000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "900·6/100 = 54 litr; 54 · 12000 = 648000 so'm."
+  },
+  {
+    "id": "P-3",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 10 daqiqada qatnaydi. Birinchi avtobus 08:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "8",
+      "6",
+      "7",
+      "6"
+    ],
+    "correctIndex": 2,
+    "explain": "60 daqiqa / 10 = 6 oraliq + 1 boshlang'ich = 7 ta."
+  },
+  {
+    "id": "P-4",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 300 litr suv ishlatiladi. Agar 10% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "1000 litr",
+      "9000 litr",
+      "900 litr",
+      "30 litr"
+    ],
+    "correctIndex": 2,
+    "explain": "Kuniga tejaladi: 300 · 0.1 = 30 litr. 30 kunda: 900 litr."
+  },
+  {
+    "id": "P-5",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "5 kishi uchun tort tayyorlashda 400 g un kerak. 10 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "410 g",
+      "800 g",
+      "200 g",
+      "850 g"
+    ],
+    "correctIndex": 1,
+    "explain": "Proporsiya: 400·10/5 = 800 g."
+  },
+  {
+    "id": "P-6",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 7500000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "6500000 so'm",
+      "900000 so'm",
+      "6600000 so'm",
+      "8400000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Soliq: 7500000 · 0.12 = 900000. Sof: 7500000 − 900000 = 6600000 so'm."
+  },
+  {
+    "id": "P-7",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "480 km masofani 120 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "4 soat",
+      "5 soat",
+      "480 soat",
+      "30 soat"
+    ],
+    "correctIndex": 0,
+    "explain": "t = S / v = 480 / 120 = 4 soat."
+  },
+  {
+    "id": "P-8",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 80000 kishi. Bir yilda 2% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "82600",
+      "78400",
+      "80002",
+      "81600"
+    ],
+    "correctIndex": 3,
+    "explain": "O'sish: 80000 · 0.02 = 1600. Jami: 81600 kishi."
+  },
+  {
+    "id": "P-9",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 150000 so'm jamg'ariladi. 18 oyda qancha pul to'planadi?",
+    "options": [
+      "2550000 so'm",
+      "2850000 so'm",
+      "2700000 so'm",
+      "150018 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "150000 · 18 = 2700000 so'm."
+  },
+  {
+    "id": "P-10",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 15×18 metr o'lchamda. Har bir kvadrat metrga 10 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "2800 ta",
+      "270 ta",
+      "2700 ta",
+      "33 ta"
+    ],
+    "correctIndex": 2,
+    "explain": "Yuzi: 15·18 = 270 m². Ko'chatlar: 270·10 = 2700 ta."
+  },
+  {
+    "id": "P-11",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 80000 so'm turadi. Bayramda 15% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "68000 so'm",
+      "79985 so'm",
+      "92000 so'm",
+      "73000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "Chegirma summasi: 80000 · 0.15 = 12000. Yangi narx: 80000 − 12000 = 68000 so'm."
+  },
+  {
+    "id": "P-12",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 900 km masofani bosib o'tadi va har 100 km ga 10 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "90 so'm",
+      "1090000 so'm",
+      "1080000 so'm",
+      "10800000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "900·10/100 = 90 litr; 90 · 12000 = 1080000 so'm."
+  },
+  {
+    "id": "P-13",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 12 daqiqada qatnaydi. Birinchi avtobus 08:00 da jo'naydi. 10:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "11",
+      "10",
+      "12",
+      "10"
+    ],
+    "correctIndex": 0,
+    "explain": "120 daqiqa / 12 = 10 oraliq + 1 boshlang'ich = 11 ta."
+  },
+  {
+    "id": "P-14",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 300 litr suv ishlatiladi. Agar 10% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "1000 litr",
+      "900 litr",
+      "30 litr",
+      "9000 litr"
+    ],
+    "correctIndex": 1,
+    "explain": "Kuniga tejaladi: 300 · 0.1 = 30 litr. 30 kunda: 900 litr."
+  },
+  {
+    "id": "P-15",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "4 kishi uchun tort tayyorlashda 300 g un kerak. 8 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "150 g",
+      "600 g",
+      "650 g",
+      "308 g"
+    ],
+    "correctIndex": 1,
+    "explain": "Proporsiya: 300·8/4 = 600 g."
+  },
+  {
+    "id": "P-16",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 6000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "5180000 so'm",
+      "6720000 so'm",
+      "5280000 so'm",
+      "720000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Soliq: 6000000 · 0.12 = 720000. Sof: 6000000 − 720000 = 5280000 so'm."
+  },
+  {
+    "id": "P-17",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "320 km masofani 80 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "5 soat",
+      "20 soat",
+      "4 soat",
+      "320 soat"
+    ],
+    "correctIndex": 2,
+    "explain": "t = S / v = 320 / 80 = 4 soat."
+  },
+  {
+    "id": "P-18",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 50000 kishi. Bir yilda 10% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "45000",
+      "56000",
+      "55000",
+      "50010"
+    ],
+    "correctIndex": 2,
+    "explain": "O'sish: 50000 · 0.1 = 5000. Jami: 55000 kishi."
+  },
+  {
+    "id": "P-19",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 150000 so'm jamg'ariladi. 6 oyda qancha pul to'planadi?",
+    "options": [
+      "1050000 so'm",
+      "900000 so'm",
+      "750000 so'm",
+      "150006 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "150000 · 6 = 900000 so'm."
+  },
+  {
+    "id": "P-20",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 10×10 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "20 ta",
+      "100 ta",
+      "500 ta",
+      "600 ta"
+    ],
+    "correctIndex": 2,
+    "explain": "Yuzi: 10·10 = 100 m². Ko'chatlar: 100·5 = 500 ta."
+  },
+  {
+    "id": "P-21",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 200000 so'm turadi. Bayramda 25% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "150000 so'm",
+      "199975 so'm",
+      "155000 so'm",
+      "250000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "Chegirma summasi: 200000 · 0.25 = 50000. Yangi narx: 200000 − 50000 = 150000 so'm."
+  },
+  {
+    "id": "P-22",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 450 km masofani bosib o'tadi va har 100 km ga 6 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "334000 so'm",
+      "5400000 so'm",
+      "27 so'm",
+      "324000 so'm"
+    ],
+    "correctIndex": 3,
+    "explain": "450·6/100 = 27 litr; 27 · 12000 = 324000 so'm."
+  },
+  {
+    "id": "P-23",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 12 daqiqada qatnaydi. Birinchi avtobus 07:00 da jo'naydi. 10:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "17",
+      "15",
+      "15",
+      "16"
+    ],
+    "correctIndex": 3,
+    "explain": "180 daqiqa / 12 = 15 oraliq + 1 boshlang'ich = 16 ta."
+  },
+  {
+    "id": "P-24",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 300 litr suv ishlatiladi. Agar 15% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "1350 litr",
+      "9000 litr",
+      "1450 litr",
+      "45 litr"
+    ],
+    "correctIndex": 0,
+    "explain": "Kuniga tejaladi: 300 · 0.15 = 45 litr. 30 kunda: 1350 litr."
+  },
+  {
+    "id": "P-25",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "6 kishi uchun tort tayyorlashda 250 g un kerak. 12 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "550 g",
+      "500 g",
+      "125 g",
+      "262 g"
+    ],
+    "correctIndex": 1,
+    "explain": "Proporsiya: 250·12/6 = 500 g."
+  },
+  {
+    "id": "P-26",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 7500000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "900000 so'm",
+      "6500000 so'm",
+      "6600000 so'm",
+      "8400000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Soliq: 7500000 · 0.12 = 900000. Sof: 7500000 − 900000 = 6600000 so'm."
+  },
+  {
+    "id": "P-27",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "360 km masofani 120 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "40 soat",
+      "3 soat",
+      "4 soat",
+      "360 soat"
+    ],
+    "correctIndex": 1,
+    "explain": "t = S / v = 360 / 120 = 3 soat."
+  },
+  {
+    "id": "P-28",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 50000 kishi. Bir yilda 8% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "46000",
+      "54000",
+      "50008",
+      "55000"
+    ],
+    "correctIndex": 1,
+    "explain": "O'sish: 50000 · 0.08 = 4000. Jami: 54000 kishi."
+  },
+  {
+    "id": "P-29",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 100000 so'm jamg'ariladi. 24 oyda qancha pul to'planadi?",
+    "options": [
+      "2400000 so'm",
+      "2300000 so'm",
+      "2500000 so'm",
+      "100024 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "100000 · 24 = 2400000 so'm."
+  },
+  {
+    "id": "P-30",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 12×10 metr o'lchamda. Har bir kvadrat metrga 10 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "1200 ta",
+      "120 ta",
+      "22 ta",
+      "1300 ta"
+    ],
+    "correctIndex": 0,
+    "explain": "Yuzi: 12·10 = 120 m². Ko'chatlar: 120·10 = 1200 ta."
+  },
+  {
+    "id": "P-31",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 250000 so'm turadi. Bayramda 25% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "312500 so'm",
+      "187500 so'm",
+      "249975 so'm",
+      "192500 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "Chegirma summasi: 250000 · 0.25 = 62500. Yangi narx: 250000 − 62500 = 187500 so'm."
+  },
+  {
+    "id": "P-32",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 450 km masofani bosib o'tadi va har 100 km ga 6 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "5400000 so'm",
+      "324000 so'm",
+      "334000 so'm",
+      "27 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "450·6/100 = 27 litr; 27 · 12000 = 324000 so'm."
+  },
+  {
+    "id": "P-33",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 12 daqiqada qatnaydi. Birinchi avtobus 06:00 da jo'naydi. 11:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "25",
+      "26",
+      "25",
+      "27"
+    ],
+    "correctIndex": 1,
+    "explain": "300 daqiqa / 12 = 25 oraliq + 1 boshlang'ich = 26 ta."
+  },
+  {
+    "id": "P-34",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 180 litr suv ishlatiladi. Agar 15% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "5400 litr",
+      "27 litr",
+      "810 litr",
+      "910 litr"
+    ],
+    "correctIndex": 2,
+    "explain": "Kuniga tejaladi: 180 · 0.15 = 27 litr. 30 kunda: 810 litr."
+  },
+  {
+    "id": "P-35",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "6 kishi uchun tort tayyorlashda 250 g un kerak. 12 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "125 g",
+      "262 g",
+      "500 g",
+      "550 g"
+    ],
+    "correctIndex": 2,
+    "explain": "Proporsiya: 250·12/6 = 500 g."
+  },
+  {
+    "id": "P-36",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 6000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "5180000 so'm",
+      "720000 so'm",
+      "5280000 so'm",
+      "6720000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Soliq: 6000000 · 0.12 = 720000. Sof: 6000000 − 720000 = 5280000 so'm."
+  },
+  {
+    "id": "P-37",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "400 km masofani 80 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "400 soat",
+      "5 soat",
+      "16 soat",
+      "6 soat"
+    ],
+    "correctIndex": 1,
+    "explain": "t = S / v = 400 / 80 = 5 soat."
+  },
+  {
+    "id": "P-38",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 20000 kishi. Bir yilda 2% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "19600",
+      "20002",
+      "21400",
+      "20400"
+    ],
+    "correctIndex": 3,
+    "explain": "O'sish: 20000 · 0.02 = 400. Jami: 20400 kishi."
+  },
+  {
+    "id": "P-39",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 150000 so'm jamg'ariladi. 12 oyda qancha pul to'planadi?",
+    "options": [
+      "150012 so'm",
+      "1650000 so'm",
+      "1800000 so'm",
+      "1950000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "150000 · 12 = 1800000 so'm."
+  },
+  {
+    "id": "P-40",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 15×8 metr o'lchamda. Har bir kvadrat metrga 20 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "2400 ta",
+      "120 ta",
+      "23 ta",
+      "2500 ta"
+    ],
+    "correctIndex": 0,
+    "explain": "Yuzi: 15·8 = 120 m². Ko'chatlar: 120·20 = 2400 ta."
+  },
+  {
+    "id": "P-41",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 250000 so'm turadi. Bayramda 10% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "275000 so'm",
+      "230000 so'm",
+      "249990 so'm",
+      "225000 so'm"
+    ],
+    "correctIndex": 3,
+    "explain": "Chegirma summasi: 250000 · 0.1 = 25000. Yangi narx: 250000 − 25000 = 225000 so'm."
+  },
+  {
+    "id": "P-42",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 750 km masofani bosib o'tadi va har 100 km ga 8 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "9000000 so'm",
+      "720000 so'm",
+      "730000 so'm",
+      "60 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "750·8/100 = 60 litr; 60 · 12000 = 720000 so'm."
+  },
+  {
+    "id": "P-43",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 15 daqiqada qatnaydi. Birinchi avtobus 07:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "10",
+      "8",
+      "8",
+      "9"
+    ],
+    "correctIndex": 3,
+    "explain": "120 daqiqa / 15 = 8 oraliq + 1 boshlang'ich = 9 ta."
+  },
+  {
+    "id": "P-44",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 180 litr suv ishlatiladi. Agar 20% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "36 litr",
+      "1180 litr",
+      "5400 litr",
+      "1080 litr"
+    ],
+    "correctIndex": 3,
+    "explain": "Kuniga tejaladi: 180 · 0.2 = 36 litr. 30 kunda: 1080 litr."
+  },
+  {
+    "id": "P-45",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "4 kishi uchun tort tayyorlashda 250 g un kerak. 8 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "258 g",
+      "550 g",
+      "125 g",
+      "500 g"
+    ],
+    "correctIndex": 3,
+    "explain": "Proporsiya: 250·8/4 = 500 g."
+  },
+  {
+    "id": "P-46",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 3000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "2540000 so'm",
+      "2640000 so'm",
+      "360000 so'm",
+      "3360000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "Soliq: 3000000 · 0.12 = 360000. Sof: 3000000 − 360000 = 2640000 so'm."
+  },
+  {
+    "id": "P-47",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "300 km masofani 100 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "4 soat",
+      "300 soat",
+      "3 soat",
+      "33.333333333333336 soat"
+    ],
+    "correctIndex": 2,
+    "explain": "t = S / v = 300 / 100 = 3 soat."
+  },
+  {
+    "id": "P-48",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 10000 kishi. Bir yilda 2% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "9800",
+      "10002",
+      "11200",
+      "10200"
+    ],
+    "correctIndex": 3,
+    "explain": "O'sish: 10000 · 0.02 = 200. Jami: 10200 kishi."
+  },
+  {
+    "id": "P-49",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 50000 so'm jamg'ariladi. 18 oyda qancha pul to'planadi?",
+    "options": [
+      "850000 so'm",
+      "950000 so'm",
+      "900000 so'm",
+      "50018 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "50000 · 18 = 900000 so'm."
+  },
+  {
+    "id": "P-50",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 12×14 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "26 ta",
+      "168 ta",
+      "940 ta",
+      "840 ta"
+    ],
+    "correctIndex": 3,
+    "explain": "Yuzi: 12·14 = 168 m². Ko'chatlar: 168·5 = 840 ta."
+  },
+  {
+    "id": "P-51",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 50000 so'm turadi. Bayramda 30% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "65000 so'm",
+      "40000 so'm",
+      "35000 so'm",
+      "49970 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Chegirma summasi: 50000 · 0.3 = 15000. Yangi narx: 50000 − 15000 = 35000 so'm."
+  },
+  {
+    "id": "P-52",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 900 km masofani bosib o'tadi va har 100 km ga 8 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 9000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "72 so'm",
+      "658000 so'm",
+      "648000 so'm",
+      "8100000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "900·8/100 = 72 litr; 72 · 9000 = 648000 so'm."
+  },
+  {
+    "id": "P-53",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 15 daqiqada qatnaydi. Birinchi avtobus 06:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "12",
+      "12",
+      "14",
+      "13"
+    ],
+    "correctIndex": 3,
+    "explain": "180 daqiqa / 15 = 12 oraliq + 1 boshlang'ich = 13 ta."
+  },
+  {
+    "id": "P-54",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 300 litr suv ishlatiladi. Agar 15% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "9000 litr",
+      "1450 litr",
+      "1350 litr",
+      "45 litr"
+    ],
+    "correctIndex": 2,
+    "explain": "Kuniga tejaladi: 300 · 0.15 = 45 litr. 30 kunda: 1350 litr."
+  },
+  {
+    "id": "P-55",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "6 kishi uchun tort tayyorlashda 300 g un kerak. 12 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "600 g",
+      "650 g",
+      "312 g",
+      "150 g"
+    ],
+    "correctIndex": 0,
+    "explain": "Proporsiya: 300·12/6 = 600 g."
+  },
+  {
+    "id": "P-56",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 6000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "6720000 so'm",
+      "720000 so'm",
+      "5280000 so'm",
+      "5180000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Soliq: 6000000 · 0.12 = 720000. Sof: 6000000 − 720000 = 5280000 so'm."
+  },
+  {
+    "id": "P-57",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "300 km masofani 60 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "12 soat",
+      "300 soat",
+      "5 soat",
+      "6 soat"
+    ],
+    "correctIndex": 2,
+    "explain": "t = S / v = 300 / 60 = 5 soat."
+  },
+  {
+    "id": "P-58",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 50000 kishi. Bir yilda 2% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "50002",
+      "52000",
+      "51000",
+      "49000"
+    ],
+    "correctIndex": 2,
+    "explain": "O'sish: 50000 · 0.02 = 1000. Jami: 51000 kishi."
+  },
+  {
+    "id": "P-59",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 150000 so'm jamg'ariladi. 18 oyda qancha pul to'planadi?",
+    "options": [
+      "2700000 so'm",
+      "150018 so'm",
+      "2550000 so'm",
+      "2850000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "150000 · 18 = 2700000 so'm."
+  },
+  {
+    "id": "P-60",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 10×10 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "600 ta",
+      "100 ta",
+      "20 ta",
+      "500 ta"
+    ],
+    "correctIndex": 3,
+    "explain": "Yuzi: 10·10 = 100 m². Ko'chatlar: 100·5 = 500 ta."
+  },
+  {
+    "id": "P-61",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 200000 so'm turadi. Bayramda 30% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "145000 so'm",
+      "140000 so'm",
+      "260000 so'm",
+      "199970 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "Chegirma summasi: 200000 · 0.3 = 60000. Yangi narx: 200000 − 60000 = 140000 so'm."
+  },
+  {
+    "id": "P-62",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 900 km masofani bosib o'tadi va har 100 km ga 6 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "658000 so'm",
+      "54 so'm",
+      "648000 so'm",
+      "10800000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "900·6/100 = 54 litr; 54 · 12000 = 648000 so'm."
+  },
+  {
+    "id": "P-63",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 15 daqiqada qatnaydi. Birinchi avtobus 08:00 da jo'naydi. 11:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "12",
+      "12",
+      "14",
+      "13"
+    ],
+    "correctIndex": 3,
+    "explain": "180 daqiqa / 15 = 12 oraliq + 1 boshlang'ich = 13 ta."
+  },
+  {
+    "id": "P-64",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 300 litr suv ishlatiladi. Agar 10% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "30 litr",
+      "9000 litr",
+      "900 litr",
+      "1000 litr"
+    ],
+    "correctIndex": 2,
+    "explain": "Kuniga tejaladi: 300 · 0.1 = 30 litr. 30 kunda: 900 litr."
+  },
+  {
+    "id": "P-65",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "6 kishi uchun tort tayyorlashda 300 g un kerak. 12 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "600 g",
+      "312 g",
+      "650 g",
+      "150 g"
+    ],
+    "correctIndex": 0,
+    "explain": "Proporsiya: 300·12/6 = 600 g."
+  },
+  {
+    "id": "P-66",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 7500000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "6500000 so'm",
+      "8400000 so'm",
+      "900000 so'm",
+      "6600000 so'm"
+    ],
+    "correctIndex": 3,
+    "explain": "Soliq: 7500000 · 0.12 = 900000. Sof: 7500000 − 900000 = 6600000 so'm."
+  },
+  {
+    "id": "P-67",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "240 km masofani 60 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "4 soat",
+      "5 soat",
+      "240 soat",
+      "15 soat"
+    ],
+    "correctIndex": 0,
+    "explain": "t = S / v = 240 / 60 = 4 soat."
+  },
+  {
+    "id": "P-68",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 80000 kishi. Bir yilda 2% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "80002",
+      "81600",
+      "78400",
+      "82600"
+    ],
+    "correctIndex": 1,
+    "explain": "O'sish: 80000 · 0.02 = 1600. Jami: 81600 kishi."
+  },
+  {
+    "id": "P-69",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 200000 so'm jamg'ariladi. 18 oyda qancha pul to'planadi?",
+    "options": [
+      "200018 so'm",
+      "3400000 so'm",
+      "3600000 so'm",
+      "3800000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "200000 · 18 = 3600000 so'm."
+  },
+  {
+    "id": "P-70",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 12×10 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "600 ta",
+      "120 ta",
+      "22 ta",
+      "700 ta"
+    ],
+    "correctIndex": 0,
+    "explain": "Yuzi: 12·10 = 120 m². Ko'chatlar: 120·5 = 600 ta."
+  },
+  {
+    "id": "P-71",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 80000 so'm turadi. Bayramda 15% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "92000 so'm",
+      "68000 so'm",
+      "79985 so'm",
+      "73000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "Chegirma summasi: 80000 · 0.15 = 12000. Yangi narx: 80000 − 12000 = 68000 so'm."
+  },
+  {
+    "id": "P-72",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 450 km masofani bosib o'tadi va har 100 km ga 10 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 10000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "450000 so'm",
+      "4500000 so'm",
+      "460000 so'm",
+      "45 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "450·10/100 = 45 litr; 45 · 10000 = 450000 so'm."
+  },
+  {
+    "id": "P-73",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 15 daqiqada qatnaydi. Birinchi avtobus 08:00 da jo'naydi. 11:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "12",
+      "14",
+      "12",
+      "13"
+    ],
+    "correctIndex": 3,
+    "explain": "180 daqiqa / 15 = 12 oraliq + 1 boshlang'ich = 13 ta."
+  },
+  {
+    "id": "P-74",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 180 litr suv ishlatiladi. Agar 15% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "810 litr",
+      "27 litr",
+      "910 litr",
+      "5400 litr"
+    ],
+    "correctIndex": 0,
+    "explain": "Kuniga tejaladi: 180 · 0.15 = 27 litr. 30 kunda: 810 litr."
+  },
+  {
+    "id": "P-75",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "8 kishi uchun tort tayyorlashda 300 g un kerak. 16 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "150 g",
+      "316 g",
+      "650 g",
+      "600 g"
+    ],
+    "correctIndex": 3,
+    "explain": "Proporsiya: 300·16/8 = 600 g."
+  },
+  {
+    "id": "P-76",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 4500000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "5040000 so'm",
+      "3960000 so'm",
+      "540000 so'm",
+      "3860000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "Soliq: 4500000 · 0.12 = 540000. Sof: 4500000 − 540000 = 3960000 so'm."
+  },
+  {
+    "id": "P-77",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "600 km masofani 120 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "24 soat",
+      "5 soat",
+      "6 soat",
+      "600 soat"
+    ],
+    "correctIndex": 1,
+    "explain": "t = S / v = 600 / 120 = 5 soat."
+  },
+  {
+    "id": "P-78",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 20000 kishi. Bir yilda 8% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "22600",
+      "18400",
+      "20008",
+      "21600"
+    ],
+    "correctIndex": 3,
+    "explain": "O'sish: 20000 · 0.08 = 1600. Jami: 21600 kishi."
+  },
+  {
+    "id": "P-79",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 50000 so'm jamg'ariladi. 12 oyda qancha pul to'planadi?",
+    "options": [
+      "550000 so'm",
+      "50012 so'm",
+      "650000 so'm",
+      "600000 so'm"
+    ],
+    "correctIndex": 3,
+    "explain": "50000 · 12 = 600000 so'm."
+  },
+  {
+    "id": "P-80",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 10×14 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "700 ta",
+      "140 ta",
+      "24 ta",
+      "800 ta"
+    ],
+    "correctIndex": 0,
+    "explain": "Yuzi: 10·14 = 140 m². Ko'chatlar: 140·5 = 700 ta."
+  },
+  {
+    "id": "P-81",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 150000 so'm turadi. Bayramda 25% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "187500 so'm",
+      "117500 so'm",
+      "112500 so'm",
+      "149975 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Chegirma summasi: 150000 · 0.25 = 37500. Yangi narx: 150000 − 37500 = 112500 so'm."
+  },
+  {
+    "id": "P-82",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 600 km masofani bosib o'tadi va har 100 km ga 10 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 9000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "540000 so'm",
+      "550000 so'm",
+      "60 so'm",
+      "5400000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "600·10/100 = 60 litr; 60 · 9000 = 540000 so'm."
+  },
+  {
+    "id": "P-83",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 15 daqiqada qatnaydi. Birinchi avtobus 06:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "12",
+      "12",
+      "14",
+      "13"
+    ],
+    "correctIndex": 3,
+    "explain": "180 daqiqa / 15 = 12 oraliq + 1 boshlang'ich = 13 ta."
+  },
+  {
+    "id": "P-84",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 300 litr suv ishlatiladi. Agar 20% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "9000 litr",
+      "1900 litr",
+      "1800 litr",
+      "60 litr"
+    ],
+    "correctIndex": 2,
+    "explain": "Kuniga tejaladi: 300 · 0.2 = 60 litr. 30 kunda: 1800 litr."
+  },
+  {
+    "id": "P-85",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "6 kishi uchun tort tayyorlashda 200 g un kerak. 12 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "100 g",
+      "400 g",
+      "450 g",
+      "212 g"
+    ],
+    "correctIndex": 1,
+    "explain": "Proporsiya: 200·12/6 = 400 g."
+  },
+  {
+    "id": "P-86",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 6000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "6720000 so'm",
+      "5280000 so'm",
+      "5180000 so'm",
+      "720000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "Soliq: 6000000 · 0.12 = 720000. Sof: 6000000 − 720000 = 5280000 so'm."
+  },
+  {
+    "id": "P-87",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "600 km masofani 120 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "24 soat",
+      "5 soat",
+      "600 soat",
+      "6 soat"
+    ],
+    "correctIndex": 1,
+    "explain": "t = S / v = 600 / 120 = 5 soat."
+  },
+  {
+    "id": "P-88",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 20000 kishi. Bir yilda 10% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "22000",
+      "20010",
+      "23000",
+      "18000"
+    ],
+    "correctIndex": 0,
+    "explain": "O'sish: 20000 · 0.1 = 2000. Jami: 22000 kishi."
+  },
+  {
+    "id": "P-89",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 200000 so'm jamg'ariladi. 6 oyda qancha pul to'planadi?",
+    "options": [
+      "200006 so'm",
+      "1200000 so'm",
+      "1000000 so'm",
+      "1400000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "200000 · 6 = 1200000 so'm."
+  },
+  {
+    "id": "P-90",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 12×18 metr o'lchamda. Har bir kvadrat metrga 20 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "30 ta",
+      "4320 ta",
+      "4420 ta",
+      "216 ta"
+    ],
+    "correctIndex": 1,
+    "explain": "Yuzi: 12·18 = 216 m². Ko'chatlar: 216·20 = 4320 ta."
+  },
+  {
+    "id": "P-91",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 80000 so'm turadi. Bayramda 10% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "88000 so'm",
+      "79990 so'm",
+      "72000 so'm",
+      "77000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Chegirma summasi: 80000 · 0.1 = 8000. Yangi narx: 80000 − 8000 = 72000 so'm."
+  },
+  {
+    "id": "P-92",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 300 km masofani bosib o'tadi va har 100 km ga 6 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "3600000 so'm",
+      "226000 so'm",
+      "216000 so'm",
+      "18 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "300·6/100 = 18 litr; 18 · 12000 = 216000 so'm."
+  },
+  {
+    "id": "P-93",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 10 daqiqada qatnaydi. Birinchi avtobus 06:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "20",
+      "18",
+      "18",
+      "19"
+    ],
+    "correctIndex": 3,
+    "explain": "180 daqiqa / 10 = 18 oraliq + 1 boshlang'ich = 19 ta."
+  },
+  {
+    "id": "P-94",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 240 litr suv ishlatiladi. Agar 15% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "36 litr",
+      "7200 litr",
+      "1180 litr",
+      "1080 litr"
+    ],
+    "correctIndex": 3,
+    "explain": "Kuniga tejaladi: 240 · 0.15 = 36 litr. 30 kunda: 1080 litr."
+  },
+  {
+    "id": "P-95",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "4 kishi uchun tort tayyorlashda 300 g un kerak. 8 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "150 g",
+      "308 g",
+      "600 g",
+      "650 g"
+    ],
+    "correctIndex": 2,
+    "explain": "Proporsiya: 300·8/4 = 600 g."
+  },
+  {
+    "id": "P-96",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 6000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "5180000 so'm",
+      "720000 so'm",
+      "5280000 so'm",
+      "6720000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Soliq: 6000000 · 0.12 = 720000. Sof: 6000000 − 720000 = 5280000 so'm."
+  },
+  {
+    "id": "P-97",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "240 km masofani 60 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "240 soat",
+      "15 soat",
+      "4 soat",
+      "5 soat"
+    ],
+    "correctIndex": 2,
+    "explain": "t = S / v = 240 / 60 = 4 soat."
+  },
+  {
+    "id": "P-98",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 20000 kishi. Bir yilda 8% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "20008",
+      "21600",
+      "18400",
+      "22600"
+    ],
+    "correctIndex": 1,
+    "explain": "O'sish: 20000 · 0.08 = 1600. Jami: 21600 kishi."
+  },
+  {
+    "id": "P-99",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 200000 so'm jamg'ariladi. 24 oyda qancha pul to'planadi?",
+    "options": [
+      "200024 so'm",
+      "4600000 so'm",
+      "4800000 so'm",
+      "5000000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "200000 · 24 = 4800000 so'm."
+  },
+  {
+    "id": "P-100",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 20×18 metr o'lchamda. Har bir kvadrat metrga 20 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "7300 ta",
+      "360 ta",
+      "7200 ta",
+      "38 ta"
+    ],
+    "correctIndex": 2,
+    "explain": "Yuzi: 20·18 = 360 m². Ko'chatlar: 360·20 = 7200 ta."
+  },
+  {
+    "id": "P-101",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 150000 so'm turadi. Bayramda 10% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "140000 so'm",
+      "149990 so'm",
+      "165000 so'm",
+      "135000 so'm"
+    ],
+    "correctIndex": 3,
+    "explain": "Chegirma summasi: 150000 · 0.1 = 15000. Yangi narx: 150000 − 15000 = 135000 so'm."
+  },
+  {
+    "id": "P-102",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 450 km masofani bosib o'tadi va har 100 km ga 8 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 10000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "360000 so'm",
+      "370000 so'm",
+      "4500000 so'm",
+      "36 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "450·8/100 = 36 litr; 36 · 10000 = 360000 so'm."
+  },
+  {
+    "id": "P-103",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 10 daqiqada qatnaydi. Birinchi avtobus 06:00 da jo'naydi. 10:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "26",
+      "24",
+      "25",
+      "24"
+    ],
+    "correctIndex": 2,
+    "explain": "240 daqiqa / 10 = 24 oraliq + 1 boshlang'ich = 25 ta."
+  },
+  {
+    "id": "P-104",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 360 litr suv ishlatiladi. Agar 15% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "1720 litr",
+      "54 litr",
+      "10800 litr",
+      "1620 litr"
+    ],
+    "correctIndex": 3,
+    "explain": "Kuniga tejaladi: 360 · 0.15 = 54 litr. 30 kunda: 1620 litr."
+  },
+  {
+    "id": "P-105",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "5 kishi uchun tort tayyorlashda 200 g un kerak. 10 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "450 g",
+      "400 g",
+      "100 g",
+      "210 g"
+    ],
+    "correctIndex": 1,
+    "explain": "Proporsiya: 200·10/5 = 400 g."
+  },
+  {
+    "id": "P-106",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 3000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "2640000 so'm",
+      "360000 so'm",
+      "2540000 so'm",
+      "3360000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "Soliq: 3000000 · 0.12 = 360000. Sof: 3000000 − 360000 = 2640000 so'm."
+  },
+  {
+    "id": "P-107",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "500 km masofani 100 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "6 soat",
+      "500 soat",
+      "5 soat",
+      "20 soat"
+    ],
+    "correctIndex": 2,
+    "explain": "t = S / v = 500 / 100 = 5 soat."
+  },
+  {
+    "id": "P-108",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 80000 kishi. Bir yilda 5% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "84000",
+      "80005",
+      "76000",
+      "85000"
+    ],
+    "correctIndex": 0,
+    "explain": "O'sish: 80000 · 0.05 = 4000. Jami: 84000 kishi."
+  },
+  {
+    "id": "P-109",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 100000 so'm jamg'ariladi. 6 oyda qancha pul to'planadi?",
+    "options": [
+      "100006 so'm",
+      "500000 so'm",
+      "600000 so'm",
+      "700000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "100000 · 6 = 600000 so'm."
+  },
+  {
+    "id": "P-110",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 20×14 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "34 ta",
+      "280 ta",
+      "1400 ta",
+      "1500 ta"
+    ],
+    "correctIndex": 2,
+    "explain": "Yuzi: 20·14 = 280 m². Ko'chatlar: 280·5 = 1400 ta."
+  },
+  {
+    "id": "P-111",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 150000 so'm turadi. Bayramda 30% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "149970 so'm",
+      "195000 so'm",
+      "105000 so'm",
+      "110000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Chegirma summasi: 150000 · 0.3 = 45000. Yangi narx: 150000 − 45000 = 105000 so'm."
+  },
+  {
+    "id": "P-112",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 600 km masofani bosib o'tadi va har 100 km ga 8 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 8000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "384000 so'm",
+      "394000 so'm",
+      "4800000 so'm",
+      "48 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "600·8/100 = 48 litr; 48 · 8000 = 384000 so'm."
+  },
+  {
+    "id": "P-113",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 15 daqiqada qatnaydi. Birinchi avtobus 08:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "6",
+      "4",
+      "4",
+      "5"
+    ],
+    "correctIndex": 3,
+    "explain": "60 daqiqa / 15 = 4 oraliq + 1 boshlang'ich = 5 ta."
+  },
+  {
+    "id": "P-114",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 180 litr suv ishlatiladi. Agar 25% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "45 litr",
+      "1450 litr",
+      "1350 litr",
+      "5400 litr"
+    ],
+    "correctIndex": 2,
+    "explain": "Kuniga tejaladi: 180 · 0.25 = 45 litr. 30 kunda: 1350 litr."
+  },
+  {
+    "id": "P-115",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "8 kishi uchun tort tayyorlashda 200 g un kerak. 16 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "216 g",
+      "400 g",
+      "450 g",
+      "100 g"
+    ],
+    "correctIndex": 1,
+    "explain": "Proporsiya: 200·16/8 = 400 g."
+  },
+  {
+    "id": "P-116",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 6000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "6720000 so'm",
+      "720000 so'm",
+      "5180000 so'm",
+      "5280000 so'm"
+    ],
+    "correctIndex": 3,
+    "explain": "Soliq: 6000000 · 0.12 = 720000. Sof: 6000000 − 720000 = 5280000 so'm."
+  },
+  {
+    "id": "P-117",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "600 km masofani 120 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "600 soat",
+      "6 soat",
+      "5 soat",
+      "24 soat"
+    ],
+    "correctIndex": 2,
+    "explain": "t = S / v = 600 / 120 = 5 soat."
+  },
+  {
+    "id": "P-118",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 50000 kishi. Bir yilda 2% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "49000",
+      "52000",
+      "51000",
+      "50002"
+    ],
+    "correctIndex": 2,
+    "explain": "O'sish: 50000 · 0.02 = 1000. Jami: 51000 kishi."
+  },
+  {
+    "id": "P-119",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 100000 so'm jamg'ariladi. 18 oyda qancha pul to'planadi?",
+    "options": [
+      "1800000 so'm",
+      "1700000 so'm",
+      "100018 so'm",
+      "1900000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "100000 · 18 = 1800000 so'm."
+  },
+  {
+    "id": "P-120",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 20×10 metr o'lchamda. Har bir kvadrat metrga 20 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "4000 ta",
+      "200 ta",
+      "4100 ta",
+      "30 ta"
+    ],
+    "correctIndex": 0,
+    "explain": "Yuzi: 20·10 = 200 m². Ko'chatlar: 200·20 = 4000 ta."
+  },
+  {
+    "id": "P-121",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 250000 so'm turadi. Bayramda 25% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "249975 so'm",
+      "192500 so'm",
+      "187500 so'm",
+      "312500 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Chegirma summasi: 250000 · 0.25 = 62500. Yangi narx: 250000 − 62500 = 187500 so'm."
+  },
+  {
+    "id": "P-122",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 600 km masofani bosib o'tadi va har 100 km ga 10 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 12000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "7200000 so'm",
+      "720000 so'm",
+      "60 so'm",
+      "730000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "600·10/100 = 60 litr; 60 · 12000 = 720000 so'm."
+  },
+  {
+    "id": "P-123",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 20 daqiqada qatnaydi. Birinchi avtobus 06:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "9",
+      "11",
+      "10",
+      "9"
+    ],
+    "correctIndex": 2,
+    "explain": "180 daqiqa / 20 = 9 oraliq + 1 boshlang'ich = 10 ta."
+  },
+  {
+    "id": "P-124",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 360 litr suv ishlatiladi. Agar 20% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "10800 litr",
+      "72 litr",
+      "2160 litr",
+      "2260 litr"
+    ],
+    "correctIndex": 2,
+    "explain": "Kuniga tejaladi: 360 · 0.2 = 72 litr. 30 kunda: 2160 litr."
+  },
+  {
+    "id": "P-125",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "5 kishi uchun tort tayyorlashda 200 g un kerak. 10 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "210 g",
+      "450 g",
+      "100 g",
+      "400 g"
+    ],
+    "correctIndex": 3,
+    "explain": "Proporsiya: 200·10/5 = 400 g."
+  },
+  {
+    "id": "P-126",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 3000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "2540000 so'm",
+      "3360000 so'm",
+      "360000 so'm",
+      "2640000 so'm"
+    ],
+    "correctIndex": 3,
+    "explain": "Soliq: 3000000 · 0.12 = 360000. Sof: 3000000 − 360000 = 2640000 so'm."
+  },
+  {
+    "id": "P-127",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "240 km masofani 60 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "15 soat",
+      "240 soat",
+      "4 soat",
+      "5 soat"
+    ],
+    "correctIndex": 2,
+    "explain": "t = S / v = 240 / 60 = 4 soat."
+  },
+  {
+    "id": "P-128",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 10000 kishi. Bir yilda 2% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "11200",
+      "10002",
+      "10200",
+      "9800"
+    ],
+    "correctIndex": 2,
+    "explain": "O'sish: 10000 · 0.02 = 200. Jami: 10200 kishi."
+  },
+  {
+    "id": "P-129",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 150000 so'm jamg'ariladi. 6 oyda qancha pul to'planadi?",
+    "options": [
+      "900000 so'm",
+      "1050000 so'm",
+      "750000 so'm",
+      "150006 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "150000 · 6 = 900000 so'm."
+  },
+  {
+    "id": "P-130",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 20×8 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "800 ta",
+      "28 ta",
+      "160 ta",
+      "900 ta"
+    ],
+    "correctIndex": 0,
+    "explain": "Yuzi: 20·8 = 160 m². Ko'chatlar: 160·5 = 800 ta."
+  },
+  {
+    "id": "P-131",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 200000 so'm turadi. Bayramda 25% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "199975 so'm",
+      "150000 so'm",
+      "155000 so'm",
+      "250000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "Chegirma summasi: 200000 · 0.25 = 50000. Yangi narx: 200000 − 50000 = 150000 so'm."
+  },
+  {
+    "id": "P-132",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 750 km masofani bosib o'tadi va har 100 km ga 8 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 9000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "540000 so'm",
+      "60 so'm",
+      "550000 so'm",
+      "6750000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "750·8/100 = 60 litr; 60 · 9000 = 540000 so'm."
+  },
+  {
+    "id": "P-133",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 12 daqiqada qatnaydi. Birinchi avtobus 08:00 da jo'naydi. 9:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "5",
+      "7",
+      "5",
+      "6"
+    ],
+    "correctIndex": 3,
+    "explain": "60 daqiqa / 12 = 5 oraliq + 1 boshlang'ich = 6 ta."
+  },
+  {
+    "id": "P-134",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 360 litr suv ishlatiladi. Agar 15% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "10800 litr",
+      "1620 litr",
+      "1720 litr",
+      "54 litr"
+    ],
+    "correctIndex": 1,
+    "explain": "Kuniga tejaladi: 360 · 0.15 = 54 litr. 30 kunda: 1620 litr."
+  },
+  {
+    "id": "P-135",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "5 kishi uchun tort tayyorlashda 300 g un kerak. 10 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "650 g",
+      "310 g",
+      "150 g",
+      "600 g"
+    ],
+    "correctIndex": 3,
+    "explain": "Proporsiya: 300·10/5 = 600 g."
+  },
+  {
+    "id": "P-136",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 7500000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "6600000 so'm",
+      "900000 so'm",
+      "8400000 so'm",
+      "6500000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "Soliq: 7500000 · 0.12 = 900000. Sof: 7500000 − 900000 = 6600000 so'm."
+  },
+  {
+    "id": "P-137",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "500 km masofani 100 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "5 soat",
+      "20 soat",
+      "500 soat",
+      "6 soat"
+    ],
+    "correctIndex": 0,
+    "explain": "t = S / v = 500 / 100 = 5 soat."
+  },
+  {
+    "id": "P-138",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 80000 kishi. Bir yilda 8% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "87400",
+      "80008",
+      "73600",
+      "86400"
+    ],
+    "correctIndex": 3,
+    "explain": "O'sish: 80000 · 0.08 = 6400. Jami: 86400 kishi."
+  },
+  {
+    "id": "P-139",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 50000 so'm jamg'ariladi. 18 oyda qancha pul to'planadi?",
+    "options": [
+      "850000 so'm",
+      "900000 so'm",
+      "50018 so'm",
+      "950000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "50000 · 18 = 900000 so'm."
+  },
+  {
+    "id": "P-140",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 10×8 metr o'lchamda. Har bir kvadrat metrga 10 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "18 ta",
+      "800 ta",
+      "80 ta",
+      "900 ta"
+    ],
+    "correctIndex": 1,
+    "explain": "Yuzi: 10·8 = 80 m². Ko'chatlar: 80·10 = 800 ta."
+  },
+  {
+    "id": "P-141",
+    "title": "Do'kondagi chegirma",
+    "context": "Shaxsiy",
+    "q": "Krossovka 250000 so'm turadi. Bayramda 30% chegirma e'lon qilindi. Chegirmadan keyin narxi qancha bo'ladi?",
+    "options": [
+      "180000 so'm",
+      "249970 so'm",
+      "175000 so'm",
+      "325000 so'm"
+    ],
+    "correctIndex": 2,
+    "explain": "Chegirma summasi: 250000 · 0.3 = 75000. Yangi narx: 250000 − 75000 = 175000 so'm."
+  },
+  {
+    "id": "P-142",
+    "title": "Yo'l xarajati",
+    "context": "Kasbiy",
+    "q": "Avtomobil 750 km masofani bosib o'tadi va har 100 km ga 6 litr yoqilg'i sarflaydi. 1 litr yoqilg'i 9000 so'm. Jami yoqilg'i xarajati qancha?",
+    "options": [
+      "415000 so'm",
+      "405000 so'm",
+      "45 so'm",
+      "6750000 so'm"
+    ],
+    "correctIndex": 1,
+    "explain": "750·6/100 = 45 litr; 45 · 9000 = 405000 so'm."
+  },
+  {
+    "id": "P-143",
+    "title": "Avtobus jadvali",
+    "context": "Jamiyat",
+    "q": "Avtobus har 20 daqiqada qatnaydi. Birinchi avtobus 06:00 da jo'naydi. 10:00 gacha (shu vaqt ham hisobga olinadi) nechta avtobus jo'naydi?",
+    "options": [
+      "13",
+      "14",
+      "12",
+      "12"
+    ],
+    "correctIndex": 0,
+    "explain": "240 daqiqa / 20 = 12 oraliq + 1 boshlang'ich = 13 ta."
+  },
+  {
+    "id": "P-144",
+    "title": "Suvni tejash",
+    "context": "Ilmiy",
+    "q": "Oilada kuniga 300 litr suv ishlatiladi. Agar 10% suv tejalsa, 30 kunda qancha litr suv tejaladi?",
+    "options": [
+      "30 litr",
+      "900 litr",
+      "9000 litr",
+      "1000 litr"
+    ],
+    "correctIndex": 1,
+    "explain": "Kuniga tejaladi: 300 · 0.1 = 30 litr. 30 kunda: 900 litr."
+  },
+  {
+    "id": "P-145",
+    "title": "Tort retsepti",
+    "context": "Shaxsiy",
+    "q": "8 kishi uchun tort tayyorlashda 400 g un kerak. 16 kishi uchun tort tayyorlashda qancha un kerak?",
+    "options": [
+      "416 g",
+      "200 g",
+      "800 g",
+      "850 g"
+    ],
+    "correctIndex": 2,
+    "explain": "Proporsiya: 400·16/8 = 800 g."
+  },
+  {
+    "id": "P-146",
+    "title": "Sof maosh",
+    "context": "Kasbiy",
+    "q": "Xodimning oylik maoshi 6000000 so'm. Undan 12% daromad solig'i ushlab qolinadi. Qo'lga olinadigan sof summa qancha?",
+    "options": [
+      "5280000 so'm",
+      "720000 so'm",
+      "6720000 so'm",
+      "5180000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "Soliq: 6000000 · 0.12 = 720000. Sof: 6000000 − 720000 = 5280000 so'm."
+  },
+  {
+    "id": "P-147",
+    "title": "Sayohat",
+    "context": "Shaxsiy",
+    "q": "500 km masofani 100 km/soat tezlik bilan bosib o'tish uchun necha soat kerak bo'ladi?",
+    "options": [
+      "6 soat",
+      "5 soat",
+      "500 soat",
+      "20 soat"
+    ],
+    "correctIndex": 1,
+    "explain": "t = S / v = 500 / 100 = 5 soat."
+  },
+  {
+    "id": "P-148",
+    "title": "Aholi o'sishi",
+    "context": "Ilmiy",
+    "q": "Shaharcha aholisi 80000 kishi. Bir yilda 8% ga o'sdi. Bir yildan keyingi aholi soni qancha?",
+    "options": [
+      "86400",
+      "73600",
+      "87400",
+      "80008"
+    ],
+    "correctIndex": 0,
+    "explain": "O'sish: 80000 · 0.08 = 6400. Jami: 86400 kishi."
+  },
+  {
+    "id": "P-149",
+    "title": "Jamg'arma",
+    "context": "Shaxsiy",
+    "q": "Oilada har oyda 50000 so'm jamg'ariladi. 18 oyda qancha pul to'planadi?",
+    "options": [
+      "900000 so'm",
+      "850000 so'm",
+      "50018 so'm",
+      "950000 so'm"
+    ],
+    "correctIndex": 0,
+    "explain": "50000 · 18 = 900000 so'm."
+  },
+  {
+    "id": "P-150",
+    "title": "Bog' uchastkasi",
+    "context": "Jamiyat",
+    "q": "Bog' uchastkasi 12×18 metr o'lchamda. Har bir kvadrat metrga 5 ta ko'chat ekiladi. Jami nechta ko'chat kerak?",
+    "options": [
+      "30 ta",
+      "1080 ta",
+      "1180 ta",
+      "216 ta"
+    ],
+    "correctIndex": 1,
+    "explain": "Yuzi: 12·18 = 216 m². Ko'chatlar: 216·5 = 1080 ta."
+  }
+]

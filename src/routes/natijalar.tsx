@@ -1,11 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 
 export const Route = createFileRoute("/natijalar")({
   head: () => ({
     meta: [
       { title: "Tajriba-sinov natijalari — TIMSS/PISA Platformasi" },
-      { name: "description", content: "Pedagogik tajriba-sinov ishlarining statistik natijalari va tahlili." },
+      {
+        name: "description",
+        content: "Pedagogik tajriba-sinov ishlarining statistik natijalari va tahlili.",
+      },
     ],
   }),
   component: Page,
@@ -21,30 +24,53 @@ function Page() {
   const max = 100;
   return (
     <SiteLayout>
-      <PageHeader eyebrow="III bob" title="Tajriba-sinov natijalari" description="Pedagogik tajriba-sinov ishlarining mazmuni, tashkil etilishi va statistik natijalari." />
+      <PageHeader
+        eyebrow="III bob"
+        title="Tajriba-sinov natijalari"
+        description="Pedagogik tajriba-sinov ishlarining mazmuni, tashkil etilishi va statistik natijalari."
+      />
       <section className="max-w-5xl mx-auto px-6 py-16 space-y-12">
+        <div className="p-5 rounded-2xl border border-primary/30 bg-primary/5 text-sm leading-relaxed">
+          Ushbu sahifadagi ko'rsatkichlar platformada yig'ilgan test natijalaridan avtomatik
+          hisoblanmaydi. Platformada qatnashgan talabalarning haqiqiy natijalari, darajalar
+          taqsimoti va mavzular bo'yicha guruh diagnostikasi{" "}
+          <Link to="/monitoring" className="text-primary font-medium hover:underline">
+            Monitoring
+          </Link>{" "}
+          bo'limida ko'rinadi.
+        </div>
         <div>
           <h2 className="text-2xl font-semibold mb-2">Bilim darajasi dinamikasi</h2>
-          <p className="text-muted-foreground mb-8">Eksperiment guruhidagi talabalarning metodik tayyorgarlik darajasi (%).</p>
+          <p className="text-muted-foreground mb-8">
+            Eksperiment guruhidagi talabalarning metodik tayyorgarlik darajasi (%).
+          </p>
           <div className="p-6 rounded-2xl border bg-card shadow-card">
             <div className="space-y-6">
               {data.map((d, i) => (
                 <div key={i}>
                   <div className="flex justify-between text-sm mb-2">
                     <span className="font-medium">{d.label} daraja</span>
-                    <span className="text-muted-foreground">{d.before}% → {d.after}%</span>
+                    <span className="text-muted-foreground">
+                      {d.before}% → {d.after}%
+                    </span>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <div className="text-xs text-muted-foreground mb-1">Tajribadan oldin</div>
                       <div className="h-3 rounded-full bg-muted overflow-hidden">
-                        <div className="h-full bg-muted-foreground/40" style={{ width: `${(d.before / max) * 100}%` }} />
+                        <div
+                          className="h-full bg-muted-foreground/40"
+                          style={{ width: `${(d.before / max) * 100}%` }}
+                        />
                       </div>
                     </div>
                     <div>
                       <div className="text-xs text-muted-foreground mb-1">Tajribadan keyin</div>
                       <div className="h-3 rounded-full bg-muted overflow-hidden">
-                        <div className="h-full bg-gradient-hero" style={{ width: `${(d.after / max) * 100}%` }} />
+                        <div
+                          className="h-full bg-gradient-hero"
+                          style={{ width: `${(d.after / max) * 100}%` }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -57,7 +83,7 @@ function Page() {
         <div className="grid sm:grid-cols-3 gap-5">
           {[
             { n: "+40%", l: "Yuqori darajadagi talabalar o'sishi" },
-            { n: "186", l: "Tajriba ishtirokchilari" },
+            { n: "186", l: "Rejadagi tajriba ishtirokchilari" },
             { n: "12 oy", l: "Tajriba muddati" },
           ].map((s, i) => (
             <div key={i} className="p-6 rounded-2xl border bg-card shadow-card text-center">
