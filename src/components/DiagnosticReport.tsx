@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Printer, TrendingUp, Target, BookOpen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PROCESS_LABEL, TEST_TAVSIYA, TOPICS, type TestKey } from "@/data/bank";
+import { PROCESS_LABEL, TEST_TAVSIYA, TOPICS, isPisa, isReleased, type TestKey } from "@/data/bank";
+import type { AnswerValue } from "@/lib/answers";
 import { diagnose, splitStrengths, type BankQuestion, type Row } from "@/lib/diagnostics";
 import { LEVELS, levelClass, levelInfo, levelText } from "@/lib/levels";
 
@@ -9,7 +10,7 @@ type Props = {
   testKey: TestKey;
   testLabel: string;
   questions: BankQuestion[];
-  answers: Record<string, number>;
+  answers: Record<string, AnswerValue>;
   participant: { full_name: string; university: string; course: string };
   completedAt: string;
 };
@@ -120,12 +121,13 @@ export function DiagnosticReport({
         </div>
       </div>
 
-      {testKey === "pisa" && (
+      {isPisa(testKey) && (
         <div className="p-6 rounded-2xl border bg-card shadow-card">
           <h3 className="font-semibold text-lg">PISA jarayonlari bo'yicha</h3>
           <p className="text-sm text-muted-foreground mt-1 mb-5">
-            Savollar bankidagi tasdiqlangan tasnif asosida. Interpret jarayoni bo'yicha savollar
-            bankda hozircha yo'q, shuning uchun u baholanmagan.
+            {isReleased(testKey)
+              ? "Jarayonlar bo'yicha tasnif loyiha muallifi tomonidan tasdiqlangan."
+              : "Savollar bankidagi tasdiqlangan tasnif asosida. Interpret jarayoni bo'yicha savollar bankda hozircha yo'q, shuning uchun u baholanmagan."}
           </p>
           <Bars rows={processRows} />
         </div>
@@ -222,8 +224,9 @@ export function DiagnosticReport({
         )}
         <p className="mt-5 text-xs text-muted-foreground flex gap-1.5">
           <Info className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-          Diagnostika ushbu platformaning tadqiqot uchun ishlab chiqilgan savollar banki (versiya
-          v2) asosida tuzilgan va rasmiy TIMSS/PISA natijasi hisoblanmaydi.
+          {isReleased(testKey)
+            ? "Diagnostika IEA (TIMSS) va OECD (PISA) ochiq e'lon qilgan namunaviy topshiriqlar asosida o'zbek tiliga moslashtirilgan to'plam (r1) bo'yicha tuzilgan. U rasmiy TIMSS/PISA natijasi hisoblanmaydi: topshiriqlar bo'lajak o'qituvchilarni shunday talablarga mos dars tashkil etishga tayyorlash uchun berilgan."
+            : "Diagnostika ushbu platformaning tadqiqot uchun ishlab chiqilgan savollar banki (versiya v2) asosida tuzilgan va rasmiy TIMSS/PISA natijasi hisoblanmaydi."}
         </p>
       </div>
     </div>

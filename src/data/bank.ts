@@ -4,22 +4,40 @@
 // eski natijalarni qayta hisoblash uchun kerak.
 
 export const BANK_VERSION = "v2";
+/** Rasmiy namunaviy (released) topshiriqlar to'plami versiyasi. */
+export const RELEASED_VERSION = "r1";
+
+export type TestKey =
+  | "knowing"
+  | "applying"
+  | "reasoning"
+  | "pisa"
+  | "r-knowing"
+  | "r-applying"
+  | "r-reasoning"
+  | "r-pisa";
+
+export const isReleased = (k: TestKey) => k.startsWith("r-");
+export const isPisa = (k: TestKey) => k === "pisa" || k === "r-pisa";
 
 /** test_type qiymatiga versiya qo'shiladi: "TIMSS - Bilish · v2". Versiyasiz yozuvlar — v1. */
-export const withVersion = (testType: string) => `${testType} · ${BANK_VERSION}`;
+export const withVersion = (testType: string, version = BANK_VERSION) => `${testType} · ${version}`;
+export const versionOf = (k: TestKey) => (isReleased(k) ? RELEASED_VERSION : BANK_VERSION);
 
 export const parseTestType = (raw: string): { base: string; version: string } => {
-  const m = /^(.*?)\s*·\s*(v\d+)$/.exec(raw.trim());
+  const m = /^(.*?)\s*·\s*([vr]\d+)$/.exec(raw.trim());
   return m ? { base: m[1], version: m[2] } : { base: raw.trim(), version: "v1" };
 };
-
-export type TestKey = "knowing" | "applying" | "reasoning" | "pisa";
 
 export const TEST_TYPES: Record<TestKey, string> = {
   knowing: "TIMSS - Bilish",
   applying: "TIMSS - Qo'llash",
   reasoning: "TIMSS - Mulohaza yuritish",
   pisa: "PISA",
+  "r-knowing": "Rasmiy TIMSS - Bilish",
+  "r-applying": "Rasmiy TIMSS - Qo'llash",
+  "r-reasoning": "Rasmiy TIMSS - Mulohaza yuritish",
+  "r-pisa": "Rasmiy PISA",
 };
 
 export const testKeyOf = (base: string): TestKey | undefined =>
@@ -31,6 +49,10 @@ export const TEST_TAVSIYA: Record<TestKey, { slug: string; title: string }> = {
   applying: { slug: "applying", title: "Applying kompetensiyasi" },
   reasoning: { slug: "reasoning", title: "Reasoning kompetensiyasi" },
   pisa: { slug: "employ", title: "Employ kompetensiyasi" },
+  "r-knowing": { slug: "knowing", title: "Knowing kompetensiyasi" },
+  "r-applying": { slug: "applying", title: "Applying kompetensiyasi" },
+  "r-reasoning": { slug: "reasoning", title: "Reasoning kompetensiyasi" },
+  "r-pisa": { slug: "employ", title: "Employ kompetensiyasi" },
 };
 
 export type TopicInfo = { label: string; tip: string };
@@ -200,11 +222,50 @@ export const TOPICS: Record<string, TopicInfo> = {
     label: "Bog' maydoni",
     tip: "Avval yuzni (m²), keyin 1 m² dagi miqdorga ko'paytirib umumiy sonni toping.",
   },
+  // Rasmiy namunaviy topshiriqlar — TIMSS mazmun sohalari
+  "r-num4": {
+    label: "Sonlar (4-sinf)",
+    tip: "Xona qiymati, to'rt amal va kasrlarni son o'qi, xona jadvali va kesma modeli kabi ko'rgazmali vositalar bilan mustahkamlang.",
+  },
+  "r-num8": {
+    label: "Sonlar (8-sinf)",
+    tip: "Oddiy va o'nli kasr, foiz va daraja o'rtasidagi bog'lanishlarni bir masalani turli ko'rinishda yozish orqali mashq qiling.",
+  },
+  "r-alg8": {
+    label: "Algebra (8-sinf)",
+    tip: "Ifoda, tenglama va qonuniyatni avval sonli misollarda kuzating, so'ng umumiy formulaga o'ting; javobni qiymat qo'yib tekshiring.",
+  },
+  "r-geo4": {
+    label: "Geometriya va o'lchov (4-sinf)",
+    tip: "Shakllarni qirqish, buklash va katakli qog'ozda chizish kabi amaliy faoliyat orqali simmetriya va yuz tushunchalarini shakllantiring.",
+  },
+  "r-data4": {
+    label: "Ma'lumotlar (4-sinf)",
+    tip: "Sinfda kichik so'rov o'tkazib, natijani jadval va diagrammada tasvirlang; diagrammadan savollar tuzishni mashq qiling.",
+  },
+  // Rasmiy namunaviy topshiriqlar — PISA mazmun toifalari
+  "r-quantity": {
+    label: "Miqdor (Quantity)",
+    tip: "Hisobni real kontekstda (pul, vaqt, materiallar) bajaring va javobning mantiqiyligini taxminiy hisob bilan tekshiring.",
+  },
+  "r-change": {
+    label: "O'zgarish va bog'liqlik (Change)",
+    tip: "Formula, jadval va grafik o'rtasida o'tishni mashq qiling; o'sish turini (chiziqli, kvadratik, foizli) aniqlang.",
+  },
+  "r-space": {
+    label: "Fazo va shakl (Space)",
+    tip: "Yuz, hajm va fazoviy tasavvurni kubiklar va chizmalar bilan modellashtiring.",
+  },
+  "r-uncertainty": {
+    label: "Noaniqlik va ma'lumotlar (Uncertainty)",
+    tip: "Diagramma va statistik xulosalarni tanqidiy o'qing: o'q boshlanishi, tanlanma va ehtimollik talqiniga e'tibor bering.",
+  },
 };
 
 export const topicLabel = (t: string) => TOPICS[t]?.label ?? t;
 
 export const PROCESS_LABEL: Record<string, string> = {
+  // Tasnif rasmiy topshiriqlar uchun taxminiy (2026-10 tasdiqlangan ro'yxat).
   formulate: "Formulate (vaziyatni modelga o'tkazish)",
   employ: "Employ (tushuncha va amallarni qo'llash)",
   interpret: "Interpret (natijani talqin qilish)",
