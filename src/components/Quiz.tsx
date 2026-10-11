@@ -7,10 +7,18 @@ import {
   ChevronLeft,
   ChevronRight,
   AlertCircle,
+  GraduationCap,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { TEST_TYPES, withVersion, type TestKey } from "@/data/bank";
+import { TEST_TYPES, versionOf, withVersion, type TestKey } from "@/data/bank";
+import {
+  answerText,
+  isAnswered,
+  isCorrect,
+  type AnswerValue,
+  type OpenAnswer,
+} from "@/lib/answers";
 import { levelOf, pctOf } from "@/lib/levels";
 import { DiagnosticReport } from "@/components/DiagnosticReport";
 
@@ -24,6 +32,18 @@ export type Question = {
   context?: string;
   topic?: string;
   process?: string;
+  /** Ochiq javobli savol: ishtirokchi javobni yozadi. */
+  answer?: OpenAnswer;
+  /** Rasm (SVG, platforma ichida tayyorlangan). */
+  figure?: string;
+  table?: { rows: string[][] };
+  grade?: number;
+  source?: string;
+  adaptation?: string;
+  intlPct?: number;
+  studentGoal?: string;
+  teacherGoal?: string;
+  lessonUse?: string;
 };
 
 type Props = {
@@ -39,7 +59,7 @@ type SaveState = "idle" | "saving" | "saved" | "error";
 
 export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10 }: Props) {
   const [page, setPage] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
   const [submitted, setSubmitted] = useState(false);
   const [triedSubmit, setTriedSubmit] = useState(false);
   const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
@@ -54,14 +74,14 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
 
   const result = useMemo(() => {
     let correct = 0;
-    for (const q of questions) if (answers[q.id] === q.correctIndex) correct++;
-    const answered = questions.filter((q) => answers[q.id] !== undefined).length;
+    for (const q of questions) if (isCorrect(q, answers[q.id])) correct++;
+    const answered = questions.filter((q) => isAnswered(answers[q.id])).length;
     const total = questions.length;
     return { correct, answered, total, pct: pctOf(correct, total) };
   }, [answers, questions]);
 
   const remaining = result.total - result.answered;
-  const firstUnanswered = questions.findIndex((q) => answers[q.id] === undefined);
+  const firstUnanswered = questions.findIndex((q) => !isAnswered(answers[q.id]));
 
   const participantValid =
     participant.full_name.trim().length >= 3 &&
@@ -70,7 +90,7 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
 
   const scrollTop = () => topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-  const select = (qid: string, idx: number) => {
+  const select = (qid: string, idx: AnswerValue) => {
     if (submitted) return;
     setAnswers((p) => ({ ...p, [qid]: idx }));
   };
@@ -96,7 +116,7 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
       full_name: participant.full_name.trim(),
       university: participant.university.trim(),
       course: participant.course,
-      test_type: withVersion(TEST_TYPES[testKey]),
+      test_type: withVersion(TEST_TYPES[testKey], versionOf(testKey)),
       score: result.correct,
       total_questions: result.total,
       percentage: result.pct,
@@ -257,13 +277,15 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
 
       <div className="space-y-4 print:hidden">
         {visible.map((q, i) => {
-          const userIdx = answers[q.id];
-          const isAnswered = userIdx !== undefined;
-          const showResult = submitted && isAnswered;
-          const missing = triedSubmit && !submitted && !isAnswered;
+          const userVal = answers[q.id];
+          const answeredQ = isAnswered(userVal);
+          const ok = isCorrect(q, userVal);
+          const showResult = submitted && answeredQ;
+          const missing = triedSubmit && !submitted && !answeredQ;
           return (
             <div
               key={q.id}
+              data-qid={q.id}
               className={`p-6 rounded-2xl border bg-card shadow-card ${missing ? "border-red-500" : ""}`}
             >
               <div className="flex items-start justify-between gap-3 mb-3">
@@ -277,46 +299,134 @@ export function Quiz({ questions, testKey, label = "Topshiriqlar", pageSize = 10
                   {missing && <span className="ml-2 text-red-600">Javob berilmagan</span>}
                 </div>
                 {showResult &&
-                  (userIdx === q.correctIndex ? (
+                  (ok ? (
                     <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                   ) : (
                     <XCircle className="w-5 h-5 text-red-500" />
                   ))}
               </div>
+              {(q.grade || q.source) && (
+                <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground mb-2">
+                  {q.grade && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-muted">
+                      <GraduationCap className="w-3.5 h-3.5" />
+                      {q.grade === 15 ? "15 yosh" : `${q.grade}-sinf`}
+                    </span>
+                  )}
+                  {q.source && <span>{q.source}</span>}
+                </div>
+              )}
               {q.title && <h4 className="font-semibold mb-2">{q.title}</h4>}
               <p className="leading-relaxed mb-4">{q.q}</p>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {q.options.map((opt, idx) => {
-                  const isUser = userIdx === idx;
-                  const isCorrect = idx === q.correctIndex;
-                  let cls = "border-border hover:border-primary/40 hover:bg-muted/50";
-                  if (submitted) {
-                    if (isCorrect) cls = "border-emerald-500 bg-emerald-500/10";
-                    else if (isUser) cls = "border-red-500 bg-red-500/10";
-                    else cls = "border-border opacity-70";
-                  } else if (isUser) {
-                    cls = "border-primary bg-primary/10";
-                  }
-                  return (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => select(q.id, idx)}
-                      disabled={submitted}
-                      aria-pressed={isUser}
-                      className={`text-left px-4 py-3 rounded-xl border transition text-sm ${cls}`}
-                    >
-                      <span className="font-semibold mr-2">{String.fromCharCode(65 + idx)}.</span>
-                      {opt}
-                    </button>
-                  );
-                })}
-              </div>
+              {q.figure && (
+                <div
+                  className="mb-4 p-3 rounded-xl border bg-white text-slate-900 overflow-x-auto"
+                  // Rasm platforma ichida tayyorlangan statik SVG (foydalanuvchi kiritmaydi).
+                  dangerouslySetInnerHTML={{ __html: q.figure }}
+                />
+              )}
+              {q.table && (
+                <div className="mb-4 overflow-x-auto">
+                  <table className="text-sm border-collapse">
+                    <tbody>
+                      {q.table.rows.map((row, ri) => (
+                        <tr key={ri}>
+                          {row.map((c, ci) => (
+                            <td
+                              key={ci}
+                              className={`border px-3 py-1.5 text-center tabular-nums ${ci === 0 ? "font-semibold bg-muted text-left" : ""}`}
+                            >
+                              {c}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {q.answer ? (
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    inputMode="text"
+                    maxLength={100}
+                    disabled={submitted}
+                    aria-label={`Savol ${start + i + 1} uchun javob`}
+                    placeholder="Javobingizni yozing"
+                    value={typeof userVal === "string" ? userVal : ""}
+                    onChange={(e) => select(q.id, e.target.value)}
+                    className={`w-full sm:w-80 px-4 py-2.5 rounded-lg border bg-background ${
+                      submitted
+                        ? ok
+                          ? "border-emerald-500 bg-emerald-500/10"
+                          : "border-red-500 bg-red-500/10"
+                        : ""
+                    }`}
+                  />
+                  {submitted && (
+                    <div className="text-sm">
+                      <span className="text-muted-foreground">To'g'ri javob: </span>
+                      <span className="font-semibold">{answerText(q)}</span>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="grid sm:grid-cols-2 gap-2">
+                  {q.options.map((opt, idx) => {
+                    const isUser = userVal === idx;
+                    const isCorrect = idx === q.correctIndex;
+                    let cls = "border-border hover:border-primary/40 hover:bg-muted/50";
+                    if (submitted) {
+                      if (isCorrect) cls = "border-emerald-500 bg-emerald-500/10";
+                      else if (isUser) cls = "border-red-500 bg-red-500/10";
+                      else cls = "border-border opacity-70";
+                    } else if (isUser) {
+                      cls = "border-primary bg-primary/10";
+                    }
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => select(q.id, idx)}
+                        disabled={submitted}
+                        aria-pressed={isUser}
+                        className={`text-left px-4 py-3 rounded-xl border transition text-sm ${cls}`}
+                      >
+                        <span className="font-semibold mr-2">{String.fromCharCode(65 + idx)}.</span>
+                        {opt}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
               {submitted && (
                 <div className="mt-4 p-3 rounded-xl bg-muted text-sm">
                   <span className="font-semibold">Izoh: </span>
                   {q.explain}
                 </div>
+              )}
+              {submitted && (q.studentGoal || q.teacherGoal || q.lessonUse) && (
+                <dl className="mt-3 grid md:grid-cols-3 gap-3 text-sm">
+                  {[
+                    ["Bu topshiriqning o'quvchi uchun maqsadi", q.studentGoal],
+                    ["Bo'lajak o'qituvchi uchun metodik maqsadi", q.teacherGoal],
+                    ["O'qituvchi ushbu topshiriqdan darsda qanday foydalanadi", q.lessonUse],
+                  ].map(([t, v]) =>
+                    v ? (
+                      <div key={t} className="p-3 rounded-xl border border-primary/20 bg-primary/5">
+                        <dt className="text-xs font-semibold text-primary mb-1">{t}</dt>
+                        <dd className="leading-relaxed">{v}</dd>
+                      </div>
+                    ) : null,
+                  )}
+                </dl>
+              )}
+              {submitted && q.adaptation && (
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Moslashtirish: {q.adaptation}
+                  {q.intlPct !== undefined && ` · Xalqaro o'rtacha natija: ${q.intlPct}%`}
+                </p>
               )}
             </div>
           );

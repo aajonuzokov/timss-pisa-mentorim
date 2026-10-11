@@ -1,9 +1,12 @@
 import { processOfId, topicLabel, topicOfId } from "@/data/bank";
 import { pctOf } from "@/lib/levels";
+import { isAnswered, isCorrect, type AnswerValue, type OpenAnswer } from "@/lib/answers";
 
 export type BankQuestion = {
   id: string;
+  options: string[];
   correctIndex: number;
+  answer?: OpenAnswer;
   topic?: string;
   process?: string;
 };
@@ -12,7 +15,7 @@ export type Row = { key: string; label: string; correct: number; total: number; 
 
 const group = (
   questions: BankQuestion[],
-  answers: Record<string, number>,
+  answers: Record<string, AnswerValue>,
   keyOf: (q: BankQuestion) => string | undefined,
   labelOf: (k: string) => string,
 ): Row[] => {
@@ -22,7 +25,7 @@ const group = (
     if (!k) continue;
     const cur = acc.get(k) ?? { correct: 0, total: 0 };
     cur.total += 1;
-    if (answers[q.id] === q.correctIndex) cur.correct += 1;
+    if (isCorrect(q, answers[q.id])) cur.correct += 1;
     acc.set(k, cur);
   }
   return [...acc.entries()]
@@ -31,7 +34,7 @@ const group = (
 };
 
 /** Bitta urinish bo'yicha mavzular va (PISA uchun) jarayonlar kesimida natija. */
-export const diagnose = (questions: BankQuestion[], answers: Record<string, number>) => {
+export const diagnose = (questions: BankQuestion[], answers: Record<string, AnswerValue>) => {
   const byTopic = group(questions, answers, (q) => q.topic ?? topicOfId(q.id), topicLabel);
   const byProcess = group(
     questions,
@@ -39,8 +42,8 @@ export const diagnose = (questions: BankQuestion[], answers: Record<string, numb
     (q) => q.process ?? processOfId(q.id),
     (k) => k,
   );
-  const correct = questions.filter((q) => answers[q.id] === q.correctIndex).length;
-  const answered = questions.filter((q) => answers[q.id] !== undefined).length;
+  const correct = questions.filter((q) => isCorrect(q, answers[q.id])).length;
+  const answered = questions.filter((q) => isAnswered(answers[q.id])).length;
   return {
     byTopic,
     byProcess,

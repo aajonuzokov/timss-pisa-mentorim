@@ -8,6 +8,7 @@ const navItems = [
   { to: "/model", label: "Metodik model" },
   { to: "/timss", label: "TIMSS" },
   { to: "/pisa", label: "PISA" },
+  { to: "/rasmiy", label: "Rasmiy topshiriqlar" },
   { to: "/qollanma", label: "O'quv qo'llanma" },
   { to: "/natijalar", label: "Natijalar" },
   { to: "/monitoring", label: "Monitoring" },

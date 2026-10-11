@@ -4,8 +4,18 @@ import { Upload, Download, ShieldCheck, Users, ListChecks, Gauge, FilterX } from
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { Bars, LevelLegend } from "@/components/DiagnosticReport";
-import { BANK_VERSION, TEST_TYPES, topicLabel, PROCESS_LABEL, type TestKey } from "@/data/bank";
 import {
+  BANK_VERSION,
+  RELEASED_VERSION,
+  TEST_TYPES,
+  isPisa,
+  topicLabel,
+  PROCESS_LABEL,
+  type TestKey,
+} from "@/data/bank";
+import { isAnswered } from "@/lib/answers";
+import {
+  BANK_R1,
   BANK_V2,
   buildAttempts,
   isCorrect,
@@ -35,7 +45,16 @@ export const Route = createFileRoute("/monitoring")({
 /** Tajriba-sinov rejasidagi ishtirokchilar soni. */
 const PLANNED_PARTICIPANTS = 186;
 
-const TEST_ORDER: TestKey[] = ["knowing", "applying", "reasoning", "pisa"];
+const TEST_ORDER: TestKey[] = [
+  "knowing",
+  "applying",
+  "reasoning",
+  "pisa",
+  "r-knowing",
+  "r-applying",
+  "r-reasoning",
+  "r-pisa",
+];
 
 const STATUS_LABEL: Record<Attempt["status"], string> = {
   toliq: "To'liq",
@@ -51,7 +70,7 @@ const groupRows = (
   const acc = new Map<string, { correct: number; total: number }>();
   for (const a of attempts)
     for (const q of a.questions) {
-      if (a.answers[q.id] === undefined) continue;
+      if (!isAnswered(a.answers[q.id])) continue;
       const k = keyOf(q);
       if (!k) continue;
       const cur = acc.get(k) ?? { correct: 0, total: 0 };
@@ -89,7 +108,7 @@ function Page() {
           "Fayl test_results jadvali eksportiga o'xshamaydi (answers va test_type ustunlari topilmadi).",
         );
       }
-      const banks: Record<string, Bank> = { [BANK_VERSION]: BANK_V2 };
+      const banks: Record<string, Bank> = { [BANK_VERSION]: BANK_V2, [RELEASED_VERSION]: BANK_R1 };
       if (neededVersions(rows).has("v1")) banks.v1 = await loadBankV1();
       const built = buildAttempts(rows, banks);
       setAttempts(built.attempts);
@@ -133,36 +152,42 @@ function Page() {
 
   const forTest = included.filter((a) => a.testKey === test);
   const topicRows = groupRows(forTest, topicKey, topicLabel);
-  const processRows =
-    test === "pisa"
-      ? groupRows(
-          forTest,
-          (q) => q.process,
-          (k) => PROCESS_LABEL[k] ?? k,
-        )
-      : [];
+  const processRows = isPisa(test)
+    ? groupRows(
+        forTest,
+        (q) => q.process,
+        (k) => PROCESS_LABEL[k] ?? k,
+      )
+    : [];
 
   const hardest = useMemo(() => {
     const byQ = new Map<
       string,
-      { q: Attempt["questions"][number]; n: number; ok: number; wrong: Map<number, number> }
+      { q: Attempt["questions"][number]; n: number; ok: number; wrong: Map<string, number> }
     >();
     for (const a of forTest)
       for (const q of a.questions) {
         const ch = a.answers[q.id];
-        if (ch === undefined) continue;
+        if (!isAnswered(ch)) continue;
         const key = `${a.version}|${q.id}`;
         const cur = byQ.get(key) ?? { q, n: 0, ok: 0, wrong: new Map() };
         cur.n++;
         if (isCorrect(q, ch)) cur.ok++;
-        else cur.wrong.set(ch, (cur.wrong.get(ch) ?? 0) + 1);
+        else {
+          const w = typeof ch === "string" ? ch.trim() : String(ch);
+          cur.wrong.set(w, (cur.wrong.get(w) ?? 0) + 1);
+        }
         byQ.set(key, cur);
       }
     return [...byQ.values()]
       .filter((x) => x.n >= Math.min(3, forTest.length))
       .map((x) => {
         const top = [...x.wrong.entries()].sort((a, b) => b[1] - a[1])[0];
-        return { ...x, pct: pctOf(x.ok, x.n), commonWrong: top ? x.q.options[top[0]] : "" };
+        return {
+          ...x,
+          pct: pctOf(x.ok, x.n),
+          commonWrong: top ? (x.q.answer ? top[0] : x.q.options[Number(top[0])]) : "",
+        };
       })
       .filter((x) => x.pct < 100)
       .sort((a, b) => a.pct - b.pct || b.n - a.n)
@@ -190,7 +215,7 @@ function Page() {
     ];
     const lines = included.map((a) => {
       const perTopic = topics.map((t) => {
-        const qs = a.questions.filter((q) => q.topic === t && a.answers[q.id] !== undefined);
+        const qs = a.questions.filter((q) => q.topic === t && isAnswered(a.answers[q.id]));
         return qs.length
           ? pctOf(qs.filter((q) => isCorrect(q, a.answers[q.id])).length, qs.length)
           : "";
@@ -396,7 +421,7 @@ function Page() {
                     <div className="mt-4">
                       <LevelLegend />
                     </div>
-                    {test === "pisa" && processRows.length > 0 && (
+                    {isPisa(test) && processRows.length > 0 && (
                       <div className="mt-8">
                         <h3 className="font-medium mb-3">PISA jarayonlari</h3>
                         <Bars rows={processRows} />

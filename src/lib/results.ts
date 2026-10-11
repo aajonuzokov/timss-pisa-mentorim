@@ -3,11 +3,15 @@
 
 import timssV2 from "@/data/timss.json";
 import pisaV2 from "@/data/pisa.json";
+import released from "@/data/released.json";
 import { parseTestType, processOfId, testKeyOf, topicOfId, type TestKey } from "@/data/bank";
 import type { Question } from "@/components/Quiz";
 import { pctOf } from "@/lib/levels";
+import { isAnswered, isCorrect, type AnswerValue } from "@/lib/answers";
 
-export type Bank = Record<TestKey, Question[]>;
+export { isCorrect };
+
+export type Bank = Partial<Record<TestKey, Question[]>>;
 
 // v1 savollarida mavzu va jarayon maydonlari yo'q: ular ID bo'yicha aniqlanadi (shablonlar tartibi bir xil).
 const tag = (qs: Question[]): Question[] =>
@@ -25,6 +29,15 @@ const toBank = (timss: Record<string, Question[]>, pisa: Question[]): Bank => ({
 });
 
 export const BANK_V2: Bank = toBank(timssV2 as Record<string, Question[]>, pisaV2 as Question[]);
+
+const R = released as unknown as Record<string, Question[]>;
+/** Rasmiy namunaviy topshiriqlar (r1). */
+export const BANK_R1: Bank = {
+  "r-knowing": R.knowing,
+  "r-applying": R.applying,
+  "r-reasoning": R.reasoning,
+  "r-pisa": R.pisa,
+};
 
 let v1Promise: Promise<Bank> | null = null;
 export const loadBankV1 = () =>
@@ -81,7 +94,7 @@ export type Attempt = {
   testKey: TestKey;
   testBase: string;
   version: string;
-  answers: Record<string, number>;
+  answers: Record<string, AnswerValue>;
   questions: Question[];
   correct: number;
   answered: number;
@@ -94,14 +107,6 @@ export type Attempt = {
 };
 
 const TEST_NAME = /\btest\b|sinov|tekshiruv/i;
-
-/**
- * Javob to'g'ri hisoblanadi, agar tanlangan variant matni to'g'ri javob matni bilan bir xil bo'lsa.
- * v1 bankida to'g'ri javob ikki marta yozilgan 23 ta savol bor edi: bu qoida talabani
- * "ikkinchi nusxa"ni tanlagani uchun jazolamaydi. v2 da variantlar noyob, natija o'zgarmaydi.
- */
-export const isCorrect = (q: Question, chosen: number | undefined) =>
-  chosen !== undefined && q.options[chosen] === q.options[q.correctIndex];
 
 export const normalizeCourse = (c: string) => {
   const m = /\d/.exec(c);
@@ -119,18 +124,18 @@ export const buildAttempts = (
     const { base, version } = parseTestType(r.test_type ?? "");
     const testKey = testKeyOf(base);
     const bank = banks[version];
-    if (!testKey || !bank) {
+    const questions = testKey && bank ? bank[testKey] : undefined;
+    if (!testKey || !questions) {
       skipped++;
       continue;
     }
-    let answers: Record<string, number> = {};
+    let answers: Record<string, AnswerValue> = {};
     try {
       answers = JSON.parse(r.answers || "{}");
     } catch {
       answers = {};
     }
-    const questions = bank[testKey];
-    const answered = questions.filter((q) => answers[q.id] !== undefined).length;
+    const answered = questions.filter((q) => isAnswered(answers[q.id])).length;
     const correct = questions.filter((q) => isCorrect(q, answers[q.id])).length;
     const total = questions.length;
     const isTest =

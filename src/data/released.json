@@ -1,0 +1,2273 @@
+{
+ "knowing": [
+  {
+   "id": "RK-1",
+   "source": "TIMSS 2011, 4-sinf, M031128",
+   "intlPct": 72,
+   "adaptation": "Ochiq javob → test",
+   "q": "5 631 va 286 sonlarining yig'indisini toping.",
+   "options": [
+    "5 917",
+    "5 907",
+    "8 491",
+    "5 817"
+   ],
+   "correctIndex": 0,
+   "explain": "5 631 + 286 = 5 917. Xonalar ustma-ust yozilmasa 8 491 kabi xato chiqadi.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     5917
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ko'p xonali sonlarni yozma qo'shish.",
+   "teacherGoal": "Xonalarni noto'g'ri tekislash xatosini (8 491) tanib, uning sababini tushuntira olish.",
+   "lessonUse": "Doskaga 8 491 javobini yozib, o'quvchilardan xatoni topishni so'raydi; xona jadvali bilan to'g'ri yozishni ko'rsatadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-2",
+   "source": "TIMSS 2011, 4-sinf, M031316",
+   "intlPct": 83,
+   "adaptation": "Ochiq javob → test",
+   "q": "4 × □ = 28. □ o'rniga qaysi son yoziladi?",
+   "options": [
+    "24",
+    "7",
+    "6",
+    "112"
+   ],
+   "correctIndex": 1,
+   "explain": "28 : 4 = 7.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     7
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ko'paytirishning noma'lum ko'paytuvchisini topish.",
+   "teacherGoal": "Ko'paytirish va bo'lishning o'zaro teskari amal ekanini tushuntirish usullarini tanlash.",
+   "lessonUse": "«Sirli son» o'yini: o'quvchilar bir-biriga 4 × □ = 28 kabi topishmoqlar tuzadi va bo'lish bilan tekshiradi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-3",
+   "source": "TIMSS 2011, 4-sinf, M031317",
+   "intlPct": 39,
+   "adaptation": "Asl shakli test",
+   "q": "3 + 8 = □ + 6. □ o'rniga qaysi son yoziladi?",
+   "options": [
+    "17",
+    "11",
+    "5",
+    "2"
+   ],
+   "correctIndex": 2,
+   "explain": "Chap tomon 11 ga teng; □ + 6 = 11, demak □ = 5. «=» belgisini «javob» deb tushunish 11 yoki 17 xatosiga olib keladi.",
+   "studentGoal": "«=» belgisini tenglik munosabati sifatida tushunish.",
+   "teacherGoal": "«=» ni «javob chiqadi» deb tushunish (11 yoki 17 javobi) — keng tarqalgan xato ekanini bilish va uni aniqlash.",
+   "lessonUse": "Tarozi modelida ikki tomon tengligini ko'rsatadi; o'quvchilar 3 + 8 = □ + 6 kabi tengliklarni tuzib, sheriklariga beradi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-4",
+   "source": "TIMSS 2011, 4-sinf, M041010",
+   "intlPct": 72,
+   "adaptation": "Asl shakli test",
+   "q": "Qaysi sonda 8 raqami 800 ni bildiradi?",
+   "options": [
+    "2 058",
+    "8 931",
+    "4 980",
+    "3 809"
+   ],
+   "correctIndex": 3,
+   "explain": "3 809 sonida 8 yuzlar xonasida turibdi: 8 × 100 = 800.",
+   "studentGoal": "Raqamning xonadagi qiymatini aniqlash.",
+   "teacherGoal": "Raqam va uning xona qiymati farqini tushuntirishda xona jadvali va ko'rgazmali vositalardan foydalanish.",
+   "lessonUse": "Har bir sonni xona jadvaliga joylashtirib, 8 qaysi xonada turganini guruhda muhokama qiladi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-5",
+   "source": "TIMSS 2011, 4-sinf, M041011",
+   "intlPct": 66,
+   "adaptation": "Asl shakli test",
+   "q": "5 432 dan 100 ta ortiq son qaysi?",
+   "options": [
+    "5 532",
+    "5 442",
+    "6 432",
+    "5 433"
+   ],
+   "correctIndex": 0,
+   "explain": "100 qo'shilganda faqat yuzlar xonasi 1 ga ortadi: 5 532.",
+   "studentGoal": "Sonni 100 ga orttirishda xonalar o'zgarishini tushunish.",
+   "teacherGoal": "Xato javoblar (5 442, 6 432) qaysi xona bilan adashganini tahlil qila olish.",
+   "lessonUse": "Son o'qi yoki abak bilan «100 ta ko'p», «10 ta ko'p», «1000 ta ko'p» mashqlarini zanjir shaklida o'tkazadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-6",
+   "source": "TIMSS 2011, 4-sinf, M041041",
+   "intlPct": 60,
+   "adaptation": "Asl shakli test",
+   "q": "9 × 22 ko'paytmasini baholash uchun qaysi ifoda eng mos keladi?",
+   "options": [
+    "5 × 20",
+    "10 × 20",
+    "9 × 30",
+    "10 × 30"
+   ],
+   "correctIndex": 1,
+   "explain": "9 ≈ 10 va 22 ≈ 20; 10 × 20 = 200, aniq qiymat 198 ga eng yaqin.",
+   "studentGoal": "Ko'paytmani yaxlitlab baholash.",
+   "teacherGoal": "Baholashni aniq hisoblashdan farqlash va natijani tekshirish strategiyasi sifatida o'rgatish.",
+   "lessonUse": "Hisoblashdan oldin o'quvchilar natijani taxmin qiladi, so'ng aniq javob bilan solishtiradi; eng yaqin taxmin muhokama qilinadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-7",
+   "source": "TIMSS 2011, 4-sinf, M041104",
+   "intlPct": 48,
+   "adaptation": "Ochiq javob → test",
+   "q": "5 va 6 orasida joylashgan bitta sonni yozing.",
+   "options": [
+    "6,5",
+    "4,9",
+    "5,6",
+    "56"
+   ],
+   "correctIndex": 2,
+   "explain": "5,6 = 5 butun 6 o'ndan; u 5 dan katta, 6 dan kichik.",
+   "answer": {
+    "type": "between",
+    "min": 5,
+    "max": 6
+   },
+   "studentGoal": "5 va 6 orasidagi sonni (o'nli yoki oddiy kasr) yoza olish.",
+   "teacherGoal": "Ochiq javobli, ko'p to'g'ri javobi bor topshiriqlar o'quvchining son tushunchasini qanday ochishini bilish.",
+   "lessonUse": "Har bir o'quvchi 5 va 6 orasidagi o'z sonini yozadi; javoblar son o'qiga joylashtirilib, «yana qanchasi bor?» savoli muhokama qilinadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-8",
+   "source": "TIMSS 2011, 4-sinf, M041122",
+   "intlPct": 27,
+   "adaptation": "Ochiq javob → test (asl topshiriqda bo'luvchilarni belgilash so'ralgan)",
+   "q": "12 sonining barcha bo'luvchilarini vergul bilan ajratib yozing.",
+   "options": [
+    "2, 4, 6, 8, 10, 12",
+    "1, 2, 3, 4, 6, 8, 12",
+    "2, 3, 4, 6",
+    "1, 2, 3, 4, 6, 12"
+   ],
+   "correctIndex": 3,
+   "explain": "12 ni qoldiqsiz bo'ladigan sonlar: 1, 2, 3, 4, 6, 12. 1 va 12 ning o'zi ham bo'luvchi.",
+   "answer": {
+    "type": "set",
+    "accept": [
+     1,
+     2,
+     3,
+     4,
+     6,
+     12
+    ]
+   },
+   "studentGoal": "Sonning barcha bo'luvchilarini topish.",
+   "teacherGoal": "1 va sonning o'zini unutish kabi tipik xatolarni oldindan ko'rish va tizimli qidirish usulini o'rgatish.",
+   "lessonUse": "12 ta kubikdan to'g'ri to'rtburchaklar yasatib, har bir yasalgan shakl tomonlari bo'luvchilar ekanini ko'rsatadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-9",
+   "source": "TIMSS 2011, 4-sinf, M031210",
+   "intlPct": 46,
+   "adaptation": "Asl variantlar rasm (ulushlar) ko'rinishida; bu yerda kasr yozuvi bilan berilgan, kasrlar moslashtirilgan",
+   "q": "Qaysi kasr 1/2 dan katta?",
+   "options": [
+    "5/8",
+    "1/4",
+    "2/5",
+    "3/8"
+   ],
+   "correctIndex": 0,
+   "explain": "5/8 = 0,625 > 0,5. Qolganlari yarimdan kichik: 3/8 < 4/8, 2/5 < 2,5/5.",
+   "studentGoal": "Kasrlarni 1/2 bilan taqqoslash.",
+   "teacherGoal": "Kasrni «yarim» etaloniga solishtirish usulini (surat maxrajning yarmidan katta/kichik) tushuntira olish.",
+   "lessonUse": "Kasr kartochkalarini «1/2 dan kichik» va «1/2 dan katta» guruhlarga ajratish o'yini o'tkazadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-10",
+   "source": "TIMSS 2011, 4-sinf, M051203",
+   "intlPct": 41,
+   "adaptation": "Ochiq javob → test",
+   "q": "23 × 19 = ?",
+   "options": [
+    "247",
+    "437",
+    "460",
+    "427"
+   ],
+   "correctIndex": 1,
+   "explain": "23 × 19 = 23 × 20 − 23 = 460 − 23 = 437.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     437
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ikki xonali sonlarni ko'paytirish.",
+   "teacherGoal": "Yozma algoritm bilan bir qatorda qulay usullarni (23 × 20 − 23) ko'rsatish.",
+   "lessonUse": "O'quvchilar bir misolni ikki usulda yechib, qaysi biri qulayroq ekanini asoslaydi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RK-11",
+   "source": "TIMSS 2011, 8-sinf, M032094",
+   "intlPct": 62,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "4/100 + 3/1000 yig'indisi nechaga teng?",
+   "explain": "4/100 = 0,04; 3/1000 = 0,003; 0,04 + 0,003 = 0,043.",
+   "studentGoal": "O'nli va oddiy kasrlar orasidagi bog'lanishni qo'llash.",
+   "teacherGoal": "Xona birliklari tushunchasini o'nli kasrlarga kengaytirishni o'rgatish.",
+   "lessonUse": "Xona jadvaliga 4/100 va 3/1000 ni joylashtirib, yig'indini jadval orqali topishni ko'rsatadi.",
+   "options": [
+    "0,043",
+    "0,43",
+    "0,403",
+    "0,1043"
+   ],
+   "correctIndex": 0,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-12",
+   "source": "TIMSS 2011, 8-sinf, M032626",
+   "intlPct": 49,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "36 sonining tub ko'paytuvchilarga yoyilmasi qaysi?",
+   "explain": "36 = 2 × 18 = 2 × 2 × 9 = 2 × 2 × 3 × 3. 4, 6, 9 tub son emas.",
+   "studentGoal": "Sonni tub ko'paytuvchilarga ajratish.",
+   "teacherGoal": "Tub va murakkab ko'paytuvchilarni farqlashdagi xatolarni (4 × 9) tahlil qilish.",
+   "lessonUse": "Ko'paytuvchilar daraxtini chizdirib, har bir shoxda faqat tub son qolguncha bo'lishni davom ettiradi.",
+   "options": [
+    "2 × 3 × 6",
+    "2 × 2 × 3 × 3",
+    "2 × 2 × 9",
+    "4 × 9"
+   ],
+   "correctIndex": 1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-13",
+   "source": "TIMSS 2011, 8-sinf, M032725",
+   "intlPct": 25,
+   "grade": 8,
+   "adaptation": "Ochiq javob",
+   "q": "3 5/6 aralash sonni o'nli kasr ko'rinishida yozing va yuzdan birlargacha yaxlitlang.",
+   "explain": "5/6 = 0,8333…; 3 + 0,833… = 3,833… ≈ 3,83.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     3.83
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Aralash sonni o'nli kasrga o'tkazish va yaxlitlash.",
+   "teacherGoal": "«3,56» kabi xato (raqamlarni shunchaki yonma-yon yozish) sababini tushuntira olish.",
+   "lessonUse": "Kasrni bo'lish orqali o'nli kasrga aylantirishni kalkulyatorsiz bajarib, yaxlitlash qoidasini takrorlaydi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-14",
+   "source": "TIMSS 2011, 8-sinf, M042024",
+   "intlPct": 54,
+   "grade": 8,
+   "adaptation": "Rasm (son o'qi) qayta chizildi. Asl shakli test",
+   "q": "Son o'qida K nuqta qaysi sonni bildiradi? (26 va 28 orasi 0,1 lik bo'laklarga bo'lingan)",
+   "explain": "27 dan keyin 8 ta bo'lak o'tilgan: 27 + 0,8 = 27,8.",
+   "studentGoal": "Son o'qida o'nli kasrni aniqlash.",
+   "teacherGoal": "Son o'qi bo'linish qiymatini aniqlash ko'nikmasini shakllantirish.",
+   "lessonUse": "Turli bo'linishli son o'qlarini chizdirib, nuqtalarni o'quvchilarga topishmoq qilib beradi.",
+   "figure": "<svg viewBox=\"0 0 420 76\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:420px;width:100%;height:auto\"><line x1=\"20\" y1=\"40\" x2=\"400\" y2=\"40\" stroke=\"currentColor\" stroke-width=\"2\"/><line x1=\"20.0\" y1=\"32\" x2=\"20.0\" y2=\"48\" stroke=\"currentColor\"/><text x=\"20.0\" y=\"68\" text-anchor=\"middle\">26</text><line x1=\"39.0\" y1=\"35\" x2=\"39.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"58.0\" y1=\"35\" x2=\"58.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"77.0\" y1=\"35\" x2=\"77.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"96.0\" y1=\"35\" x2=\"96.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"115.0\" y1=\"35\" x2=\"115.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"134.0\" y1=\"35\" x2=\"134.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"153.0\" y1=\"35\" x2=\"153.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"172.0\" y1=\"35\" x2=\"172.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"191.0\" y1=\"35\" x2=\"191.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"210.0\" y1=\"32\" x2=\"210.0\" y2=\"48\" stroke=\"currentColor\"/><text x=\"210.0\" y=\"68\" text-anchor=\"middle\">27</text><line x1=\"229.0\" y1=\"35\" x2=\"229.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"248.0\" y1=\"35\" x2=\"248.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"267.0\" y1=\"35\" x2=\"267.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"286.0\" y1=\"35\" x2=\"286.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"305.0\" y1=\"35\" x2=\"305.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"324.0\" y1=\"35\" x2=\"324.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"343.0\" y1=\"35\" x2=\"343.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"362.0\" y1=\"35\" x2=\"362.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"381.0\" y1=\"35\" x2=\"381.0\" y2=\"45\" stroke=\"currentColor\"/><line x1=\"400.0\" y1=\"32\" x2=\"400.0\" y2=\"48\" stroke=\"currentColor\"/><text x=\"400.0\" y=\"68\" text-anchor=\"middle\">28</text><polygon points=\"356.0,16 368.0,16 362.0,28\" fill=\"#dc2626\"/><text x=\"362.0\" y=\"12\" text-anchor=\"middle\" font-weight=\"700\">K</text></svg>",
+   "options": [
+    "27,2",
+    "28,2",
+    "27,8",
+    "27,08"
+   ],
+   "correctIndex": 2,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-15",
+   "source": "TIMSS 2011, 8-sinf, M042032",
+   "intlPct": 70,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "Qaysi kasr 0,125 ga teng?",
+   "explain": "0,125 = 125/1000 = 1/8.",
+   "studentGoal": "O'nli kasrni oddiy kasrga aylantirish.",
+   "teacherGoal": "Ko'p uchraydigan kasr–o'nli kasr juftlarini (1/2, 1/4, 1/8) yodlashdan ko'ra tushunishga asoslash.",
+   "lessonUse": "0,5; 0,25; 0,125 qatorini ketma-ket yarimlash orqali hosil qiladi.",
+   "options": [
+    "12/5",
+    "1/4",
+    "1/125",
+    "1/8"
+   ],
+   "correctIndex": 3,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-16",
+   "source": "TIMSS 2011, 8-sinf, M042059",
+   "intlPct": 37,
+   "grade": 8,
+   "adaptation": "Ochiq javob (asl topshiriqda ikki bo'sh joy bor; bittasi olindi)",
+   "q": "Testda 20 ta savol bor. Andrey 80% natija oldi. U nechta savolga to'g'ri javob bergan?",
+   "explain": "20 ning 80 foizi: 20 × 0,8 = 16.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     16
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Sonning foizini topish.",
+   "teacherGoal": "Foizni ulush (80/100) va proporsiya orqali tushuntirish.",
+   "lessonUse": "Sinf testlari natijalarini foizga va aksincha o'tkazish mashqini beradi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-17",
+   "source": "TIMSS 2011, 8-sinf, M052216",
+   "intlPct": 68,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "Qaysi o'nli kasr 3/5 ga teng?",
+   "explain": "3/5 = 6/10 = 0,6. 0,35 — raqamlarni teskari yozish xatosi.",
+   "studentGoal": "Oddiy kasrni o'nli kasrga aylantirish.",
+   "teacherGoal": "Maxrajni 10, 100 ga keltirish usulini o'rgatish.",
+   "lessonUse": "Kasrlarni maxraji 10 ga keltirib, o'nli kasr bilan moslash o'yinini o'tkazadi.",
+   "options": [
+    "0,6",
+    "0,35",
+    "0,8",
+    "0,53"
+   ],
+   "correctIndex": 0,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-18",
+   "source": "TIMSS 2011, 8-sinf, M052231",
+   "intlPct": 72,
+   "grade": 8,
+   "adaptation": "Ochiq javob",
+   "q": "42,65 + 5,748 = ?",
+   "explain": "Vergulni vergul ostiga yozib qo'shiladi: 42,650 + 5,748 = 48,398.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     48.398
+    ],
+    "tol": 0.0001
+   },
+   "studentGoal": "O'nli kasrlarni qo'shish.",
+   "teacherGoal": "Xonalarni tekislash xatosini (10 013) tahlil qilish.",
+   "lessonUse": "Bo'sh xonalarni 0 bilan to'ldirib yozish usulini ko'rsatadi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RK-19",
+   "source": "TIMSS 2011, 8-sinf, M032295",
+   "intlPct": 73,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "Bir guruhda m ta o'g'il bola va n ta qiz bola bor. Har biri 2 tadan shar ko'tarib turibdi. Jami nechta shar bor?",
+   "explain": "Bolalar soni m + n, har birida 2 ta: 2(m + n).",
+   "studentGoal": "Vaziyatni harfli ifoda bilan yozish.",
+   "teacherGoal": "Ifodadagi qavsning ma'nosini vaziyat orqali tushuntirish.",
+   "lessonUse": "O'quvchilar ifodaga mos vaziyat o'ylab topadi va sheriklariga beradi.",
+   "options": [
+    "2mn",
+    "2(m + n)",
+    "2m + n",
+    "m + 2n"
+   ],
+   "correctIndex": 1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-20",
+   "source": "TIMSS 2011, 8-sinf, M032477",
+   "intlPct": 46,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "Taksi narxi: o'tirish uchun 25 zed va har bir km uchun 0,2 zed. n km yo'l uchun narx qaysi ifoda bilan topiladi?",
+   "explain": "Doimiy qism 25, o'zgaruvchi qism 0,2 × n.",
+   "studentGoal": "Chiziqli bog'liqlikni ifoda bilan yozish.",
+   "teacherGoal": "Doimiy va o'zgaruvchi qismni hayotiy tariflarda ajratishni o'rgatish.",
+   "lessonUse": "Mobil aloqa yoki taksi tariflarini ifoda bilan yozdirib, taqqoslaydi.",
+   "options": [
+    "25n + 0,2",
+    "25 × 0,2n",
+    "25 + 0,2n",
+    "(25 + 0,2)n"
+   ],
+   "correctIndex": 2,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-21",
+   "source": "TIMSS 2011, 8-sinf, M032673",
+   "intlPct": 47,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "t soni 6 va 9 orasida. t + 5 qaysi ikki son orasida bo'ladi?",
+   "explain": "Ikkala chegaraga 5 qo'shiladi: 11 va 14.",
+   "studentGoal": "Tengsizlikning ikki tomoniga son qo'shish.",
+   "teacherGoal": "Oraliqlar bilan ishlashni son o'qida ko'rsatish.",
+   "lessonUse": "Son o'qida oraliqni 5 birlik o'ngga «suradi».",
+   "options": [
+    "6 va 9",
+    "1 va 4",
+    "30 va 45",
+    "11 va 14"
+   ],
+   "correctIndex": 3,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-22",
+   "source": "TIMSS 2011, 8-sinf, M032683",
+   "intlPct": 24,
+   "grade": 8,
+   "adaptation": "Ochiq javob → test (javob ifoda bo'lgani uchun)",
+   "q": "3x/8 + x/4 + x/2 ifodani soddalashtiring.",
+   "explain": "Umumiy maxraj 8: 3x/8 + 2x/8 + 4x/8 = 9x/8.",
+   "studentGoal": "Algebraik kasrlarni qo'shish.",
+   "teacherGoal": "Maxrajlarni qo'shib yuborish xatosini (5x/14) tanib, sababini tushuntirish.",
+   "lessonUse": "Avval sonli kasrlarda (3/8 + 1/4 + 1/2), so'ng harfli ifodada bir xil qadamlarni bajartiradi.",
+   "options": [
+    "9x/8",
+    "5x/14",
+    "3x/14",
+    "11x/8"
+   ],
+   "correctIndex": 0,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-23",
+   "source": "TIMSS 2011, 8-sinf, M042077",
+   "intlPct": 51,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "4(3 + x) ifodaga teng ifoda qaysi?",
+   "explain": "Taqsimot qonuni: 4 × 3 + 4 × x = 12 + 4x.",
+   "studentGoal": "Qavsni ochish (taqsimot qonuni).",
+   "teacherGoal": "Qavsning faqat birinchi hadiga ko'paytirish xatosini oldini olish.",
+   "lessonUse": "To'g'ri to'rtburchak yuzi modeli (4 × (3 + x)) bilan taqsimot qonunini ko'rsatadi.",
+   "options": [
+    "3 + 4x",
+    "12 + 4x",
+    "12 + x",
+    "7 + x"
+   ],
+   "correctIndex": 1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-24",
+   "source": "TIMSS 2011, 8-sinf, M042103",
+   "intlPct": 17,
+   "grade": 8,
+   "adaptation": "Ochiq javob → test (javob ifoda bo'lgani uchun)",
+   "q": "9x − 6 < 4x + 4 tengsizlikni yeching.",
+   "explain": "9x − 4x < 4 + 6 ⇒ 5x < 10 ⇒ x < 2.",
+   "studentGoal": "Chiziqli tengsizlikni yechish.",
+   "teacherGoal": "Tenglama va tengsizlik yechimi farqini (yechimlar to'plami) tushuntirish.",
+   "lessonUse": "Yechimni son o'qida tasvirlab, bir nechta qiymatni qo'yib tekshirtiradi.",
+   "options": [
+    "x > 2",
+    "x > −2",
+    "x < 2",
+    "x < 10"
+   ],
+   "correctIndex": 2,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-25",
+   "source": "TIMSS 2011, 8-sinf, M042235",
+   "intlPct": 50,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "x + y = 12 va 2x + 5y = 36 bo'lsa, x va y nechaga teng?",
+   "explain": "x = 12 − y; 2(12 − y) + 5y = 36 ⇒ 3y = 12 ⇒ y = 4, x = 8.",
+   "studentGoal": "Ikki noma'lumli tenglamalar sistemasini yechish.",
+   "teacherGoal": "Javobni ikkala tenglamaga qo'yib tekshirishni odat qilish.",
+   "lessonUse": "Variantlarni tenglamalarga qo'yib tekshirish strategiyasini algebraik usul bilan taqqoslaydi.",
+   "options": [
+    "x = 9, y = 3",
+    "x = 6, y = 6",
+    "x = 4, y = 8",
+    "x = 8, y = 4"
+   ],
+   "correctIndex": 3,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-26",
+   "source": "TIMSS 2011, 8-sinf, M042236",
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "3p² + 2p + 2p² + p ifodani soddalashtiring.",
+   "explain": "O'xshash hadlar: 3p² + 2p² = 5p², 2p + p = 3p.",
+   "studentGoal": "O'xshash hadlarni ixchamlash.",
+   "teacherGoal": "p² va p ni qo'shib yuborish xatosini tushuntirish.",
+   "lessonUse": "Algebra plitkalari (kvadrat va chiziq) bilan o'xshash hadlarni guruhlab ko'rsatadi.",
+   "options": [
+    "5p² + 3p",
+    "6p² + 2p",
+    "5p⁴ + 3p²",
+    "8p²"
+   ],
+   "correctIndex": 0,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RK-27",
+   "source": "TIMSS 2011, 4-sinf, M031093 asosida",
+   "grade": 4,
+   "adaptation": "Rasm moslashtirilgan: asl rasm matnli manbada yo'q, topshiriq g'oyasi saqlangan holda qayta chizildi; raqamlar moslashtirilgan. Asl shakli test",
+   "q": "Qaysi shaklda qizil punktir chiziq simmetriya o'qi bo'ladi?",
+   "explain": "Rombni vertikal chiziq bo'yicha buklasak, ikki yarmi ustma-ust tushadi. Qolganlarida tushmaydi.",
+   "studentGoal": "Simmetriya o'qini aniqlash.",
+   "teacherGoal": "Simmetriyani buklash va oyna yordamida amaliy tushuntirish.",
+   "lessonUse": "Qog'ozdan shakllarni qirqib, buklab tekshirish amaliy mashg'ulotini o'tkazadi.",
+   "figure": "<svg viewBox=\"0 0 500 120\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:500px;width:100%;height:auto\"><g transform=\"translate(0,0)\"><g fill=\"#fde68a\" stroke=\"#111827\" stroke-width=\"1.5\"><polygon points=\"20,80 60,20 100,80\" /></g><g stroke=\"#dc2626\" stroke-width=\"2\" stroke-dasharray=\"5 4\"><line x1=\"20\" y1=\"20\" x2=\"100\" y2=\"80\"/></g><text x=\"60\" y=\"110\" text-anchor=\"middle\" font-weight=\"700\">A</text></g><g transform=\"translate(125,0)\"><g fill=\"#fde68a\" stroke=\"#111827\" stroke-width=\"1.5\"><rect x=\"20\" y=\"30\" width=\"80\" height=\"40\"/></g><g stroke=\"#dc2626\" stroke-width=\"2\" stroke-dasharray=\"5 4\"><line x1=\"20\" y1=\"30\" x2=\"100\" y2=\"70\"/></g><text x=\"60\" y=\"110\" text-anchor=\"middle\" font-weight=\"700\">B</text></g><g transform=\"translate(250,0)\"><g fill=\"#fde68a\" stroke=\"#111827\" stroke-width=\"1.5\"><polygon points=\"60,15 100,50 60,85 20,50\"/></g><g stroke=\"#dc2626\" stroke-width=\"2\" stroke-dasharray=\"5 4\"><line x1=\"60\" y1=\"10\" x2=\"60\" y2=\"90\"/></g><text x=\"60\" y=\"110\" text-anchor=\"middle\" font-weight=\"700\">C</text></g><g transform=\"translate(375,0)\"><g fill=\"#fde68a\" stroke=\"#111827\" stroke-width=\"1.5\"><polygon points=\"20,80 40,20 100,20 80,80\"/></g><g stroke=\"#dc2626\" stroke-width=\"2\" stroke-dasharray=\"5 4\"><line x1=\"60\" y1=\"10\" x2=\"60\" y2=\"90\"/></g><text x=\"60\" y=\"110\" text-anchor=\"middle\" font-weight=\"700\">D</text></g></svg>",
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "correctIndex": 2,
+   "topic": "r-geo4"
+  }
+ ],
+ "applying": [
+  {
+   "id": "RA-1",
+   "source": "TIMSS 2011, 4-sinf, M031009",
+   "intlPct": 34,
+   "adaptation": "Ochiq javob → test",
+   "q": "Ali 12 ta xat yozdi. Xatlarning yarmi 1 sahifadan, qolgan yarmi 2 sahifadan iborat. Ali jami necha sahifa yozgan?",
+   "options": [
+    "14",
+    "24",
+    "18",
+    "36"
+   ],
+   "correctIndex": 2,
+   "explain": "6 ta xat × 1 sahifa = 6; 6 ta xat × 2 sahifa = 12; jami 18 sahifa.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     18
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ko'p qadamli hayotiy masalani yechish.",
+   "teacherGoal": "Masala shartini qismlarga ajratish (yarmi 1 sahifa, yarmi 2 sahifa) bosqichlarini o'rgatish.",
+   "lessonUse": "Masalani chizma yoki jadval bilan modellashtirishni so'raydi; turli model chizgan o'quvchilar natijalarini taqqoslaydi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-2",
+   "source": "TIMSS 2011, 4-sinf, M031043",
+   "intlPct": 52,
+   "adaptation": "Asl shakli test",
+   "q": "Poyezd ertalab soat 8:45 da jo'nadi va yo'lda 2 soat 18 daqiqa yurdi. Poyezd soat nechada manzilga yetib keldi?",
+   "options": [
+    "10:63",
+    "11:13",
+    "10:03",
+    "11:03"
+   ],
+   "correctIndex": 3,
+   "explain": "8:45 + 2 soat = 10:45; 10:45 + 18 daqiqa = 11:03 (60 daqiqadan oshganda soat almashadi).",
+   "studentGoal": "Vaqt oralig'ini qo'shish, 60 daqiqadan o'tishni hisobga olish.",
+   "teacherGoal": "«10:63» kabi o'nlik tizimiga xos xatoni tanib, vaqt o'lchovining o'ziga xosligini tushuntira olish.",
+   "lessonUse": "Soat modeli yoki son o'qida vaqtni bosqichma-bosqich qo'shishni ko'rsatadi; jadvaldan real poyezd vaqtlarini hisoblatadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-3",
+   "source": "TIMSS 2011, 4-sinf, M031183",
+   "intlPct": 23,
+   "adaptation": "Ochiq javob → test; retseptdagi miqdorlar javob kalitidan tiklangan (8 stakan un, 1/2 stakan sut)",
+   "q": "6 kishilik pirog uchun 8 stakan un va 1/2 stakan sut kerak. 3 kishilik pirog uchun qancha un va sut kerak?",
+   "options": [
+    "4 stakan un va 1/4 stakan sut",
+    "4 stakan un va 1/2 stakan sut",
+    "5 stakan un va 1/4 stakan sut",
+    "16 stakan un va 1 stakan sut"
+   ],
+   "correctIndex": 0,
+   "explain": "Kishilar soni 2 marta kamaydi, demak har bir masalliq ham 2 marta kamayadi: 8 : 2 = 4, 1/2 : 2 = 1/4.",
+   "studentGoal": "Retseptdagi miqdorlarni proporsional kamaytirish.",
+   "teacherGoal": "Butun son va kasrlar bilan proporsional fikrlashni hayotiy kontekstda o'rgatish.",
+   "lessonUse": "Guruhlarga oddiy retsept berib, uni 2, 3, 12 kishiga moslashtirishni topshiradi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-4",
+   "source": "TIMSS 2011, 4-sinf, M031187",
+   "intlPct": 73,
+   "adaptation": "Asl shakli test",
+   "q": "Erkinda E ta qalam bor edi. U yana 3 ta qalam oldi. Endi Erkinda nechta qalam bor?",
+   "options": [
+    "E − 3",
+    "E + 3",
+    "E : 3",
+    "3 × E"
+   ],
+   "correctIndex": 1,
+   "explain": "«Yana oldi» — qo'shish: E + 3.",
+   "studentGoal": "So'zli vaziyatni harfli ifoda bilan yozish.",
+   "teacherGoal": "Arifmetikadan algebraga o'tishda harfni noma'lum son sifatida tushuntirish.",
+   "lessonUse": "O'quvchilar ifodaga (E + 3, E − 3, 3 × E) mos qisqa hikoya tuzadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-5",
+   "source": "TIMSS 2011, 4-sinf, M031218",
+   "intlPct": 55,
+   "adaptation": "Asl shakli test",
+   "q": "600 ta kitob qutilarga joylanadi, har bir qutiga 15 tadan. Nechta quti kerakligini topish uchun qaysi amal bajariladi?",
+   "options": [
+    "600 − 15",
+    "600 + 15",
+    "600 : 15",
+    "600 × 15"
+   ],
+   "correctIndex": 2,
+   "explain": "Teng guruhlarga bo'lish — bo'lish amali: 600 : 15 = 40 quti.",
+   "studentGoal": "Masalani yechish uchun kerakli amalni tanlash.",
+   "teacherGoal": "Hisoblashdan oldin «qaysi amal?» savoliga javob berishni odatga aylantirish.",
+   "lessonUse": "Bir nechta masala uchun faqat amalni tanlatib, hisoblamasdan asoslashni so'raydi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-6",
+   "source": "TIMSS 2011, 4-sinf, M031252",
+   "intlPct": 62,
+   "adaptation": "Asl shakli test",
+   "q": "3, 6, 9, 12, ... ketma-ketlik shu qoida bo'yicha davom etadi. Quyidagi sonlardan qaysi biri shu ketma-ketlikda uchraydi?",
+   "options": [
+    "25",
+    "29",
+    "32",
+    "27"
+   ],
+   "correctIndex": 3,
+   "explain": "Ketma-ketlik 3 ga karrali sonlardan iborat; ulardan faqat 27 = 3 × 9.",
+   "studentGoal": "Sonlar ketma-ketligi qonuniyatini aniqlash.",
+   "teacherGoal": "Qonuniyatni so'z bilan ifodalash va tekshirish ko'nikmasini rivojlantirish.",
+   "lessonUse": "O'quvchilar o'z ketma-ketligini tuzib, sheriklari qoidasini topadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-7",
+   "source": "TIMSS 2011, 4-sinf, M031313",
+   "intlPct": 73,
+   "adaptation": "Ochiq javob → test",
+   "q": "Kemada 218 nafar yo'lovchi va 191 nafar ekipaj a'zosi bor. Kemada jami necha kishi bor?",
+   "options": [
+    "409",
+    "27",
+    "399",
+    "309"
+   ],
+   "correctIndex": 0,
+   "explain": "218 + 191 = 409. 27 — ayirma (218 − 191), savol yig'indini so'raydi.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     409
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ikki miqdorni qo'shib, umumiy sonni topish.",
+   "teacherGoal": "«Jami» so'zi va ayirma (27) bilan adashishni oldini olish uchun masala matni ustida ishlash.",
+   "lessonUse": "Masaladagi kalit so'zlar emas, vaziyat ma'nosi bo'yicha amal tanlanishini muhokama qiladi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-8",
+   "source": "TIMSS 2011, 4-sinf, M031346A",
+   "intlPct": 62,
+   "adaptation": "Ochiq javob → test",
+   "q": "Kartochka almashish qoidasi: 1 ta hayvon kartochkasi = 2 ta multfilm kartochkasi; 2 ta hayvon kartochkasi = 3 ta sport kartochkasi. Lola 5 ta hayvon kartochkasini multfilm kartochkalariga almashtirdi. U nechta multfilm kartochkasi oladi?",
+   "options": [
+    "7",
+    "10",
+    "25",
+    "15"
+   ],
+   "correctIndex": 1,
+   "explain": "Har bir hayvon kartochkasi uchun 2 ta multfilm kartochkasi: 5 × 2 = 10.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     10
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Almashish qoidasini qo'llab hisoblash.",
+   "teacherGoal": "Nisbat va almashish qoidalarini jadval yordamida tushuntirish.",
+   "lessonUse": "Haqiqiy kartochkalar bilan almashish o'yini o'tkazib, natijani jadvalga yozdiradi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-9",
+   "source": "TIMSS 2011, 4-sinf, M041098",
+   "intlPct": 44,
+   "adaptation": "Asl shakli test",
+   "q": "Xonani bo'yash uchun 37 litr bo'yoq kerak. Bo'yoq 5 litrlik bankalarda sotiladi. Kamida nechta banka sotib olish kerak?",
+   "options": [
+    "42",
+    "32",
+    "8",
+    "7"
+   ],
+   "correctIndex": 2,
+   "explain": "37 : 5 = 7 (qoldiq 2). 7 banka 35 litr — yetmaydi, shuning uchun 8 banka kerak.",
+   "studentGoal": "Qoldiqli bo'lish natijasini vaziyatga mos talqin qilish.",
+   "teacherGoal": "Qoldiq yuqoriga yaxlitlanadigan vaziyatlarni (banka, avtobus) ajrata olish.",
+   "lessonUse": "«Qoldiq nima qiladi?» mavzusida turli kontekstli masalalarni solishtiradi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-10",
+   "source": "TIMSS 2011, 4-sinf, M041107",
+   "intlPct": 78,
+   "adaptation": "Asl shakli test",
+   "q": "Savatda 12 ta olma bor edi. Bolalar bir nechta olmani yeyishdi va 9 ta olma qoldi. Yeyilgan olmalar sonini (□) topish uchun qaysi tenglik to'g'ri?",
+   "options": [
+    "□ − 9 = 12",
+    "12 + □ = 9",
+    "12 + 9 = □",
+    "12 − □ = 9"
+   ],
+   "correctIndex": 3,
+   "explain": "Bor edi 12, □ tasi yeyildi, 9 qoldi: 12 − □ = 9 (□ = 3).",
+   "studentGoal": "Vaziyatni noma'lum son qatnashgan tenglik bilan ifodalash.",
+   "teacherGoal": "Tenglama tuzishni masalaning tuzilishi (bor edi — ketdi — qoldi) orqali o'rgatish.",
+   "lessonUse": "Bitta masalaga bir nechta to'g'ri tenglik yozilishi mumkinligini ko'rsatadi (12 − □ = 9, 9 + □ = 12).",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-11",
+   "source": "TIMSS 2011, 4-sinf, M051305",
+   "intlPct": 60,
+   "adaptation": "Asl shakli test",
+   "q": "Sardor uyidan maktabgacha 4,8 km, keyin maktabdan kutubxonagacha yana 1,5 km yo'l bosdi. U jami necha km yo'l bosdi?",
+   "options": [
+    "6,3 km",
+    "5,3 km",
+    "3,3 km",
+    "6,13 km"
+   ],
+   "correctIndex": 0,
+   "explain": "4,8 + 1,5 = 6,3 km. O'nli kasrlarni qo'shishda vergul vergul ostida yoziladi.",
+   "studentGoal": "O'nli kasrlarni qo'shish.",
+   "teacherGoal": "Vergulni tekislash xatosini (6,13) tushuntirish uchun pul yoki uzunlik modelidan foydalanish.",
+   "lessonUse": "Masofalarni metrga o'tkazib (4 800 + 1 500) natijani tekshirtiradi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RA-12",
+   "source": "TIMSS 2011, 8-sinf, M032595",
+   "intlPct": 49,
+   "grade": 8,
+   "adaptation": "Doiraviy diagramma qayta chizildi. Asl shakli test → ochiq javob",
+   "q": "Do'konda 200 ta qalpoq bor. Diagrammada qalpoqlar rangi bo'yicha taqsimlangan. Oq yoki yashil qalpoqlar jami nechta?",
+   "explain": "Oq 30% + yashil 25% = 55%; 200 × 0,55 = 110.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     110
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Doiraviy diagrammadan foizlarni o'qib, sonni topish.",
+   "teacherGoal": "Diagramma va foizni bog'lab, real ma'lumot bilan ishlashni o'rgatish.",
+   "lessonUse": "Sinf o'quvchilarining sevimli ranglari bo'yicha doiraviy diagramma tuzdiradi.",
+   "figure": "<svg viewBox=\"0 0 330 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:330px;width:100%;height:auto\"><path d=\"M110,110 L110.0,20.0 A90,90 0 0 1 195.6,137.8 Z\" fill=\"#e5e7eb\" stroke=\"#111827\" stroke-width=\"1\"/><text x=\"155.1\" y=\"77.2\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"#111827\" font-size=\"12\">30%</text><path d=\"M110,110 L195.6,137.8 A90,90 0 0 1 82.2,195.6 Z\" fill=\"#16a34a\" stroke=\"#111827\" stroke-width=\"1\"/><text x=\"135.3\" y=\"159.7\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"#ffffff\" font-size=\"12\">25%</text><path d=\"M110,110 L82.2,195.6 A90,90 0 0 1 20.0,110.0 Z\" fill=\"#dc2626\" stroke=\"#111827\" stroke-width=\"1\"/><text x=\"64.9\" y=\"142.8\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"#ffffff\" font-size=\"12\">20%</text><path d=\"M110,110 L20.0,110.0 A90,90 0 0 1 37.2,57.1 Z\" fill=\"#2563eb\" stroke=\"#111827\" stroke-width=\"1\"/><text x=\"56.9\" y=\"92.8\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"#ffffff\" font-size=\"12\">10%</text><path d=\"M110,110 L37.2,57.1 A90,90 0 0 1 110.0,20.0 Z\" fill=\"#374151\" stroke=\"#111827\" stroke-width=\"1\"/><text x=\"84.7\" y=\"60.3\" text-anchor=\"middle\" dominant-baseline=\"middle\" fill=\"#ffffff\" font-size=\"12\">15%</text><rect x=\"230\" y=\"20\" width=\"14\" height=\"14\" fill=\"#e5e7eb\" stroke=\"#111827\"/><text x=\"250\" y=\"31\">Oq</text><rect x=\"230\" y=\"44\" width=\"14\" height=\"14\" fill=\"#16a34a\" stroke=\"#111827\"/><text x=\"250\" y=\"55\">Yashil</text><rect x=\"230\" y=\"68\" width=\"14\" height=\"14\" fill=\"#dc2626\" stroke=\"#111827\"/><text x=\"250\" y=\"79\">Qizil</text><rect x=\"230\" y=\"92\" width=\"14\" height=\"14\" fill=\"#2563eb\" stroke=\"#111827\"/><text x=\"250\" y=\"103\">Ko'k</text><rect x=\"230\" y=\"116\" width=\"14\" height=\"14\" fill=\"#374151\" stroke=\"#111827\"/><text x=\"250\" y=\"127\">Qora</text></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RA-13",
+   "source": "TIMSS 2011, 8-sinf, M042016",
+   "intlPct": 51,
+   "grade": 8,
+   "adaptation": "Jadval matn bilan berildi. Asl shakli test",
+   "q": "Jadvalda 4 ning darajalari berilgan. 256 × 4 096 ni 4 ning darajasi ko'rinishida yozing.",
+   "explain": "256 = 4⁴, 4 096 = 4⁶; 4⁴ × 4⁶ = 4⁴⁺⁶ = 4¹⁰.",
+   "studentGoal": "Bir xil asosli darajalarni ko'paytirish.",
+   "teacherGoal": "Daraja ko'rsatkichlarini ko'paytirib yuborish xatosini (4²⁴) tahlil qilish.",
+   "lessonUse": "Jadval yordamida daraja qoidasini o'quvchilarning o'zi «kashf» qilishini tashkil etadi.",
+   "table": {
+    "rows": [
+     [
+      "n",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     [
+      "4ⁿ",
+      "4",
+      "16",
+      "64",
+      "256",
+      "1 024",
+      "4 096"
+     ]
+    ]
+   },
+   "options": [
+    "16¹⁰",
+    "4¹⁰",
+    "4²⁴",
+    "4⁹"
+   ],
+   "correctIndex": 1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RA-14",
+   "source": "TIMSS 2011, 8-sinf, M042041",
+   "intlPct": 70,
+   "grade": 8,
+   "adaptation": "Asl shakli test → ochiq javob",
+   "q": "Usta quvurning 1/5 qismini kesib oldi. Kesilgan bo'lak 3 m. Quvur dastlab necha metr bo'lgan?",
+   "explain": "1/5 qism 3 m bo'lsa, butun quvur 3 × 5 = 15 m.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     15
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Qismiga ko'ra butunni topish.",
+   "teacherGoal": "Kasr masalalarini kesma modeli bilan tushuntirish.",
+   "lessonUse": "Kesma chizib 5 ga bo'ldiradi va bitta bo'lakka 3 m yozib, butunni topadi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RA-15",
+   "source": "TIMSS 2011, 8-sinf, M052061",
+   "intlPct": 41,
+   "grade": 8,
+   "adaptation": "Ochiq javob",
+   "q": "94 ta tuxum qutilarga 6 tadan joylanadi. Barcha tuxumlar uchun kamida nechta quti kerak?",
+   "explain": "94 : 6 = 15 (qoldiq 4). Qolgan 4 ta tuxumga ham quti kerak: 16.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     16
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Qoldiqli bo'lish natijasini vaziyatga moslab talqin qilish.",
+   "teacherGoal": "Qoldiqni yuqoriga yaxlitlash kerak bo'lgan vaziyatlarni ajratish.",
+   "lessonUse": "Bir xil bo'lish (94 : 6) uchun turli savollar beradi: nechta to'liq quti, nechta quti kerak, nechta tuxum ortadi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RA-16",
+   "source": "TIMSS 2011, 8-sinf, M032047",
+   "intlPct": 52,
+   "grade": 8,
+   "adaptation": "Asl shakli test",
+   "q": "Ketma-ket uchta natural sonning o'rtadagisi 2n. Bu uch son yig'indisi qaysi?",
+   "explain": "(2n − 1) + 2n + (2n + 1) = 6n.",
+   "studentGoal": "Ketma-ket sonlarni ifoda bilan yozish va qo'shish.",
+   "teacherGoal": "Umumlashtirish (harfli ifoda) orqali qonuniyatni isbotlashni o'rgatish.",
+   "lessonUse": "Avval sonli misollarda (4, 5, 6 → 15 = 3 × 5) kuzatib, so'ng ifoda bilan isbotlatadi.",
+   "options": [
+    "6n + 3",
+    "3n",
+    "6n",
+    "6n − 1"
+   ],
+   "correctIndex": 2,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RA-17",
+   "source": "TIMSS 2011, 8-sinf, M032352",
+   "intlPct": 60,
+   "grade": 8,
+   "adaptation": "Jadval matn bilan berildi. Asl shakli test → ochiq javob",
+   "q": "Jadvalda buyumlar balandligi va soyasi uzunligi berilgan. 50 sm balandlikdagi butaning soyasi necha sm bo'ladi?",
+   "explain": "Soya balandlikning 0,8 qismi (16 : 20). 50 × 0,8 = 40 sm.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     40
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Jadvaldan proporsional bog'liqlikni topish.",
+   "teacherGoal": "To'g'ri proporsionallikni koeffitsiyent orqali tushuntirish.",
+   "lessonUse": "Hovlida turli buyumlar soyasini o'lchab, jadval va grafik tuzdiradi.",
+   "table": {
+    "rows": [
+     [
+      "Balandlik (sm)",
+      "20",
+      "40",
+      "60",
+      "80"
+     ],
+     [
+      "Soya (sm)",
+      "16",
+      "32",
+      "48",
+      "64"
+     ]
+    ]
+   },
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RA-18",
+   "source": "TIMSS 2011, 8-sinf, M042067",
+   "intlPct": 40,
+   "grade": 8,
+   "adaptation": "Rasm qayta chizildi. Asl shakli test",
+   "q": "To'g'ri to'rtburchakning tomonlari x va x + 2. Uning yuzini ifodalovchi ifoda qaysi?",
+   "explain": "S = x(x + 2) = x² + 2x. 4x + 4 — perimetr.",
+   "studentGoal": "Yuzni harfli ifoda bilan yozish.",
+   "teacherGoal": "Yuz va perimetr formulalarini aralashtirish xatosini tahlil qilish.",
+   "lessonUse": "Bir xil shakl uchun yuz va perimetr ifodalarini yonma-yon yozdirib, farqini muhokama qiladi.",
+   "figure": "<svg viewBox=\"0 0 260 140\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:260px;width:100%;height:auto\"><rect x=\"40\" y=\"20\" width=\"200\" height=\"90\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/><text x=\"140\" y=\"130\" text-anchor=\"middle\">x + 2</text><text x=\"22\" y=\"70\" text-anchor=\"middle\">x</text></svg>",
+   "options": [
+    "x² + 2",
+    "2x + 2",
+    "4x + 4",
+    "x² + 2x"
+   ],
+   "correctIndex": 3,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RA-19",
+   "source": "TIMSS 2011, 8-sinf, M042086",
+   "intlPct": 32,
+   "grade": 8,
+   "adaptation": "Ochiq javob",
+   "q": "a + b = 25 bo'lsa, 2a + 2b + 4 nechaga teng?",
+   "explain": "2a + 2b = 2(a + b) = 50; 50 + 4 = 54.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     54
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ifodani shakl almashtirib qiymatini topish.",
+   "teacherGoal": "a va b ni alohida topishga urinmasdan, ifodani butunligicha ko'rishni o'rgatish.",
+   "lessonUse": "Bir nechta (a, b) juftliklarini qo'yib natija o'zgarmasligini ko'rsatadi, so'ng umumiy isbotlaydi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RA-20",
+   "source": "TIMSS 2011, 8-sinf, M052228",
+   "intlPct": 37,
+   "grade": 8,
+   "adaptation": "Variantlar o'zbekcha qayta tuzildi. Asl shakli test",
+   "q": "1/3 − 1/4 ni hisoblashning to'g'ri usuli qaysi?",
+   "explain": "Umumiy maxraj 12: 1/3 = 4/12, 1/4 = 3/12; 4/12 − 3/12 = 1/12.",
+   "studentGoal": "Turli maxrajli kasrlarni ayirish.",
+   "teacherGoal": "Suratlar va maxrajlarni alohida ayirish xatosini aniqlash.",
+   "lessonUse": "Kasr doiralari bilan 1/3 va 1/4 ni solishtirib, farqni 1/12 bo'laklarda ko'rsatadi.",
+   "options": [
+    "4/12 − 3/12 = 1/12",
+    "(1 − 1)/(4 − 3) = 0",
+    "1/(4 − 3) = 1",
+    "(1 − 1)/(3 − 4)"
+   ],
+   "correctIndex": 0,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RA-21",
+   "source": "TIMSS 2011, 4-sinf, M031297 asosida",
+   "grade": 4,
+   "adaptation": "Rasm moslashtirilgan: asl rasm matnli manbada yo'q, topshiriq g'oyasi saqlangan holda qayta chizildi; raqamlar moslashtirilgan. Ochiq javob",
+   "q": "Har bir katakcha 1 sm × 1 sm. Bo'yalgan shaklning yuzi necha kvadrat santimetr?",
+   "explain": "6 ta to'liq katakcha + 4 ta yarim katakcha (4 × 1/2 = 2) = 8 sm².",
+   "answer": {
+    "type": "number",
+    "accept": [
+     8
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Katakchalarni sanab yuzni topish.",
+   "teacherGoal": "Yuzni birlik kvadratlar va ularning qismlari orqali tushuntirish.",
+   "lessonUse": "Katakli qog'ozda shakllar chizdirib, yuzni sanash va yarim katakchalarni juftlashni mashq qiladi.",
+   "figure": "<svg viewBox=\"0 0 270 170\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:270px;width:100%;height:auto\"><rect x=\"10\" y=\"10\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"40\" y=\"10\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"70\" y=\"10\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"100\" y=\"10\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"130\" y=\"10\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"160\" y=\"10\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"190\" y=\"10\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"10\" y=\"40\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"40\" y=\"40\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"70\" y=\"40\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"100\" y=\"40\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"130\" y=\"40\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"160\" y=\"40\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"190\" y=\"40\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"10\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"40\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"70\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"100\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"130\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"160\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"190\" y=\"70\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"10\" y=\"100\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"40\" y=\"100\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"70\" y=\"100\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"100\" y=\"100\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"130\" y=\"100\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"160\" y=\"100\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"190\" y=\"100\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"10\" y=\"130\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"40\" y=\"130\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"70\" y=\"130\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"100\" y=\"130\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"130\" y=\"130\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"160\" y=\"130\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"190\" y=\"130\" width=\"30\" height=\"30\" fill=\"none\" stroke=\"#9ca3af\"/><rect x=\"40\" y=\"40\" width=\"30\" height=\"30\" fill=\"#2563eb\" opacity=\"0.75\"/><rect x=\"70\" y=\"40\" width=\"30\" height=\"30\" fill=\"#2563eb\" opacity=\"0.75\"/><rect x=\"100\" y=\"40\" width=\"30\" height=\"30\" fill=\"#2563eb\" opacity=\"0.75\"/><rect x=\"40\" y=\"70\" width=\"30\" height=\"30\" fill=\"#2563eb\" opacity=\"0.75\"/><rect x=\"70\" y=\"70\" width=\"30\" height=\"30\" fill=\"#2563eb\" opacity=\"0.75\"/><rect x=\"100\" y=\"70\" width=\"30\" height=\"30\" fill=\"#2563eb\" opacity=\"0.75\"/><polygon points=\"10,40 40,40 40,70\" fill=\"#2563eb\" opacity=\"0.75\"/><polygon points=\"10,100 40,70 40,100\" fill=\"#2563eb\" opacity=\"0.75\"/><polygon points=\"130,40 160,70 130,70\" fill=\"#2563eb\" opacity=\"0.75\"/><polygon points=\"130,70 160,70 130,100\" fill=\"#2563eb\" opacity=\"0.75\"/><text x=\"228\" y=\"29.0\">1 sm</text><line x1=\"190\" y1=\"44\" x2=\"220\" y2=\"44\" stroke=\"currentColor\"/></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-geo4"
+  },
+  {
+   "id": "RA-22",
+   "source": "TIMSS 2011, 4-sinf, M051601 asosida",
+   "grade": 4,
+   "adaptation": "Rasm moslashtirilgan: asl rasm matnli manbada yo'q, topshiriq g'oyasi saqlangan holda qayta chizildi; raqamlar moslashtirilgan. Ochiq javob",
+   "q": "Gugurt cho'plaridan kvadratlar qatori tuzilmoqda. 4-shakl uchun nechta cho'p kerak?",
+   "explain": "Har bir yangi kvadrat 3 ta cho'p qo'shadi: 4, 7, 10, 13.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     13
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Geometrik qonuniyatni davom ettirish.",
+   "teacherGoal": "Qonuniyatni jadval va qoida (3n + 1) bilan ifodalashga tayyorlash.",
+   "lessonUse": "Cho'plar bilan shakllarni yasatib, jadvalga yozdiradi va 10-shakl uchun bashorat qildiradi.",
+   "figure": "<svg viewBox=\"0 0 286 68\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:286px;width:100%;height:auto\"><line x1=\"10\" y1=\"10\" x2=\"36\" y2=\"10\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"10\" y1=\"36\" x2=\"36\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"36\" y1=\"10\" x2=\"36\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"10\" y1=\"10\" x2=\"10\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><text x=\"23.0\" y=\"60\" text-anchor=\"middle\">1-shakl</text><line x1=\"76\" y1=\"10\" x2=\"102\" y2=\"10\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"76\" y1=\"36\" x2=\"102\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"102\" y1=\"10\" x2=\"102\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"76\" y1=\"10\" x2=\"76\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"102\" y1=\"10\" x2=\"128\" y2=\"10\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"102\" y1=\"36\" x2=\"128\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"128\" y1=\"10\" x2=\"128\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><text x=\"102.0\" y=\"60\" text-anchor=\"middle\">2-shakl</text><line x1=\"168\" y1=\"10\" x2=\"194\" y2=\"10\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"168\" y1=\"36\" x2=\"194\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"194\" y1=\"10\" x2=\"194\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"168\" y1=\"10\" x2=\"168\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"194\" y1=\"10\" x2=\"220\" y2=\"10\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"194\" y1=\"36\" x2=\"220\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"220\" y1=\"10\" x2=\"220\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"220\" y1=\"10\" x2=\"246\" y2=\"10\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"220\" y1=\"36\" x2=\"246\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"246\" y1=\"10\" x2=\"246\" y2=\"36\" stroke=\"#b45309\" stroke-width=\"4\" stroke-linecap=\"round\"/><text x=\"207.0\" y=\"60\" text-anchor=\"middle\">3-shakl</text></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num4"
+  },
+  {
+   "id": "RA-23",
+   "source": "TIMSS 2011, 4-sinf, M041199 asosida",
+   "grade": 4,
+   "adaptation": "Rasm moslashtirilgan: asl rasm matnli manbada yo'q, topshiriq g'oyasi saqlangan holda qayta chizildi; raqamlar moslashtirilgan. Ochiq javob",
+   "q": "Ustunli diagrammada o'quvchilarning sevimli mevalari ko'rsatilgan. Olmani tanlaganlar nokni tanlaganlardan nechta ko'p?",
+   "explain": "Olma — 8, nok — 3; 8 − 3 = 5.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     5
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ustunli diagrammadan ma'lumot o'qib, taqqoslash.",
+   "teacherGoal": "Diagramma o'qish ko'nikmasini hisoblash bilan bog'lash.",
+   "lessonUse": "Sinfda so'rov o'tkazib, natijani ustunli diagrammada tasvirlaydi va savollar tuzadi.",
+   "figure": "<svg viewBox=\"0 0 310 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:310px;width:100%;height:auto\"><line x1=\"40\" y1=\"190.0\" x2=\"300\" y2=\"190.0\" stroke=\"#d1d5db\"/><text x=\"32\" y=\"194.0\" text-anchor=\"end\">0</text><line x1=\"40\" y1=\"159.6\" x2=\"300\" y2=\"159.6\" stroke=\"#d1d5db\"/><text x=\"32\" y=\"163.6\" text-anchor=\"end\">2</text><line x1=\"40\" y1=\"129.2\" x2=\"300\" y2=\"129.2\" stroke=\"#d1d5db\"/><text x=\"32\" y=\"133.2\" text-anchor=\"end\">4</text><line x1=\"40\" y1=\"98.8\" x2=\"300\" y2=\"98.8\" stroke=\"#d1d5db\"/><text x=\"32\" y=\"102.8\" text-anchor=\"end\">6</text><line x1=\"40\" y1=\"68.4\" x2=\"300\" y2=\"68.4\" stroke=\"#d1d5db\"/><text x=\"32\" y=\"72.4\" text-anchor=\"end\">8</text><line x1=\"40\" y1=\"38.0\" x2=\"300\" y2=\"38.0\" stroke=\"#d1d5db\"/><text x=\"32\" y=\"42.0\" text-anchor=\"end\">10</text><rect x=\"60\" y=\"68.4\" width=\"36\" height=\"121.6\" fill=\"#2563eb\"/><text x=\"78\" y=\"208\" text-anchor=\"middle\">Olma</text><rect x=\"120\" y=\"114.0\" width=\"36\" height=\"76.0\" fill=\"#2563eb\"/><text x=\"138\" y=\"208\" text-anchor=\"middle\">Banan</text><rect x=\"180\" y=\"83.6\" width=\"36\" height=\"106.4\" fill=\"#2563eb\"/><text x=\"198\" y=\"208\" text-anchor=\"middle\">Uzum</text><rect x=\"240\" y=\"144.4\" width=\"36\" height=\"45.6\" fill=\"#2563eb\"/><text x=\"258\" y=\"208\" text-anchor=\"middle\">Nok</text><text x=\"12\" y=\"14\">O'quvchilar soni</text></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-data4"
+  }
+ ],
+ "reasoning": [
+  {
+   "id": "RR-1",
+   "source": "TIMSS 2011, 4-sinf, M031016",
+   "intlPct": 26,
+   "adaptation": "Ochiq javob → test",
+   "q": "Biletlar 1 dan 3 000 gacha raqamlangan. Raqami 112 bilan tugaydigan barcha biletlar yutuqli. Barcha yutuqli bilet raqamlarini vergul bilan ajratib yozing.",
+   "options": [
+    "112, 212, 312, …, 2 912",
+    "112, 1 112, 2 112",
+    "112, 1 112, 2 112, 3 112",
+    "1 112, 2 112"
+   ],
+   "correctIndex": 1,
+   "explain": "112, 1 112, 2 112. 3 112 ro'yxatga kirmaydi — u 3 000 dan katta; 212 esa 112 bilan tugamaydi.",
+   "answer": {
+    "type": "set",
+    "accept": [
+     112,
+     1112,
+     2112
+    ]
+   },
+   "studentGoal": "Shartni to'liq tahlil qilib, barcha yechimlarni topish.",
+   "teacherGoal": "To'liq va tizimli qidirishni hamda chegarani (3 000) tekshirishni o'rgatish.",
+   "lessonUse": "O'quvchilar javoblarini solishtirib, kimda nima yetishmasligini aniqlaydi; «hammasini topdikmi?» savolini muhokama qiladi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RR-2",
+   "source": "TIMSS 2011, 4-sinf, M031185",
+   "intlPct": 54,
+   "adaptation": "Asl shakli test",
+   "q": "Xaritada 1 sm haqiqatda 4 km ga teng. Ikki shahar orasidagi masofa xaritada 8 sm. Shaharlar orasidagi haqiqiy masofa qancha?",
+   "options": [
+    "2 km",
+    "28 km",
+    "32 km",
+    "12 km"
+   ],
+   "correctIndex": 2,
+   "explain": "Har 1 sm — 4 km, demak 8 sm — 8 × 4 = 32 km.",
+   "studentGoal": "Xarita masshtabini qo'llab haqiqiy masofani topish.",
+   "teacherGoal": "Masshtabni proporsiya sifatida tushuntirish va hayotiy xaritalar bilan bog'lash.",
+   "lessonUse": "Mahalliy xaritada ikki joy orasidagi masofani o'lchab, haqiqiy masofani hisoblatadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RR-3",
+   "source": "TIMSS 2011, 4-sinf, M031346B",
+   "intlPct": 31,
+   "adaptation": "Ochiq javob → test",
+   "q": "Kartochka almashish qoidasi: 1 ta hayvon kartochkasi = 2 ta multfilm kartochkasi; 2 ta hayvon kartochkasi = 3 ta sport kartochkasi. Jasur 8 ta hayvon kartochkasini sport kartochkalariga almashtirdi. U nechta sport kartochkasi oladi?",
+   "options": [
+    "24",
+    "16",
+    "11",
+    "12"
+   ],
+   "correctIndex": 3,
+   "explain": "Har 2 ta hayvon kartochkasi — 3 ta sport kartochkasi. 8 ta = 4 juft; 4 × 3 = 12.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     12
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Nisbat qoidasini juftlab qo'llash.",
+   "teacherGoal": "«2 ga 3» nisbatini ko'p bosqichli masalada qo'llashni modellashtirish.",
+   "lessonUse": "Jadval tuzdiradi: 2 → 3, 4 → 6, 6 → 9, 8 → 12 va qonuniyatni muhokama qiladi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RR-4",
+   "source": "TIMSS 2011, 4-sinf, M031346C",
+   "intlPct": 24,
+   "adaptation": "Ochiq javob → test (asl topshiriqda ikkala hisob va tanlov yozib beriladi)",
+   "q": "Kartochka almashish qoidasi: 1 ta hayvon kartochkasi = 2 ta multfilm kartochkasi; 2 ta hayvon kartochkasi = 3 ta sport kartochkasi. Nodirada 6 ta hayvon kartochkasi bor. U ularni multfilm yoki sport kartochkalariga almashtirishi mumkin. Qaysi tanlov ko'proq kartochka beradi?",
+   "options": [
+    "Multfilm: 12 ta — sportdan (9 ta) ko'p",
+    "Sport: 9 ta — multfilmdan ko'p",
+    "Ikkalasi ham teng — 12 tadan",
+    "Sport: 18 ta — multfilmdan ko'p"
+   ],
+   "correctIndex": 0,
+   "explain": "Multfilm: 6 × 2 = 12 ta. Sport: 6 ta = 3 juft, 3 × 3 = 9 ta. 12 > 9.",
+   "studentGoal": "Ikki variantni hisoblab, taqqoslash va tanlovni asoslash.",
+   "teacherGoal": "Qaror qabul qilish topshiriqlarida hisobni asoslash bilan birga talab qilish.",
+   "lessonUse": "O'quvchilar tanlovini og'zaki yoki yozma asoslab beradi; asoslash sifati baholanadi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RR-5",
+   "source": "TIMSS 2011, 4-sinf, M031379",
+   "intlPct": 25,
+   "adaptation": "Ochiq javob → test",
+   "q": "Kartochka almashish qoidasi: 1 ta hayvon kartochkasi = 2 ta multfilm kartochkasi; 2 ta hayvon kartochkasi = 3 ta sport kartochkasi. Bekzodda 15 ta sport kartochkasi bor. U ularni hayvon kartochkalariga almashtirsa, nechta hayvon kartochkasi oladi?",
+   "options": [
+    "5",
+    "10",
+    "30",
+    "22"
+   ],
+   "correctIndex": 1,
+   "explain": "Teskari almashish: 3 ta sport kartochkasi — 2 ta hayvon kartochkasi. 15 = 5 × 3, demak 5 × 2 = 10.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     10
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Almashish qoidasini teskari yo'nalishda qo'llash.",
+   "teacherGoal": "Teskari fikrlash (orqaga hisoblash) ko'nikmasini rivojlantirish usullarini bilish.",
+   "lessonUse": "To'g'ri va teskari almashish masalalarini juftlab berib, farqini muhokama qiladi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RR-6",
+   "source": "TIMSS 2011, 4-sinf, M031380",
+   "intlPct": 18,
+   "adaptation": "Ochiq javob → test",
+   "q": "Kartochka almashish qoidasi: 1 ta hayvon kartochkasi = 2 ta multfilm kartochkasi; 2 ta hayvon kartochkasi = 3 ta sport kartochkasi. Malikada 8 ta multfilm kartochkasi bor. U avval ularni hayvon kartochkalariga, so'ng hayvon kartochkalarini sport kartochkalariga almashtirdi. U nechta sport kartochkasi oladi?",
+   "options": [
+    "4",
+    "16",
+    "6",
+    "12"
+   ],
+   "correctIndex": 2,
+   "explain": "8 ta multfilm = 4 ta hayvon kartochkasi; 4 ta hayvon = 2 juft = 2 × 3 = 6 ta sport kartochkasi.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     6
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ikki bosqichli almashishni ketma-ket bajarish.",
+   "teacherGoal": "Oraliq natijani yozib borish strategiyasini o'rgatish.",
+   "lessonUse": "Sxema (multfilm → hayvon → sport) chizdirib, har bir bosqichni yozdiradi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RR-7",
+   "source": "TIMSS 2011, 4-sinf, M051001",
+   "intlPct": 27,
+   "adaptation": "Ochiq javob → test",
+   "q": "Futbol turnirida g'alaba uchun 3 ochko, durang uchun 1 ochko, mag'lubiyat uchun 0 ochko beriladi. Jamoa 11 ochko to'pladi. Jamoa kamida nechta o'yin o'ynagan?",
+   "options": [
+    "6",
+    "4",
+    "11",
+    "5"
+   ],
+   "correctIndex": 3,
+   "explain": "3 g'alaba (9 ochko) + 2 durang (2 ochko) = 11 ochko, 5 o'yin. 4 o'yinda 11 ochko to'plab bo'lmaydi: masalan, 3 g'alaba + 1 durang = 10, 4 g'alaba = 12.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     5
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Shartga mos eng kichik yechimni topish.",
+   "teacherGoal": "Tanlab ko'rish va «kamida» so'zining ma'nosini tahlil qilishni o'rgatish.",
+   "lessonUse": "Turli ochko yig'indilari uchun eng kam o'yin sonini guruhlarda topish musobaqasi.",
+   "topic": "r-num4",
+   "grade": 4
+  },
+  {
+   "id": "RR-8",
+   "source": "TIMSS 2011, 8-sinf, M042002",
+   "intlPct": 28,
+   "grade": 8,
+   "adaptation": "Ochiq javob (asl topshiriqda raqamlar kataklarga joylashtiriladi)",
+   "q": "3, 5, 7, 9 raqamlarining har biridan bir marta foydalanib, ikkita ikki xonali son tuzing va ularni ko'paytiring. Eng katta ko'paytma nechaga teng?",
+   "explain": "Eng katta raqamlar o'nlar xonasiga: 9 va 7. Tekshirish: 93 × 75 = 6 975, 95 × 73 = 6 935, 97 × 53 = 5 141. Eng kattasi 6 975.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     6975
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Raqamlarni joylashtirib, eng katta natijani topish.",
+   "teacherGoal": "Tanlab ko'rish va xona qiymatiga asoslangan mulohazani o'rgatish.",
+   "lessonUse": "Guruhlar musobaqasi: kim kattaroq ko'paytma topadi; so'ng nega aynan shu joylashuv eng yaxshi ekanini asoslaydi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RR-9",
+   "source": "TIMSS 2011, 8-sinf, M042186",
+   "intlPct": 42,
+   "grade": 8,
+   "adaptation": "Asl shakli ochiq → test",
+   "q": "Qonuniyatga qarang: 3 − 3 = 0; 3 − 2 = 1; 3 − 1 = 2; 3 − 0 = 3. Shu qonuniyat bo'yicha keyingi qator qaysi?",
+   "explain": "Ayriluvchi 1 ga kamayib, natija 1 ga ortadi: 3 − (−1) = 4.",
+   "studentGoal": "Qonuniyat orqali manfiy sonni ayirishni tushunish.",
+   "teacherGoal": "Manfiy sonlar bilan amallarni qoida yodlatmasdan, qonuniyat orqali kiritish.",
+   "lessonUse": "Shunday qonuniyat zanjirlarini o'quvchilarning o'zi davom ettirib, qoidani o'zlari ifodalaydi.",
+   "options": [
+    "3 − (−1) = 2",
+    "3 − (−1) = 4",
+    "3 − 1 = 4",
+    "3 + 0 = 3"
+   ],
+   "correctIndex": 1,
+   "topic": "r-num8"
+  },
+  {
+   "id": "RR-10",
+   "source": "TIMSS 2011, 8-sinf, M032757",
+   "intlPct": 54,
+   "grade": 8,
+   "adaptation": "Rasm qayta chizildi. Ochiq javob (asl topshiriqda jadval to'ldiriladi)",
+   "q": "Kvadrat shakllar qizil va qora kafellardan tuzilgan: chetida qizil, ichida qora. 6 × 6 shaklda nechta qizil kafel bo'ladi?",
+   "explain": "Chetidagi kafellar: 6 × 6 − 4 × 4 = 36 − 16 = 20 (yoki 4 × 6 − 4).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     20
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Geometrik qonuniyatni sonlar bilan ifodalash.",
+   "teacherGoal": "Bitta qonuniyatni turli usulda sanash (chetlar, ayirma) mumkinligini ko'rsatish.",
+   "lessonUse": "O'quvchilar qizil kafellarni turlicha sanab, usullarini taqqoslaydi.",
+   "figure": "<svg viewBox=\"0 0 292 122\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:292px;width:100%;height:auto\"><rect x=\"10\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"34.0\" y=\"112\" text-anchor=\"middle\">3 × 3</text><rect x=\"88\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"120.0\" y=\"112\" text-anchor=\"middle\">4 × 4</text><rect x=\"182\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"222.0\" y=\"112\" text-anchor=\"middle\">5 × 5</text></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RR-11",
+   "source": "TIMSS 2011, 8-sinf, M032760A",
+   "intlPct": 27,
+   "grade": 8,
+   "adaptation": "Rasm qayta chizildi. Ochiq javob (asl topshiriqda qora va qizil ikkalasi so'raladi)",
+   "q": "Xuddi shu qonuniyat bo'yicha tuzilgan shaklda jami 64 ta kafel bor. Unda nechta qora kafel bor?",
+   "explain": "64 = 8 × 8; ichki qora kvadrat 6 × 6 = 36.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     36
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Umumiy sondan shakl o'lchamini aniqlab, qismni topish.",
+   "teacherGoal": "Teskari fikrlash (natijadan o'lchamga) ko'nikmasini shakllantirish.",
+   "lessonUse": "Turli umumiy sonlar uchun o'lchamni topishni jadval orqali mashq qiladi.",
+   "figure": "<svg viewBox=\"0 0 292 122\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:292px;width:100%;height:auto\"><rect x=\"10\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"34.0\" y=\"112\" text-anchor=\"middle\">3 × 3</text><rect x=\"88\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"120.0\" y=\"112\" text-anchor=\"middle\">4 × 4</text><rect x=\"182\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"222.0\" y=\"112\" text-anchor=\"middle\">5 × 5</text></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RR-12",
+   "source": "TIMSS 2011, 8-sinf, M032760B",
+   "intlPct": 20,
+   "grade": 8,
+   "adaptation": "Rasm qayta chizildi. Ochiq javob",
+   "q": "Xuddi shu qonuniyat bo'yicha tuzilgan shaklda 49 ta qora kafel bor. Unda nechta qizil kafel bor?",
+   "explain": "Ichki qora kvadrat 7 × 7, butun shakl 9 × 9 = 81; qizil: 81 − 49 = 32.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     32
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ichki qismdan butun shaklni tiklash.",
+   "teacherGoal": "Ko'p bosqichli geometrik mulohazani sxema bilan qo'llab-quvvatlash.",
+   "lessonUse": "Kvadrat qog'ozda shaklni chizdirib, natijani sanab tekshirtiradi.",
+   "figure": "<svg viewBox=\"0 0 292 122\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:292px;width:100%;height:auto\"><rect x=\"10\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"34.0\" y=\"112\" text-anchor=\"middle\">3 × 3</text><rect x=\"88\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"120.0\" y=\"112\" text-anchor=\"middle\">4 × 4</text><rect x=\"182\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"222.0\" y=\"112\" text-anchor=\"middle\">5 × 5</text></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RR-13",
+   "source": "TIMSS 2011, 8-sinf, M032760C",
+   "intlPct": 15,
+   "grade": 8,
+   "adaptation": "Rasm qayta chizildi. Ochiq javob",
+   "q": "Xuddi shu qonuniyat bo'yicha shakl tuzish uchun 44 ta qizil kafel ishlatildi. Shaklni to'ldirish uchun nechta qora kafel kerak?",
+   "explain": "Qizil: 4n − 4 = 44 ⇒ n = 12. Qora: (12 − 2)² = 100.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     100
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Qonuniyatni tenglama bilan ifodalab, teskari masalani yechish.",
+   "teacherGoal": "Qonuniyatdan formula chiqarish va undan foydalanishni o'rgatish.",
+   "lessonUse": "Avval jadval, so'ng formula orqali yechib, ikki usulni taqqoslaydi.",
+   "figure": "<svg viewBox=\"0 0 292 122\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:292px;width:100%;height:auto\"><rect x=\"10\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"34.0\" y=\"112\" text-anchor=\"middle\">3 × 3</text><rect x=\"88\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"120.0\" y=\"112\" text-anchor=\"middle\">4 × 4</text><rect x=\"182\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"222.0\" y=\"112\" text-anchor=\"middle\">5 × 5</text></svg>",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RR-14",
+   "source": "TIMSS 2011, 8-sinf, M032761",
+   "intlPct": 11,
+   "grade": 8,
+   "adaptation": "Rasm qayta chizildi. Asl shakli ochiq → test",
+   "q": "Xuddi shu qonuniyat bo'yicha n × n shaklda qora kafellar soni (n − 2)². Qizil kafellar sonini ifodalovchi ifoda qaysi?",
+   "explain": "Qizil = n² − (n − 2)² = 4n − 4. 4n — burchakdagi kafellar ikki marta sanalgan.",
+   "studentGoal": "Qonuniyatni umumiy formula bilan ifodalash.",
+   "teacherGoal": "Burchaklarni ikki marta sanash xatosini (4n) tushuntirish.",
+   "lessonUse": "Turli o'quvchilar formulalarini (4(n − 1), 4n − 4, n² − (n − 2)²) taqqoslab, tengligini ko'rsatadi.",
+   "figure": "<svg viewBox=\"0 0 292 122\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" font-family=\"system-ui, sans-serif\" font-size=\"13\" fill=\"currentColor\" style=\"max-width:292px;width:100%;height:auto\"><rect x=\"10\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"10\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"26\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"42\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"34.0\" y=\"112\" text-anchor=\"middle\">3 × 3</text><rect x=\"88\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"88\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"104\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"120\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"136\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"120.0\" y=\"112\" text-anchor=\"middle\">4 × 4</text><rect x=\"182\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"10\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"26\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"26\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"42\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"42\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"58\" width=\"16\" height=\"16\" fill=\"#111827\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"58\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"182\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"198\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"214\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"230\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><rect x=\"246\" y=\"74\" width=\"16\" height=\"16\" fill=\"#dc2626\" stroke=\"#ffffff\"/><text x=\"222.0\" y=\"112\" text-anchor=\"middle\">5 × 5</text></svg>",
+   "options": [
+    "n² − 4",
+    "4n",
+    "4n − 4",
+    "(n − 2)²"
+   ],
+   "correctIndex": 2,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RR-15",
+   "source": "TIMSS 2011, 8-sinf, M042198B",
+   "intlPct": 41,
+   "grade": 8,
+   "adaptation": "Ketma-ketlik matn bilan berildi. Ochiq javob",
+   "q": "Ketma-ketlik: 1/2, 2/3, 3/4, 4/5, 5/6, … Bu ketma-ketlikning 100-hadi qaysi? (kasr ko'rinishida yozing, masalan 7/8)",
+   "explain": "n-had n/(n + 1); 100-had 100/101.",
+   "answer": {
+    "type": "fraction",
+    "accept": [
+     "100/101"
+    ]
+   },
+   "studentGoal": "Ketma-ketlikning umumiy hadini topish.",
+   "teacherGoal": "Qonuniyatni had raqami bilan bog'lashni o'rgatish.",
+   "lessonUse": "Had raqami va hadni jadvalga yozdirib, bog'lanishni so'z bilan ifodalatadi.",
+   "options": [],
+   "correctIndex": -1,
+   "topic": "r-alg8"
+  },
+  {
+   "id": "RR-16",
+   "source": "TIMSS 2011, 8-sinf, M042198C",
+   "intlPct": 18,
+   "grade": 8,
+   "adaptation": "Ketma-ketlik matn bilan berildi. Asl shakli ochiq → test",
+   "q": "Ketma-ketlik: 1/2, 2/3, 3/4, 4/5, 5/6, … Uning n-hadi qaysi?",
+   "explain": "1-had 1/2, 2-had 2/3 … n-had n/(n + 1).",
+   "studentGoal": "Umumiy hadni formula bilan yozish.",
+   "teacherGoal": "Formulani bir nechta had bilan tekshirishni odat qilish.",
+   "lessonUse": "Taklif qilingan formulalarni n = 1, 2, 3 da tekshirib, noto'g'rilarini rad etadi.",
+   "options": [
+    "1/n",
+    "n/(n − 1)",
+    "(n + 1)/n",
+    "n/(n + 1)"
+   ],
+   "correctIndex": 3,
+   "topic": "r-alg8"
+  }
+ ],
+ "pisa": [
+  {
+   "id": "RP-1",
+   "title": "Exchange Rate (Valyuta kursi)",
+   "source": "PISA released (OECD), Exchange Rate, M413Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Mei-Ling Singapurdan Janubiy Afrikaga 3 oyga o'qishga bormoqda. U Singapur dollarini (SGD) Janubiy Afrika randiga (ZAR) almashtirishi kerak. Kurs: 1 SGD = 4,2 ZAR. Mei-Ling 3 000 SGD almashtirdi. U necha ZAR oldi?",
+   "options": [
+    "12 600 ZAR",
+    "1 260 ZAR",
+    "714 ZAR",
+    "7 200 ZAR"
+   ],
+   "correctIndex": 0,
+   "explain": "3 000 × 4,2 = 12 600 ZAR.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     12600
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Valyuta kursi bo'yicha pulni almashtirish.",
+   "teacherGoal": "Hayotiy moliyaviy kontekstda ko'paytirishni qo'llashni tashkil etish.",
+   "lessonUse": "Haqiqiy kurslar (so'm–dollar) bilan almashtirish masalalarini o'quvchilarning o'zi tuzadi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-2",
+   "title": "Exchange Rate (Valyuta kursi)",
+   "source": "PISA released (OECD), Exchange Rate, M413Q02",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "3 oydan so'ng Mei-Lingda 3 900 ZAR qoldi. Endi kurs 1 SGD = 4,0 ZAR. U qolgan pulni Singapur dollariga almashtirsa, necha SGD oladi?",
+   "options": [
+    "1 950 SGD",
+    "975 SGD",
+    "15 600 SGD",
+    "929 SGD"
+   ],
+   "correctIndex": 1,
+   "explain": "ZAR dan SGD ga o'tishda bo'linadi: 3 900 : 4,0 = 975 SGD. 929 — eski kurs (4,2) bilan hisoblangan.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     975
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Teskari yo'nalishda valyuta almashtirish (bo'lish).",
+   "teacherGoal": "Qaysi holda ko'paytirish, qaysi holda bo'lish kerakligini birliklar orqali tushuntirish.",
+   "lessonUse": "«ZAR → SGD» va «SGD → ZAR» masalalarini juftlab, birliklarni yozib yechtiradi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-3",
+   "title": "Exchange Rate (Valyuta kursi)",
+   "source": "PISA released (OECD), Exchange Rate, M413Q03",
+   "process": "interpret",
+   "adaptation": "Ochiq javob → test (asl topshiriqda tushuntirish yoziladi)",
+   "q": "3 oy ichida kurs 1 SGD = 4,2 ZAR dan 1 SGD = 4,0 ZAR ga o'zgardi. Mei-Ling qolgan randlarini dollarga almashtirayotganda bu o'zgarish uning foydasigami?",
+   "options": [
+    "Farqi yo'q: o'zgarish atigi 0,2",
+    "Yo'q: kurs kamaydi, demak u kamroq dollar oladi",
+    "Ha: endi 1 SGD uchun kamroq ZAR beriladi, demak har bir randga ko'proq dollar oladi",
+    "Yo'q: u boshida 3 000 SGD almashtirgan edi"
+   ],
+   "correctIndex": 2,
+   "explain": "4,0 kursida 3 900 ZAR = 975 SGD, 4,2 kursida esa ≈ 929 SGD bo'lar edi. Demak o'zgarish uning foydasiga.",
+   "studentGoal": "Kurs o'zgarishini talqin qilish (Interpret).",
+   "teacherGoal": "Natijani vaziyatga qaytarib talqin qilishni o'rgatish — PISA'ning Interpret jarayoni.",
+   "lessonUse": "Ikki kurs bo'yicha hisoblab, «kim yutdi?» munozarasini o'tkazadi; javob dalil bilan asoslanadi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-4",
+   "title": "Walking (Yurish)",
+   "source": "PISA released (OECD), Walking, M124Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Odam izlari rasmida P — ketma-ket ikki izning (tovondan tovongacha) orasidagi masofa, ya'ni qadam uzunligi (metrda). Erkaklar uchun n/P = 140 formulasi taxminan to'g'ri; bunda n — bir daqiqadagi qadamlar soni. Heiko daqiqasiga 70 qadam tashlasa, uning qadam uzunligi qancha?",
+   "options": [
+    "0,7 m",
+    "1,4 m",
+    "2 m",
+    "0,5 m"
+   ],
+   "correctIndex": 3,
+   "explain": "70 / P = 140 ⇒ P = 70 : 140 = 0,5 m.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     0.5
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Formulaga qiymat qo'yib noma'lumni topish.",
+   "teacherGoal": "Formulani hayotiy o'lchov (qadam) bilan bog'lash va birliklarni tekshirishni o'rgatish.",
+   "lessonUse": "O'quvchilar o'z qadam uzunligini o'lchab, formula bilan solishtiradi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-5",
+   "title": "Walking (Yurish)",
+   "source": "PISA released (OECD), Walking, M124Q03",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test (asl topshiriqda m/daq va km/soat ikkalasi so'raladi)",
+   "q": "Bernardning qadam uzunligi 0,80 m. n/P = 140 formulasidan foydalanib, uning yurish tezligini km/soat da taxminan toping.",
+   "options": [
+    "5,4 km/soat",
+    "112 km/soat",
+    "6,7 km/soat",
+    "89,6 km/soat"
+   ],
+   "correctIndex": 0,
+   "explain": "n = 140 × 0,80 = 112 qadam/daq; tezlik = 112 × 0,80 = 89,6 m/daq = 89,6 × 60 : 1000 ≈ 5,4 km/soat. 6,7 — qadam uzunligiga ko'paytirish unutilgan holat.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     5.4,
+     5.38,
+     5.376
+    ],
+    "tol": 0.05
+   },
+   "studentGoal": "Formula va birliklar o'tkazishni ko'p bosqichda qo'llash.",
+   "teacherGoal": "m/daq dan km/soat ga o'tish kabi birlik almashtirishlarni bosqichma-bosqich o'rgatish.",
+   "lessonUse": "Maktab hovlisida bir daqiqa yurib, qadam va tezlikni o'lchab, km/soat ga o'tkazadi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-6",
+   "title": "Apples (Olma daraxtlari)",
+   "source": "PISA released (OECD), Apples, M136Q02",
+   "process": "formulate",
+   "adaptation": "Ochiq javob → test",
+   "q": "Fermer olma daraxtlarini kvadrat shaklda n qator × n ustun qilib ekadi va bog' atrofini ignabargli daraxtlar bilan o'raydi. Olma daraxtlari soni n², ignabargli daraxtlar soni 8n formulasi bilan topiladi. n ning qanday qiymatida olma va ignabargli daraxtlar soni teng bo'ladi (n > 0)?",
+   "options": [
+    "n = 64",
+    "n = 8",
+    "n = 4",
+    "n = 16"
+   ],
+   "correctIndex": 1,
+   "explain": "n² = 8n ⇒ n(n − 8) = 0 ⇒ n = 8 (n = 0 shartga mos emas).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     8
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Vaziyatni tenglama bilan modellashtirib yechish (Formulate).",
+   "teacherGoal": "Jadval, grafik va algebraik usul bilan bitta masalani yechishni ko'rsatish.",
+   "lessonUse": "n = 1…10 uchun jadval tuzdirib, tenglik nuqtasini topadi, so'ng tenglama bilan tasdiqlaydi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-7",
+   "title": "Apples (Olma daraxtlari)",
+   "source": "PISA released (OECD), Apples, M136Q03",
+   "process": "interpret",
+   "adaptation": "Ochiq javob → test (asl topshiriqda izoh yoziladi)",
+   "q": "Yuqoridagi bog'da (olma daraxtlari n², ignabargli daraxtlar 8n) fermer bog'ni kattalashtirmoqchi. n oshgan sari qaysi daraxtlar soni tezroq ko'payadi?",
+   "options": [
+    "Har doim ignabargli daraxtlar tezroq ko'payadi",
+    "Ikkalasi bir xil tezlikda ko'payadi",
+    "Olma daraxtlari: n² kvadratik, 8n esa chiziqli o'sadi",
+    "Ignabargli daraxtlar: 8 soni 1 dan katta"
+   ],
+   "correctIndex": 2,
+   "explain": "n oshganda n² ning o'sishi (2n + 1) har safar kattalashadi, 8n esa doim 8 ga oshadi. n > 8 dan keyin olma daraxtlari ko'p bo'ladi.",
+   "studentGoal": "Kvadratik va chiziqli o'sishni taqqoslab talqin qilish.",
+   "teacherGoal": "O'sish turlarini (chiziqli, kvadratik) hayotiy misollar bilan tushuntirish.",
+   "lessonUse": "n² va 8n ni bitta grafikda chizdirib, kesishish nuqtasidan keyingi holatni muhokama qiladi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-8",
+   "title": "Lichen (Lishaynik)",
+   "source": "PISA released (OECD), Lichen, M047Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Muzliklar erigach, toshlarda lishaynik o'sa boshlaydi. Muz yo'qolgandan 12 yil o'tgach, uning diametri taxminan d = 7,0 × √(t − 12) formulasi bilan topiladi (d — mm, t — yil). Muz yo'qolganidan 16 yil o'tgach lishaynikning diametri qancha bo'ladi?",
+   "options": [
+    "7 mm",
+    "28 mm",
+    "112 mm",
+    "14 mm"
+   ],
+   "correctIndex": 3,
+   "explain": "d = 7,0 × √(16 − 12) = 7,0 × √4 = 7,0 × 2 = 14 mm.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     14
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Kvadrat ildizli formulaga qiymat qo'yish.",
+   "teacherGoal": "Formulani hisoblash tartibi (qavs, ildiz, ko'paytirish) bo'yicha o'rgatish.",
+   "lessonUse": "Turli t qiymatlari uchun jadval to'ldirtirib, o'sish sekinlashishini kuzatadi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-9",
+   "title": "Lichen (Lishaynik)",
+   "source": "PISA released (OECD), Lichen, M047Q02",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Shu formula bo'yicha (d = 7,0 × √(t − 12)) Anna lishaynik diametrini 35 mm deb o'lchadi. Bu joyda muz yo'qolganiga necha yil bo'lgan?",
+   "options": [
+    "37 yil",
+    "17 yil",
+    "25 yil",
+    "47 yil"
+   ],
+   "correctIndex": 0,
+   "explain": "35 = 7 × √(t − 12) ⇒ √(t − 12) = 5 ⇒ t − 12 = 25 ⇒ t = 37.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     37
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Formuladan teskari hisob bilan noma'lumni topish.",
+   "teacherGoal": "Amallarni teskari tartibda bajarish (bo'lish, kvadratga oshirish, qo'shish) strategiyasini o'rgatish.",
+   "lessonUse": "Javobni formulaga qo'yib tekshirishni majburiy qadam qiladi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-10",
+   "title": "Coins (Tangalar)",
+   "source": "PISA released (OECD), Coins, M143Q01",
+   "process": "formulate",
+   "adaptation": "Ochiq javob → test (asl topshiriqda diametrlar ro'yxati so'raladi)",
+   "q": "Yangi tangalar tizimi yaratilmoqda. Barcha tangalar diametri butun millimetrda, eng kichigi 15 mm, eng kattasi 45 mm dan oshmaydi. Har bir keyingi tanganing diametri oldingisidan kamida 30% katta bo'lishi kerak. Eng kichik tanga 15 mm bo'lsa, ko'pi bilan necha xil tanga yaratish mumkin?",
+   "options": [
+    "3",
+    "5",
+    "4",
+    "6"
+   ],
+   "correctIndex": 1,
+   "explain": "15 → 19,5 ≈ 20 → 26 → 33,8 ≈ 34 → 44,2 ≈ 45 mm. Jami 5 xil tanga (15, 20, 26, 34, 45).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     5
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Foiz shartiga mos ketma-ketlik tuzish (Formulate).",
+   "teacherGoal": "Yaxlitlash qoidasi vaziyat talabiga (kamida 30%) bog'liqligini tushuntirish.",
+   "lessonUse": "O'quvchilar o'z «tanga tizimi»ni loyihalab, shartga mosligini sheriklari tekshiradi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-11",
+   "title": "Growing Up (O'sish)",
+   "source": "PISA released (OECD), Growing Up, M150Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "1998 yilda 20 yoshli qizlarning o'rtacha bo'yi 170,6 sm bo'lgan. Bu 1980 yildagidan 2,3 sm ko'p. 1980 yilda 20 yoshli qizlarning o'rtacha bo'yi qancha bo'lgan?",
+   "options": [
+    "167,3 sm",
+    "168,6 sm",
+    "168,3 sm",
+    "172,9 sm"
+   ],
+   "correctIndex": 2,
+   "explain": "170,6 − 2,3 = 168,3 sm. 172,9 — ayirish o'rniga qo'shilgan.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     168.3
+    ],
+    "tol": 0
+   },
+   "studentGoal": "O'sish ma'lumotidan oldingi qiymatni topish.",
+   "teacherGoal": "«… ga ko'p» munosabatini to'g'ri amalga (ayirish) o'girishni o'rgatish.",
+   "lessonUse": "Real statistik ma'lumotlar (bo'y, aholi) bilan «oldin qancha edi?» masalalarini tuzdiradi.",
+   "topic": "r-uncertainty",
+   "grade": 15
+  },
+  {
+   "id": "RP-12",
+   "title": "Pizzas (Pitssa)",
+   "source": "PISA released (OECD), Pizzas, M154Q01",
+   "process": "formulate",
+   "adaptation": "Ochiq javob → test (asl topshiriqda asoslash yoziladi)",
+   "q": "Pitssaxonada bir xil qalinlikdagi ikki xil dumaloq pitssa bor: diametri 30 sm — narxi 30 zed, diametri 40 sm — narxi 40 zed. Qaysi pitssa pulga nisbatan ko'proq ovqat beradi?",
+   "options": [
+    "Diametri 30 sm li",
+    "Ikkalasi bir xil, chunki narx diametrga mutanosib",
+    "Ma'lumot yetarli emas",
+    "Diametri 40 sm li"
+   ],
+   "correctIndex": 3,
+   "explain": "Pitssa miqdori yuzga (d²) bog'liq, narx esa d ga mutanosib. 1 zedga yuz: 30 sm — π·15²/30 ≈ 23,6 sm²; 40 sm — π·20²/40 ≈ 31,4 sm². Katta pitssa foydaliroq.",
+   "studentGoal": "Narx va yuz munosabatini tahlil qilib qaror qabul qilish.",
+   "teacherGoal": "Chiziqli va kvadratik bog'liqlikni kundalik tanlovda ko'rsatish.",
+   "lessonUse": "Turli o'lchamdagi pitssa yoki non narxlarini solishtirish loyihasini beradi.",
+   "topic": "r-space",
+   "grade": 15
+  },
+  {
+   "id": "RP-13",
+   "title": "Patio (Ayvon)",
+   "source": "PISA released (OECD), Patio, M267Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Nikki to'g'ri to'rtburchak shaklidagi 5,25 m × 3,00 m ayvonga g'isht yotqizmoqchi. 1 m² ga 81 ta g'isht ketadi. Butun ayvon uchun kamida nechta g'isht kerak?",
+   "options": [
+    "1 276",
+    "1 215",
+    "16",
+    "1 296"
+   ],
+   "correctIndex": 0,
+   "explain": "Yuz: 5,25 × 3,00 = 15,75 m²; 15,75 × 81 = 1 275,75 ⇒ 1 276 ta g'isht. 1 215 — yuz 15 m² deb olingan.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     1275.75,
+     1276,
+     1275
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Yuzni topib, birlikdagi miqdorga ko'paytirish.",
+   "teacherGoal": "Javobni vaziyatga ko'ra yaxlitlash (g'isht butun bo'ladi) muhokamasini tashkil etish.",
+   "lessonUse": "Sinf xonasi polini qoplash uchun kerakli plitka sonini hisoblash loyihasini beradi.",
+   "topic": "r-space",
+   "grade": 15
+  },
+  {
+   "id": "RP-14",
+   "title": "Drug Concentrations (Dori konsentratsiyasi)",
+   "source": "PISA released (OECD), Drug Concentrations, M307Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test (asl topshiriqda jadval to'ldiriladi)",
+   "q": "Bemorga soat 08:00 da 300 mg penitsillin yuborildi. Har soatda qondagi penitsillinning 60 foizi qoladi (40 foizi chiqib ketadi). Soat 11:00 da qonda necha mg penitsillin bo'ladi?",
+   "options": [
+    "120 mg",
+    "64,8 mg",
+    "108 mg",
+    "19,2 mg"
+   ],
+   "correctIndex": 1,
+   "explain": "09:00 — 180 mg, 10:00 — 108 mg, 11:00 — 64,8 mg. 120 mg — har soat bir xil 60 mg ayirilgan (noto'g'ri model).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     64.8,
+     65
+    ],
+    "tol": 0.05
+   },
+   "studentGoal": "Har bosqichda foiz qolishi (eksponensial kamayish) ni hisoblash.",
+   "teacherGoal": "Har soat bir xil miqdor ayirish (chiziqli) va foiz kamayish (eksponensial) farqini tushuntirish.",
+   "lessonUse": "Ikki modelni jadvalda yonma-yon hisoblatib, qaysi biri vaziyatga mosligini muhokama qiladi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-15",
+   "title": "Building Blocks (Kubiklar)",
+   "source": "PISA released (OECD), Building Blocks, M309Q04",
+   "process": "formulate",
+   "adaptation": "Ochiq javob → test",
+   "q": "Syuzan kichik kubiklardan uzunligi 6, eni 5, balandligi 4 kubikdan iborat to'g'ri burchakli blok yasamoqchi. U blokning ichini imkon qadar katta bo'shliq qilib qoldirmoqchi (devorlar 1 kubik qalinlikda). Unga kamida nechta kubik kerak?",
+   "options": [
+    "120",
+    "24",
+    "96",
+    "74"
+   ],
+   "correctIndex": 2,
+   "explain": "To'liq blok: 6 × 5 × 4 = 120 kubik. Ichki bo'shliq: (6−2) × (5−2) × (4−2) = 24. 120 − 24 = 96.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     96
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Fazoviy tasavvur va hajm bilan ishlash (Formulate).",
+   "teacherGoal": "Uch o'lchamli masalalarni kubiklar bilan modellashtirishni o'rgatish.",
+   "lessonUse": "Kichik o'lchamli (3 × 3 × 3) blokni kubiklardan yasatib, ichi bo'sh holatni sanatadi.",
+   "topic": "r-space",
+   "grade": 15
+  },
+  {
+   "id": "RP-16",
+   "title": "Internet Relay Chat (Onlayn suhbat)",
+   "source": "PISA released (OECD), Internet Relay Chat, M402Q01",
+   "process": "employ",
+   "adaptation": "Asl topshiriqda vaqt mintaqalari sxemada; bu yerda matn bilan berilgan. Ochiq javob → test",
+   "q": "Mark Sidneyda (Avstraliya), Xans Berlinda (Germaniya) yashaydi. Sidney vaqti Berlin vaqtidan 9 soat oldinda. Sidneyda soat 19:00 bo'lganda Berlinda soat necha bo'ladi?",
+   "options": [
+    "12:00",
+    "16:00",
+    "04:00",
+    "10:00"
+   ],
+   "correctIndex": 3,
+   "explain": "Berlin 9 soat orqada: 19:00 − 9 soat = 10:00.",
+   "answer": {
+    "type": "time",
+    "accept": [
+     "10:00"
+    ]
+   },
+   "studentGoal": "Vaqt mintaqalari farqini hisoblash.",
+   "teacherGoal": "Hayotiy kontekstda vaqt bilan ishlash va manfiy o'tishlarni (yarim tundan o'tish) tushuntirish.",
+   "lessonUse": "Toshkent va boshqa shaharlar vaqtini taqqoslab, onlayn uchrashuv vaqtini tanlatadi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-17",
+   "title": "Science Tests (Fan testlari)",
+   "source": "PISA released (OECD), Science Tests, M468Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Irinaning dastlabki to'rtta testdan o'rtacha bali 60 edi. Beshinchi testdan u 80 ball oldi. Beshta test bo'yicha o'rtacha ball qancha?",
+   "options": [
+    "64",
+    "65",
+    "68",
+    "70"
+   ],
+   "correctIndex": 0,
+   "explain": "4 test yig'indisi 60 × 4 = 240; 240 + 80 = 320; 320 : 5 = 64. 70 — 60 va 80 ning o'rtachasi (noto'g'ri).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     64
+    ],
+    "tol": 0
+   },
+   "studentGoal": "O'rta arifmetik ma'nosini tushunib, yig'indi orqali hisoblash.",
+   "teacherGoal": "«O'rtachalarning o'rtachasi» xatosini (70) tanib, tushuntira olish.",
+   "lessonUse": "Sinf baholari bilan yangi baho qo'shilganda o'rtacha qanday o'zgarishini tahlil qiladi.",
+   "topic": "r-uncertainty",
+   "grade": 15
+  },
+  {
+   "id": "RP-18",
+   "title": "Bookshelves (Kitob javoni)",
+   "source": "PISA released (OECD), Bookshelves, M484Q01",
+   "process": "formulate",
+   "adaptation": "Ochiq javob → test",
+   "q": "Bitta kitob javonini yig'ish uchun 4 ta uzun taxta, 6 ta qisqa taxta, 12 ta kichik qisqich, 2 ta katta qisqich va 14 ta vint kerak. Duradgorda 26 ta uzun taxta, 33 ta qisqa taxta, 200 ta kichik qisqich, 20 ta katta qisqich va 510 ta vint bor. U nechta to'liq javon yig'a oladi?",
+   "options": [
+    "6",
+    "5",
+    "10",
+    "36"
+   ],
+   "correctIndex": 1,
+   "explain": "Har bir detal bo'yicha: 26:4 = 6, 33:6 = 5, 200:12 = 16, 20:2 = 10, 510:14 = 36. Eng kami — 5 (qisqa taxtalar cheklaydi).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     5
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Bir nechta cheklov ichidan eng kichigini aniqlash (Formulate).",
+   "teacherGoal": "Optimallashtirish masalalarida «cheklovchi omil» tushunchasini o'rgatish.",
+   "lessonUse": "Retsept yoki to'plam yig'ish o'yinida qaysi qism birinchi tugashini topishni topshiradi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-19",
+   "title": "Earthquake (Zilzila)",
+   "source": "PISA released (OECD), Earthquake, M509Q01",
+   "process": "interpret",
+   "adaptation": "Asl shakli test",
+   "q": "Zilzilalar haqidagi ko'rsatuvda geolog shunday dedi: «Keyingi 20 yil ichida Zed shahrida zilzila bo'lish ehtimoli uchdan ikkiga teng». Bu gapni qaysi talqin eng to'g'ri ifodalaydi?",
+   "options": [
+    "Hech kim aniq bilmagani uchun bu gapdan hech qanday xulosa chiqmaydi",
+    "2/3 × 20 = 13,3, demak 13–14 yildan keyin zilzila bo'ladi",
+    "Keyingi 20 yilda zilzila bo'lish ehtimoli bo'lmaslik ehtimolidan katta",
+    "2/3 yarimdan katta, demak 20 yil ichida zilzila albatta bo'ladi"
+   ],
+   "correctIndex": 2,
+   "explain": "Ehtimol 2/3, bo'lmaslik ehtimoli 1/3. Demak zilzila bo'lishi ehtimolroq, lekin aniq emas.",
+   "studentGoal": "Ehtimollik haqidagi gapni to'g'ri talqin qilish.",
+   "teacherGoal": "Ehtimollik va aniqlik farqini tushuntirish, keng tarqalgan noto'g'ri tasavvurlarni muhokama qilish.",
+   "lessonUse": "Ob-havo prognozi foizlarini talqin qilish bo'yicha munozara o'tkazadi.",
+   "topic": "r-uncertainty",
+   "grade": 15
+  },
+  {
+   "id": "RP-20",
+   "title": "Choices (Tanlov)",
+   "source": "PISA released (OECD), Choices, M510Q01",
+   "process": "formulate",
+   "adaptation": "Ochiq javob → test",
+   "q": "Pitssaxonada pishloq va pomidorli asosiy pitssaga 4 xil qo'shimchadan (zaytun, jambon, qo'ziqorin, kolbasa) tanlab qo'shish mumkin. Ravi ikki xil qo'shimchali pitssa buyurmoqchi. U nechta turli kombinatsiyani tanlashi mumkin?",
+   "options": [
+    "4",
+    "12",
+    "8",
+    "6"
+   ],
+   "correctIndex": 3,
+   "explain": "4 tadan 2 tasini tartibsiz tanlash: 4 × 3 : 2 = 6. 12 — tartib hisobga olingan (bir xil juftlik ikki marta sanalgan).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     6
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Kombinatsiyalar sonini topish.",
+   "teacherGoal": "Tartib muhim va muhim emas holatlarni farqlash, ro'yxat tuzish strategiyasini o'rgatish.",
+   "lessonUse": "Barcha juftliklarni ro'yxat yoki daraxt sxemasida yozdirib, takrorlarni topadi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-21",
+   "title": "Skateboard (Skeytbord)",
+   "source": "PISA released (OECD), Skateboard, M520Q02",
+   "process": "formulate",
+   "adaptation": "Asl shakli test",
+   "q": "Do'konda skeytbord qismlari sotiladi: 3 xil taxta, 2 xil g'ildirak to'plami, 1 xil podveska to'plami va 2 xil mahkamlash to'plami. Har bir skeytbordga har turdan bittadan qism kerak. Nechta turli skeytbord yig'ish mumkin?",
+   "options": [
+    "12",
+    "6",
+    "10",
+    "8"
+   ],
+   "correctIndex": 0,
+   "explain": "Ko'paytirish qoidasi: 3 × 2 × 1 × 2 = 12.",
+   "studentGoal": "Ko'paytirish qoidasini qo'llash.",
+   "teacherGoal": "Kombinatorikaning ko'paytirish qoidasini daraxt diagrammasi bilan tushuntirish.",
+   "lessonUse": "Kiyim kombinatsiyalari (ko'ylak × shim) masalasini o'quvchilarning o'zi tuzadi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-22",
+   "title": "Heartbeat (Yurak urishi)",
+   "source": "PISA released (OECD), Heartbeat, M537Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Tavsiya etilgan eng yuqori yurak urishi chastotasi eski formula bo'yicha 220 − yosh, yangi formula bo'yicha 208 − (0,7 × yosh). Yangi formula qaysi yoshdan boshlab eski formuladan katta natija beradi? Yoshni son bilan yozing.",
+   "options": [
+    "60 yoshdan katta",
+    "40 yoshdan katta",
+    "12 yoshdan katta",
+    "30 yoshdan katta"
+   ],
+   "correctIndex": 1,
+   "explain": "208 − 0,7a > 220 − a ⇒ 0,3a > 12 ⇒ a > 40. 40 yoshda ikkala formula teng (180).",
+   "answer": {
+    "type": "number",
+    "accept": [
+     40,
+     41
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Ikki formula natijasini taqqoslab, tengsizlik yechish.",
+   "teacherGoal": "Tengsizlikni jadval, grafik va algebraik usulda yechishni taqqoslash.",
+   "lessonUse": "Turli yoshlar uchun ikki formula natijasini jadvalga yozib, kesishish nuqtasini topadi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-23",
+   "title": "Heartbeat (Yurak urishi)",
+   "source": "PISA released (OECD), Heartbeat, M537Q02",
+   "process": "formulate",
+   "adaptation": "Ochiq javob → test",
+   "q": "Yangi formula bo'yicha eng yuqori chastota 208 − 0,7 × yosh. Mashg'ulot samarali bo'lishi uchun yurak urishi shu qiymatning 80 foizi bo'lishi tavsiya etiladi. Bu chastotani yosh (a) orqali ifodalovchi formula qaysi?",
+   "options": [
+    "208 − 0,56a",
+    "176 − 0,8a",
+    "166,4 − 0,56a",
+    "166,4 − 0,7a"
+   ],
+   "correctIndex": 2,
+   "explain": "0,8 × (208 − 0,7a) = 166,4 − 0,56a. «0,8» ni ikkala hadga ham ko'paytirish kerak.",
+   "studentGoal": "Foizni formulaga qo'llab yangi formula tuzish.",
+   "teacherGoal": "Ko'paytirishning qavsga nisbatan taqsimot qonunini hayotiy formulada qo'llashni o'rgatish.",
+   "lessonUse": "O'quvchilar o'z yoshi uchun ikkala usulda hisoblab, formula to'g'riligini tekshiradi.",
+   "topic": "r-change",
+   "grade": 15
+  },
+  {
+   "id": "RP-24",
+   "title": "Space Flight (Kosmik parvoz)",
+   "source": "PISA released (OECD), Space Flight, M543Q01",
+   "process": "employ",
+   "adaptation": "Asl shakli test",
+   "q": "«Mir» kosmik stansiyasi 15 yil davomida Yer atrofida taxminan 86 500 marta aylangan. Bir kosmonavtning stansiyada eng uzoq qolishi 680 kun davom etgan. U shu vaqt ichida Yer atrofida taxminan necha marta aylangan?",
+   "options": [
+    "110 000",
+    "110",
+    "1 100",
+    "11 000"
+   ],
+   "correctIndex": 3,
+   "explain": "Bir kunda ≈ 86 500 : (15 × 365) ≈ 15,8 marta; 15,8 × 680 ≈ 10 700 ≈ 11 000.",
+   "studentGoal": "Katta sonlar bilan proporsional baholash.",
+   "teacherGoal": "Taxminiy hisob va javobning mantiqiyligini tekshirishni o'rgatish.",
+   "lessonUse": "Javob variantlari orasidagi 10 barobar farqni muhokama qilib, tartibni baholashni mashq qiladi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-25",
+   "title": "Staircase (Zinapoya)",
+   "source": "PISA released (OECD), Staircase, M547Q01",
+   "process": "employ",
+   "adaptation": "Ochiq javob → test",
+   "q": "Zinapoyaning umumiy balandligi 252 sm, unda 14 ta zina (pog'ona) bor. Har bir zinaning balandligi bir xil. Bitta zina balandligi qancha?",
+   "options": [
+    "18 sm",
+    "14 sm",
+    "238 sm",
+    "21 sm"
+   ],
+   "correctIndex": 0,
+   "explain": "252 : 14 = 18 sm.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     18
+    ],
+    "tol": 0
+   },
+   "studentGoal": "Umumiy miqdorni teng qismlarga bo'lish.",
+   "teacherGoal": "Hayotiy o'lchovlarni (zina, qavat) matematik model bilan bog'lash.",
+   "lessonUse": "Maktab zinasini o'lchab, bitta pog'ona balandligini hisoblatadi.",
+   "topic": "r-space",
+   "grade": 15
+  },
+  {
+   "id": "RP-26",
+   "title": "Rock Concert (Rok-konsert)",
+   "source": "PISA released (OECD), Rock Concert, M552Q01",
+   "process": "formulate",
+   "adaptation": "Asl topshiriqda 5 ta variant (A–E); 4 tasi qoldirildi",
+   "q": "Rok-konsert uchun o'lchami 100 m × 50 m bo'lgan to'g'ri to'rtburchak maydon ajratildi. Chiptalar tugadi, maydon tik turgan muxlislar bilan to'la. Konsertga kelganlar sonini quyidagilardan qaysi biri eng yaxshi baholaydi?",
+   "options": [
+    "100 000",
+    "20 000",
+    "2 000",
+    "5 000"
+   ],
+   "correctIndex": 1,
+   "explain": "Maydon 5 000 m². Zich turganda 1 m² da taxminan 4 kishi: 5 000 × 4 ≈ 20 000.",
+   "studentGoal": "Yuz va zichlik bo'yicha baholash (Formulate).",
+   "teacherGoal": "Ochiq baholash masalalarida taxminlarni (1 m² da necha kishi) asoslashni o'rgatish.",
+   "lessonUse": "Sinf xonasiga necha kishi sig'ishini o'lchab va baholab, real tajriba bilan tekshiradi.",
+   "topic": "r-quantity",
+   "grade": 15
+  },
+  {
+   "id": "RP-27",
+   "title": "Decreasing CO₂ Levels (CO₂ ni kamaytirish)",
+   "source": "PISA released (OECD), Decreasing CO₂ Levels, M525Q01",
+   "process": "employ",
+   "adaptation": "Asl topshiriqda diagramma; kerakli qiymatlar matnda berilgan. Ochiq javob → test",
+   "q": "AQShda karbonat angidrid chiqindisi 1990 yilda 6 049 mln t, 1998 yilda 6 727 mln t bo'lgan. 1990–1998 yillarda chiqindi necha foizga oshgan?",
+   "options": [
+    "≈ 6,8%",
+    "≈ 89%",
+    "≈ 11%",
+    "≈ 10%"
+   ],
+   "correctIndex": 2,
+   "explain": "O'sish: 6 727 − 6 049 = 678; 678 : 6 049 ≈ 0,112 ≈ 11%. 10% — boshlang'ich emas, oxirgi qiymatga bo'lingan.",
+   "answer": {
+    "type": "number",
+    "accept": [
+     11,
+     11.2
+    ],
+    "tol": 0.3
+   },
+   "studentGoal": "Foizli o'sishni hisoblash.",
+   "teacherGoal": "Foiz qaysi qiymatga nisbatan olinishini (boshlang'ich qiymat) tushuntirish.",
+   "lessonUse": "Real statistik ma'lumotlar bilan o'sish foizini hisoblab, xato bo'linuvchini (10%) muhokama qiladi.",
+   "topic": "r-uncertainty",
+   "grade": 15
+  },
+  {
+   "id": "RP-28",
+   "title": "Decreasing CO₂ Levels (CO₂ ni kamaytirish)",
+   "source": "PISA released (OECD), Decreasing CO₂ Levels, M525Q02",
+   "process": "interpret",
+   "adaptation": "Ochiq javob → test; foizlar moslashtirilgan",
+   "q": "Diagrammaga ko'ra, 1990–1998 yillarda Germaniyada chiqindi 16 foizga, butun Yevropa Ittifoqida esa 4 foizga kamaygan. Mandi: «Bu xato bo'lishi kerak — Germaniya Yevropa Ittifoqiga kiradi, demak Ittifoq bo'yicha kamayish Germaniyanikidan kichik bo'lishi mumkin emas», dedi. Mandi haqmi?",
+   "options": [
+    "Yo'q: Germaniya Yevropa Ittifoqiga kirmaydi",
+    "Ha: 16 soni 4 dan katta",
+    "Ha: Germaniya Ittifoq tarkibida, shuning uchun foizlar teng bo'lishi kerak",
+    "Yo'q: Ittifoqdagi boshqa davlatlarda chiqindi oshgan yoki kamroq kamaygan bo'lishi mumkin"
+   ],
+   "correctIndex": 3,
+   "explain": "Ittifoq ko'rsatkichi barcha davlatlarning umumiy natijasi. Boshqa davlatlarda o'sish bo'lsa, umumiy kamayish Germaniyanikidan kichik bo'ladi.",
+   "studentGoal": "Umumiy va qism ko'rsatkichlari munosabatini talqin qilish.",
+   "teacherGoal": "Statistik xulosalarni tanqidiy tahlil qilishni o'rgatish.",
+   "lessonUse": "Sinf va maktab o'rtacha ko'rsatkichlarini taqqoslab, qism va butun munosabatini muhokama qiladi.",
+   "topic": "r-uncertainty",
+   "grade": 15
+  },
+  {
+   "id": "RP-29",
+   "title": "Robberies (O'g'irliklar)",
+   "source": "PISA released (OECD), Robberies, M179Q01",
+   "process": "interpret",
+   "adaptation": "Asl topshiriqda ustunli diagramma; bu yerda matn bilan tasvirlangan. Ochiq javob → test",
+   "q": "Teleboshlovchi ustunli diagrammani ko'rsatdi: o'g'irliklar 1998 yilda 507 ta, 1999 yilda 515 ta. Diagramma o'qi 0 dan emas, 505 dan boshlangani uchun 1999 yil ustuni 1998 yilnikidan bir necha barobar baland ko'rinadi. Boshlovchi: «O'g'irliklar soni keskin oshdi», dedi. Bu talqin to'g'rimi?",
+   "options": [
+    "Yo'q: o'sish atigi 8 ta (≈ 1,6%); o'q 0 dan boshlanmagani uchun katta ko'rinadi",
+    "Ha: ustun bir necha barobar baland",
+    "Yo'q: aslida o'g'irliklar kamaygan",
+    "Ha: 8 ta o'g'irlik juda ko'p"
+   ],
+   "correctIndex": 0,
+   "explain": "515 − 507 = 8; 8 : 507 ≈ 1,6%. Diagramma o'qi kesilgani uchun farq bo'rttirilgan.",
+   "studentGoal": "Diagrammani tanqidiy o'qish.",
+   "teacherGoal": "Media va statistikadagi chalg'ituvchi grafiklarni tahlil qilishni o'rgatish.",
+   "lessonUse": "Bir xil ma'lumot bilan o'qi 0 dan va 505 dan boshlanuvchi ikki diagramma chizdirib, taassurotni solishtiradi.",
+   "topic": "r-uncertainty",
+   "grade": 15
+  },
+  {
+   "id": "RP-30",
+   "title": "Support for the President (Saylov so'rovi)",
+   "source": "PISA released (OECD), Support for the President, M702Q01",
+   "process": "interpret",
+   "adaptation": "Ma'lumotlar moslashtirilgan. Ochiq javob → test (asl topshiriqda sabablar yoziladi)",
+   "q": "Saylov 25-yanvarda bo'ladi. To'rt gazeta so'rov o'tkazdi: 1-gazeta — 6-yanvar, tasodifiy tanlangan 500 fuqaro; 2-gazeta — 20-yanvar, tasodifiy tanlangan 500 saylovchi; 3-gazeta — 20-yanvar, tasodifiy tanlangan 1 000 saylovchi; 4-gazeta — 20-yanvar, o'zi qo'ng'iroq qilgan 80 000 o'quvchi. Saylov natijasini qaysi so'rov eng yaxshi bashorat qiladi?",
+   "options": [
+    "2-gazeta",
+    "3-gazeta",
+    "4-gazeta",
+    "1-gazeta"
+   ],
+   "correctIndex": 1,
+   "explain": "3-gazeta: so'rov saylovga yaqin, faqat saylovchilar, tasodifiy va kattaroq tanlanma. 4-gazeta tanlanmasi katta, lekin tasodifiy emas (faqat o'zi qo'ng'iroq qilganlar).",
+   "studentGoal": "So'rov natijasining ishonchliligini baholash.",
+   "teacherGoal": "Tanlanma, tasodifiylik va vaqt omillarini muhokama qilishni o'rgatish.",
+   "lessonUse": "Sinfda kichik so'rov o'tkazib, tanlanma usuli natijaga qanday ta'sir qilishini kuzatadi.",
+   "topic": "r-uncertainty",
+   "grade": 15
+  }
+ ]
+}
