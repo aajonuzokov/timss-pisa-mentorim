@@ -89,6 +89,68 @@ export type Database = {
         }
         Relationships: []
       }
+      portfolio_pins: {
+        Row: {
+          code: string
+          created_at: string
+          failed: number
+          locked_until: string | null
+          pin_hash: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          failed?: number
+          locked_until?: string | null
+          pin_hash: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          failed?: number
+          locked_until?: string | null
+          pin_hash?: string
+        }
+        Relationships: []
+      }
+      portfolio_reflections: {
+        Row: {
+          code: string
+          created_at: string
+          difficulty: string
+          id: string
+          next_step: string
+          result_id: string
+          test_type: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          difficulty: string
+          id?: string
+          next_step: string
+          result_id: string
+          test_type: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          difficulty?: string
+          id?: string
+          next_step?: string
+          result_id?: string
+          test_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "portfolio_reflections_result_id_fkey"
+            columns: ["result_id"]
+            isOneToOne: false
+            referencedRelation: "test_results"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       resources: {
         Row: {
           authors: string
@@ -119,6 +181,97 @@ export type Database = {
           title?: string
           url?: string | null
           year?: number
+        }
+        Relationships: []
+      }
+      rubric_scores: {
+        Row: {
+          comment: string | null
+          item_id: string
+          rater: string | null
+          result_id: string
+          score: number
+          updated_at: string
+        }
+        Insert: {
+          comment?: string | null
+          item_id: string
+          rater?: string | null
+          result_id: string
+          score: number
+          updated_at?: string
+        }
+        Update: {
+          comment?: string | null
+          item_id?: string
+          rater?: string | null
+          result_id?: string
+          score?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rubric_scores_result_id_fkey"
+            columns: ["result_id"]
+            isOneToOne: false
+            referencedRelation: "test_results"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teacher_feedback: {
+        Row: {
+          author: string | null
+          code: string
+          comment: string
+          created_at: string
+          id: string
+          recommendations: string
+          result_id: string | null
+        }
+        Insert: {
+          author?: string | null
+          code: string
+          comment: string
+          created_at?: string
+          id?: string
+          recommendations?: string
+          result_id?: string | null
+        }
+        Update: {
+          author?: string | null
+          code?: string
+          comment?: string
+          created_at?: string
+          id?: string
+          recommendations?: string
+          result_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teacher_feedback_result_id_fkey"
+            columns: ["result_id"]
+            isOneToOne: false
+            referencedRelation: "test_results"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teachers: {
+        Row: {
+          created_at: string
+          email: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -172,7 +325,12 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_teacher: { Args: never; Returns: boolean }
+      portfolio_open: { Args: { p_code: string; p_pin: string }; Returns: Json }
+      portfolio_pin_hash: {
+        Args: { p_code: string; p_pin: string }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
