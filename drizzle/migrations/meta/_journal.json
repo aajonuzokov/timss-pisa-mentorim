@@ -8,6 +8,13 @@
       "when": 1791816344896,
       "tag": "0000_ilmiy_tayyorlik",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791816759848,
+      "tag": "0001_diagnostika_portfolio",
+      "breakpoints": true
     }
   ]
 }
