@@ -65,6 +65,30 @@ export type Database = {
         }
         Relationships: []
       }
+      feedback: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+        }
+        Relationships: []
+      }
       resources: {
         Row: {
           authors: string
@@ -73,6 +97,7 @@ export type Database = {
           id: string
           source: string
           title: string
+          url: string | null
           year: number
         }
         Insert: {
@@ -82,6 +107,7 @@ export type Database = {
           id?: string
           source: string
           title: string
+          url?: string | null
           year: number
         }
         Update: {
@@ -91,6 +117,7 @@ export type Database = {
           id?: string
           source?: string
           title?: string
+          url?: string | null
           year?: number
         }
         Relationships: []
