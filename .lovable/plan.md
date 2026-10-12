@@ -1,47 +1,30 @@
-# Connect TIMSS/PISA test results to the `test_results` table
+# O'qituvchi kabinetiga kirish muammosini tuzatish
 
-## What exists today (inspection)
+## Aniqlangan muammo
 
-- `src/routes/timss.tsx` — TIMSS page. Picks a category (Knowing / Applying / Reasoning) and renders the shared `Quiz` component. Changing category remounts `Quiz` (fresh test).
-- `src/routes/pisa.tsx` — PISA page. Renders the same `Quiz` component with all PISA questions.
-- `src/components/Quiz.tsx` — the only place with test logic:
-  - **Test start:** when `Quiz` mounts (no explicit start step; no name/university/course is collected anywhere).
-  - **Answers:** stored in `answers` state (`{ questionId: chosenIndex }`) via `select()`.
-  - **Scoring:** the `result` memo computes `correct`, `total`, `pct`.
-  - **Final result:** shown after the "Natijani tekshirish" button sets `submitted = true` (Trophy box with score, % and level text: A'lo / Yaxshi / O'rta / Quyi).
+- "Kirish" va "Hisobim yo'q" tugmalari ishlaydi: ular email va parol bilan hisobga kiradi yoki yangi hisob ochadi.
+- Kirgandan keyin sayt hisobni **o'qituvchilar ro'yxati** (`teachers` jadvali) orqali tekshiradi. Bazada bu jadval hali **yo'q**. Shuning uchun har qanday hisob uchun "ro'yxatda yo'q" xabari chiqadi yoki ma'lumotlar yuklanmaydi.
+- Sababi: o'qituvchi kabineti uchun tayyorlangan migratsiya (`20261012090000_diagnostika_portfolio.sql`) loyihada bor, lekin bazaga qo'llanmagan. Bazada hozir faqat `books`, `resources`, `test_results` va `feedback` jadvallari bor.
+- Shu sababli quyidagilar ham yo'q: rubrika bo'yicha baholash, o'qituvchi izohlari, E-portfolio refleksiyalari va PIN kodlar. Natijalarni o'qish ruxsati ham yo'q. Monitoring sahifasi `test_results` natijalarini ko'rsata olmaydi, chunki hozir natijalarni hech kim o'qiy olmaydi.
+- `full_name`: ro'yxatdan o'tishda faqat email so'raladi, ism saqlanmaydi. `full_name` faqat test natijalarida bor.
+- Administrator paneli yo'q. O'qituvchi faqat bazaga qo'lda yozuv qo'shish orqali qo'shiladi.
+- Ro'yxatdan o'tgan hisoblarni men ko'ra olmadim: hisoblar ro'yxatiga kirishga ruxsatim yo'q. Bu ro'yxat migratsiyadan keyin tekshiriladi.
 
-## Important finding
+## Taklif etilgan bosqichlar
 
-The `test_results` table does **not** exist in this project's database (the project is connected to its own Lovable Cloud database, not the one where you created the table). I will create it here with exactly your columns, plus security rules.
+1. **Migratsiyani qo'llash** (`20261012090000_diagnostika_portfolio.sql`, o'zgarishsiz). U:
+   - `teachers` ro'yxatini va `is_teacher()` tekshiruvini yaratadi;
+   - natijalarni faqat o'qituvchilarga ochadi (talabalar hamon faqat natija yuboradi);
+   - rubrika, izoh, refleksiya va PIN jadvallarini yaratadi;
+   - test natijalari tekshiruvini diagnostik testni qabul qiladigan qilib yangilaydi.
+   
+   Mavjud yozuvlar o'chirilmaydi va o'zgartirilmaydi. Oldindan `test_results` ning zaxira nusxasi olinadi.
+2. **Birinchi o'qituvchini qo'shish.** Siz kabinetda "Hisobim yo'q" orqali hisob ochasiz. Men shu email'ni `teachers` ro'yxatiga qo'shaman (faqat bitta yozuv).
+3. **Tekshiruv.** Kabinetga kirish, Monitoring sahifasida natijalar ko'rinishi, kirmagan foydalanuvchi natijalarni ko'ra olmasligi tekshiriladi.
+4. **(Ixtiyoriy, alohida tasdiq bilan)** Administrator uchun "O'qituvchilarni boshqarish" bo'limi: email bo'yicha qo'shish yoki olib tashlash. Buning uchun `admin` roli `user_roles` jadvalida saqlanadi. Ism (`full_name`) uchun ro'yxatdan o'tish formasiga maydon qo'shiladi.
 
-## Data flow
+## Texnik tafsilotlar
 
-```text
-Quiz mounts  -> record started_at
-User answers -> answers state (unchanged)
-"Natijani tekshirish" click
-   -> existing scoring (unchanged) -> correct, total, pct, level
-   -> save row to test_results:
-        full_name, university, course   (from a small participant form)
-        test_type  ("TIMSS - Bilish" / "TIMSS - Qo'llash" / "TIMSS - Mulohaza" / "PISA")
-        score = correct, total_questions = total, percentage = pct
-        level = existing level text
-        answers = { questionId: chosenIndex, ... }
-        started_at, completed_at = now
-   -> toast "Natija saqlandi" / error toast; result box shows as today
-```
-
-## Open decision: participant details
-
-Nothing in the current UI asks for full name, university or course. Options:
-1. Add a small inline form (3 fields) above the questions inside the existing header card, styled with existing inputs — minimal UI addition, required before submitting.
-2. Save without these fields (leave them empty) for now.
-
-I recommend option 1. Please confirm.
-
-## Files to modify
-
-- **Database migration (new):** create `test_results` with your columns; allow anyone to insert results (students are not signed in); no public reading of results (protects personal data).
-- `src/components/Quiz.tsx` — add `testType` prop, `started_at` tracking, save-on-submit, participant fields (if option 1). Questions and scoring untouched.
-- `src/routes/timss.tsx` — pass `testType` per category.
-- `src/routes/pisa.tsx` — pass `testType="PISA"`.
+- `teachers.user_id` mavjud migratsiyada `auth.users(id) ON DELETE CASCADE` ga bog'langan.
+- RLS: `teachers` — o'z qatorini ko'radi; `test_results` SELECT — `is_teacher()`; mavjud INSERT siyosati saqlanadi.
+- Agar email tasdiqlash yoqilgan bo'lsa, o'qituvchi avval xatdagi havolani bosishi kerak.
