@@ -1,10 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { LogIn, LogOut, RefreshCw, ClipboardCheck, Users, KeyRound } from "lucide-react";
+import {
+  LogIn,
+  LogOut,
+  RefreshCw,
+  ClipboardCheck,
+  Users,
+  KeyRound,
+  NotebookPen,
+  BarChart3,
+} from "lucide-react";
 import { toast } from "sonner";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { RubricScorer } from "@/components/RubricScorer";
+import { GroupStatus, WorkScorer, mergeScores } from "@/components/TeacherWork";
 import { PortfolioView, type PortfolioData } from "@/components/PortfolioView";
 import { STAGE_LABEL, GROUP_LABEL } from "@/lib/participant";
 import { buildAttempts, defaultBanks, type Attempt } from "@/lib/results";
@@ -16,6 +26,8 @@ import {
   type ReflectionRow,
   type ResultRow,
   type RubricRow,
+  type SubmissionRow,
+  type SubmissionScoreRow,
 } from "@/lib/db";
 import { fetchAll, loadResults, loadRubric, useTeacher } from "@/lib/teacher";
 import { levelInfo, levelText } from "@/lib/levels";
@@ -40,6 +52,7 @@ type Data = {
   feedback: FeedbackRow[];
   reflections: ReflectionRow[];
   pins: { code: string; locked_until: string | null }[];
+  submissions: SubmissionRow[];
 };
 
 const codeOf = (r: ResultRow) => {
@@ -122,7 +135,7 @@ function Page() {
   const teacher = useTeacher();
   const [data, setData] = useState<Data | null>(null);
   const [loading, setLoading] = useState(false);
-  const [tab, setTab] = useState<"baholash" | "portfolio">("baholash");
+  const [tab, setTab] = useState<"baholash" | "ishlar" | "guruh" | "portfolio">("baholash");
   const [scoring, setScoring] = useState<string>("");
   const [onlyPending, setOnlyPending] = useState(true);
   const [selCode, setSelCode] = useState("");
@@ -130,14 +143,23 @@ function Page() {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const [results, rubric, feedback, reflections, pins] = await Promise.all([
+      const [results, rubric, feedback, reflections, pins, subs, scores] = await Promise.all([
         loadResults(),
         loadRubric(),
         fetchAll<FeedbackRow>("teacher_feedback", "created_at"),
         fetchAll<ReflectionRow>("portfolio_reflections", "created_at"),
         fetchAll<{ code: string; locked_until: string | null }>("portfolio_pins", "created_at"),
+        fetchAll<SubmissionRow>("portfolio_submissions", "created_at"),
+        fetchAll<SubmissionScoreRow>("submission_scores", "updated_at"),
       ]);
-      setData({ results, rubric, feedback, reflections, pins });
+      setData({
+        results,
+        rubric,
+        feedback,
+        reflections,
+        pins,
+        submissions: mergeScores(subs, scores),
+      });
     } catch (e) {
       toast.error(
         e instanceof Error
@@ -171,6 +193,10 @@ function Page() {
       if (a.code && a.status !== "sinov") m.set(a.code, [...(m.get(a.code) ?? []), a]);
     return [...m.entries()].sort((x, y) => x[0].localeCompare(y[0]));
   }, [attempts]);
+  const names = useMemo(
+    () => Object.fromEntries(codes.map(([c, list]) => [c, list.at(-1)?.full_name ?? ""])),
+    [codes],
+  );
 
   const upsertRubric = (row: RubricRow) =>
     setData((d) =>
@@ -236,6 +262,18 @@ function Page() {
                 <ClipboardCheck className="w-4 h-4 mr-2" /> Rubrika bo'yicha baholash
               </Button>
               <Button
+                variant={tab === "ishlar" ? "default" : "outline"}
+                onClick={() => setTab("ishlar")}
+              >
+                <NotebookPen className="w-4 h-4 mr-2" /> Amaliy ishlar
+              </Button>
+              <Button
+                variant={tab === "guruh" ? "default" : "outline"}
+                onClick={() => setTab("guruh")}
+              >
+                <BarChart3 className="w-4 h-4 mr-2" /> Guruh holati
+              </Button>
+              <Button
                 variant={tab === "portfolio" ? "default" : "outline"}
                 onClick={() => setTab("portfolio")}
               >
@@ -257,6 +295,32 @@ function Page() {
 
             {!data ? (
               <p className="text-muted-foreground">{loading ? "Ma'lumotlar yuklanmoqda…" : ""}</p>
+            ) : tab === "ishlar" ? (
+              <WorkScorer
+                submissions={data.submissions}
+                names={names}
+                onScore={(row) =>
+                  setData((d) =>
+                    d
+                      ? {
+                          ...d,
+                          submissions: d.submissions.map((s) =>
+                            s.id === row.submission_id
+                              ? {
+                                  ...s,
+                                  score: row.score,
+                                  criteria: row.criteria,
+                                  comment: row.comment,
+                                }
+                              : s,
+                          ),
+                        }
+                      : d,
+                  )
+                }
+              />
+            ) : tab === "guruh" ? (
+              <GroupStatus attempts={attempts} submissions={data.submissions} />
             ) : tab === "baholash" ? (
               current ? (
                 <RubricScorer
@@ -329,7 +393,7 @@ function Page() {
                               <td
                                 className={`px-3 py-2 text-right tabular-nums font-medium ${levelText[levelInfo(a.pct).key]}`}
                               >
-                                {a.correct}/40
+                                {a.correct}/{a.total}
                               </td>
                               <td className="px-3 py-2 text-right">
                                 <Button size="sm" onClick={() => setScoring(a.id)}>
@@ -418,6 +482,7 @@ function ParticipantPanel({
     rubric: data.rubric.filter((r) => ids.has(r.result_id)),
     reflections: data.reflections.filter((r) => r.code === code),
     feedback: data.feedback.filter((f) => f.code === code),
+    submissions: data.submissions.filter((s) => s.code === code),
   };
   const hasPin = data.pins.some((p) => p.code === code);
 

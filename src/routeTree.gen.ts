@@ -33,8 +33,12 @@ import { Route as TimssRouteImport } from './routes/timss'
 import { Route as TimssApplyingRouteImport } from './routes/timss-applying'
 import { Route as TimssKnowingRouteImport } from './routes/timss-knowing'
 import { Route as TimssReasoningRouteImport } from './routes/timss-reasoning'
+import { Route as AmaliyotIndexRouteImport } from './routes/amaliyot.index'
+import { Route as AmaliyotSlugRouteImport } from './routes/amaliyot.$slug'
 import { Route as ModelIndexRouteImport } from './routes/model.index'
 import { Route as ModelSlugRouteImport } from './routes/model.$slug'
+import { Route as ModullarIndexRouteImport } from './routes/modullar.index'
+import { Route as ModullarSlugRouteImport } from './routes/modullar.$slug'
 import { Route as TavsiyalarIndexRouteImport } from './routes/tavsiyalar.index'
 import { Route as TavsiyalarSlugRouteImport } from './routes/tavsiyalar.$slug'
 
@@ -158,6 +162,16 @@ const TimssReasoningRoute = TimssReasoningRouteImport.update({
   path: '/timss-reasoning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AmaliyotIndexRoute = AmaliyotIndexRouteImport.update({
+  id: '/amaliyot/',
+  path: '/amaliyot/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AmaliyotSlugRoute = AmaliyotSlugRouteImport.update({
+  id: '/amaliyot/$slug',
+  path: '/amaliyot/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ModelIndexRoute = ModelIndexRouteImport.update({
   id: '/model/',
   path: '/model/',
@@ -166,6 +180,16 @@ const ModelIndexRoute = ModelIndexRouteImport.update({
 const ModelSlugRoute = ModelSlugRouteImport.update({
   id: '/model/$slug',
   path: '/model/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModullarIndexRoute = ModullarIndexRouteImport.update({
+  id: '/modullar/',
+  path: '/modullar/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModullarSlugRoute = ModullarSlugRouteImport.update({
+  id: '/modullar/$slug',
+  path: '/modullar/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TavsiyalarIndexRoute = TavsiyalarIndexRouteImport.update({
@@ -204,9 +228,13 @@ export interface FileRoutesByFullPath {
   '/timss-applying': typeof TimssApplyingRoute
   '/timss-knowing': typeof TimssKnowingRoute
   '/timss-reasoning': typeof TimssReasoningRoute
+  '/amaliyot/$slug': typeof AmaliyotSlugRoute
   '/model/$slug': typeof ModelSlugRoute
+  '/modullar/$slug': typeof ModullarSlugRoute
   '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
+  '/amaliyot/': typeof AmaliyotIndexRoute
   '/model/': typeof ModelIndexRoute
+  '/modullar/': typeof ModullarIndexRoute
   '/tavsiyalar/': typeof TavsiyalarIndexRoute
 }
 export interface FileRoutesByTo {
@@ -234,9 +262,13 @@ export interface FileRoutesByTo {
   '/timss-applying': typeof TimssApplyingRoute
   '/timss-knowing': typeof TimssKnowingRoute
   '/timss-reasoning': typeof TimssReasoningRoute
+  '/amaliyot/$slug': typeof AmaliyotSlugRoute
   '/model/$slug': typeof ModelSlugRoute
+  '/modullar/$slug': typeof ModullarSlugRoute
   '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
+  '/amaliyot': typeof AmaliyotIndexRoute
   '/model': typeof ModelIndexRoute
+  '/modullar': typeof ModullarIndexRoute
   '/tavsiyalar': typeof TavsiyalarIndexRoute
 }
 export interface FileRoutesById {
@@ -265,9 +297,13 @@ export interface FileRoutesById {
   '/timss-applying': typeof TimssApplyingRoute
   '/timss-knowing': typeof TimssKnowingRoute
   '/timss-reasoning': typeof TimssReasoningRoute
+  '/amaliyot/$slug': typeof AmaliyotSlugRoute
   '/model/$slug': typeof ModelSlugRoute
+  '/modullar/$slug': typeof ModullarSlugRoute
   '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
+  '/amaliyot/': typeof AmaliyotIndexRoute
   '/model/': typeof ModelIndexRoute
+  '/modullar/': typeof ModullarIndexRoute
   '/tavsiyalar/': typeof TavsiyalarIndexRoute
 }
 export interface FileRouteTypes {
@@ -297,9 +333,13 @@ export interface FileRouteTypes {
     | '/timss-applying'
     | '/timss-knowing'
     | '/timss-reasoning'
+    | '/amaliyot/$slug'
     | '/model/$slug'
+    | '/modullar/$slug'
     | '/tavsiyalar/$slug'
+    | '/amaliyot/'
     | '/model/'
+    | '/modullar/'
     | '/tavsiyalar/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -327,9 +367,13 @@ export interface FileRouteTypes {
     | '/timss-applying'
     | '/timss-knowing'
     | '/timss-reasoning'
+    | '/amaliyot/$slug'
     | '/model/$slug'
+    | '/modullar/$slug'
     | '/tavsiyalar/$slug'
+    | '/amaliyot'
     | '/model'
+    | '/modullar'
     | '/tavsiyalar'
   id:
     | '__root__'
@@ -357,9 +401,13 @@ export interface FileRouteTypes {
     | '/timss-applying'
     | '/timss-knowing'
     | '/timss-reasoning'
+    | '/amaliyot/$slug'
     | '/model/$slug'
+    | '/modullar/$slug'
     | '/tavsiyalar/$slug'
+    | '/amaliyot/'
     | '/model/'
+    | '/modullar/'
     | '/tavsiyalar/'
   fileRoutesById: FileRoutesById
 }
@@ -388,9 +436,13 @@ export interface RootRouteChildren {
   TimssApplyingRoute: typeof TimssApplyingRoute
   TimssKnowingRoute: typeof TimssKnowingRoute
   TimssReasoningRoute: typeof TimssReasoningRoute
+  AmaliyotSlugRoute: typeof AmaliyotSlugRoute
   ModelSlugRoute: typeof ModelSlugRoute
+  ModullarSlugRoute: typeof ModullarSlugRoute
   TavsiyalarSlugRoute: typeof TavsiyalarSlugRoute
+  AmaliyotIndexRoute: typeof AmaliyotIndexRoute
   ModelIndexRoute: typeof ModelIndexRoute
+  ModullarIndexRoute: typeof ModullarIndexRoute
   TavsiyalarIndexRoute: typeof TavsiyalarIndexRoute
 }
 
@@ -564,6 +616,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimssReasoningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/amaliyot/': {
+      id: '/amaliyot/'
+      path: '/amaliyot'
+      fullPath: '/amaliyot/'
+      preLoaderRoute: typeof AmaliyotIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/amaliyot/$slug': {
+      id: '/amaliyot/$slug'
+      path: '/amaliyot/$slug'
+      fullPath: '/amaliyot/$slug'
+      preLoaderRoute: typeof AmaliyotSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/model/': {
       id: '/model/'
       path: '/model'
@@ -576,6 +642,20 @@ declare module '@tanstack/react-router' {
       path: '/model/$slug'
       fullPath: '/model/$slug'
       preLoaderRoute: typeof ModelSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modullar/': {
+      id: '/modullar/'
+      path: '/modullar'
+      fullPath: '/modullar/'
+      preLoaderRoute: typeof ModullarIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modullar/$slug': {
+      id: '/modullar/$slug'
+      path: '/modullar/$slug'
+      fullPath: '/modullar/$slug'
+      preLoaderRoute: typeof ModullarSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tavsiyalar/': {
@@ -620,9 +700,13 @@ const rootRouteChildren: RootRouteChildren = {
   TimssApplyingRoute: TimssApplyingRoute,
   TimssKnowingRoute: TimssKnowingRoute,
   TimssReasoningRoute: TimssReasoningRoute,
+  AmaliyotSlugRoute: AmaliyotSlugRoute,
   ModelSlugRoute: ModelSlugRoute,
+  ModullarSlugRoute: ModullarSlugRoute,
   TavsiyalarSlugRoute: TavsiyalarSlugRoute,
+  AmaliyotIndexRoute: AmaliyotIndexRoute,
   ModelIndexRoute: ModelIndexRoute,
+  ModullarIndexRoute: ModullarIndexRoute,
   TavsiyalarIndexRoute: TavsiyalarIndexRoute,
 }
 export const routeTree = rootRouteImport

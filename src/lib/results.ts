@@ -5,7 +5,7 @@ import timssV2 from "@/data/timss.json";
 import pisaV2 from "@/data/pisa.json";
 import released from "@/data/released.json";
 import forms from "@/data/forms.json";
-import { DIAG_FORMS, DIAG_MAX, type DiagItem } from "@/data/diag";
+import { DIAG_FORMS, diagMax, type DiagItem } from "@/data/diag";
 import {
   DIAG_TEST_VERSION,
   isDiag,
@@ -79,11 +79,13 @@ export const diagAsQuestions = (items: DiagItem[]): Question[] =>
 export const BANK_D1: Bank = {
   "diag-a": diagAsQuestions(DIAG_FORMS.A),
   "diag-b": diagAsQuestions(DIAG_FORMS.B),
+  "diag-o": diagAsQuestions(DIAG_FORMS.O),
 };
 
 const DIAG_ITEMS: Partial<Record<TestKey, DiagItem[]>> = {
   "diag-a": DIAG_FORMS.A,
   "diag-b": DIAG_FORMS.B,
+  "diag-o": DIAG_FORMS.O,
 };
 
 /** Barcha mavjud banklar (v1 dan tashqari: u kerak bo'lganda alohida yuklanadi). */
@@ -224,7 +226,7 @@ export const buildAttempts = (
       const d = scoreDiag(diagItems, answers, rubric.get(r.id));
       answered = d.answered;
       correct = d.total;
-      total = DIAG_MAX;
+      total = diagMax(diagItems);
       itemPoints = Object.fromEntries(Object.entries(d.byItem).map(([k, v]) => [k, v.points]));
       components = d.components;
       diag = { auto: d.auto, rubricCount: d.rubricCount };
@@ -279,7 +281,10 @@ export const buildAttempts = (
       status: isTest ? "sinov" : !diag && answered < nItems ? "toliq-emas" : "toliq",
       personKey: code ? `kod:${code}` : nameKey,
       code,
-      stage: meta.stage === "kirish" || meta.stage === "yakuniy" ? meta.stage : "mashq",
+      stage:
+        meta.stage === "kirish" || meta.stage === "yakuniy" || meta.stage === "oraliq"
+          ? meta.stage
+          : "mashq",
       group: meta.group === "tajriba" || meta.group === "nazorat" ? meta.group : "",
       counted: false,
     });

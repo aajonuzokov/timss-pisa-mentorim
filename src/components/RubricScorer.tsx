@@ -17,7 +17,8 @@ type Props = {
   onBack: () => void;
 };
 
-const itemsOf = (a: Attempt): DiagItem[] => (a.testKey === "diag-b" ? DIAG_FORMS.B : DIAG_FORMS.A);
+const itemsOf = (a: Attempt): DiagItem[] =>
+  a.testKey === "diag-b" ? DIAG_FORMS.B : a.testKey === "diag-o" ? DIAG_FORMS.O : DIAG_FORMS.A;
 
 /** Diagnostik test javoblarini Ilova 5 rubrikasi bo'yicha 0–2 ball bilan baholash. */
 export function RubricScorer({ attempt, rubric, onChange, onBack }: Props) {
@@ -28,7 +29,7 @@ export function RubricScorer({ attempt, rubric, onChange, onBack }: Props) {
   const [draft, setDraft] = useState<Record<string, string>>(comments);
   const [saving, setSaving] = useState("");
   const res = scoreDiag(items, attempt.answers as Record<string, unknown>, scores);
-  const lv = levelInfo(pctOf(res.total, 40));
+  const lv = levelInfo(pctOf(res.total, res.max));
 
   const save = async (item: DiagItem, score: number) => {
     setSaving(item.id);
@@ -66,10 +67,11 @@ export function RubricScorer({ attempt, rubric, onChange, onBack }: Props) {
         </div>
         <div className="text-right">
           <div className="text-2xl font-bold tabular-nums">
-            {res.total} / 40 <span className={`text-base ${levelText[lv.key]}`}>{lv.label}</span>
+            {res.total} / {res.max}{" "}
+            <span className={`text-base ${levelText[lv.key]}`}>{lv.label}</span>
           </div>
           <div className="text-xs text-muted-foreground">
-            Baholangan: {res.rubricCount}/20 · avtomatik dastlabki ball: {res.auto}
+            Baholangan: {res.rubricCount}/{items.length} · avtomatik dastlabki ball: {res.auto}
           </div>
         </div>
       </div>
