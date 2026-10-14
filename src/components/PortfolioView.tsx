@@ -1,6 +1,18 @@
 import { useMemo } from "react";
 import { Link } from "@tanstack/react-router";
-import { History, LineChart, NotebookPen, MessageSquareText, Lightbulb } from "lucide-react";
+import {
+  History,
+  LineChart,
+  NotebookPen,
+  MessageSquareText,
+  Lightbulb,
+  Route as RouteIcon,
+  CheckCircle2,
+  Briefcase,
+} from "lucide-react";
+import { buildPath, PLAN_LABEL } from "@/lib/path";
+import { KIND_LABEL } from "@/data/amaliyot";
+import { PayloadView, refLabel } from "@/components/TeacherWork";
 import { ComponentProfile, LevelLegend } from "@/components/DiagnosticReport";
 import { TEST_TYPES } from "@/data/bank";
 import { COMPONENTS, componentPct, type ComponentKey } from "@/lib/components";
@@ -14,6 +26,7 @@ import {
   type ReflectionRow,
   type ResultRow,
   type RubricRow,
+  type SubmissionRow,
 } from "@/lib/db";
 
 export type PortfolioData = {
@@ -21,6 +34,7 @@ export type PortfolioData = {
   rubric: RubricRow[];
   reflections: ReflectionRow[];
   feedback: FeedbackRow[];
+  submissions: SubmissionRow[];
 };
 
 const TAVSIYA: Record<ComponentKey, { slug: string; title: string }> = {
@@ -52,6 +66,19 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
   const withComp = attempts.filter((a) => Object.keys(a.components).length);
   const latest = withComp.at(-1);
   const latestDiag = [...attempts].reverse().find((a) => a.diag);
+  const path = buildPath(attempts, data.submissions);
+  const works = data.submissions.filter((x) => x.kind !== "self-score");
+  const selfScores = latestDiag
+    ? ((data.submissions.find((x) => x.kind === "self-score" && x.ref === latestDiag.id)?.payload
+        .scores ?? null) as Record<string, number> | null)
+    : null;
+  const selfAcc = (() => {
+    if (!selfScores || !latestDiag) return null;
+    const diffs = data.rubric
+      .filter((r) => r.result_id === latestDiag.id && typeof selfScores[r.item_id] === "number")
+      .map((r) => Math.abs(selfScores[r.item_id] - r.score));
+    return diffs.length ? diffs.reduce((a, b) => a + b, 0) / diffs.length : null;
+  })();
   const weak = latest
     ? COMPONENTS.filter((c) => {
         const v = componentPct(latest.components[c.key]);
@@ -80,7 +107,7 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
             {latestDiag ? (
               <>
                 <div className="text-2xl font-bold tabular-nums">
-                  {latestDiag.correct} / 40{" "}
+                  {latestDiag.correct} / {latestDiag.total}{" "}
                   <span className={`text-base ${levelText[levelInfo(latestDiag.pct).key]}`}>
                     {levelInfo(latestDiag.pct).short}
                   </span>
@@ -102,6 +129,64 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="p-6 rounded-2xl border border-primary/30 bg-primary/5 shadow-card">
+        <h3 className="font-semibold text-lg flex items-center gap-2">
+          <RouteIcon className="w-5 h-5 text-primary" /> Mening yo'lim
+        </h3>
+        {path ? (
+          <>
+            <p className="text-sm text-muted-foreground mt-1">
+              {testName(path.basis)} ({fmtDate(path.basis.completedAt)}) natijasi asosida. Eng past
+              komponentdan boshlang.
+              {path.provisional &&
+                " O'qituvchi hali barcha topshiriqlarni baholamagan: yo'l dastlabki ball asosida tuzilgan va baholashdan keyin o'zgarishi mumkin."}
+            </p>
+            <ol className="mt-4 space-y-2">
+              {path.steps.map((st, i) => (
+                <li
+                  key={st.key}
+                  className="flex flex-wrap items-center gap-3 rounded-xl border bg-card p-3"
+                >
+                  <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-semibold flex items-center justify-center shrink-0">
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-medium">
+                      {st.label}{" "}
+                      <span className={`text-sm ${levelText[st.level]}`}>
+                        {st.pct}% · {levelInfo(st.pct).short}
+                      </span>
+                    </div>
+                    <div className="text-xs text-muted-foreground">{PLAN_LABEL[st.plan]}</div>
+                  </div>
+                  {st.done ? (
+                    <span className="inline-flex items-center gap-1 text-sm text-emerald-700 dark:text-emerald-400">
+                      <CheckCircle2 className="w-4 h-4" /> Bajarildi
+                    </span>
+                  ) : (
+                    <Link
+                      to="/modullar/$slug"
+                      params={{ slug: st.key }}
+                      className="text-sm font-medium text-primary hover:underline"
+                    >
+                      Modulni ochish →
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </>
+        ) : (
+          <p className="text-sm text-muted-foreground mt-1">
+            Yo'l kirish diagnostikasidan keyin tuziladi.{" "}
+            <Link to="/sinov" className="text-primary hover:underline">
+              Diagnostik testni topshiring
+            </Link>
+            .
+          </p>
+        )}
       </div>
 
       {latest && (
@@ -300,6 +385,44 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
         </div>
       </div>
 
+      {works.length > 0 && (
+        <div className="p-6 rounded-2xl border bg-card shadow-card">
+          <h3 className="font-semibold text-lg flex items-center gap-2">
+            <Briefcase className="w-5 h-5 text-primary" /> Ishlarim
+          </h3>
+          <ul className="mt-3 space-y-3">
+            {works
+              .slice()
+              .reverse()
+              .map((w) => (
+                <li key={w.id}>
+                  <details className="rounded-xl border p-3">
+                    <summary className="cursor-pointer text-sm">
+                      <span className="font-medium">{KIND_LABEL[w.kind]}</span> · {refLabel(w)} ·{" "}
+                      {fmtDate(w.created_at)}
+                      {typeof w.score === "number" ? (
+                        <span className="ml-2 text-emerald-700 dark:text-emerald-400">
+                          {w.score}/2 ball
+                        </span>
+                      ) : (
+                        <span className="ml-2 text-muted-foreground">baholanmagan</span>
+                      )}
+                    </summary>
+                    <div className="mt-3">
+                      <PayloadView payload={w.payload} />
+                      {w.comment && (
+                        <p className="mt-3 rounded-lg bg-primary/5 p-3 text-sm">
+                          <b>O'qituvchi izohi:</b> {w.comment}
+                        </p>
+                      )}
+                    </div>
+                  </details>
+                </li>
+              ))}
+          </ul>
+        </div>
+      )}
+
       {latestDiag && (
         <div className="p-6 rounded-2xl border bg-card shadow-card">
           <h3 className="font-semibold text-lg">
@@ -307,6 +430,8 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
           </h3>
           <p className="text-sm text-muted-foreground mt-1">
             {fmtDate(latestDiag.completedAt)}. Har bir topshiriq 0–2 ball (Ilova 5 rubrikasi).
+            {selfAcc !== null &&
+              ` O'z-o'zini baholash aniqligi: o'rtacha farq ${selfAcc.toFixed(2).replace(".", ",")} ball (0 — to'liq mos).`}
           </p>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm">
@@ -314,6 +439,7 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
                 <tr className="text-left">
                   <th className="px-3 py-2">Topshiriq</th>
                   <th className="px-3 py-2 text-right">Ball</th>
+                  {selfScores && <th className="px-3 py-2 text-right">O'zim</th>}
                   <th className="px-3 py-2">Izoh</th>
                 </tr>
               </thead>
@@ -331,6 +457,11 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
                         {latestDiag.itemPoints[q.id] ?? 0}/2
                         {!r && <span className="text-xs text-muted-foreground"> (avto)</span>}
                       </td>
+                      {selfScores && (
+                        <td className="px-3 py-2 text-right tabular-nums">
+                          {selfScores[q.id] ?? "—"}
+                        </td>
+                      )}
                       <td className="px-3 py-2 text-muted-foreground">{r?.comment ?? ""}</td>
                     </tr>
                   );

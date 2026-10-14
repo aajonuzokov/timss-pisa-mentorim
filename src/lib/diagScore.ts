@@ -3,7 +3,7 @@
 
 import { checkOpen } from "@/lib/answers";
 import type { ComponentScores } from "@/lib/components";
-import { DIAG_MAX, type DiagAnswer, type DiagAuto, type DiagItem } from "@/data/diag";
+import { type DiagAnswer, type DiagAuto, type DiagItem } from "@/data/diag";
 
 const SUP: Record<string, string> = {
   "⁰": "0",
@@ -120,7 +120,7 @@ export const scoreDiag = (
   return {
     byItem,
     total,
-    max: Math.min(DIAG_MAX, items.length * 2),
+    max: items.length * 2,
     auto,
     rubricCount,
     answered,

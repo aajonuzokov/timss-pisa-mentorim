@@ -74,3 +74,54 @@ export const rubricMapOf = (rows: RubricRow[]) => {
   }
   return m;
 };
+
+export type SubmissionKind =
+  | "modul-metodik"
+  | "modul-bajarildi"
+  | "maqsad"
+  | "xato-tahlil"
+  | "moslashtirish"
+  | "dars-ishlanmasi"
+  | "microteaching"
+  | "lesson-study"
+  | "self-score";
+
+/** Talaba ishi va (bo'lsa) o'qituvchi bahosi. */
+export type SubmissionRow = {
+  id: string;
+  code: string;
+  kind: SubmissionKind;
+  ref: string;
+  payload: Record<string, unknown>;
+  created_at: string;
+  score?: number | null;
+  criteria?: Record<string, number> | null;
+  comment?: string | null;
+};
+
+export type SubmissionScoreRow = {
+  submission_id: string;
+  score: number;
+  criteria: Record<string, number> | null;
+  comment: string | null;
+  updated_at?: string;
+};
+
+/** Talaba ishini yuborish: kod bo'yicha kamida bitta diagnostika natijasi bo'lishi kerak. */
+export const submitWork = async (
+  code: string,
+  kind: SubmissionKind,
+  ref: string,
+  payload: Record<string, unknown>,
+) => {
+  const { error } = await db.from("portfolio_submissions").insert({ code, kind, ref, payload });
+  if (!error) return { ok: true as const };
+  const msg = /test topilmadi/i.test(error.message)
+    ? "Bu kod bilan topshirilgan test topilmadi. Avval Tajriba-sinov bo'limida kirish diagnostikasini topshiring."
+    : /chegaradan/i.test(error.message)
+      ? "Bugungi ishlar soni chegaradan oshdi. Ertaga davom ettiring."
+      : /allaqachon/i.test(error.message)
+        ? "Bu natija allaqachon baholangan."
+        : "Yuborib bo'lmadi. Internet aloqasini tekshirib, qayta urinib ko'ring.";
+  return { ok: false as const, error: msg };
+};

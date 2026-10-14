@@ -2,12 +2,13 @@
 // Ma'lumotlar bazasi sxemasini o'zgartirmaslik uchun kod, bosqich, guruh va rozilik
 // test_results.answers ichidagi "_meta" kalitiga yoziladi.
 
-export type Stage = "mashq" | "kirish" | "yakuniy";
+export type Stage = "mashq" | "kirish" | "oraliq" | "yakuniy";
 export type Group = "" | "tajriba" | "nazorat";
 
 export const STAGE_LABEL: Record<Stage, string> = {
   mashq: "Mashq",
   kirish: "Kirish testi (tajribadan oldin)",
+  oraliq: "Oraliq diagnostika (tajriba davomida)",
   yakuniy: "Yakuniy test (tajribadan keyin)",
 };
 

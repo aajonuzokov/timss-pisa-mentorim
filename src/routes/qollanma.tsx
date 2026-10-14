@@ -99,6 +99,29 @@ function Page() {
               sahifasini ishtirokchi kodi va o'zingiz tanlagan PIN (4–8 raqam) bilan oching:
               natijalar tarixi, komponentlar dinamikasi, o'qituvchi izohi va tavsiyalar shu yerda.
             </li>
+            <li>
+              <b>Mening yo'lim va modullar.</b> E-portfoliodagi "Mening yo'lim" diagnostika
+              natijangizga qarab qaysi{" "}
+              <Link to="/modullar" className="text-primary hover:underline">
+                modul
+              </Link>
+              ni to'liq, qaysi birini qisqa bajarish kerakligini ko'rsatadi. Har bir modul:
+              nazariya, namunaviy tahlil, mashq, metodik topshiriq va refleksiya.
+            </li>
+            <li>
+              <b>Amaliy metodik ishlar.</b>{" "}
+              <Link to="/amaliyot" className="text-primary hover:underline">
+                Amaliyot
+              </Link>{" "}
+              bo'limida o'quvchi xatolarini tahlil qiling, TIMSS 8-sinf va PISA topshiriqlarini
+              boshlang'ich sinfga moslang, dars ishlanmasi, Microteaching va Lesson Study
+              protokolini yuboring. Har bir ish kod bilan E-portfolioga tushadi va o'qituvchi
+              baholaydi.
+            </li>
+            <li>
+              <b>O'z-o'zini baholash.</b> Diagnostik testdan keyin har bir topshiriqqa o'zingiz 0–2
+              ball qo'ying. O'qituvchi bahosi bilan farq E-portfolioda ko'rinadi.
+            </li>
           </ol>
         </Section>
 
@@ -119,8 +142,9 @@ function Page() {
               Imkon bo'lsa, auditoriyada bir vaqtda o'tkazing.
             </li>
             <li>
-              <b>Tajriba davri.</b> Talabalar metodik tavsiyalar, rasmiy topshiriqlar va mashq
-              testlari bilan ishlaydi (dars yoki mustaqil ish sifatida).
+              <b>Tajriba davri.</b> Talabalar "Mening yo'lim" bo'yicha variativ modul modullarini va
+              amaliy metodik ishlarni bajaradi. Tajriba o'rtasida "Oraliq diagnostika" (30
+              topshiriq, 60 ball) topshiriladi.
             </li>
             <li>
               <b>Yakuniy test.</b> "Yakuniy test (B shakl)" — xuddi shu kod bilan. B shakl A ning
@@ -161,6 +185,12 @@ function Page() {
               <b>E-portfolio.</b> "Ishtirokchilar" bo'limida talabaning natijalar tarixi va
               refleksiyalarini ko'rib, izoh va individual tavsiya yozing; ular talabaning
               portfoliosida chiqadi. PIN unutilgan bo'lsa, shu yerda bekor qiling.
+            </li>
+            <li>
+              <b>Amaliy ishlar va guruh holati.</b> "Amaliy ishlar" bo'limida talabalar yuborgan
+              xato tahlillari, moslashtirilgan topshiriqlar, dars ishlanmalari, Microteaching
+              videolari va Lesson Study protokollarini 0–2 ball bilan baholang. "Guruh holati"
+              guruhning qaysi komponentda orqada qolayotganini ko'rsatadi.
             </li>
             <li>
               <Link to="/monitoring" className="text-primary hover:underline">

@@ -58,6 +58,7 @@ function Page() {
       rubric: r.rubric ?? [],
       reflections: r.reflections ?? [],
       feedback: r.feedback ?? [],
+      submissions: r.submissions ?? [],
     });
   };
 

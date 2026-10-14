@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button";
 import { ParticipantForm, isParticipantValid } from "@/components/ParticipantForm";
 import { ReflectionForm } from "@/components/ReflectionForm";
 import { TEST_TYPES, versionOf, withVersion, type TestKey } from "@/data/bank";
-import { DIAG_BLOCKS, DIAG_MAX, type DiagAnswer, type DiagItem } from "@/data/diag";
+import { DIAG_BLOCKS, diagMax, type DiagAnswer, type DiagItem } from "@/data/diag";
 import { autoPoints, isDiagAnswered, scoreDiag } from "@/lib/diagScore";
 import { COMPONENT_LABEL } from "@/lib/components";
 import { pctOf } from "@/lib/levels";
 import { newResultId, saveResult } from "@/lib/saveResult";
+import { submitWork } from "@/lib/db";
 import {
   META_KEY,
   clearDraft,
@@ -76,6 +77,7 @@ export function DiagTest({ items, testKey, stage, label, showKey = false }: Prop
   }, [answers, startedAt, hydrated, submitted, draftKey]);
 
   const score = useMemo(() => scoreDiag(items, answers), [items, answers]);
+  const maxPoints = diagMax(items);
   const autoMax = items.reduce((s, it) => s + (it.auto?.points ?? 0), 0);
   const empty = items.length - score.answered;
   const participantValid = isParticipantValid(participant);
@@ -111,8 +113,8 @@ export function DiagTest({ items, testKey, stage, label, showKey = false }: Prop
       test_type: testType,
       // Dastlabki ball: faqat avtomatik tekshiriladigan qismlar. Yakuniy ball — o'qituvchi rubrikasi.
       score: score.auto,
-      total_questions: DIAG_MAX,
-      percentage: pctOf(score.auto, DIAG_MAX),
+      total_questions: maxPoints,
+      percentage: pctOf(score.auto, maxPoints),
       level: "Baholash kutilmoqda",
       answers: {
         ...clean,
@@ -203,14 +205,14 @@ export function DiagTest({ items, testKey, stage, label, showKey = false }: Prop
                   <Hourglass className="w-5 h-5 text-amber-600" /> O'qituvchi baholashi kutilmoqda
                 </div>
                 <p className="mt-2 text-sm text-muted-foreground max-w-2xl">
-                  Test 20 ta topshiriqdan iborat, har biri 0–2 ball (jami 40 ball). Hisoblash
-                  natijalari avtomatik tekshirildi:{" "}
+                  Test {items.length} ta topshiriqdan iborat, har biri 0–2 ball (jami {maxPoints}{" "}
+                  ball). Hisoblash natijalari avtomatik tekshirildi:{" "}
                   <b>
                     {score.auto} / {autoMax} ball
                   </b>
                   . Yechimning asoslanishi, metodik va refleksiv javoblarni o'qituvchi
                   dissertatsiyadagi baholash rubrikasi (Ilova 5) bo'yicha baholaydi. Yakuniy ball,
-                  daraja (past 0–20, o'rta 21–30, yuqori 31–40) va 5 komponent bo'yicha profil{" "}
+                  daraja (past ≤ 50%, o'rta 51–75%, yuqori &gt; 75%) va 5 komponent bo'yicha profil{" "}
                   <Link to="/portfolio" className="text-primary hover:underline">
                     E-portfolio
                   </Link>{" "}
@@ -232,7 +234,10 @@ export function DiagTest({ items, testKey, stage, label, showKey = false }: Prop
             </div>
           </div>
           {saveState === "saved" && (
-            <ReflectionForm code={participant.code} resultId={resultId} testType={testType} />
+            <>
+              <SelfScore items={items} code={participant.code} resultId={resultId} />
+              <ReflectionForm code={participant.code} resultId={resultId} testType={testType} />
+            </>
           )}
         </>
       )}
@@ -371,6 +376,88 @@ export function DiagTest({ items, testKey, stage, label, showKey = false }: Prop
           </>
         )}
       </div>
+    </div>
+  );
+}
+
+/** O'z-o'zini baholash: talaba har bir topshiriqqa 0–2 ball qo'yadi; keyin o'qituvchi bahosi bilan solishtiriladi. */
+function SelfScore({
+  items,
+  code,
+  resultId,
+}: {
+  items: DiagItem[];
+  code: string;
+  resultId: string;
+}) {
+  const [scores, setScores] = useState<Record<string, number>>({});
+  const [state, setState] = useState<"idle" | "saving" | "saved">("idle");
+  const [error, setError] = useState("");
+  const filled = items.filter((it) => typeof scores[it.id] === "number").length;
+
+  const send = async () => {
+    if (filled < items.length) return setError(`Barcha ${items.length} ta topshiriqni baholang.`);
+    setState("saving");
+    const res = await submitWork(code, "self-score", resultId, { scores });
+    if (!res.ok) {
+      setState("idle");
+      return setError(res.error);
+    }
+    setState("saved");
+    toast.success("O'z-o'zini baholash saqlandi");
+  };
+
+  return (
+    <div className="p-6 rounded-2xl border bg-card shadow-card print:hidden">
+      <h3 className="font-semibold text-lg">O'z ishingizni baholang</h3>
+      {state === "saved" ? (
+        <p className="mt-2 text-sm flex gap-2">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+          Saqlandi. O'qituvchi baholagandan keyin ikkala baho E-portfolioda solishtiriladi.
+        </p>
+      ) : (
+        <>
+          <p className="text-sm text-muted-foreground mt-1">
+            Har bir topshiriqqa rubrika bo'yicha o'zingiz 0, 1 yoki 2 ball qo'ying: 2 — to'liq va
+            asoslangan, 1 — qisman, 0 — bajarilmagan yoki noto'g'ri. Bu refleksiv faoliyatning
+            ko'rsatkichi: o'z ishingizni qanchalik aniq baholashingiz.
+          </p>
+          <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+            {items.map((it) => (
+              <div
+                key={it.id}
+                className="flex items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm"
+              >
+                <span className="truncate">
+                  {it.n}. {it.title}
+                </span>
+                <span className="flex gap-1 shrink-0">
+                  {[0, 1, 2].map((v) => (
+                    <button
+                      key={v}
+                      type="button"
+                      aria-label={`${it.n}-topshiriq: ${v} ball`}
+                      onClick={() => setScores((p) => ({ ...p, [it.id]: v }))}
+                      className={`w-7 h-7 rounded border text-xs ${scores[it.id] === v ? "bg-primary text-primary-foreground border-primary" : "hover:border-primary"}`}
+                    >
+                      {v}
+                    </button>
+                  ))}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 flex items-center gap-3">
+            <Button onClick={send} disabled={state === "saving"}>
+              Bahoni saqlash
+            </Button>
+            <span className="text-sm text-muted-foreground">
+              {filled} / {items.length}
+            </span>
+          </div>
+          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+        </>
+      )}
     </div>
   );
 }

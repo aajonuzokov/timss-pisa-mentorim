@@ -21,7 +21,8 @@ export type TestKey =
   | "sinov-a"
   | "sinov-b"
   | "diag-a"
-  | "diag-b";
+  | "diag-b"
+  | "diag-o";
 
 /** Dissertatsiyaning diagnostik testi (Ilova 1) versiyasi. */
 export const DIAG_TEST_VERSION = "d1";
@@ -56,6 +57,7 @@ export const TEST_TYPES: Record<TestKey, string> = {
   "sinov-b": "Sinov testi B",
   "diag-a": "Diagnostik test A",
   "diag-b": "Diagnostik test B",
+  "diag-o": "Oraliq diagnostika",
 };
 
 export const testKeyOf = (base: string): TestKey | undefined =>
@@ -75,6 +77,7 @@ export const TEST_TAVSIYA: Record<TestKey, { slug: string; title: string }> = {
   "sinov-b": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
   "diag-a": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
   "diag-b": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
+  "diag-o": { slug: "mkt", title: "Mathematical Knowledge for Teaching (MKT)" },
 };
 
 export type TopicInfo = { label: string; tip: string };

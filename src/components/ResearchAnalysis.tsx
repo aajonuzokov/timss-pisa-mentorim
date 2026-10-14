@@ -527,3 +527,132 @@ export function ComponentAnalysis({ attempts }: { attempts: Attempt[] }) {
     </div>
   );
 }
+
+const STAGES3 = ["kirish", "oraliq", "yakuniy"] as const;
+const STAGE3_LABEL = { kirish: "Kirish", oraliq: "Oraliq", yakuniy: "Yakuniy" };
+
+/** Diagnostik testlar bo'yicha komponentlar dinamikasi: kirish → oraliq → yakuniy (o'rtacha %). */
+export function ComponentDynamics({ attempts }: { attempts: Attempt[] }) {
+  const list = attempts.filter((a) => a.counted && a.diag && a.stage !== "mashq");
+  if (!list.some((a) => a.stage === "oraliq") && !list.length) return null;
+  const val = (k: ComponentKey, st: (typeof STAGES3)[number]) => {
+    const xs = list
+      .filter((a) => a.stage === st)
+      .map((a) => {
+        const c = a.components[k];
+        return c && c.max ? (c.score / c.max) * 100 : NaN;
+      })
+      .filter(Number.isFinite);
+    return { m: xs.length ? mean(xs) : NaN, n: xs.length };
+  };
+  return (
+    <div className="p-6 rounded-2xl border bg-card shadow-card">
+      <h2 className="font-semibold text-lg">Komponentlar dinamikasi: kirish → oraliq → yakuniy</h2>
+      <p className="text-sm text-muted-foreground mt-1">
+        Diagnostik testlar (A, oraliq, B) bo'yicha har bir komponentning o'rtacha natijasi, % (har
+        bir ishtirokchining har bir bosqichdagi birinchi to'liq urinishi).
+      </p>
+      <div className="mt-4 overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead className="bg-muted">
+            <tr className="text-left">
+              <th className="px-3 py-2">Komponent</th>
+              {STAGES3.map((s) => (
+                <th key={s} className="px-3 py-2 text-right">
+                  {STAGE3_LABEL[s]}
+                </th>
+              ))}
+              <th className="px-3 py-2 text-right">O'sish (p.p.)</th>
+            </tr>
+          </thead>
+          <tbody className="tabular-nums">
+            {COMPONENTS.map((c) => {
+              const v = STAGES3.map((s) => val(c.key, s));
+              const first = v.find((x) => Number.isFinite(x.m));
+              const last = [...v].reverse().find((x) => Number.isFinite(x.m));
+              return (
+                <tr key={c.key} className="border-t">
+                  <td className="px-3 py-2 font-medium">{c.label}</td>
+                  {v.map((x, i) => (
+                    <td key={i} className="px-3 py-2 text-right whitespace-nowrap">
+                      {Number.isFinite(x.m) ? `${fmtNum(x.m, 1)}%` : "—"}
+                      {x.n > 0 && <span className="text-xs text-muted-foreground"> n={x.n}</span>}
+                    </td>
+                  ))}
+                  <td className="px-3 py-2 text-right">
+                    {first && last && first !== last ? fmtNum(last.m - first.m, 1) : "—"}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * O'z-o'zini baholash aniqligi: talaba bahosi va o'qituvchi rubrikasi orasidagi o'rtacha mutlaq
+ * farq (0–2). Farq kamaysa, refleksiv faoliyat rivojlanganining dalili.
+ */
+export function SelfAccuracy({
+  attempts,
+  selfScores,
+  rubric,
+}: {
+  attempts: Attempt[];
+  selfScores: Map<string, Record<string, number>>;
+  rubric: Map<string, Record<string, number>>;
+}) {
+  const rows = STAGES3.map((st) => {
+    const per = attempts
+      .filter((a) => a.diag && a.counted && a.stage === st && selfScores.has(a.id))
+      .map((a) => {
+        const self = selfScores.get(a.id)!;
+        const teach = rubric.get(a.id) ?? {};
+        const d = Object.keys(teach)
+          .filter((k) => typeof self[k] === "number")
+          .map((k) => Math.abs(self[k] - teach[k]));
+        return d.length ? mean(d) : NaN;
+      })
+      .filter(Number.isFinite);
+    return {
+      st,
+      n: per.length,
+      m: per.length ? mean(per) : NaN,
+      sd: per.length > 1 ? sd(per) : NaN,
+    };
+  });
+  return (
+    <div className="p-6 rounded-2xl border bg-card shadow-card">
+      <h2 className="font-semibold text-lg">O'z-o'zini baholash aniqligi (refleksiv faoliyat)</h2>
+      <p className="text-sm text-muted-foreground mt-1">
+        Talaba o'zi qo'ygan ball va o'qituvchi rubrikasi orasidagi o'rtacha mutlaq farq (0 — to'liq
+        mos, 2 — butunlay farqli). Faqat bazadan jonli yuklanganda hisoblanadi.
+      </p>
+      <div className="mt-4 overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead className="bg-muted">
+            <tr className="text-left">
+              <th className="px-3 py-2">Bosqich</th>
+              <th className="px-3 py-2 text-right">n</th>
+              <th className="px-3 py-2 text-right">O'rtacha farq ± SD</th>
+            </tr>
+          </thead>
+          <tbody className="tabular-nums">
+            {rows.map((r) => (
+              <tr key={r.st} className="border-t">
+                <td className="px-3 py-2">{STAGE3_LABEL[r.st]}</td>
+                <td className="px-3 py-2 text-right">{r.n}</td>
+                <td className="px-3 py-2 text-right">
+                  {Number.isFinite(r.m) ? `${fmtNum(r.m, 2)} ± ${fmtNum(r.sd, 2)}` : "—"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}

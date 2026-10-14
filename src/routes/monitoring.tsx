@@ -15,10 +15,17 @@ import { Button } from "@/components/ui/button";
 import { Bars, ComponentProfile, LevelLegend } from "@/components/DiagnosticReport";
 import { TEST_TYPES, isDiag, isPisa, topicLabel, PROCESS_LABEL, type TestKey } from "@/data/bank";
 import { answerText, isAnswered } from "@/lib/answers";
-import { ComponentAnalysis, ItemAnalysis, PrePostAnalysis } from "@/components/ResearchAnalysis";
+import {
+  ComponentAnalysis,
+  ComponentDynamics,
+  ItemAnalysis,
+  PrePostAnalysis,
+  SelfAccuracy,
+} from "@/components/ResearchAnalysis";
 import { COMPONENTS, componentPct, type ComponentScores } from "@/lib/components";
 import { rowToRecord, rubricMapOf } from "@/lib/db";
-import { loadResults, loadRubric, useTeacher } from "@/lib/teacher";
+import { fetchAll, loadResults, loadRubric, useTeacher } from "@/lib/teacher";
+import type { SubmissionRow } from "@/lib/db";
 import { GROUP_LABEL, STAGE_LABEL } from "@/lib/participant";
 import {
   buildAttempts,
@@ -52,6 +59,7 @@ const PLANNED_PARTICIPANTS = 360;
 
 const TEST_ORDER: TestKey[] = [
   "diag-a",
+  "diag-o",
   "diag-b",
   "knowing",
   "applying",
@@ -111,6 +119,8 @@ function Page() {
   const [test, setTest] = useState<TestKey>("diag-a");
   const [loadingDb, setLoadingDb] = useState(false);
   const teacher = useTeacher();
+  const [selfMap, setSelfMap] = useState<Map<string, Record<string, number>> | null>(null);
+  const [rubricMap, setRubricMap] = useState<RubricMap>(new Map());
 
   const build = async (rows: Record<string, string>[], rubric?: RubricMap) => {
     const banks = defaultBanks();
@@ -141,8 +151,21 @@ function Page() {
     setError("");
     setLoadingDb(true);
     try {
-      const [rows, rubric] = await Promise.all([loadResults(), loadRubric()]);
-      await build(rows.map(rowToRecord), rubricMapOf(rubric));
+      const [rows, rubric, subs] = await Promise.all([
+        loadResults(),
+        loadRubric(),
+        fetchAll<SubmissionRow>("portfolio_submissions", "created_at").catch(() => []),
+      ]);
+      const rm = rubricMapOf(rubric);
+      setRubricMap(rm);
+      setSelfMap(
+        new Map(
+          subs
+            .filter((x) => x.kind === "self-score")
+            .map((x) => [x.ref, (x.payload.scores ?? {}) as Record<string, number>]),
+        ),
+      );
+      await build(rows.map(rowToRecord), rm);
       setFileName(`Bazadan: ${rows.length} ta yozuv, ${new Date().toLocaleTimeString()}`);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Bazadan o'qib bo'lmadi.");
@@ -178,6 +201,7 @@ function Page() {
         count: list.length,
         avg: list.length ? Math.round(list.reduce((s, a) => s + a.pct, 0) / list.length) : 0,
         avgPoints: list.length ? list.reduce((s, a) => s + a.correct, 0) / list.length : 0,
+        max: list[0]?.total ?? 0,
         levels,
       };
     }).filter((t) => t.count > 0 || isDiag(t.key));
@@ -489,7 +513,7 @@ function Page() {
                         {t.count ? `${t.avg}%` : "—"}
                         {t.count > 0 && isDiag(t.key) && (
                           <div className="text-xs text-muted-foreground">
-                            {t.avgPoints.toFixed(1).replace(".", ",")} / 40 ball
+                            {t.avgPoints.toFixed(1).replace(".", ",")} / {t.max} ball
                           </div>
                         )}
                       </td>
@@ -609,6 +633,16 @@ function Page() {
 
             <ComponentAnalysis attempts={attempts.filter((a) => a.status !== "sinov")} />
 
+            <ComponentDynamics attempts={attempts.filter((a) => a.status !== "sinov")} />
+
+            {selfMap && (
+              <SelfAccuracy
+                attempts={attempts.filter((a) => a.status !== "sinov")}
+                selfScores={selfMap}
+                rubric={rubricMap}
+              />
+            )}
+
             <ItemAnalysis attempts={attempts.filter((a) => a.status !== "sinov")} test={test} />
 
             <div className="overflow-x-auto rounded-2xl border bg-card shadow-card">
@@ -636,11 +670,7 @@ function Page() {
                         <td className="px-4 py-3 font-medium">{a.full_name}</td>
                         <td className="px-4 py-3 font-mono text-xs">{a.code || "—"}</td>
                         <td className="px-4 py-3 whitespace-nowrap">
-                          {a.stage === "mashq"
-                            ? "Mashq"
-                            : a.stage === "kirish"
-                              ? "Kirish"
-                              : "Yakuniy"}
+                          {STAGE_LABEL[a.stage].split(" (")[0]}
                           {a.group && (
                             <div className="text-xs text-muted-foreground">
                               {GROUP_LABEL[a.group]}
