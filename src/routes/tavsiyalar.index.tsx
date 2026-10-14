@@ -17,7 +17,7 @@ const directRoutes: Record<string, string> = {
   diagnostika: "/assessment",
 };
 
-export const Route = createFileRoute("/tavsiyalar")({
+export const Route = createFileRoute("/tavsiyalar/")({
   head: () => ({
     meta: [
       { title: "Metodik tavsiyalar — TIMSS/PISA Platformasi" },

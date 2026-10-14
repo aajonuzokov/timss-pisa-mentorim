@@ -18,7 +18,6 @@ import { Route as KabinetRouteImport } from './routes/kabinet'
 import { Route as KutubxonaRouteImport } from './routes/kutubxona'
 import { Route as MathematicalModelingRouteImport } from './routes/mathematical-modeling'
 import { Route as MktRouteImport } from './routes/mkt'
-import { Route as ModelRouteImport } from './routes/model'
 import { Route as MonitoringRouteImport } from './routes/monitoring'
 import { Route as NatijalarRouteImport } from './routes/natijalar'
 import { Route as PisaRouteImport } from './routes/pisa'
@@ -30,11 +29,13 @@ import { Route as QollanmaRouteImport } from './routes/qollanma'
 import { Route as RasmiyRouteImport } from './routes/rasmiy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SinovRouteImport } from './routes/sinov'
-import { Route as TavsiyalarRouteImport } from './routes/tavsiyalar'
 import { Route as TimssRouteImport } from './routes/timss'
 import { Route as TimssApplyingRouteImport } from './routes/timss-applying'
 import { Route as TimssKnowingRouteImport } from './routes/timss-knowing'
 import { Route as TimssReasoningRouteImport } from './routes/timss-reasoning'
+import { Route as ModelIndexRouteImport } from './routes/model.index'
+import { Route as ModelSlugRouteImport } from './routes/model.$slug'
+import { Route as TavsiyalarIndexRouteImport } from './routes/tavsiyalar.index'
 import { Route as TavsiyalarSlugRouteImport } from './routes/tavsiyalar.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -80,11 +81,6 @@ const MathematicalModelingRoute = MathematicalModelingRouteImport.update({
 const MktRoute = MktRouteImport.update({
   id: '/mkt',
   path: '/mkt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ModelRoute = ModelRouteImport.update({
-  id: '/model',
-  path: '/model',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MonitoringRoute = MonitoringRouteImport.update({
@@ -142,11 +138,6 @@ const SinovRoute = SinovRouteImport.update({
   path: '/sinov',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TavsiyalarRoute = TavsiyalarRouteImport.update({
-  id: '/tavsiyalar',
-  path: '/tavsiyalar',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TimssRoute = TimssRouteImport.update({
   id: '/timss',
   path: '/timss',
@@ -167,10 +158,25 @@ const TimssReasoningRoute = TimssReasoningRouteImport.update({
   path: '/timss-reasoning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ModelIndexRoute = ModelIndexRouteImport.update({
+  id: '/model/',
+  path: '/model/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModelSlugRoute = ModelSlugRouteImport.update({
+  id: '/model/$slug',
+  path: '/model/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TavsiyalarIndexRoute = TavsiyalarIndexRouteImport.update({
+  id: '/tavsiyalar/',
+  path: '/tavsiyalar/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TavsiyalarSlugRoute = TavsiyalarSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => TavsiyalarRoute,
+  id: '/tavsiyalar/$slug',
+  path: '/tavsiyalar/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -183,7 +189,6 @@ export interface FileRoutesByFullPath {
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
-  '/model': typeof ModelRoute
   '/monitoring': typeof MonitoringRoute
   '/natijalar': typeof NatijalarRoute
   '/pisa': typeof PisaRoute
@@ -195,12 +200,14 @@ export interface FileRoutesByFullPath {
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
   '/sinov': typeof SinovRoute
-  '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
   '/timss-knowing': typeof TimssKnowingRoute
   '/timss-reasoning': typeof TimssReasoningRoute
+  '/model/$slug': typeof ModelSlugRoute
   '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
+  '/model/': typeof ModelIndexRoute
+  '/tavsiyalar/': typeof TavsiyalarIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -212,7 +219,6 @@ export interface FileRoutesByTo {
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
-  '/model': typeof ModelRoute
   '/monitoring': typeof MonitoringRoute
   '/natijalar': typeof NatijalarRoute
   '/pisa': typeof PisaRoute
@@ -224,12 +230,14 @@ export interface FileRoutesByTo {
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
   '/sinov': typeof SinovRoute
-  '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
   '/timss-knowing': typeof TimssKnowingRoute
   '/timss-reasoning': typeof TimssReasoningRoute
+  '/model/$slug': typeof ModelSlugRoute
   '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
+  '/model': typeof ModelIndexRoute
+  '/tavsiyalar': typeof TavsiyalarIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -242,7 +250,6 @@ export interface FileRoutesById {
   '/kutubxona': typeof KutubxonaRoute
   '/mathematical-modeling': typeof MathematicalModelingRoute
   '/mkt': typeof MktRoute
-  '/model': typeof ModelRoute
   '/monitoring': typeof MonitoringRoute
   '/natijalar': typeof NatijalarRoute
   '/pisa': typeof PisaRoute
@@ -254,12 +261,14 @@ export interface FileRoutesById {
   '/rasmiy': typeof RasmiyRoute
   '/resources': typeof ResourcesRoute
   '/sinov': typeof SinovRoute
-  '/tavsiyalar': typeof TavsiyalarRouteWithChildren
   '/timss': typeof TimssRoute
   '/timss-applying': typeof TimssApplyingRoute
   '/timss-knowing': typeof TimssKnowingRoute
   '/timss-reasoning': typeof TimssReasoningRoute
+  '/model/$slug': typeof ModelSlugRoute
   '/tavsiyalar/$slug': typeof TavsiyalarSlugRoute
+  '/model/': typeof ModelIndexRoute
+  '/tavsiyalar/': typeof TavsiyalarIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -273,7 +282,6 @@ export interface FileRouteTypes {
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
-    | '/model'
     | '/monitoring'
     | '/natijalar'
     | '/pisa'
@@ -285,12 +293,14 @@ export interface FileRouteTypes {
     | '/rasmiy'
     | '/resources'
     | '/sinov'
-    | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
     | '/timss-knowing'
     | '/timss-reasoning'
+    | '/model/$slug'
     | '/tavsiyalar/$slug'
+    | '/model/'
+    | '/tavsiyalar/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -302,7 +312,6 @@ export interface FileRouteTypes {
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
-    | '/model'
     | '/monitoring'
     | '/natijalar'
     | '/pisa'
@@ -314,12 +323,14 @@ export interface FileRouteTypes {
     | '/rasmiy'
     | '/resources'
     | '/sinov'
-    | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
     | '/timss-knowing'
     | '/timss-reasoning'
+    | '/model/$slug'
     | '/tavsiyalar/$slug'
+    | '/model'
+    | '/tavsiyalar'
   id:
     | '__root__'
     | '/'
@@ -331,7 +342,6 @@ export interface FileRouteTypes {
     | '/kutubxona'
     | '/mathematical-modeling'
     | '/mkt'
-    | '/model'
     | '/monitoring'
     | '/natijalar'
     | '/pisa'
@@ -343,12 +353,14 @@ export interface FileRouteTypes {
     | '/rasmiy'
     | '/resources'
     | '/sinov'
-    | '/tavsiyalar'
     | '/timss'
     | '/timss-applying'
     | '/timss-knowing'
     | '/timss-reasoning'
+    | '/model/$slug'
     | '/tavsiyalar/$slug'
+    | '/model/'
+    | '/tavsiyalar/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -361,7 +373,6 @@ export interface RootRouteChildren {
   KutubxonaRoute: typeof KutubxonaRoute
   MathematicalModelingRoute: typeof MathematicalModelingRoute
   MktRoute: typeof MktRoute
-  ModelRoute: typeof ModelRoute
   MonitoringRoute: typeof MonitoringRoute
   NatijalarRoute: typeof NatijalarRoute
   PisaRoute: typeof PisaRoute
@@ -373,11 +384,14 @@ export interface RootRouteChildren {
   RasmiyRoute: typeof RasmiyRoute
   ResourcesRoute: typeof ResourcesRoute
   SinovRoute: typeof SinovRoute
-  TavsiyalarRoute: typeof TavsiyalarRouteWithChildren
   TimssRoute: typeof TimssRoute
   TimssApplyingRoute: typeof TimssApplyingRoute
   TimssKnowingRoute: typeof TimssKnowingRoute
   TimssReasoningRoute: typeof TimssReasoningRoute
+  ModelSlugRoute: typeof ModelSlugRoute
+  TavsiyalarSlugRoute: typeof TavsiyalarSlugRoute
+  ModelIndexRoute: typeof ModelIndexRoute
+  TavsiyalarIndexRoute: typeof TavsiyalarIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -443,13 +457,6 @@ declare module '@tanstack/react-router' {
       path: '/mkt'
       fullPath: '/mkt'
       preLoaderRoute: typeof MktRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/model': {
-      id: '/model'
-      path: '/model'
-      fullPath: '/model'
-      preLoaderRoute: typeof ModelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/monitoring': {
@@ -529,13 +536,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SinovRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tavsiyalar': {
-      id: '/tavsiyalar'
-      path: '/tavsiyalar'
-      fullPath: '/tavsiyalar'
-      preLoaderRoute: typeof TavsiyalarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/timss': {
       id: '/timss'
       path: '/timss'
@@ -564,27 +564,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimssReasoningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/model/': {
+      id: '/model/'
+      path: '/model'
+      fullPath: '/model/'
+      preLoaderRoute: typeof ModelIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/model/$slug': {
+      id: '/model/$slug'
+      path: '/model/$slug'
+      fullPath: '/model/$slug'
+      preLoaderRoute: typeof ModelSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tavsiyalar/': {
+      id: '/tavsiyalar/'
+      path: '/tavsiyalar'
+      fullPath: '/tavsiyalar/'
+      preLoaderRoute: typeof TavsiyalarIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tavsiyalar/$slug': {
       id: '/tavsiyalar/$slug'
-      path: '/$slug'
+      path: '/tavsiyalar/$slug'
       fullPath: '/tavsiyalar/$slug'
       preLoaderRoute: typeof TavsiyalarSlugRouteImport
-      parentRoute: typeof TavsiyalarRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface TavsiyalarRouteChildren {
-  TavsiyalarSlugRoute: typeof TavsiyalarSlugRoute
-}
-
-const TavsiyalarRouteChildren: TavsiyalarRouteChildren = {
-  TavsiyalarSlugRoute: TavsiyalarSlugRoute,
-}
-
-const TavsiyalarRouteWithChildren = TavsiyalarRoute._addFileChildren(
-  TavsiyalarRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -596,7 +605,6 @@ const rootRouteChildren: RootRouteChildren = {
   KutubxonaRoute: KutubxonaRoute,
   MathematicalModelingRoute: MathematicalModelingRoute,
   MktRoute: MktRoute,
-  ModelRoute: ModelRoute,
   MonitoringRoute: MonitoringRoute,
   NatijalarRoute: NatijalarRoute,
   PisaRoute: PisaRoute,
@@ -608,11 +616,14 @@ const rootRouteChildren: RootRouteChildren = {
   RasmiyRoute: RasmiyRoute,
   ResourcesRoute: ResourcesRoute,
   SinovRoute: SinovRoute,
-  TavsiyalarRoute: TavsiyalarRouteWithChildren,
   TimssRoute: TimssRoute,
   TimssApplyingRoute: TimssApplyingRoute,
   TimssKnowingRoute: TimssKnowingRoute,
   TimssReasoningRoute: TimssReasoningRoute,
+  ModelSlugRoute: ModelSlugRoute,
+  TavsiyalarSlugRoute: TavsiyalarSlugRoute,
+  ModelIndexRoute: ModelIndexRoute,
+  TavsiyalarIndexRoute: TavsiyalarIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
