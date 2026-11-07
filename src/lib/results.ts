@@ -79,13 +79,11 @@ export const diagAsQuestions = (items: DiagItem[]): Question[] =>
 export const BANK_D1: Bank = {
   "diag-a": diagAsQuestions(DIAG_FORMS.A),
   "diag-b": diagAsQuestions(DIAG_FORMS.B),
-  "diag-o": diagAsQuestions(DIAG_FORMS.O),
 };
 
 const DIAG_ITEMS: Partial<Record<TestKey, DiagItem[]>> = {
   "diag-a": DIAG_FORMS.A,
   "diag-b": DIAG_FORMS.B,
-  "diag-o": DIAG_FORMS.O,
 };
 
 /** Barcha mavjud banklar (v1 dan tashqari: u kerak bo'lganda alohida yuklanadi). */
@@ -282,7 +280,7 @@ export const buildAttempts = (
       personKey: code ? `kod:${code}` : nameKey,
       code,
       stage:
-        meta.stage === "kirish" || meta.stage === "yakuniy" || meta.stage === "oraliq"
+        meta.stage === "kirish" || meta.stage === "yakuniy"
           ? meta.stage
           : "mashq",
       group: meta.group === "tajriba" || meta.group === "nazorat" ? meta.group : "",

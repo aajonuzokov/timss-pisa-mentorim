@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { BANK_LEVEL_LABEL, BANK_LEVEL_TASKS, levelOf as bankLevelOf } from "@/data/bankLevels";
 import {
   CheckCircle2,
   XCircle,
@@ -71,6 +72,8 @@ type Props = {
   pageSize?: number;
   /** Bosqich sahifa tomonidan belgilansa (masalan, kirish/yakuniy test), tanlov ko'rsatilmaydi. */
   stage?: Stage;
+  /** Topshiriqlar banki: murakkablik darajasi belgisi va darajaga o'tish tugmalari. */
+  levels?: boolean;
 };
 
 type SaveState = "idle" | "saving" | "saved" | "error";
@@ -81,6 +84,7 @@ export function Quiz({
   label = "Topshiriqlar",
   pageSize = 10,
   stage: fixedStage,
+  levels = false,
 }: Props) {
   const [page, setPage] = useState(0);
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
@@ -329,6 +333,31 @@ export function Quiz({
         </div>
       </div>
 
+      {levels && (
+        <div className="flex flex-wrap items-center gap-2 p-4 rounded-2xl border bg-card text-sm print:hidden">
+          <span className="text-muted-foreground">
+            Topshiriqlar murakkablik darajasi bo'yicha joylashgan. Diagnostikadagi darajangizdan
+            boshlang:
+          </span>
+          {(["past", "orta", "yuqori"] as const).map((l) => {
+            const first = questions.findIndex((q) => bankLevelOf(q) === l);
+            if (first < 0) return null;
+            const n = questions.filter((q) => bankLevelOf(q) === l).length;
+            return (
+              <Button
+                key={l}
+                variant="outline"
+                size="sm"
+                onClick={() => goTo(Math.floor(first / pageSize))}
+                title={`${BANK_LEVEL_TASKS[l]} topshiriqlar`}
+              >
+                {BANK_LEVEL_LABEL[l]} ({n})
+              </Button>
+            );
+          })}
+        </div>
+      )}
+
       <div className="space-y-4 print:hidden">
         {visible.map((q, i) => {
           const userVal = answers[q.id];
@@ -345,6 +374,11 @@ export function Quiz({
               <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="text-xs text-muted-foreground font-medium">
                   Savol № {start + i + 1}
+                  {levels && bankLevelOf(q) && (
+                    <span className="ml-2 px-2 py-0.5 rounded-full bg-muted">
+                      {BANK_LEVEL_LABEL[bankLevelOf(q)!]} daraja
+                    </span>
+                  )}
                   {q.context && (
                     <span className="ml-2 px-2 py-0.5 rounded-full bg-accent/15 text-accent">
                       {q.context}

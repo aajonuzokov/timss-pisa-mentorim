@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { AppLink, ModelScheme } from "@/components/ModelScheme";
-import { Components36, Levels35 } from "@/components/DissResults";
+import { Components36, Efficiency4 } from "@/components/DissResults";
 import { BLOCKS, MODEL_TITLE } from "@/data/model";
 
 export const Route = createFileRoute("/model/")({
@@ -22,7 +22,7 @@ function Page() {
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Dissertatsiya, 2.1-rasm"
+        eyebrow="Avtoreferat, 1-rasm (dissertatsiya, 2.1-rasm)"
         title="Metodik model"
         description={`${MODEL_TITLE}. Model 6 blokdan iborat: har bir blok nomini bosib, uning mazmuni, ilmiy asosi va platformadagi vositalarini ko'ring.`}
       />
@@ -49,13 +49,13 @@ function Page() {
           <div>
             <h2 className="text-2xl font-semibold">Modelning samaradorligi</h2>
             <p className="text-muted-foreground mt-1">
-              Tajriba-sinov natijalari (dissertatsiya, 3-bob).{" "}
+              Tajriba-sinov natijalari (dissertatsiya, 3-bob; avtoreferat, 4–5-jadvallar).{" "}
               <AppLink to="/natijalar" className="text-primary hover:underline">
                 Batafsil natijalar →
               </AppLink>
             </p>
           </div>
-          <Levels35 />
+          <Efficiency4 />
           <Components36 />
         </div>
       </section>

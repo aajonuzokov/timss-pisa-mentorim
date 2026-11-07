@@ -9,7 +9,18 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { CHI2_FINAL, DISS_SAMPLE, TABLE_3_5, TABLE_3_6, TABLE_3_7, fmt } from "@/data/dissResults";
+import {
+  CHI2_FINAL,
+  DISS_SAMPLE,
+  EFFICIENCY,
+  TABLE_3_5,
+  TABLE_3_6,
+  TABLE_3_7,
+  TABLE_4,
+  fmt,
+  gradeMean,
+  gradeSD,
+} from "@/data/dissResults";
 
 const SHORT: Record<string, string> = {
   bilim: "Bilim",
@@ -32,7 +43,8 @@ export function Levels35() {
         TGda yuqori daraja 15% dan 45% gacha oshdi, NGda 15% dan 20% gacha
       </figcaption>
       <p className="text-sm text-muted-foreground mb-4">
-        3.5-jadval. Aniqlovchi va yakuniy bosqichlarda matematik tayyorgarlik darajalari, %
+        3.5-jadval (avtoreferatda 4-jadval). Aniqlovchi va yakuniy bosqichlarda matematik
+        tayyorgarlik darajalari, %
       </p>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
@@ -91,7 +103,8 @@ export function Components36() {
         TG barcha 5 komponentda NGdan yuqori; eng katta farq savodxonlik va refleksiyada
       </figcaption>
       <p className="text-sm text-muted-foreground mb-4">
-        3.6-jadval. Yakuniy natijalar, o'rtacha ball ± standart og'ish
+        3.6-jadval (avtoreferatda 5-jadval va 2-rasm). Yakuniy natijalar, o'rtacha ball ± standart
+        og'ish
       </p>
       <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">
@@ -159,7 +172,7 @@ export function Final37() {
         {CHI2_FINAL.df}, p {CHI2_FINAL.p}
       </figcaption>
       <p className="text-sm text-muted-foreground mb-4">
-        3.7-jadval. Yakuniy diagnostika natijalari, talabalar soni (ulushi)
+        3.7-jadval (avtoreferatda 4-jadval). Yakuniy diagnostika natijalari, talabalar soni (ulushi)
       </p>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
@@ -187,6 +200,117 @@ export function Final37() {
           </tbody>
         </table>
       </div>
+    </figure>
+  );
+}
+
+const C_NG = "#2563eb";
+const C_TG = "#f97316";
+
+/** Avtoreferat, 4-jadval va 3-rasm: o'rtacha baho va samaradorlik koeffitsiyenti η. */
+export function Efficiency4() {
+  const bar = ["Aniqlovchi", "Yakuniy"].map((st) => {
+    const tg = TABLE_4.find((r) => r.stage === st && r.group === "TG")!;
+    const ng = TABLE_4.find((r) => r.stage === st && r.group === "NG")!;
+    return { name: `${st} bosqich`, NG: gradeMean(ng), TG: gradeMean(tg) };
+  });
+  const tiles = [
+    { n: `${fmt(EFFICIENCY.gainPct)}%`, l: "TG samaradorligi NG ga nisbatan yuqori" },
+    { n: `η = ${fmt(EFFICIENCY.eta.yakuniy, 2)}`, l: "samaradorlik koeffitsiyenti, η = X̄T / X̄N" },
+    {
+      n: `T = ${fmt(EFFICIENCY.t, 2)}`,
+      l: `Student mezoni, T > tkr = ${fmt(EFFICIENCY.tCrit, 2)} (α = 0,05)`,
+    },
+    {
+      n: `χ² = ${fmt(EFFICIENCY.baselineChi2.chi2, 2)}`,
+      l: `aniqlovchi bosqich, p = ${EFFICIENCY.baselineChi2.p}: guruhlar boshida teng`,
+    },
+  ];
+  return (
+    <figure className="p-6 rounded-2xl border bg-card shadow-card">
+      <figcaption className="mb-1 font-semibold">
+        Yakuniy bosqichda TG o'rtacha bahosi 4,30, NG niki 3,85: samaradorlik 11,7% yuqori
+      </figcaption>
+      <p className="text-sm text-muted-foreground mb-4">
+        Avtoreferat, 4-jadval va 3-rasm. Darajalar baholarga o'tkazilgan: past — "3", o'rta — "4",
+        yuqori — "5"; X̄ = (1/n)·Σnᵢxᵢ, η = X̄T / X̄N.
+      </p>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-5">
+        {tiles.map((t) => (
+          <div key={t.l} className="rounded-xl border p-4">
+            <div className="text-xl font-bold tabular-nums text-primary">{t.n}</div>
+            <div className="text-xs text-muted-foreground mt-1">{t.l}</div>
+          </div>
+        ))}
+      </div>
+      <div className="h-64">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={bar} margin={{ top: 20, right: 16 }}>
+            <CartesianGrid vertical={false} strokeDasharray="3 3" />
+            <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+            <YAxis domain={[0, 5]} ticks={[0, 1, 2, 3, 4, 5]} tick={{ fontSize: 12 }} />
+            <Tooltip formatter={(v: number) => fmt(v, 2)} />
+            <Legend wrapperStyle={{ fontSize: 12 }} />
+            <Bar
+              dataKey="NG"
+              name="Nazorat guruhi"
+              fill={C_NG}
+              label={{ position: "top", fontSize: 12, formatter: (v: number) => fmt(v, 2) }}
+            />
+            <Bar
+              dataKey="TG"
+              name="Tajriba guruhi"
+              fill={C_TG}
+              label={{ position: "top", fontSize: 12, formatter: (v: number) => fmt(v, 2) }}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <div className="mt-4 overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead className="bg-muted">
+            <tr className="text-left">
+              <th className="px-3 py-2">Bosqich</th>
+              <th className="px-3 py-2">Guruh</th>
+              <th className="px-3 py-2 text-right">Past ("3")</th>
+              <th className="px-3 py-2 text-right">O'rta ("4")</th>
+              <th className="px-3 py-2 text-right">Yuqori ("5")</th>
+              <th className="px-3 py-2 text-right">X̄</th>
+              <th className="px-3 py-2 text-right">S</th>
+              <th className="px-3 py-2 text-right">η</th>
+            </tr>
+          </thead>
+          <tbody className="tabular-nums">
+            {TABLE_4.map((r) => (
+              <tr key={r.stage + r.group} className="border-t">
+                <td className="px-3 py-2">{r.group === "TG" ? r.stage : ""}</td>
+                <td className="px-3 py-2 font-medium">
+                  {r.group} (n={r.n})
+                </td>
+                {[r.g3, r.g4, r.g5].map((v, i) => (
+                  <td key={i} className="px-3 py-2 text-right">
+                    {v} ({fmt((v / r.n) * 100)}%)
+                  </td>
+                ))}
+                <td className="px-3 py-2 text-right">{fmt(gradeMean(r), 2)}</td>
+                <td className="px-3 py-2 text-right">{fmt(gradeSD(r), 3)}</td>
+                <td className="px-3 py-2 text-right">
+                  {r.group === "TG"
+                    ? fmt(
+                        r.stage === "Yakuniy" ? EFFICIENCY.eta.yakuniy : EFFICIENCY.eta.aniqlovchi,
+                        2,
+                      )
+                    : ""}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-3 text-xs text-muted-foreground">
+        Yakuniy bosqich: VT = {fmt(EFFICIENCY.v.tg)}%, VN = {fmt(EFFICIENCY.v.ng)}%; ishonchli
+        intervallar X̄T = 4,30 ± {fmt(EFFICIENCY.ci.tg, 2)}, X̄N = 3,85 ± {fmt(EFFICIENCY.ci.ng, 2)}.
+      </p>
     </figure>
   );
 }

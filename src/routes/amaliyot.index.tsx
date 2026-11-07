@@ -21,7 +21,7 @@ function Page() {
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Texnologik blok · MKT"
+        eyebrow="Tashkiliy-texnologik blok · MKT"
         title="Amaliy metodik ishlar"
         description="Matematik mazmunni o'qitish faoliyatiga aylantirish mashqlari. Har bir ish ishtirokchi kodingiz bilan E-portfolioga yuboriladi, o'qituvchi 0–2 ball bilan baholaydi va izoh yozadi."
       />

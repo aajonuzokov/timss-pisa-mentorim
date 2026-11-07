@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { AppLink } from "@/components/ModelScheme";
+import { APROBATSIYA, DISSERTATION, ETR, IMPLEMENTATION, PUBLICATIONS } from "@/data/publications";
 import { BLOCKS, MODEL_TITLE } from "@/data/model";
 import { COMPONENTS } from "@/lib/components";
 import { DIAG_FORMS } from "@/data/diag";
@@ -32,7 +33,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Xalqaro baholash dasturlari asosida bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligini takomillashtirish elektron ta'lim resursi (DGU-38123).",
+          "TIMSS-PISA Mentorim: bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligini xalqaro baholash dasturlari asosida oshirish platformasi. DGU 38123 elektron ta'lim resursi asosida ishlab chiqilgan.",
       },
       { property: "og:title", content: "TIMSS-PISA Mentorim — Elektron ta'lim resursi" },
       {
@@ -76,7 +77,7 @@ const contents = [
   ["imkoniyatlar", "Platforma imkoniyatlari"],
   ["foydalanuvchilar", "Foydalanuvchilar"],
   ["tartib", "Foydalanish tartibi"],
-  ["mualliflar", "Mualliflar va guvohnoma"],
+  ["mualliflar", "Mualliflar va ilmiy faoliyat"],
 ] as const;
 
 const path = [
@@ -113,19 +114,17 @@ const path = [
 ];
 
 const tasks = [
-  "Matematik tayyorgarlikning tarkibiy komponentlarini yagona tizim asosida integratsiyalash",
-  "TIMSS va PISA kompetensiyalarini o'quv mazmuniga moslashtirish",
-  "MKT modeli asosida matematik bilimlarni metodik faoliyatga transformatsiya qilish mexanizmlarini ishlab chiqish",
-  "Xalqaro baholash talablariga mos didaktik vositalar va topshiriqlar tizimini takomillashtirish",
-  "Talabalarning individual rivojlanish trayektoriyasini adaptiv ta'lim muhiti orqali qo'llab-quvvatlash",
-  "Matematik tayyorgarlikning rivojlanish dinamikasini diagnostika va monitoring qilish",
+  "Matematik tayyorgarlikning matematik bilim, matematik tafakkur, matematik savodxonlik, matematik-metodik kompetentlik va refleksiv faoliyat komponentlaridan iborat integrativ tuzilmasini hamda uning TIMSS, PISA va MKT bilan mazmuniy bog'liqligini takomillashtirish",
+  "TIMSS, PISA va MKT integratsiyasi asosida matematik tayyorgarlikni oshirishga yo'naltirilgan adaptiv strukturaviy-funksional modelni takomillashtirish hamda uning pedagogik shart-sharoitlarini asoslash",
+  "Matematik tayyorgarlikni baholash mezonlari, ko'rsatkichlari va rivojlanish darajalarini aniqlashtirish hamda uni raqamli ta'lim vositalari asosida diagnostika va monitoring qilish mexanizmini takomillashtirish",
+  '"Boshlang\'ich sinfda xalqaro baholash metodikasi" variativ moduli hamda TIMSS va PISA yondashuvlariga asoslangan kompetensiyaviy topshiriqlar banki asosida metodikani takomillashtirish va uning samaradorligini tajriba-sinov orqali asoslash',
 ];
 
 const capabilities = [
   {
     icon: ClipboardCheck,
     label: "Diagnostik testlar",
-    text: "Kirish, oraliq va yakuniy diagnostika",
+    text: "Kirish (A) va yakuniy (B) diagnostika",
     to: "/sinov",
   },
   {
@@ -210,11 +209,12 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid lg:grid-cols-[minmax(0,1fr)_380px] gap-10 items-center">
           <div>
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border bg-background/70 px-3 py-1.5 text-xs font-semibold uppercase text-accent">
-              <GraduationCap className="h-4 w-4" /> Elektron ta'lim resursi · DGU-38123
+              <GraduationCap className="h-4 w-4" /> TIMSS-PISA Mentorim · DGU 38123
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-              Xalqaro baholash dasturlari asosida bo'lajak boshlang'ich sinf o'qituvchilarining{" "}
-              <span className="text-gradient">matematik tayyorgarligini</span> takomillashtirish
+              Bo'lajak boshlang'ich sinf o'qituvchilarining{" "}
+              <span className="text-gradient">matematik tayyorgarligini</span> xalqaro baholash
+              dasturlari asosida oshirish
             </h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-2xl">
               TIMSS, PISA va MKT integratsiyasi asosida matematik bilim, tafakkur, savodxonlik,
@@ -242,9 +242,14 @@ function Home() {
               </AppLink>
             </div>
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-1 border-t pt-4 text-sm">
-              <span className="text-muted-foreground">Mualliflar</span>
-              <span className="font-semibold">Abdusattarova Z.A.</span>
-              <span className="font-semibold">Xamzayev X.</span>
+              <span>
+                <span className="text-muted-foreground">Muallif: </span>
+                <span className="font-semibold">Abdusattarova Z.A.</span>
+              </span>
+              <span>
+                <span className="text-muted-foreground">Ilmiy rahbar: </span>
+                <span className="font-semibold">Xamzayev X.X., PhD, dotsent</span>
+              </span>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -370,10 +375,12 @@ function Home() {
           <section id="maqsad" className="scroll-mt-28 border-t pt-12">
             <H2 n={3} title="Maqsad va vazifalar" />
             <div className="border-l-4 border-primary bg-muted px-6 py-5 text-lg leading-8">
-              Bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligini TIMSS, PISA
-              kompetensiyalari va MKT modeli integratsiyasi asosida rivojlantirish.
+              <span className="font-semibold">Tadqiqot maqsadi:</span> bo'lajak boshlang'ich sinf
+              o'qituvchilarining matematik tayyorgarligini xalqaro baholash dasturlari asosida
+              oshirish metodikasini takomillashtirish bo'yicha taklif va tavsiyalar ishlab chiqish.
             </div>
-            <ul className="mt-5 grid gap-3 md:grid-cols-2">
+            <h3 className="mt-6 font-semibold">Tadqiqot vazifalari</h3>
+            <ul className="mt-3 grid gap-3 md:grid-cols-2">
               {tasks.map((t) => (
                 <li
                   key={t}
@@ -494,7 +501,7 @@ function Home() {
                 "E-portfolioni kod va PIN bilan oching: \"Mening yo'lim\"da sizga tayinlangan modullar ko'rinadi.",
                 "Modullarni bajaring: nazariya, namunaviy tahlil, mashq, metodik topshiriq va refleksiya.",
                 "Amaliy metodik ishlarni topshiring: o'quvchi xatolari tahlili, topshiriqni moslashtirish, microteaching.",
-                "Oraliq va yakuniy diagnostikani xuddi shu kod bilan topshiring va dinamikangizni E-portfolioda kuzating.",
+                "Yakuniy diagnostikani (B shakl) xuddi shu kod bilan topshiring va dinamikangizni E-portfolioda kuzating.",
               ].map((step, i) => (
                 <li key={step} className="flex items-center gap-4">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-primary font-semibold text-primary">
@@ -513,30 +520,69 @@ function Home() {
           </section>
 
           <section id="mualliflar" className="scroll-mt-28 border-t pt-12">
-            <H2 n={9} title="Mualliflar va guvohnoma" />
+            <H2 n={9} title="Mualliflar va ilmiy faoliyat" />
             <div className="grid gap-5 sm:grid-cols-3">
               <article className="rounded-lg border bg-gradient-card p-6 shadow-card">
-                <p className="text-xs font-semibold uppercase text-accent">Muallif</p>
+                <p className="text-xs font-semibold uppercase text-accent">
+                  Dissertatsiya muallifi
+                </p>
                 <h3 className="mt-2 text-xl font-semibold">Abdusattarova Z.A.</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Ilmiy-metodik mazmun muallifi.
+                  {DISSERTATION.title}. {DISSERTATION.specialty}. {DISSERTATION.university}.
                 </p>
               </article>
               <article className="rounded-lg border bg-gradient-card p-6 shadow-card">
-                <p className="text-xs font-semibold uppercase text-accent">Muallif</p>
-                <h3 className="mt-2 text-xl font-semibold">Xamzayev X.</h3>
+                <p className="text-xs font-semibold uppercase text-accent">Ilmiy rahbar</p>
+                <h3 className="mt-2 text-xl font-semibold">Xamzayev X.X.</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Elektron ta'lim resursini ishlab chiqish muallifi.
+                  Pedagogika fanlari bo'yicha falsafa doktori (PhD), dotsent. Elektron ta'lim
+                  resursining hammuallifi.
                 </p>
               </article>
               <article className="rounded-lg border bg-gradient-card p-6 shadow-card">
                 <p className="text-xs font-semibold uppercase text-accent">Guvohnoma</p>
-                <h3 className="mt-2 text-xl font-semibold">DGU-38123</h3>
+                <h3 className="mt-2 text-xl font-semibold">{ETR.number}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  "TIMSS-PISA Mentorim" elektron ta'lim resursi 2024-yil 10-mayda ro'yxatdan
-                  o'tkazilgan, 2024-yil 17-mayda davlat reyestriga kiritilgan.
+                  {ETR.issuer}, {ETR.date}. Elektron ta'lim resursi: "{ETR.title}" (mualliflar:{" "}
+                  {ETR.authors}). Resurs keyinchalik "TIMSS-PISA Mentorim" platformasi sifatida
+                  rivojlantirilgan.
                 </p>
               </article>
+            </div>
+            <div className="mt-5 space-y-3">
+              <details className="rounded-lg border bg-card p-4 shadow-card">
+                <summary className="cursor-pointer font-semibold">
+                  Aprobatsiya va joriy etish
+                </summary>
+                <p className="mt-3 text-sm leading-6">{APROBATSIYA}</p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6">
+                  {IMPLEMENTATION.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </details>
+              <details className="rounded-lg border bg-card p-4 shadow-card">
+                <summary className="cursor-pointer font-semibold">
+                  E'lon qilingan ishlar ro'yxati ({PUBLICATIONS.length})
+                </summary>
+                <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6">
+                  {PUBLICATIONS.map((p) => (
+                    <li key={p.text}>
+                      {p.text}{" "}
+                      {p.url && (
+                        <a
+                          href={p.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-primary hover:underline break-all"
+                        >
+                          {p.url}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </details>
             </div>
             <AppLink
               to="/aloqa"

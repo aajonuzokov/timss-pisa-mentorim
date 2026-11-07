@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { AppLink } from "@/components/ModelScheme";
 import { Components36, Final37, Levels35 } from "@/components/DissResults";
-import { BLOCKS, MODEL_TITLE, findBlock, type Block, type Item } from "@/data/model";
+import { BLOCKS, CONDITIONS, MODEL_TITLE, findBlock, type Block, type Item } from "@/data/model";
 
 export const Route = createFileRoute("/model/$slug")({
   head: ({ params }) => {
@@ -152,7 +152,7 @@ function Page() {
             <ArrowLeft className="w-4 h-4" /> Model sxemasi
           </Link>
           <div className="mt-4 text-xs font-semibold uppercase tracking-wider text-accent">
-            {block.n}-blok · {MODEL_TITLE}
+            {block.n}-blok · funksiyasi: {block.func.toLowerCase()}
           </div>
           <h1 className="mt-2 text-3xl md:text-4xl font-bold">{block.title}</h1>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground max-w-3xl">
@@ -173,6 +173,21 @@ function Page() {
       </header>
       <div className="max-w-5xl mx-auto px-6 py-12 space-y-12">
         <BlockBody block={block} />
+        {CONDITIONS.some((c) => c.slug === block.slug) && (
+          <section>
+            <h2 className="text-xl md:text-2xl font-semibold mb-3">Pedagogik shart-sharoit</h2>
+            <ul className="space-y-2">
+              {CONDITIONS.filter((c) => c.slug === block.slug || c.slug === "").map((c) => (
+                <li
+                  key={c.text}
+                  className="border-l-4 border-primary bg-muted/60 px-4 py-3 text-sm leading-relaxed"
+                >
+                  {c.text} <span className="text-muted-foreground">[{c.block}]</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
         {block.slug === "natijaviy" && (
           <section className="space-y-5">
             <h2 className="text-xl md:text-2xl font-semibold">Tajriba-sinov dalili</h2>

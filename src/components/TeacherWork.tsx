@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { MODULE_FIELD_LABEL } from "@/data/modules";
+import { MODULE_FIELD_LABEL, creativeByRef } from "@/data/modules";
 import { FIELD_LABEL, KIND_LABEL, MICRO_CRITERIA, errorById } from "@/data/amaliyot";
 import { COMPONENTS, componentPct } from "@/lib/components";
 import { LEVELS, levelInfo, levelText } from "@/lib/levels";
@@ -24,6 +24,10 @@ export const refLabel = (s: SubmissionRow) => {
   if (s.kind === "xato-tahlil") {
     const e = errorById(s.ref);
     return e ? `${e.id}: ${e.topic} (${e.task} = ${e.pupil})` : s.ref;
+  }
+  if (s.kind === "modul-metodik" && s.ref.includes("/")) {
+    const c = creativeByRef(s.ref);
+    return c ? `${c.module.title} moduli · ijodiy-tadqiqotchilik: ${c.task.title}` : s.ref;
   }
   if (s.kind === "modul-metodik" || s.kind === "modul-bajarildi")
     return COMPONENT_NAME[s.ref] ? `${COMPONENT_NAME[s.ref]} moduli` : s.ref;
@@ -273,7 +277,7 @@ export function GroupStatus({
     <div className="p-6 rounded-2xl border bg-card shadow-card">
       <h2 className="font-semibold text-lg">Guruh holati: qaysi komponentda orqada qolishmoqda</h2>
       <p className="text-sm text-muted-foreground mt-1">
-        Har bir talabaning oxirgi diagnostikasi (kirish, oraliq yoki yakuniy) bo'yicha. Talabalar:{" "}
+        Har bir talabaning oxirgi diagnostikasi (kirish yoki yakuniy) bo'yicha. Talabalar:{" "}
         {latest.length}. Rubrika bo'yicha baholanmagan topshiriqlarda dastlabki (avtomatik) ball
         olinadi.
       </p>

@@ -1,4 +1,4 @@
-// Amaliy metodik ishlar (texnologik blok: Case-study, loyiha metodi, Lesson Study, Microteaching).
+// Amaliy metodik ishlar (tashkiliy-texnologik blok: Case-study, loyiha metodi, Lesson Study, Microteaching).
 // O'quvchi xatolari metodik adabiyotda tasvirlangan tipik xatolar asosida tuzilgan
 // (haqiqiy o'quvchi ishlari emas); keyinchalik haqiqiy ishlar bilan to'ldiriladi.
 

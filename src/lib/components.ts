@@ -1,9 +1,9 @@
 // Bo'lajak boshlang'ich sinf o'qituvchisi matematik tayyorgarligining 5 komponenti
-// (dissertatsiya, 2.1-band va Ilova 5). Har bir topshiriq bitta komponentga tegishli.
+// (avtoreferat, 1-rasm va 1-jadval; dissertatsiya, Ilova 5). Tartib avtoreferatdagidek. Har bir topshiriq bitta komponentga tegishli.
 
 import type { TestKey } from "@/data/bank";
 
-export type ComponentKey = "bilim" | "tafakkur" | "metodik" | "savodxonlik" | "refleksiya";
+export type ComponentKey = "bilim" | "tafakkur" | "savodxonlik" | "metodik" | "refleksiya";
 
 export const COMPONENTS: { key: ComponentKey; label: string; short: string; tip: string }[] = [
   {
@@ -19,16 +19,16 @@ export const COMPONENTS: { key: ComponentKey; label: string; short: string; tip:
     tip: "Masalani kamida ikki usulda yeching, har bir qadamni asoslang va o'quvchi xatosining sababini tushuntirishni mashq qiling.",
   },
   {
-    key: "metodik",
-    label: "Matematik-metodik kompetentlik (MKT)",
-    short: "MKT",
-    tip: "Mavzuni o'quvchiga tushuntirish ketma-ketligini, ko'rgazmali vositani va o'quvchining tipik xatolariga javobingizni rejalang.",
-  },
-  {
     key: "savodxonlik",
     label: "Matematik savodxonlik va modellashtirish",
     short: "Savodxonlik",
     tip: "Real vaziyatni matematik modelga keltiring (Formulate), hisoblang (Employ) va natijani vaziyat nuqtai nazaridan talqin qiling (Interpret).",
+  },
+  {
+    key: "metodik",
+    label: "Matematik-metodik kompetentlik (MKT)",
+    short: "MKT",
+    tip: "Mavzuni o'quvchiga tushuntirish ketma-ketligini, ko'rgazmali vositani va o'quvchining tipik xatolariga javobingizni rejalang.",
   },
   {
     key: "refleksiya",

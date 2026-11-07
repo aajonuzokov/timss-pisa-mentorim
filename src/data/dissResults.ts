@@ -1,4 +1,4 @@
-// Dissertatsiyaning tajriba-sinov natijalari (3-bob, 3.5–3.7-jadvallar).
+// Dissertatsiyaning tajriba-sinov natijalari (3-bob, 3.5–3.7-jadvallar; avtoreferatda 4- va 5-jadvallar).
 // Raqamlar dissertatsiyadan o'zgarishsiz olingan; ular platformada yig'ilgan natijalar emas.
 
 import type { ComponentKey } from "@/lib/components";
@@ -61,16 +61,6 @@ export const TABLE_3_6: {
     d: 1.137,
   },
   {
-    key: "metodik",
-    label: "Matematik-metodik kompetentlik",
-    tgM: 26.12,
-    tgSD: 3.92,
-    ngM: 22.25,
-    ngSD: 4.3,
-    t: 8.93,
-    d: 0.941,
-  },
-  {
     key: "savodxonlik",
     label: "Matematik savodxonlik",
     tgM: 27.35,
@@ -79,6 +69,16 @@ export const TABLE_3_6: {
     ngSD: 4.55,
     t: 13.2,
     d: 1.39,
+  },
+  {
+    key: "metodik",
+    label: "Matematik-metodik kompetentlik",
+    tgM: 26.12,
+    tgSD: 3.92,
+    ngM: 22.25,
+    ngSD: 4.3,
+    t: 8.93,
+    d: 0.941,
   },
   {
     key: "refleksiya",
@@ -103,3 +103,36 @@ export const TABLE_3_7 = [
 export const CHI2_FINAL = { chi2: 32.237, df: 2, p: "< 0,001" };
 
 export const fmt = (x: number, d = 1) => x.toFixed(d).replace(".", ",");
+
+/**
+ * Avtoreferat, 4-jadval: darajalar baholarga o'tkazilgan (past — "3", o'rta — "4", yuqori — "5").
+ * Talabalar soni; o'rtacha baho, S, V va η shu taqsimotdan hisoblanadi.
+ */
+export const TABLE_4 = [
+  { stage: "Aniqlovchi", group: "TG", n: 180, g3: 72, g4: 81, g5: 27 },
+  { stage: "Aniqlovchi", group: "NG", n: 180, g3: 70, g4: 83, g5: 27 },
+  { stage: "Yakuniy", group: "TG", n: 180, g3: 27, g4: 72, g5: 81 },
+  { stage: "Yakuniy", group: "NG", n: 180, g3: 63, g4: 81, g5: 36 },
+] as const;
+
+export type GradeRow = (typeof TABLE_4)[number];
+
+/** O'rtacha baho: X̄ = (1/n)·Σ nᵢxᵢ. */
+export const gradeMean = (r: GradeRow) => (3 * r.g3 + 4 * r.g4 + 5 * r.g5) / r.n;
+
+/** O'rtacha kvadratik chetlanish (avtoreferatdagidek, n ga bo'lingan). */
+export const gradeSD = (r: GradeRow) => {
+  const m = gradeMean(r);
+  return Math.sqrt((r.g3 * (3 - m) ** 2 + r.g4 * (4 - m) ** 2 + r.g5 * (5 - m) ** 2) / r.n);
+};
+
+/** Avtoreferatda e'lon qilingan statistik ko'rsatkichlar (3.2–3.3-bandlar). */
+export const EFFICIENCY = {
+  baselineChi2: { chi2: 0.05, df: 2, p: "0,97" },
+  t: 5.93,
+  tCrit: 1.97,
+  eta: { aniqlovchi: 1.0, yakuniy: 1.12 },
+  gainPct: 11.7,
+  ci: { tg: 0.1, ng: 0.11 },
+  v: { tg: 16.6, ng: 18.9 },
+};

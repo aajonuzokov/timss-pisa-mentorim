@@ -1,5 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, BookOpen, ClipboardList, Dumbbell, NotebookPen, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  BookOpen,
+  ClipboardList,
+  Dumbbell,
+  FlaskConical,
+  NotebookPen,
+  Sparkles,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { AppLink } from "@/components/ModelScheme";
@@ -12,8 +20,10 @@ import {
 } from "@/components/ModuleTools";
 import {
   COMPLETE_FIELDS,
+  CREATIVE_FIELDS,
   MODULES,
   VARIATIV_MODUL,
+  creativeRef,
   findModule,
   type Module,
 } from "@/data/modules";
@@ -98,22 +108,46 @@ function Page() {
             <ArrowLeft className="w-4 h-4" /> {VARIATIV_MODUL}
           </Link>
           <div className="mt-4 text-xs font-semibold uppercase tracking-wider text-accent">
-            {mod.n}-modul · {mod.links}
+            {mod.n}-modul · xalqaro asos: {mod.basis}
           </div>
           <h1 className="mt-2 text-3xl md:text-4xl font-bold">{mod.title}</h1>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground max-w-3xl">{mod.goal}</p>
-          <nav className="mt-6 flex flex-wrap gap-2 text-sm">
-            {["Nazariya", "Namunaviy tahlil", "Mashq", "Metodik topshiriq", "Refleksiya"].map(
-              (s, k) => (
-                <a
-                  key={s}
-                  href={`#q${k + 1}`}
-                  className="rounded-full border bg-background px-3 py-1 hover:border-primary"
-                >
-                  {k + 1}. {s}
-                </a>
-              ),
-            )}
+          <p className="mt-2 text-sm text-muted-foreground max-w-3xl">
+            Asosiy mazmun va amaliy faoliyat: {mod.activity}. Nazariy manbalar: {mod.links}.
+          </p>
+          <div className="mt-4 grid gap-2 text-sm sm:grid-cols-3 max-w-4xl">
+            {[
+              ["Past daraja", "Qo'llab-quvvatlovchi: 1–4 va 6-qadamlar", "#q1"],
+              ["O'rta daraja", "Rivojlantiruvchi: 3, 4 va 6-qadamlar", "#q3"],
+              ["Yuqori daraja", "Ijodiy-tadqiqotchilik: 5 va 6-qadamlar", "#q5"],
+            ].map(([l, d, h]) => (
+              <a
+                key={l}
+                href={h}
+                className="rounded-xl border bg-background px-3 py-2 hover:border-primary"
+              >
+                <div className="font-semibold">{l}</div>
+                <div className="text-xs text-muted-foreground">{d}</div>
+              </a>
+            ))}
+          </div>
+          <nav className="mt-4 flex flex-wrap gap-2 text-sm">
+            {[
+              "Nazariya",
+              "Namunaviy tahlil",
+              "Mashq",
+              "Metodik topshiriq",
+              "Ijodiy-tadqiqotchilik",
+              "Refleksiya",
+            ].map((s, k) => (
+              <a
+                key={s}
+                href={`#q${k + 1}`}
+                className="rounded-full border bg-background px-3 py-1 hover:border-primary"
+              >
+                {k + 1}. {s}
+              </a>
+            ))}
           </nav>
         </div>
       </header>
@@ -221,7 +255,7 @@ function Page() {
               topshiriqqa o'zingiz 0–2 ball qo'yasiz; E-portfolioda o'qituvchi bahosi bilan farqni
               ko'rasiz.{" "}
               <AppLink to="/sinov" className="text-primary hover:underline">
-                Oraliq diagnostikani topshirish →
+                Diagnostik testlar →
               </AppLink>
             </p>
           )}
@@ -239,7 +273,40 @@ function Page() {
           </div>
         </Step>
 
-        <Step n={5} id="q5" icon={NotebookPen} title="Refleksiya va modulni yakunlash">
+        <Step n={5} id="q5" icon={FlaskConical} title="Ijodiy-tadqiqotchilik topshiriqlari">
+          <p className="mb-4 text-sm text-muted-foreground">
+            Bu topshiriqlar diagnostikada shu komponent bo'yicha yuqori darajani ko'rsatgan
+            talabalar uchun mo'ljallangan. Boshqa talabalar ham ixtiyoriy bajarishi mumkin.
+            Bittasini tanlang, bajaring va natijani yuboring: ish E-portfolioga yoziladi va
+            o'qituvchi baholaydi.
+          </p>
+          <div className="space-y-4">
+            {mod.creative.map((c) => (
+              <details key={c.id} className="group rounded-2xl border bg-card shadow-card">
+                <summary className="cursor-pointer list-none p-5">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-accent">
+                    {c.id}
+                  </div>
+                  <div className="font-semibold group-open:text-primary">{c.title}</div>
+                </summary>
+                <div className="px-5 pb-5 space-y-3">
+                  <p className="leading-relaxed">{c.task}</p>
+                  <p className="text-sm border-l-4 border-primary bg-muted/60 px-4 py-2">
+                    <b>Kutilgan natija:</b> {c.product}
+                  </p>
+                  <WorkForm
+                    kind="modul-metodik"
+                    refId={creativeRef(mod.key, c.id)}
+                    fields={CREATIVE_FIELDS}
+                    minFilled={2}
+                  />
+                </div>
+              </details>
+            ))}
+          </div>
+        </Step>
+
+        <Step n={6} id="q6" icon={NotebookPen} title="Refleksiya va modulni yakunlash">
           <div className="p-5 rounded-2xl border bg-card shadow-card">
             <WorkForm
               kind="modul-bajarildi"

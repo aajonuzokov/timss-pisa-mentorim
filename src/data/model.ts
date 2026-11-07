@@ -1,9 +1,9 @@
-// Dissertatsiyaning 2.1-bo'limi: TIMSS, PISA va MKT integratsiyasiga asoslangan adaptiv
-// strukturaviy-funksional metodik model (2.1-rasm). Matnlar dissertatsiyadan olingan; kvadrat
-// qavsdagi raqamlar — dissertatsiyadagi adabiyotlar ro'yxati raqamlari.
+// Avtoreferatning 1-rasmi (dissertatsiyada 2.1-rasm): TIMSS, PISA va MKT integratsiyasiga
+// asoslangan adaptiv strukturaviy-funksional model. Matnlar avtoreferat (Jizzax, 2026) va
+// dissertatsiyadan olingan; kvadrat qavsdagi raqamlar — dissertatsiyadagi adabiyotlar raqamlari.
 
 export const MODEL_TITLE =
-  "TIMSS, PISA va MKT integratsiyasiga asoslangan adaptiv strukturaviy-funksional metodik model";
+  "TIMSS, PISA va MKT integratsiyasiga asoslangan bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligini oshirishning adaptiv strukturaviy-funksional modeli";
 
 export type PlatformLink = { label: string; to: string; status: "ishlaydi" | "rejada" };
 export type Item = { name: string; text: string; source?: string; links?: PlatformLink[] };
@@ -28,7 +28,9 @@ export type Block = {
   title: string;
   /** Sxemadagi qisqa nom. */
   label: string;
-  /** Blokning funksiyasi — bir-ikki gap. */
+  /** Blokning tizimdagi funksiyasi (avtoreferat, 2.1-band). */
+  func: string;
+  /** Blokning vazifasi — bir-ikki gap. */
   lead: string;
   sources: string;
   sections: Section[];
@@ -44,55 +46,217 @@ const L = (
   status,
 });
 
-// --- Model sxemasi (2.1-rasm) uchun yon panellar ----------------------------------------
-export const EXPECTED_RESULTS = [
-  "Yuqori darajadagi matematik bilim",
-  "Rivojlangan matematik tafakkur",
-  "Matematik savodxonlik",
-  "Matematik-metodik kompetentlik",
-  "Refleksiv faoliyat",
-];
+// --- 1-rasm: sxemaning umumiy elementlari -------------------------------------------------
 
-export const EXTERNAL_FACTORS = [
-  "Davlat ta'lim standartlari",
-  "Oliy ta'lim yo'nalishlari",
-  "Xalqaro baholash talablari (TIMSS, PISA)",
-  "Raqamli ta'lim muhiti",
-  "Ijtimoiy buyurtma",
+/** Ijtimoiy buyurtma — modelning boshlang'ich asosi. */
+export const SOCIAL_ORDER: Item[] = [
+  {
+    name: "Normativ-huquqiy asos",
+    text: "O'RQ-637-son \"Ta'lim to'g'risida\"gi Qonun; PF-5847, PF-21-son Farmonlar; VMning 997-son qarori.",
+  },
+  {
+    name: "Xalqaro talablar",
+    text: "TIMSS va PISA tadqiqotlarida o'quvchilarning matematik savodxonligiga qo'yilayotgan talablar.",
+  },
+  {
+    name: "Kasbiy ehtiyoj",
+    text: "Xalqaro baholash topshiriqlari asosida o'qita oladigan boshlang'ich sinf o'qituvchisi.",
+  },
 ];
-
-export const DIGITAL_ENV: PlatformLink[] = [
-  L("Mentorim platformasi", "/"),
-  L("Dashboard va analitika", "/monitoring"),
-  L("Individual rivojlanish trayektoriyasi", "/portfolio"),
-  L("Learning Analytics", "/monitoring"),
-  L("Individual tavsiyalar", "/portfolio"),
-];
-
-export const INNER_RESULT =
-  "Kasbiy faoliyatga tayyor, xalqaro talablar darajasidagi boshlang'ich sinf o'qituvchisi";
 
 export const MODEL_GOAL =
-  "Bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligini TIMSS, PISA kompetensiyalari va MKT modeli integratsiyasi asosida rivojlantirish.";
+  "Bo'lajak boshlang'ich sinf o'qituvchilarining matematik tayyorgarligini TIMSS, PISA va MKT integratsiyasi asosida oshirish.";
 
-/** Annotatsiyada e'lon qilingan ishlash mexanizmi. */
+/** Maqsadli blokdagi 4 ta pedagogik vazifa. */
+export const MODEL_TASKS: Item[] = [
+  {
+    name: "Vazifa 1",
+    text: "Matematik bilimlarni TIMSS mazmuniy va kognitiv sohalari asosida chuqurlashtirish.",
+    links: [L("Matematik bilim moduli", "/modullar/bilim"), L("TIMSS topshiriqlari", "/timss")],
+  },
+  {
+    name: "Vazifa 2",
+    text: "Real vaziyatlarni matematiklashtirish va natijani talqin qilish (PISA) ko'nikmalarini shakllantirish.",
+    links: [L("Savodxonlik moduli", "/modullar/savodxonlik"), L("PISA topshiriqlari", "/pisa")],
+  },
+  {
+    name: "Vazifa 3",
+    text: "Xalqaro baholash topshiriqlarini MKT asosida tanlash, tahlil qilish va moslashtirishga o'rgatish.",
+    links: [L("MKT moduli", "/modullar/metodik"), L("Amaliy metodik ishlar", "/amaliyot")],
+  },
+  {
+    name: "Vazifa 4",
+    text: "O'z faoliyatini diagnostika natijalari asosida refleksiv baholash va takomillashtirishni rivojlantirish.",
+    links: [L("Refleksiya moduli", "/modullar/refleksiya"), L("E-portfolio", "/portfolio")],
+  },
+];
+
+export const APPROACHES: [string, string][] = [
+  ["Tizimli", "komponentlarni yaxlit tizim sifatida qarash"],
+  ["Kompetensiyaviy", "natijaga yo'naltirilganlik"],
+  ["Faoliyatli", "amaliy faoliyatga tayanish"],
+  ["Integrativ", "TIMSS, PISA va MKT imkoniyatlarini birlashtirish"],
+  ["Adaptiv", "ta'limni individual ehtiyojlarga moslashtirish"],
+  ["Refleksiv", "o'z faoliyatini tahlil qilish va takomillashtirish"],
+];
+
+export const PRINCIPLES = [
+  "ilmiylik",
+  "uzviylik",
+  "kontekstuallik",
+  "individuallashtirish",
+  "natijaviylik",
+];
+
+/** Integratsiya asosi: xalqaro konsepsiya → rivojlanadigan komponent. */
+export const INTEGRATION: { name: string; process: string; target: string }[] = [
+  {
+    name: "TIMSS",
+    process: "Knowing–Applying–Reasoning",
+    target: "matematik bilim, matematik tafakkur",
+  },
+  { name: "PISA", process: "Formulate–Employ–Interpret", target: "matematik savodxonlik" },
+  {
+    name: "MKT",
+    process: "mazmuniy + pedagogik bilim",
+    target: "matematik-metodik kompetentlik, refleksiv faoliyat",
+  },
+];
+
+export const FORMS = ["ma'ruza", "amaliy mashg'ulot", "mustaqil ta'lim", "pedagogik amaliyot"];
+
+export const METHODS: PlatformLink[] = [
+  L("Case-study", "/amaliyot/xatolar"),
+  L("Lesson Study", "/amaliyot/lesson-study"),
+  L("Microteaching", "/amaliyot/microteaching"),
+  L("Muammoli ta'lim (PBL)", "/modullar/tafakkur"),
+  L("Matematik modellashtirish", "/modullar/savodxonlik"),
+  L("Loyiha metodi", "/amaliyot/dars-ishlanmasi"),
+];
+
+export const DIGITAL_TOOLS: PlatformLink[] = [
+  L("Mentorim platformasi", "/"),
+  L("E-Portfolio", "/portfolio"),
+  L("Dashboard", "/monitoring"),
+  L("Learning Analytics", "/monitoring"),
+];
+
+/** Tashkiliy-texnologik blokdagi uch bosqich. */
+export const STAGES: Item[] = [
+  {
+    name: "Motivatsion-yo'naltiruvchi",
+    text: "Kirish diagnostikasi, TIMSS/PISA talablari bilan tanishtirish.",
+    links: [L("Kirish testi (A)", "/sinov"), L("TIMSS", "/timss"), L("PISA", "/pisa")],
+  },
+  {
+    name: "Faoliyatli-amaliy",
+    text: "Topshiriqlar banki asosida mashg'ulotlar, metodik loyihalash.",
+    links: [L("Variativ modul", "/modullar"), L("Amaliy metodik ishlar", "/amaliyot")],
+  },
+  {
+    name: "Refleksiv-baholovchi",
+    text: "E-Portfolio, o'zini o'zi baholash, yakuniy diagnostika.",
+    links: [L("E-portfolio", "/portfolio"), L("Yakuniy test (B)", "/sinov")],
+  },
+];
+
+/** Diagnostik-monitoring blok: komponent → mezon → ko'rsatkichlar (1-rasm). */
+export const CRITERIA: { component: string; criterion: string; indicators: string }[] = [
+  {
+    component: "Matematik bilim",
+    criterion: "kognitiv",
+    indicators:
+      "tushunchalar, qoidalar va algoritmlarni bilishi hamda qo'llashi (TIMSS: Knowing, Applying)",
+  },
+  {
+    component: "Matematik tafakkur",
+    criterion: "tafakkur-faoliyat",
+    indicators:
+      "mulohaza yuritishi, yechimni asoslashi, nostandart masalalarni yechishi (TIMSS: Reasoning)",
+  },
+  {
+    component: "Matematik savodxonlik",
+    criterion: "matematik savodxonlik",
+    indicators: "real vaziyatni matematik modelga keltirishi, natijani talqin qilishi (PISA)",
+  },
+  {
+    component: "Matematik-metodik kompetentlik",
+    criterion: "matematik-metodik",
+    indicators:
+      "topshiriqni tanlashi, o'quvchi xatosini tahlil qilishi, metodik qaror qabul qilishi (MKT)",
+  },
+  {
+    component: "Refleksiv faoliyat",
+    criterion: "refleksiv",
+    indicators:
+      "o'z faoliyatini tahlil qilishi, rivojlanish ehtiyojini aniqlashi va rejalashtirishi",
+  },
+];
+
+/** Darajalar va adaptiv trayektoriya: diagnostika darajasi → beriladigan topshiriqlar turi. */
+export const TRAJECTORY: { level: string; tasks: string }[] = [
+  { level: "past", tasks: "qo'llab-quvvatlovchi topshiriqlar" },
+  { level: "o'rta", tasks: "rivojlantiruvchi topshiriqlar" },
+  { level: "yuqori", tasks: "ijodiy-tadqiqotchilik topshiriqlari" },
+];
+
+export const DIAG_TOOLS: PlatformLink[] = [
+  L("diagnostik test", "/sinov"),
+  L("kuzatish", "/amaliyot/microteaching"),
+  L("so'rovnoma", "/sinov"),
+  L("ekspert baholash", "/kabinet"),
+  L("Mentorim", "/monitoring"),
+];
+
+/** Ishlash mexanizmi (diagnostik-monitoring blok). */
 export const MECHANISM: { name: string; text: string; to: string }[] = [
-  { name: "Diagnostika", text: "Kirish diagnostikasi: Ilova 1 testi, 40 ball", to: "/sinov" },
+  {
+    name: "Diagnostika",
+    text: "Kirish diagnostikasi: Ilova 1 testi (A shakl), 40 ball",
+    to: "/sinov",
+  },
   {
     name: "Individuallashtirish",
-    text: "Past va o'rta darajadagi komponentlar bo'yicha modullar tayinlanadi",
+    text: 'Har bir komponent darajasiga qarab "Mening yo\'lim" tuziladi',
     to: "/portfolio",
   },
   {
     name: "Faoliyat",
-    text: "Modullar, TIMSS/PISA topshiriqlari, amaliy metodik ishlar",
+    text: "Variativ modul, TIMSS/PISA topshiriqlari, amaliy metodik ishlar",
     to: "/modullar",
   },
-  { name: "Monitoring", text: "Oraliq diagnostika, jonli monitoring", to: "/monitoring" },
+  { name: "Monitoring", text: "E-Portfolio, Dashboard va Learning Analytics", to: "/monitoring" },
   { name: "Feedback", text: "Rubrika bo'yicha baho, o'qituvchi izohi", to: "/kabinet" },
   { name: "Refleksiya", text: "Refleksiya yozuvlari, o'z-o'zini baholash", to: "/portfolio" },
   { name: "Korreksiya", text: "Yangi natija asosida yo'l qayta tuziladi", to: "/portfolio" },
 ];
+
+/** Modelning samarali ishlashini ta'minlovchi pedagogik shart-sharoitlar. */
+export const CONDITIONS: { text: string; block: string; slug: BlockSlug | "" }[] = [
+  {
+    text: "TIMSS/PISA topshiriqlarini MKT asosida o'quv jarayoniga bosqichma-bosqich integratsiyalash",
+    block: "mazmuniy blok",
+    slug: "mazmuniy",
+  },
+  {
+    text: "Variativ modulni amaliy mashg'ulot, mustaqil ta'lim va pedagogik amaliyot bilan uzviy bog'lash",
+    block: "tashkiliy-texnologik blok",
+    slug: "texnologik",
+  },
+  {
+    text: "Diagnostika natijalariga ko'ra individual rivojlanish trayektoriyasini belgilash",
+    block: "diagnostik-monitoring blok",
+    slug: "diagnostik",
+  },
+  {
+    text: "Mentorim platformasi asosida raqamli monitoring va doimiy teskari aloqa muhitini yaratish",
+    block: "barcha bloklar",
+    slug: "",
+  },
+];
+
+export const MODEL_RESULT =
+  "Bo'lajak boshlang'ich sinf o'qituvchilari matematik tayyorgarligining besh komponent bo'yicha rivojlanganlik darajasi oshadi — xalqaro baholash talablariga mos o'qitishga kasbiy-metodik jihatdan tayyor mutaxassis.";
 
 // --- Bloklar -------------------------------------------------------------------------------
 export const BLOCKS: Block[] = [
@@ -101,52 +265,24 @@ export const BLOCKS: Block[] = [
     n: 1,
     title: "Maqsadli blok",
     label: "Maqsadli blok",
-    lead: "Modelning boshqaruvchi komponenti: strategik yo'nalishi va kutilayotgan natijalarini belgilaydi. Uchala konsepsiyaning integratsiyalashuvini ta'minlovchi konseptual yadro vazifasini bajaradi.",
+    func: "Yo'naltiruvchi",
+    lead: "Tizim hosil qiluvchi element: matematik tayyorgarlikni TIMSS, PISA va MKT integratsiyasi asosida oshirish maqsadini hamda uni amalga oshirishga yo'naltirilgan pedagogik vazifalarni belgilaydi. Boshlang'ich asosi — ijtimoiy buyurtma.",
     sources: "[6; 10; 22; 24]",
     sections: [
       {
         title: "Maqsad",
         lead: MODEL_GOAL,
-        note: "Matematik tayyorgarlik faqat bilimlar tizimi emas, balki matematik bilim, matematik tafakkur, matematik savodxonlik, matematik-metodik kompetentlik va refleksiv faoliyatning integratsiyalashgan tizimi sifatida qaraladi [6; 10; 22; 24].",
+        note: "Matematik tayyorgarlik matematik bilim, matematik tafakkur, matematik savodxonlik, matematik-metodik kompetentlik va refleksiv faoliyatdan iborat besh komponentli integrativ tuzilma sifatida qaraladi [6; 10; 22; 24].",
       },
       {
-        title: "Vazifalar va ularni bajaruvchi bloklar",
-        lead: "Har bir vazifa modelning muayyan blokida amalga oshiriladi va platformada o'z vositasiga ega.",
-        items: [
-          {
-            name: "Matematik tayyorgarlik komponentlarini aniqlash va tizimlashtirish",
-            text: "Mazmuniy blok: 5 komponent, ularning TIMSS, PISA va MKT bilan bog'liqligi.",
-            links: [L("Mazmuniy blok", "/model/mazmuniy")],
-          },
-          {
-            name: "TIMSS va PISA kompetensiyalarini o'quv jarayoniga integratsiyalash",
-            text: "Texnologik blok: TIMSS/PISA tipidagi topshiriqlar va rasmiy namunaviy topshiriqlar.",
-            links: [L("TIMSS", "/timss"), L("PISA", "/pisa"), L("Rasmiy topshiriqlar", "/rasmiy")],
-          },
-          {
-            name: "MKT asosida matematik-metodik kompetentlikni rivojlantirish",
-            text: "Texnologik blok: MKT moduli, o'quvchi ishlari banki, topshiriqni moslashtirish.",
-            links: [L("MKT moduli", "/modullar/metodik"), L("Amaliy metodik ishlar", "/amaliyot")],
-          },
-          {
-            name: "Xalqaro baholashga mos topshiriqlar tizimini yaratish",
-            text: "Texnologik blok: TIMSS (Knowing, Applying, Reasoning) va PISA (Formulate, Employ, Interpret) bo'yicha topshiriqlar banki.",
-            links: [L("Topshiriqlar banki", "/rasmiy")],
-          },
-          {
-            name: "Adaptiv raqamli ta'lim muhitini tashkil etish",
-            text: "Texnologik va diagnostik-monitoring bloklari: diagnostika natijasiga qarab individual yo'l.",
-            links: [
-              L("Mening yo'lim (E-portfolio)", "/portfolio"),
-              L("Variativ modul", "/modullar"),
-            ],
-          },
-          {
-            name: "Diagnostika, monitoring va individual rivojlanish trayektoriyasini ta'minlash",
-            text: "Diagnostik-monitoring blok: kirish, oraliq va yakuniy diagnostika, jonli monitoring.",
-            links: [L("Diagnostik test", "/sinov"), L("Monitoring", "/monitoring")],
-          },
-        ],
+        title: "Pedagogik vazifalar",
+        lead: "Har bir vazifa platformada o'z vositasiga ega.",
+        items: MODEL_TASKS,
+      },
+      {
+        title: "Ijtimoiy buyurtma",
+        lead: "Modelning boshlang'ich asosi: ta'lim sohasidagi normativ hujjatlar, TIMSS va PISA talablari hamda xalqaro baholash topshiriqlari asosida o'qita oladigan o'qituvchiga bo'lgan kasbiy ehtiyoj.",
+        items: SOCIAL_ORDER,
       },
       {
         title: "Konseptual yadro",
@@ -168,25 +304,19 @@ export const BLOCKS: Block[] = [
           },
         ],
       },
-      {
-        title: "Kutilayotgan natija va tashqi omillar",
-        table: {
-          head: ["Kutilayotgan natija", "Tashqi omillar"],
-          rows: EXPECTED_RESULTS.map((r, i) => [r, EXTERNAL_FACTORS[i] ?? ""]),
-        },
-      },
     ],
   },
   {
     slug: "metodologik",
     n: 2,
-    title: "Metodologik blok",
-    label: "Metodologik blok",
-    lead: "Modelning ilmiy-konseptual asosi: maqsad, mazmun, texnologiya va natijalar o'rtasidagi uzviy bog'liqlikni ta'minlaydi. Blok tizimli, kompetensiyaviy, integrativ, adaptiv va refleksiv yondashuvlar birligi asosida shakllantirilgan.",
+    title: "Nazariy-metodologik blok",
+    label: "Nazariy-metodologik blok",
+    func: "Asoslovchi",
+    lead: "Modelning ilmiy asosini belgilaydi: tizimli, kompetensiyaviy, faoliyatli, integrativ, adaptiv va refleksiv yondashuvlar hamda ilmiylik, uzviylik, kontekstuallik, individuallashtirish va natijaviylik tamoyillari. Integratsiya asosini TIMSS, PISA va MKT tashkil etadi.",
     sources: "[14; 22–24; 31; 40–43]",
     sections: [
       {
-        title: "Metodologik yondashuvlar",
+        title: "Yondashuvlar",
         items: [
           {
             name: "Tizimli yondashuv",
@@ -199,6 +329,12 @@ export const BLOCKS: Block[] = [
             text: "Ta'lim natijasini bilim hajmi bilan emas, balki bilimlarni kasbiy va amaliy vaziyatlarda qo'llash qobiliyati bilan bog'laydi. TIMSS Knowing–Applying–Reasoning va PISA Formulate–Employ–Interpret jarayonlari natijaviy indikatorlar sifatida qabul qilinadi. Platformada: diagnostik test va topshiriqlar shu jarayonlar bo'yicha tuzilgan.",
             source: "[6; 10; 15]",
             links: [L("Diagnostik test", "/sinov")],
+          },
+          {
+            name: "Faoliyatli yondashuv",
+            text: "Matematik tayyorgarlik amaliy faoliyat orqali shakllanadi: talaba topshiriqni yechadi, tahlil qiladi, moslashtiradi va darsga aylantiradi. Nazariy asosi — A.N.Leontyevning faoliyat nazariyasi va V.V.Davydovning o'quv faoliyati va umumlashtirish haqidagi qarashlari. Platformada: modullardagi mashqlar, amaliy metodik ishlar (xatolar tahlili, moslashtirish, dars ishlanmasi, microteaching).",
+            source: "[8]",
+            links: [L("Amaliy metodik ishlar", "/amaliyot")],
           },
           {
             name: "Integrativ yondashuv",
@@ -219,6 +355,44 @@ export const BLOCKS: Block[] = [
             links: [L("E-portfolio", "/portfolio")],
           },
         ],
+      },
+      {
+        title: "Tamoyillar",
+        lead: "Avtoreferatda belgilangan beshta tamoyil va ularning platformadagi ifodasi.",
+        items: [
+          {
+            name: "Ilmiylik",
+            text: "Mazmun xalqaro baholash dasturlarining rasmiy asoslari (TIMSS 2023, PISA 2022 Frameworks) va MKT tadqiqotlariga tayanadi; rasmiy namunaviy topshiriqlar manbasi bilan beriladi.",
+            links: [L("Rasmiy topshiriqlar", "/rasmiy"), L("Elektron kutubxona", "/kutubxona")],
+          },
+          {
+            name: "Uzviylik",
+            text: "Komponentlar ketma-ket bog'lanadi: bilim → tafakkur → savodxonlik → metodik kompetentlik → refleksiya; modullar shu tartibda joylashgan.",
+            links: [L("Variativ modul", "/modullar")],
+          },
+          {
+            name: "Kontekstuallik",
+            text: "Topshiriqlar real hayotiy va kasbiy-pedagogik vaziyatlarga asoslanadi (PISA konteksti, o'quvchi ishlari, dars vaziyatlari).",
+            links: [L("PISA", "/pisa"), L("O'quvchi ishlari banki", "/amaliyot/xatolar")],
+          },
+          {
+            name: "Individuallashtirish",
+            text: "Diagnostika natijasiga ko'ra har bir komponent bo'yicha alohida yo'l: qo'llab-quvvatlovchi, rivojlantiruvchi yoki ijodiy-tadqiqotchilik topshiriqlari.",
+            links: [L("Mening yo'lim", "/portfolio")],
+          },
+          {
+            name: "Natijaviylik",
+            text: "Har bir bosqich o'lchanadigan natija bilan tugaydi: test bali, rubrika bahosi, E-Portfoliodagi ish.",
+            links: [L("Monitoring", "/monitoring")],
+          },
+        ],
+      },
+      {
+        title: "Integratsiya asosi",
+        table: {
+          head: ["Konsepsiya", "Jarayonlar", "Rivojlanadigan komponentlar"],
+          rows: INTEGRATION.map((r) => [r.name, r.process, r.target]),
+        },
       },
       {
         title: "MKT — integratsiyalovchi omil",
@@ -265,9 +439,14 @@ export const BLOCKS: Block[] = [
             [
               "A.N.Leontyev, V.V.Davydov",
               "Faoliyatga yo'naltirilgan ta'lim, umumlashtirish",
-              "Texnologik blok",
+              "Faoliyatli yondashuv",
             ],
             ["P.Brusilovskiy", "Adaptiv ta'lim texnologiyalari", "Adaptiv yondashuv"],
+            [
+              "J.Kilpatrick, M.Niss, T.Højgaard",
+              "Matematik kompetensiyalar",
+              "Komponentlar tarkibi",
+            ],
           ],
         },
       },
@@ -278,7 +457,8 @@ export const BLOCKS: Block[] = [
     n: 3,
     title: "Mazmuniy blok",
     label: "Mazmuniy blok",
-    lead: "Metodologik yondashuvlarni aniq ta'lim mazmuniga aylantiradi va bo'lajak boshlang'ich sinf o'qituvchisining matematik tayyorgarligini tashkil etuvchi 5 komponentni belgilaydi. Metodologik va texnologik bloklarni bog'lovchi bo'g'in.",
+    func: "Mazmun hosil qiluvchi",
+    lead: "Matematik tayyorgarlikning besh komponentini va ularni rivojlantirishning mazmuniy ta'minotini qamrab oladi: \"Boshlang'ich sinfda xalqaro baholash metodikasi\" variativ moduli hamda TIMSS va PISA yondashuvlariga asoslangan kompetensiyaviy topshiriqlar banki.",
     sources: "[13–19; 22–28; 40–43]",
     sections: [
       {
@@ -286,13 +466,13 @@ export const BLOCKS: Block[] = [
         items: [
           {
             name: "1. Matematik bilim",
-            text: "Matematik tushunchalar, qonuniyatlar, algoritmlar va ular o'rtasidagi bog'lanishlarni egallash. TIMSS Knowing kognitiv sohasi va MKTning Subject Matter Knowledge (SMK) tarkibi bilan bog'lanadi.",
+            text: "Matematik tushunchalar, qonuniyatlar, algoritmlar va ular o'rtasidagi bog'lanishlarni egallash. TIMSS Knowing va Applying jarayonlari hamda MKTning Subject Matter Knowledge (SMK) tarkibi bilan bog'lanadi.",
             source: "[6; 24]",
             links: [L("Bilim moduli", "/modullar/bilim")],
           },
           {
             name: "2. Matematik tafakkur",
-            text: "Matematik vaziyatlarni tahlil qilish, mantiqiy xulosa chiqarish, asoslash va muammolarni hal etish. Schoenfeldning muammolarni hal etish yondashuvi va Boalerning matematik fikrlash haqidagi qarashlari bilan asoslanadi; TIMSS Reasoning va PISA Interpret jarayonlari bilan uyg'unlashadi.",
+            text: "Matematik vaziyatlarni tahlil qilish, mantiqiy xulosa chiqarish, asoslash va muammolarni hal etish. Schoenfeldning muammolarni hal etish yondashuvi va Boalerning matematik fikrlash haqidagi qarashlari bilan asoslanadi; TIMSS Reasoning jarayoni bilan bog'lanadi.",
             source: "[6; 10; 16; 17]",
             links: [L("Tafakkur moduli", "/modullar/tafakkur")],
           },
@@ -304,18 +484,33 @@ export const BLOCKS: Block[] = [
           },
           {
             name: "4. Matematik-metodik kompetentlik",
-            text: "Matematik mazmunni o'quvchilarning yosh va bilish xususiyatlariga moslashtirish, topshiriqlarni tanlash, o'qitish strategiyalarini belgilash, o'quvchilarning matematik fikrlashini tahlil qilish va baholash. Nazariy asosi — Shulmanning PCK konsepsiyasi va Ball, Thames, Phelpsning MKT modeli.",
+            text: "Matematik mazmunni o'quvchilarning yosh va bilish xususiyatlariga moslashtirish, topshiriqlarni tanlash, o'qitish strategiyalarini belgilash, o'quvchilarning matematik fikrlashini tahlil qilish va baholash. Nazariy asosi — Shulmanning PCK konsepsiyasi va Ball, Thames, Phelpsning MKT modeli (mazmuniy va pedagogik bilimlar).",
             source: "[22–28]",
             links: [L("MKT moduli", "/modullar/metodik")],
           },
           {
             name: "5. Refleksiv faoliyat",
-            text: "O'z pedagogik faoliyati va natijalarini tahlil qilish, feedbackdan foydalanish, kamchiliklarni aniqlash va keyingi rivojlanish yo'nalishini belgilash. Schönning refleksiv amaliyot konsepsiyasi, Learning Analytics, feedback va E-Portfolio yondashuvlari bilan asoslanadi.",
+            text: "O'z pedagogik faoliyati va natijalarini tahlil qilish, feedbackdan foydalanish, kamchiliklarni aniqlash va keyingi rivojlanish yo'nalishini belgilash. MKT va refleksiv yondashuv (Schön), Learning Analytics, feedback va E-Portfolio bilan asoslanadi.",
             source: "[40–43]",
             links: [L("Refleksiya moduli", "/modullar/refleksiya")],
           },
         ],
         note: "Komponentlar o'zaro integratsiyalashgan tizim sifatida rivojlanadi: matematik bilim tafakkur uchun mazmuniy asos yaratadi; tafakkur bilimlarni savodxonlik faoliyatiga olib keladi; savodxonlik metodik kompetentlik orqali pedagogik faoliyatga transformatsiyalanadi; refleksiv faoliyat barcha jarayonlarni tahlil qilish va takomillashtirishni ta'minlaydi.",
+      },
+      {
+        title: "Mazmuniy ta'minot",
+        items: [
+          {
+            name: '"Boshlang\'ich sinfda xalqaro baholash metodikasi" variativ moduli',
+            text: "Besh komponentga mos besh tarkibiy modul; 60 soat (20 soat amaliy mashg'ulot, 40 soat mustaqil ta'lim). TIMSS topshiriqlari asosan bilim va tafakkurni, PISA topshiriqlari savodxonlikni, MKT elementlari metodik kompetentlik va refleksiv faoliyatni rivojlantiradi.",
+            links: [L("Variativ modul", "/modullar")],
+          },
+          {
+            name: "Kompetensiyaviy topshiriqlar banki",
+            text: "250 ta TIMSS va 150 ta PISA tipidagi mashq topshiriqlari hamda 96 ta rasmiy namunaviy topshiriq. Topshiriqlar past, o'rta va yuqori murakkablik darajalari bo'yicha tabaqalashtirilgan: talaba diagnostika natijasiga ko'ra o'z darajasidan boshlab keyingi darajaga o'tadi.",
+            links: [L("TIMSS", "/timss"), L("PISA", "/pisa"), L("Rasmiy topshiriqlar", "/rasmiy")],
+          },
+        ],
       },
       {
         title: "TIMSS mazmuniy va kognitiv sohalari",
@@ -395,14 +590,38 @@ export const BLOCKS: Block[] = [
   {
     slug: "texnologik",
     n: 4,
-    title: "Texnologik blok",
-    label: "Texnologik blok",
-    lead: "Metodologik va mazmuniy bloklarda belgilangan maqsadlarni amaliy o'quv faoliyatiga aylantirish mexanizmi. Topshiriqlar, pedagogik texnologiyalar, raqamli vositalar va monitoring yagona didaktik zanjirga birlashtiriladi.",
+    title: "Tashkiliy-texnologik blok",
+    label: "Tashkiliy-texnologik blok",
+    func: "Amalga oshiruvchi (protsessual)",
+    lead: "Model mazmunini amalga oshirish shakllari, metod va texnologiyalari hamda vositalarini belgilaydi. Jarayon uch bosqichda kechadi: motivatsion-yo'naltiruvchi, faoliyatli-amaliy va refleksiv-baholovchi.",
     sources: "[14; 20; 24; 41; 43–48]",
     sections: [
       {
-        title: "Ta'lim texnologiyalari va metodlari",
-        lead: "2.1-rasm va 2.1.2-bo'limda keltirilgan barcha texnologiyalar; har birining platformadagi vositasi.",
+        title: "Amalga oshirish bosqichlari",
+        steps: STAGES,
+      },
+      {
+        title: "Shakllar",
+        lead: "Variativ modul \"Boshlang'ich ta'limda matematika o'qitish metodikasi\" fanining amaliy mashg'ulotlari, mustaqil ta'lim va pedagogik amaliyot jarayoniga integratsiyalashgan holda amalga oshiriladi.",
+        table: {
+          head: ["Shakl", "Platformada"],
+          rows: [
+            ["Ma'ruza", "Modullarning nazariy qismi, metodik tavsiyalar, o'quv qo'llanma"],
+            [
+              "Amaliy mashg'ulot (20 soat)",
+              "Namunaviy tahlil, TIMSS/PISA topshiriqlari, Case-study, Lesson Study",
+            ],
+            [
+              "Mustaqil ta'lim (40 soat)",
+              "Mashqlar, metodik topshiriqlar, refleksiya, E-Portfolio",
+            ],
+            ["Pedagogik amaliyot", "Dars ishlanmasi, Microteaching, topshiriqni moslashtirish"],
+          ],
+        },
+      },
+      {
+        title: "Metod, texnologiya va vositalar",
+        lead: "1-rasmdagi metodlar va vositalar; har birining platformadagi o'rni.",
         items: [
           {
             name: "TIMSS/PISA tipidagi topshiriqlar",
@@ -520,6 +739,7 @@ export const BLOCKS: Block[] = [
     n: 5,
     title: "Diagnostik-monitoring blok",
     label: "Diagnostik-monitoring blok",
+    func: "Nazorat-korreksion",
     lead: "Natijalarni aniqlash, rivojlanish dinamikasini kuzatish va olingan ma'lumotlar asosida ta'lim jarayonini korreksiyalash. Baholash, monitoring, feedback va adaptiv boshqaruvni yagona tizimda birlashtiradi; shu sababli model yopiq emas, o'z-o'zini takomillashtiruvchi tizim.",
     sources: "[6; 10; 14; 41–43; 47; 49]",
     sections: [
@@ -529,67 +749,62 @@ export const BLOCKS: Block[] = [
         steps: MECHANISM.map((m) => ({ name: m.name, text: m.text, links: [L(m.name, m.to)] })),
       },
       {
-        title: "Mezonlar, ko'rsatkichlar va diagnostika vositalari",
+        title: "Mezonlar va ko'rsatkichlar",
         table: {
           head: ["Komponent", "Mezon", "Ko'rsatkichlar", "Ilova 1 topshiriqlari", "Maks. ball"],
-          rows: [
-            [
-              "Matematik bilim",
-              "Kognitiv",
-              "Tushunchalar, qonuniyatlar va algoritmlarni egallash; ta'riflarni to'g'ri ifodalash",
-              "1–4",
-              "8",
-            ],
-            [
-              "Matematik tafakkur",
-              "Tafakkur-faoliyat",
-              "Tahlil, mantiqiy asoslash, muammoni hal qilish; bilimni qo'llash",
-              "5–12",
-              "16",
-            ],
-            [
-              "Matematik-metodik kompetentlik",
-              "Matematik-metodik",
-              "Mazmunni pedagogik faoliyatga transformatsiya qilish: vosita tanlash, xatoni tahlil qilish, topshiriqning didaktik imkoniyatini ko'rish",
-              "13–16",
-              "8",
-            ],
-            [
-              "Matematik savodxonlik",
-              "Matematik savodxonlik",
-              "Vaziyatni modellashtirish, hisoblash va natijani talqin qilish",
-              "17–18",
-              "4",
-            ],
-            [
-              "Refleksiv faoliyat",
-              "Refleksiv",
-              "O'z faoliyatini tahlil qilish, qiyinchilikni aniqlash, rivojlanish yo'nalishini belgilash",
-              "19–20",
-              "4",
-            ],
-          ],
+          rows: CRITERIA.map((c, i) => [
+            c.component,
+            c.criterion,
+            c.indicators,
+            ["1–4", "5–12", "17–18", "13–16", "19–20"][i],
+            ["8", "16", "4", "8", "4"][i],
+          ]),
         },
-        note: "Diagnostika vositalari: Ilova 1 diagnostik testi (kirish — A shakl, yakuniy — B shakl), oraliq mini-diagnostika, Ilova 5 baholash rubrikasi, refleksiya yozuvlari, o'z-o'zini baholash.",
+        note: "Diagnostika vositalari: diagnostik test (Ilova 1: kirish — A shakl, yakuniy — B shakl), pedagogik kuzatish (Microteaching rubrikasi), refleksiv so'rovnoma (testdan keyingi refleksiya), ekspert baholash (o'qituvchining Ilova 5 rubrikasi bo'yicha bahosi), Mentorim monitoringi.",
       },
       {
         title: "Darajalar",
         table: {
-          head: ["Daraja", "Ball (40)", "Tavsif"],
+          head: ["Daraja", "Ball (40)", "Baho", "Tavsif"],
           rows: [
-            ["Past", "0–20", "Bilim va ko'nikmalar fragmentar, yangi vaziyatlarda qo'llash qiyin."],
+            [
+              "Past",
+              "0–20",
+              "3",
+              "Bilim va ko'nikmalar fragmentar, yangi vaziyatlarda qo'llash qiyin.",
+            ],
             [
               "O'rta",
               "21–30",
+              "4",
               "Asosiy kompetensiyalar shakllangan, standart vazifalarni mustaqil bajarish mumkin.",
             ],
             [
               "Yuqori",
               "31–40",
+              "5",
               "Kompetensiyalar integrallashgan va murakkab kasbiy vaziyatlarda mustaqil qo'llanadi.",
             ],
           ],
         },
+        note: 'Tajriba-sinov natijalarini baholashda darajalar baholarga o\'tkazildi: past — "3", o\'rta — "4", yuqori — "5" (avtoreferat, 3.2-band).',
+      },
+      {
+        title: "Adaptiv trayektoriya va adaptiv korreksiya",
+        lead: "Modelning adaptivligi diagnostika natijasiga ko'ra individual o'quv trayektoriyasini tanlash orqali ta'minlanadi.",
+        table: {
+          head: ["Komponent darajasi", "Beriladigan topshiriqlar", "Platformada"],
+          rows: [
+            [
+              "Past",
+              "Qo'llab-quvvatlovchi",
+              "To'liq modul: nazariya, namunaviy tahlil, mashq, metodik topshiriq",
+            ],
+            ["O'rta", "Rivojlantiruvchi", "Mashq va metodik topshiriq"],
+            ["Yuqori", "Ijodiy-tadqiqotchilik", "Modulning ijodiy-tadqiqotchilik topshiriqlari"],
+          ],
+        },
+        note: "Adaptiv korreksiya: diagnostik-monitoring blokidan mazmuniy va tashkiliy-texnologik bloklarga qaytuvchi teskari aloqa. Monitoring natijalariga ko'ra topshiriqlar mazmuni, murakkablik darajasi va metodik yordam hajmi moslashtiriladi; platformada yangi natija kiritilgach \"Mening yo'lim\" qayta tuziladi.",
       },
       {
         title: "Platformadagi vositalar",
@@ -606,7 +821,7 @@ export const BLOCKS: Block[] = [
           },
           {
             name: "Learning Analytics va Dashboard",
-            text: "Kirish–oraliq–yakuniy dinamika, t-mezon, Cohen d, Cronbach alfa, komponentlar kesimida taqqoslash.",
+            text: "Kirish–yakuniy dinamika, t-mezon, Cohen d, Cronbach alfa, komponentlar kesimida taqqoslash.",
             links: [L("Monitoring", "/monitoring")],
           },
           {
@@ -623,7 +838,8 @@ export const BLOCKS: Block[] = [
     n: 6,
     title: "Natijaviy blok",
     label: "Natijaviy blok",
-    lead: "Modelning barcha tarkibiy qismlari faoliyati natijasida shakllanadigan yakuniy pedagogik natijalar: matematik tayyorgarlikdagi sifat o'zgarishlari va kompetensiyaviy rivojlanish darajasi.",
+    func: "Baholovchi",
+    lead: "Bo'lajak boshlang'ich sinf o'qituvchilari matematik tayyorgarligining besh komponent bo'yicha rivojlanganlik darajasi oshishini va xalqaro baholash talablariga mos o'qitishga kasbiy-metodik jihatdan tayyor mutaxassisni ifodalaydi.",
     sources: "[6; 7; 10; 14; 15; 18; 19; 22–24; 40–43; 47]",
     sections: [
       {
@@ -677,8 +893,9 @@ export const BLOCKS: Block[] = [
         },
       },
       {
-        title: "Ichki natija",
-        lead: `${INNER_RESULT}: matematik bilimni tafakkur, savodxonlik, metodik kompetentlik va refleksiv faoliyat bilan birgalikda kasbiy vaziyatlarda qo'llay oladigan mutaxassis.`,
+        title: "Natija",
+        lead: MODEL_RESULT,
+        note: "Tajriba-sinov natijasida tajriba guruhida yuqori darajadagi talabalar ulushi 15,0% dan 45,0% ga oshdi (nazorat guruhida 15,0% dan 20,0% ga); samaradorlik koeffitsiyenti η = 1,12.",
       },
     ],
   },
