@@ -10,7 +10,7 @@ import {
   CheckCircle2,
   Briefcase,
 } from "lucide-react";
-import { buildPath, PLAN_LABEL } from "@/lib/path";
+import { buildPath, PLAN_ANCHOR, PLAN_LABEL } from "@/lib/path";
 import { KIND_LABEL } from "@/data/amaliyot";
 import { PayloadView, refLabel } from "@/components/TeacherWork";
 import { ComponentProfile, LevelLegend } from "@/components/DiagnosticReport";
@@ -169,6 +169,7 @@ export function PortfolioView({ code, data }: { code: string; data: PortfolioDat
                     <Link
                       to="/modullar/$slug"
                       params={{ slug: st.key }}
+                      hash={PLAN_ANCHOR[st.plan]}
                       className="text-sm font-medium text-primary hover:underline"
                     >
                       Modulni ochish →

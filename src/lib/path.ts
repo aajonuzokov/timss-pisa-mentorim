@@ -1,18 +1,27 @@
 // Individual rivojlanish yo'li (adaptiv yondashuv): oxirgi diagnostika natijasidagi har bir
 // komponent darajasiga qarab modul tayinlanadi.
-// Past → to'liq modul; o'rta → mashq va metodik topshiriq; yuqori → faqat metodik topshiriq.
+// Avtoreferat (2.1-band): past darajaga qo'llab-quvvatlovchi, o'rta darajaga rivojlantiruvchi,
+// yuqori darajaga ijodiy-tadqiqotchilik topshiriqlari beriladi.
 
 import { COMPONENTS, componentPct, type ComponentKey } from "@/lib/components";
 import { levelInfo, type LevelKey } from "@/lib/levels";
 import type { Attempt } from "@/lib/results";
 import type { SubmissionRow } from "@/lib/db";
 
-export type PathPlan = "toliq" | "qisman" | "metodik";
+export type PathPlan = "qollab" | "rivojlantiruvchi" | "ijodiy";
 
 export const PLAN_LABEL: Record<PathPlan, string> = {
-  toliq: "To'liq modul: nazariya, namunaviy tahlil, mashq, metodik topshiriq, refleksiya",
-  qisman: "Mashq va metodik topshiriq",
-  metodik: "Faqat metodik topshiriq",
+  qollab:
+    "Qo'llab-quvvatlovchi topshiriqlar: to'liq modul — nazariya, namunaviy tahlil, mashq, metodik topshiriq, refleksiya",
+  rivojlantiruvchi: "Rivojlantiruvchi topshiriqlar: mashq va metodik topshiriq",
+  ijodiy: "Ijodiy-tadqiqotchilik topshiriqlari",
+};
+
+/** Modul sahifasida reja boshlanadigan qadam. */
+export const PLAN_ANCHOR: Record<PathPlan, string> = {
+  qollab: "q1",
+  rivojlantiruvchi: "q3",
+  ijodiy: "q5",
 };
 
 export type PathStep = {
@@ -32,7 +41,7 @@ export type LearningPath = {
 };
 
 const planOf = (level: LevelKey): PathPlan =>
-  level === "past" ? "toliq" : level === "orta" ? "qisman" : "metodik";
+  level === "past" ? "qollab" : level === "orta" ? "rivojlantiruvchi" : "ijodiy";
 
 export const buildPath = (
   attempts: Attempt[],

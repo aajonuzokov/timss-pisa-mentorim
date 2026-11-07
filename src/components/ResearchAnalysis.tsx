@@ -528,13 +528,13 @@ export function ComponentAnalysis({ attempts }: { attempts: Attempt[] }) {
   );
 }
 
-const STAGES3 = ["kirish", "oraliq", "yakuniy"] as const;
-const STAGE3_LABEL = { kirish: "Kirish", oraliq: "Oraliq", yakuniy: "Yakuniy" };
+const STAGES3 = ["kirish", "yakuniy"] as const;
+const STAGE3_LABEL = { kirish: "Kirish", yakuniy: "Yakuniy" };
 
-/** Diagnostik testlar bo'yicha komponentlar dinamikasi: kirish → oraliq → yakuniy (o'rtacha %). */
+/** Diagnostik testlar bo'yicha komponentlar dinamikasi: kirish → yakuniy (o'rtacha %). */
 export function ComponentDynamics({ attempts }: { attempts: Attempt[] }) {
   const list = attempts.filter((a) => a.counted && a.diag && a.stage !== "mashq");
-  if (!list.some((a) => a.stage === "oraliq") && !list.length) return null;
+  if (!list.length) return null;
   const val = (k: ComponentKey, st: (typeof STAGES3)[number]) => {
     const xs = list
       .filter((a) => a.stage === st)
@@ -547,10 +547,10 @@ export function ComponentDynamics({ attempts }: { attempts: Attempt[] }) {
   };
   return (
     <div className="p-6 rounded-2xl border bg-card shadow-card">
-      <h2 className="font-semibold text-lg">Komponentlar dinamikasi: kirish → oraliq → yakuniy</h2>
+      <h2 className="font-semibold text-lg">Komponentlar dinamikasi: kirish → yakuniy</h2>
       <p className="text-sm text-muted-foreground mt-1">
-        Diagnostik testlar (A, oraliq, B) bo'yicha har bir komponentning o'rtacha natijasi, % (har
-        bir ishtirokchining har bir bosqichdagi birinchi to'liq urinishi).
+        Diagnostik testlar (A va B) bo'yicha har bir komponentning o'rtacha natijasi, % (har bir
+        ishtirokchining har bir bosqichdagi birinchi to'liq urinishi).
       </p>
       <div className="mt-4 overflow-x-auto">
         <table className="w-full text-sm">

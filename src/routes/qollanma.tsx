@@ -143,8 +143,8 @@ function Page() {
             </li>
             <li>
               <b>Tajriba davri.</b> Talabalar "Mening yo'lim" bo'yicha variativ modul modullarini va
-              amaliy metodik ishlarni bajaradi. Tajriba o'rtasida "Oraliq diagnostika" (30
-              topshiriq, 60 ball) topshiriladi.
+              amaliy metodik ishlarni bajaradi. O'qituvchi E-portfolio, Dashboard va
+              rubrika baholari orqali jarayonni kuzatib boradi.
             </li>
             <li>
               <b>Yakuniy test.</b> "Yakuniy test (B shakl)" — xuddi shu kod bilan. B shakl A ning

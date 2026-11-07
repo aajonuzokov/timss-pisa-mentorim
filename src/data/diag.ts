@@ -6,7 +6,6 @@
 
 import type { OpenAnswer } from "@/lib/answers";
 import type { ComponentKey } from "@/lib/components";
-import { ORALIQ } from "@/data/diagOraliq";
 
 export const DIAG_VERSION = "d1";
 export const DIAG_MAX = 40;
@@ -778,10 +777,10 @@ const B: DiagItem[] = [
   },
 ];
 
-export const DIAG_FORMS = { A, B, O: ORALIQ } as const;
+export const DIAG_FORMS = { A, B } as const;
 export type DiagFormKey = keyof typeof DIAG_FORMS;
 
-export const diagItemById = new Map([...A, ...B, ...ORALIQ].map((it) => [it.id, it] as const));
+export const diagItemById = new Map([...A, ...B].map((it) => [it.id, it] as const));
 
 /** Shakl bo'yicha maksimal ball: har bir topshiriq 0–2 ball. */
 export const diagMax = (items: DiagItem[]) => items.length * 2;

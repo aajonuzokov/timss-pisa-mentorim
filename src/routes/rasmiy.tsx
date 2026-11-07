@@ -1,3 +1,4 @@
+import { sortByLevel } from "@/data/bankLevels";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Brain, Wrench, Lightbulb, Globe2, Info } from "lucide-react";
@@ -115,7 +116,13 @@ function Page() {
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-20">
-        <Quiz key={tab} questions={data[tab]} label={cur.title} testKey={cur.testKey} />
+        <Quiz
+          key={tab}
+          questions={sortByLevel(data[tab])}
+          label={cur.title}
+          testKey={cur.testKey}
+          levels={tab !== "pisa"}
+        />
       </section>
     </SiteLayout>
   );

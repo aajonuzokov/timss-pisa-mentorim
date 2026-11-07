@@ -45,7 +45,7 @@ export const navGroups: NavGroup[] = [
     label: "O'qituvchi",
     items: [
       { to: "/kabinet", label: "O'qituvchi kabineti" },
-      { to: "/monitoring", label: "Monitoring" },
+      { to: "/monitoring", label: "Monitoring (Dashboard)" },
     ],
   },
   { label: "Aloqa", to: "/aloqa" },
@@ -173,7 +173,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <div>
             <h4 className="font-semibold mb-3">Aloqa</h4>
             <p className="text-muted-foreground">info@timss-pisa.uz</p>
-            <p className="text-muted-foreground mt-1">DGU-38123-son guvohnoma, 2024-yil 10-may</p>
+            <p className="text-muted-foreground mt-1">DGU 38123-son guvohnoma, 2024-yil 17-may</p>
             <p className="text-muted-foreground mt-1">© 2026 TIMSS/PISA Metodik Platformasi</p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
-import { Components36, Final37, Levels35 } from "@/components/DissResults";
+import { Components36, Efficiency4, Final37, Levels35 } from "@/components/DissResults";
 import { CHI2_FINAL, DISS_SAMPLE, TABLE_3_6, fmt } from "@/data/dissResults";
 
 export const Route = createFileRoute("/natijalar")({
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/natijalar")({
       {
         name: "description",
         content:
-          "Pedagogik tajriba-sinov natijalari: 360 talaba, darajalar dinamikasi, 5 komponent bo'yicha t-mezon, Cohen d va χ².",
+          "Pedagogik tajriba-sinov natijalari: 360 talaba, darajalar dinamikasi, o'rtacha baho va samaradorlik koeffitsiyenti (η = 1,12), 5 komponent bo'yicha t-mezon, Cohen d va χ².",
       },
     ],
   }),
@@ -40,7 +40,7 @@ function Page() {
               n: fmt(CHI2_FINAL.chi2, 3),
               l: `Pearson χ², df = ${CHI2_FINAL.df}, p ${CHI2_FINAL.p}`,
             },
-            { n: `${fmt(dMin, 3)}–${fmt(dMax, 2)}`, l: "Cohen d, 5 komponent (katta effekt)" },
+            { n: `${fmt(dMin, 2)}–${fmt(dMax, 2)}`, l: "Cohen d, 5 komponent (katta effekt)" },
           ].map((s) => (
             <div key={s.l} className="p-5 rounded-2xl border bg-card shadow-card">
               <div className="text-2xl md:text-3xl font-display font-bold text-gradient tabular-nums">
@@ -55,17 +55,19 @@ function Page() {
           Tajriba-sinov {DISS_SAMPLE.universities.join(", ")} {DISS_SAMPLE.course} ishtirokida
           o'tkazildi. Matematik tayyorgarlik Ilova 1 diagnostik testi (40 ball) va Ilova 5 rubrikasi
           bo'yicha baholandi: past 0–20, o'rta 21–30, yuqori 31–40 ball. Aniqlovchi bosqichda
-          guruhlar taqsimoti deyarli bir xil edi (TG: 40,0 / 45,0 / 15,0%; NG: 38,9 / 46,1 / 15,0%).
+          guruhlar taqsimoti statistik jihatdan farq qilmadi (TG: 40,0 / 45,0 / 15,0%; NG: 38,9 /
+          46,1 / 15,0%; χ² = 0,05 &lt; 5,99; p = 0,97).
         </div>
 
+        <Efficiency4 />
         <Levels35 />
         <Components36 />
         <Final37 />
 
         <div className="p-5 rounded-2xl border border-primary/30 bg-primary/5 text-sm leading-relaxed">
-          Bu sahifadagi raqamlar dissertatsiyaning 3.5–3.7-jadvallaridan olingan. Platformada
-          qatnashgan talabalarning haqiqiy natijalari, darajalar taqsimoti va komponentlar bo'yicha
-          tahlil{" "}
+          Bu sahifadagi raqamlar dissertatsiyaning 3.5–3.7-jadvallari va avtoreferatning
+          4–5-jadvallari, 2–3-rasmlaridan olingan. Platformada qatnashgan talabalarning haqiqiy
+          natijalari, darajalar taqsimoti va komponentlar bo'yicha tahlil{" "}
           <Link to="/monitoring" className="text-primary font-medium hover:underline">
             Monitoring
           </Link>{" "}

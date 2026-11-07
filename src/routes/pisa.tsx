@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Quiz, type Question } from "@/components/Quiz";
 import pisaData from "@/data/pisa.json";
+import { sortByLevel } from "@/data/bankLevels";
 
 export const Route = createFileRoute("/pisa")({
   head: () => ({
@@ -27,7 +28,7 @@ function Page() {
         description="Programme for International Student Assessment (PISA) dasturining shaxsiy, jamiyat, kasbiy va ilmiy kontekstdagi matematik savodxonlik topshiriqlari. Har bir topshiriqda savol, variantlar, to'g'ri javob va izoh keltirilgan."
       />
       <section className="max-w-5xl mx-auto px-6 py-12">
-        <Quiz questions={questions} label="PISA topshiriqlari" testKey="pisa" />
+        <Quiz questions={sortByLevel(questions)} label="PISA topshiriqlari" testKey="pisa" levels />
       </section>
     </SiteLayout>
   );

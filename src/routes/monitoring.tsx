@@ -59,7 +59,6 @@ const PLANNED_PARTICIPANTS = 360;
 
 const TEST_ORDER: TestKey[] = [
   "diag-a",
-  "diag-o",
   "diag-b",
   "knowing",
   "applying",
@@ -351,7 +350,7 @@ function Page() {
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Kuzatuv"
+        eyebrow="Dashboard va Learning Analytics"
         title="Talabalar monitoringi"
         description="Platformada yig'ilgan test natijalari bo'yicha guruh diagnostikasi: ishtirokchilar, darajalar, mavzular va eng qiyin savollar."
       />

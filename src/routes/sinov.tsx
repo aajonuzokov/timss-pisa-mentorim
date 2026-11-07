@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Activity, ClipboardCheck, Flag, BookOpen, Info } from "lucide-react";
+import { ClipboardCheck, Flag, BookOpen, Info } from "lucide-react";
 import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { DiagTest } from "@/components/DiagTest";
 import { DIAG_FORMS } from "@/data/diag";
@@ -32,13 +32,6 @@ const choices: Choice[] = [
     icon: Flag,
   },
   {
-    key: "diag-o",
-    stage: "oraliq",
-    title: "Oraliq diagnostika",
-    desc: "Tajriba o'rtasida: har bir komponent bo'yicha 6 tadan, jami 30 topshiriq (60 ball).",
-    icon: Activity,
-  },
-  {
     key: "diag-b",
     stage: "yakuniy",
     title: "Yakuniy test (B shakl)",
@@ -49,15 +42,14 @@ const choices: Choice[] = [
 
 function Page() {
   const [sel, setSel] = useState<Choice | null>(null);
-  const items =
-    sel?.key === "diag-b" ? DIAG_FORMS.B : sel?.key === "diag-o" ? DIAG_FORMS.O : DIAG_FORMS.A;
+  const items = sel?.key === "diag-b" ? DIAG_FORMS.B : DIAG_FORMS.A;
 
   return (
     <SiteLayout>
       <PageHeader
         eyebrow="Pedagogik tajriba-sinov"
         title="Diagnostik testlar"
-        description="Dissertatsiyaning diagnostik testi (Ilova 1): 20 ta ochiq topshiriq, 6 blok (Knowing, Applying, Reasoning, MKT, Formulate–Employ, Interpret–Reflect), har biri 0–2 ball, jami 40 ball. Taxminan 60–80 daqiqa. B shakl A ning parallel varianti; oraliq diagnostika tajriba o'rtasida dinamikani ko'rsatadi."
+        description="Dissertatsiyaning diagnostik testi (Ilova 1): 20 ta ochiq topshiriq, 6 blok (Knowing, Applying, Reasoning, MKT, Formulate–Employ, Interpret–Reflect), har biri 0–2 ball, jami 40 ball. Taxminan 60–80 daqiqa. B shakl A ning parallel varianti."
       />
 
       <section className="max-w-5xl mx-auto px-6 pt-8 space-y-4">
@@ -96,7 +88,7 @@ function Page() {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 py-8 grid sm:grid-cols-3 gap-4">
+      <section className="max-w-5xl mx-auto px-6 py-8 grid sm:grid-cols-2 gap-4">
         {choices.map((c) => {
           const Icon = c.icon;
           const active = sel?.key === c.key;

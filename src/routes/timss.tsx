@@ -4,6 +4,7 @@ import { SiteLayout, PageHeader } from "@/components/SiteLayout";
 import { Quiz, type Question } from "@/components/Quiz";
 import { Brain, Wrench, Lightbulb } from "lucide-react";
 import timssData from "@/data/timss.json";
+import { sortByLevel } from "@/data/bankLevels";
 
 export const Route = createFileRoute("/timss")({
   head: () => ({
@@ -94,7 +95,8 @@ function Page() {
       <section className="max-w-5xl mx-auto px-6 pb-20">
         <Quiz
           key={cat}
-          questions={all[cat]}
+          questions={sortByLevel(all[cat])}
+          levels
           label={cats.find((c) => c.key === cat)!.title}
           testKey={cat}
         />

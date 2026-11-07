@@ -18,7 +18,7 @@ type Props = {
 };
 
 const itemsOf = (a: Attempt): DiagItem[] =>
-  a.testKey === "diag-b" ? DIAG_FORMS.B : a.testKey === "diag-o" ? DIAG_FORMS.O : DIAG_FORMS.A;
+  a.testKey === "diag-b" ? DIAG_FORMS.B : DIAG_FORMS.A;
 
 /** Diagnostik test javoblarini Ilova 5 rubrikasi bo'yicha 0–2 ball bilan baholash. */
 export function RubricScorer({ attempt, rubric, onChange, onBack }: Props) {

@@ -1,11 +1,15 @@
 // "Boshlang'ich sinfda xalqaro baholash metodikasi" variativ moduli: matematik tayyorgarlikning
 // 5 komponenti bo'yicha o'quv modullari. Har bir modul: nazariya → namunaviy tahlil → mashq →
-// metodik topshiriq → refleksiya. Mazmun dissertatsiyaning 2.1-bo'limi va Ilova 5 ga tayanadi.
+// metodik topshiriq → ijodiy-tadqiqotchilik topshiriqlari → refleksiya. Tuzilma avtoreferatning
+// 1-jadvaliga (2.2-band), mazmun dissertatsiyaning 2.1-bo'limi va Ilova 5 ga tayanadi.
 
 import type { ComponentKey } from "@/lib/components";
 import type { Field } from "@/data/amaliyot";
 
 export const VARIATIV_MODUL = "Boshlang'ich sinfda xalqaro baholash metodikasi";
+
+/** Modul hajmi (avtoreferat, 2.2-band). */
+export const MODULE_HOURS = { total: 60, practice: 20, independent: 40 };
 
 export type ConceptCard = {
   name: string;
@@ -26,12 +30,20 @@ export type Scenario = {
   interpret: { question: string; options: string[]; correct: number; why: string };
 };
 
+/** Yuqori darajadagi talaba uchun ijodiy-tadqiqotchilik topshirig'i (avtoreferat, 2.1-band). */
+export type CreativeTask = { id: string; title: string; task: string; product: string };
+
 export type Module = {
   key: ComponentKey;
   n: number;
   title: string;
   goal: string;
   links: string;
+  /** Avtoreferat, 1-jadval: xalqaro asos. */
+  basis: string;
+  /** Avtoreferat, 1-jadval: asosiy mazmun va amaliy faoliyat. */
+  activity: string;
+  creative: CreativeTask[];
   theory: string[];
   example: { title: string; task: string; steps: string[]; comment: string };
   practice?: {
@@ -52,7 +64,31 @@ export const MODULES: Module[] = [
     n: 1,
     title: "Matematik bilim",
     goal: "Boshlang'ich sinf matematikasining asosiy tushunchalarini o'qituvchi darajasida bilish: ta'rifni aniq aytish, tushunchani bir necha tasvirda ko'rsatish va o'quvchilarning tipik xatosini oldindan bilish.",
-    links: "TIMSS Knowing · MKT: SMK (CCK va SCK)",
+    links: "TIMSS Knowing, Applying · MKT: SMK (CCK va SCK)",
+    basis: "TIMSS: Knowing, Applying",
+    activity:
+      "boshlang'ich matematika tushunchalari, qoida va algoritmlarini takrorlash; o'quvchilarga tushunarli misollar tuzish",
+    creative: [
+      {
+        id: "IT-1",
+        title: "Bir tushuncha — to'rt ko'rinish",
+        task: "4-sinf dasturidan bitta tushunchani tanlang (masalan, 3/4 kasri yoki 1000 ichida xona birliklari). Uni to'rt ko'rinishda ifodalang: son yozuvi, rasm yoki model, son o'qi va hayotiy vaziyat. Rasmiy TIMSS 4-sinf topshiriqlaridan shu tushunchaga oid 2–3 tasini toping va har birida qaysi ko'rinish ishlatilganini aniqlang. Qaysi ko'rinish o'quvchiga eng qiyin bo'lishini asoslang.",
+        product:
+          "To'rt ko'rinishli tushuncha kartasi, topilgan topshiriqlar tahlili va asoslangan xulosa.",
+      },
+      {
+        id: "IT-2",
+        title: "Algoritmni asoslash",
+        task: "Ustun shaklida ko'paytirish (yoki o'nlikdan o'tib ayirish) algoritmini tanlang. Uni kamida ikki usulda asoslang: xona birliklari jadvali orqali va taqsimot qonuni orqali. So'ng o'quvchining \"Nega ikkinchi qatorni bitta chapga surib yozamiz?\" degan savoliga 4-sinf o'quvchisi tushunadigan javob yozing.",
+        product: "Ikki asoslash, o'quvchiga javob va uni tekshiruvchi 2 ta misol.",
+      },
+      {
+        id: "IT-3",
+        title: "Darslik va TIMSS: bo'shliqni topish",
+        task: "4-sinf matematika darsligidan 3 ta mavzuni tanlab, ularni TIMSS 2023 mazmuniy sohalari (Son; O'lchash va geometriya; Ma'lumotlar) va kognitiv sohalari (Knowing, Applying, Reasoning) bo'yicha jadvalga joylang. TIMSS baholaydigan, ammo darslikda kam uchraydigan bitta jihatni aniqlang va uni to'ldiruvchi 2 ta topshiriq tuzing.",
+        product: "Moslik jadvali, aniqlangan bo'shliq va 2 ta yangi topshiriq.",
+      },
+    ],
     theory: [
       "TIMSS Knowing (bilish) kognitiv sohasi faktlar, tushunchalar va protseduralarni eslash, tanish, tasniflash, hisoblash va o'lchashni qamrab oladi. Bu keyingi barcha jarayonlar — qo'llash va mulohaza yuritish — uchun poydevor.",
       "MKT nuqtai nazaridan o'qituvchi uchun \"bilish\" ikki qatlamli. Umumiy mazmuniy bilim (CCK) — har qanday savodli odam biladigan matematika: 0,4 > 0,35. Maxsus mazmuniy bilim (SCK) — faqat o'qitish uchun kerak bo'ladigan bilim: o'quvchi nega 0,35 > 0,4 deb o'ylashini matematik izohlay olish.",
@@ -163,7 +199,31 @@ export const MODULES: Module[] = [
     n: 2,
     title: "Matematik tafakkur va qo'llash",
     goal: "Masalani tahlil qilish, bir necha usulda yechish, yechimni asoslash va umumiy tasdiqni misoldan farqlash; bilimni tanish va yangi vaziyatlarda qo'llash.",
-    links: "TIMSS Applying va Reasoning · PISA Interpret · Schoenfeld, Boaler",
+    links: "TIMSS Reasoning · Schoenfeld, Boaler",
+    basis: "TIMSS: Reasoning",
+    activity:
+      "masalani kamida ikki usulda yechish, yechimni asoslash; o'quvchi xatosining sababini tushuntirish",
+    creative: [
+      {
+        id: "IT-1",
+        title: "Uch yechim va eng mosi",
+        task: 'Masala: "Hovlida tovuq va quyonlar bor. Ularning boshlari 10 ta, oyoqlari 28 ta. Tovuq va quyon nechtadan?" Uni uch usulda yeching: tanlash va tekshirish, jadval tuzish, mantiqiy faraz ("hammasi tovuq bo\'lsa…"). Qaysi usul 3-sinf o\'quvchisiga mosroq ekanini va nima uchunligini asoslang.',
+        product: "Uch yechim, ularning taqqoslanishi va 3-sinf uchun tanlangan usulning asosi.",
+      },
+      {
+        id: "IT-2",
+        title: "Qonuniyatni tadqiq qilish",
+        task: "Gipotezani tekshiring: \"Ketma-ket kelgan uchta natural sonning yig'indisi doim 3 ga bo'linadi.\" Kamida 6 ta misolda sinang, so'ng boshlang'ich sinf o'quvchisi tushunadigan dalil keltiring (masalan, chizmada o'rtadagi songa tenglashtirish). Xuddi shu usulda to'rtta son uchun gipoteza tuzib, uni tekshiring.",
+        product: "Misollar jadvali, ikkala gipoteza bo'yicha xulosa va 4-sinf uchun dalil-chizma.",
+      },
+      {
+        id: "IT-3",
+        title: "Masala tuzish (problem posing)",
+        task: "Do'kondagi 5 ta mahsulot narxlari jadvalini tuzing. Shu ma'lumotlar asosida uchta masala tuzing: biri Knowing, biri Applying va biri Reasoning darajasida. Uchinchi masala nega mulohaza yuritishni talab qilishini, birinchi ikkitasidan nimasi bilan farq qilishini asoslang.",
+        product:
+          "Narxlar jadvali, uch darajali masalalar va ularning kognitiv sohasi bo'yicha asoslash.",
+      },
+    ],
     theory: [
       "TIMSS Applying — bilimni tanish vaziyatda qo'llash: strategiya tanlash, model tuzish, hisoblash. Reasoning — yangi va murakkab vaziyatda tahlil, umumlashtirish, asoslash va isbotlash.",
       "Muammoni hal etish bosqichlari (Pólya, Schoenfeld): masalani tushunish → reja tuzish → bajarish → orqaga qarash (tekshirish, boshqa usulni izlash). Schoenfeld bunga \"nazorat\"ni qo'shadi: yechish davomida o'z yo'lini kuzatib borish.",
@@ -238,6 +298,29 @@ export const MODULES: Module[] = [
     title: "Matematik savodxonlik va modellashtirish",
     goal: "Real vaziyatni matematik modelga keltirish (Formulate), modelni yechish (Employ) va natijani vaziyat nuqtai nazaridan talqin qilish (Interpret).",
     links: "PISA Formulate–Employ–Interpret",
+    basis: "PISA: Formulate, Employ, Interpret",
+    activity:
+      "real hayotiy vaziyatni matematik ifodalash, hisoblash va natijani vaziyat kontekstida talqin qilish",
+    creative: [
+      {
+        id: "IT-1",
+        title: "Kichik tadqiqot: oilaning haftalik xarajati",
+        task: "Bir hafta davomida oilangizda (yoki yotoqxonada) bitta mahsulot iste'molini kuzating, masalan non yoki suv. Ma'lumotni jadvalga yozing, oylik iste'mol va xarajat modelini tuzing, hisoblang va natijani talqin qiling: qayerda tejash mumkin? So'ng shu vaziyat asosida Formulate, Employ va Interpret savollaridan iborat PISA tipidagi topshiriq tuzing.",
+        product: "Kuzatuv jadvali, model va hisob, talqin hamda 3 savolli PISA tipidagi topshiriq.",
+      },
+      {
+        id: "IT-2",
+        title: "Ikki modelni taqqoslash",
+        task: "Taksi tarifi: 5000 so'm boshlang'ich to'lov va har km uchun 2000 so'm. Avtobus kartasi: 2000 so'm doimiy narx, lekin bekatgacha 1 km piyoda yurish kerak. Qaysi masofada qaysi biri qulayroq? Jadval yoki grafik tuzing, kesishish nuqtasini toping va narxdan tashqari omillarni ham hisobga olib xulosa qiling. Topshiriqni 4-sinf uchun soddalashtiring.",
+        product: "Jadval yoki grafik, kesishish nuqtasi, asoslangan tanlov va 4-sinf varianti.",
+      },
+      {
+        id: "IT-3",
+        title: "Ma'lumotni tanqidiy talqin qilish",
+        task: "Gazeta, sayt yoki ijtimoiy tarmoqdan diagramma yoki foizli da'vo topin (masalan, \"o'quvchilarning 60% i…\"). Undan chiqarilgan xulosa haqiqatan ma'lumotdan kelib chiqadimi? O'q shkalasi, tanlanma va foiz nimaga nisbatan olinganini tekshiring. Shu asosda Interpret jarayoniga oid 2 ta savol tuzing.",
+        product: "Manba, tanqidiy tahlil va Interpret bo'yicha 2 ta savol.",
+      },
+    ],
     theory: [
       "PISA matematik savodxonlikni modellashtirish sikli orqali tavsiflaydi: real vaziyat → Formulate (kerakli ma'lumotni ajratish, matematik masala tuzish) → Employ (hisoblash, protsedura) → matematik natija → Interpret (natijani vaziyatga qaytarish va baholash).",
       "Kontekst turlari: shaxsiy (xarid, vaqt), kasbiy (ish joyi), ijtimoiy (maktab, mahalla) va ilmiy. Boshlang'ich sinfda shaxsiy va ijtimoiy kontekstlar eng tushunarli.",
@@ -362,6 +445,30 @@ export const MODULES: Module[] = [
     title: "Matematik-metodik kompetentlik (MKT)",
     goal: "Matematik mazmunni o'qitish faoliyatiga aylantirish: o'quvchi xatosini diagnoz qilish, tushuntirish yo'lini va vositani tanlash, topshiriqni sinf darajasiga moslashtirish.",
     links: "MKT: KCS, KCT, KCC (PCK) · Shulman, Ball–Thames–Phelps",
+    basis: "MKT",
+    activity:
+      "tushuntirishni rejalashtirish, ko'rgazmali vositalarni tanlash, tipik xatolarga metodik javob tayyorlash; Microteaching",
+    creative: [
+      {
+        id: "IT-1",
+        title: "Xato sababini aniqlovchi mini-test",
+        task: "O'quvchi ishlari bankidan bitta tipik xatoni tanlang. Bu xatoning kamida ikki ehtimoliy sababini yozing. So'ng sabablarni bir-biridan ajratib beradigan 3 ta topshiriqli mini-test tuzing va har bir sabab bo'lganda o'quvchi qanday javob berishini oldindan yozing (KCS).",
+        product:
+          "Ikki gipoteza, 3 ta topshiriq va har bir gipoteza bo'yicha kutilgan javoblar jadvali.",
+      },
+      {
+        id: "IT-2",
+        title: "Bir topshiriq — uch daraja",
+        task: "Rasmiy TIMSS yoki PISA topshirig'idan birini tanlab, uning uch variantini tuzing: qo'llab-quvvatlovchi (yo'naltiruvchi savollar bilan), rivojlantiruvchi (asl darajada) va ijodiy-tadqiqotchilik (ochiq yoki umumlashtiruvchi). Har bir o'zgartirishni KCT nuqtai nazaridan asoslang.",
+        product: "Uch variantli topshiriq va har bir variant uchun metodik asos.",
+      },
+      {
+        id: "IT-3",
+        title: "Ko'rgazmali vositani tadqiq qilish",
+        task: "\"Kasrlarni taqqoslash\" mavzusi uchun ikki vositani solishtiring: kasrlar lentasi va doira modeli. Har biri qaysi xatoning oldini oladi va qaysi birida yangi xato paydo bo'lishi mumkin? Tanlagan vositangiz bilan 10 daqiqalik dars fragmentini rejalashtiring va uni Microteaching'da sinab ko'ring.",
+        product: "Ikki vosita taqqoslanishi, dars fragmenti rejasi va Microteaching'dagi kuzatuv.",
+      },
+    ],
     theory: [
       "Shulman o'qituvchi bilimining alohida turini — pedagogik mazmuniy bilimni (PCK) ajratdi. Ball, Thames va Phelps uni matematika uchun MKT modeliga aylantirdi: mazmun va o'quvchi (KCS), mazmun va o'qitish (KCT), mazmun va o'quv dasturi (KCC).",
       "O'quvchi xatosini diagnoz qilishning uch qadami: (1) o'quvchi aniq nima qildi; (2) qaysi tushuncha shakllanmagan; (3) qanday topshiriq, vosita yoki savol bilan tuzatiladi. \"Noto'g'ri, qaytadan yech\" — diagnoz emas.",
@@ -396,7 +503,30 @@ export const MODULES: Module[] = [
     n: 5,
     title: "Refleksiv faoliyat",
     goal: "O'z faoliyatini tahlil qilish, natijani o'qituvchi bahosi bilan solishtirish, feedbackdan foydalanish va keyingi rivojlanish yo'nalishini belgilash.",
-    links: "Schön · feedback · Learning Analytics · E-Portfolio",
+    links: "MKT, refleksiv yondashuv · Schön · E-Portfolio",
+    basis: "MKT, refleksiv yondashuv",
+    activity:
+      "har bir diagnostikadan so'ng qiyinchiliklarni qayd etish, o'z yechimini baholash, E-Portfolio yuritish",
+    creative: [
+      {
+        id: "IT-1",
+        title: "O'z-o'zini baholash aniqligi",
+        task: "Diagnostik testdan keyin qo'ygan o'z ballaringizni E-portfoliodagi o'qituvchi bahosi bilan solishtiring. Har bir komponent bo'yicha o'rtacha farqni hisoblang. Eng katta farq qayerda, sababi nima va keyingi testda uni qanday kamaytirasiz?",
+        product: "Komponentlar bo'yicha farqlar jadvali, sabab tahlili va aniq reja.",
+      },
+      {
+        id: "IT-2",
+        title: "Microteaching yozuvini tahlil qilish",
+        task: "Microteaching mashg'ulotingiz yozuvidan 3 ta lahzani vaqti bilan belgilang: savol berilgan, o'quvchi xato qilgan va siz feedback bergan payt. Har birida nima qildingiz, nima o'zgartirgan bo'lardingiz va nega? 1-urinish va 2-urinish natijalarini solishtiring.",
+        product: "Vaqt belgilari bilan 3 lahza tahlili va ikki urinishning taqqoslanishi.",
+      },
+      {
+        id: "IT-3",
+        title: "Ikki haftalik refleksiv kundalik",
+        task: "Ikki hafta davomida har bir amaliy mashg'ulot yoki pedagogik amaliyot darsidan keyin uchta savolga javob yozing: nima bo'ldi, nega, keyingi safar nima qilaman. Oxirida yozuvlarda takrorlanayotgan bitta muammoni toping va 1 sahifalik kichik tadqiqot hisobotini yozing.",
+        product: "Kundalik yozuvlari va topilgan muammo bo'yicha 1 sahifalik hisobot.",
+      },
+    ],
     theory: [
       "D.Schön ikki xil refleksiyani ajratadi: faoliyat jarayonidagi refleksiya (dars davomida rejani o'zgartirish) va faoliyatdan keyingi refleksiya (darsdan keyin tahlil). Ikkalasi ham o'rganiladigan ko'nikma.",
       "Refleksiya sikli to'rt savoldan iborat: Nima bo'ldi? Nega shunday bo'ldi? Nimani o'rgandim? Keyingi safar nima qilaman? Javob umumiy emas, aniq misolga tayanishi kerak.",
@@ -430,6 +560,23 @@ export const MODULES: Module[] = [
 
 export const findModule = (slug: string) => MODULES.find((m) => m.key === slug);
 
+/** Ijodiy-tadqiqotchilik topshirig'i javob maydonlari. */
+export const CREATIVE_FIELDS: Field[] = [
+  { id: "reja", label: "Tadqiqot savoli va ish rejasi", rows: 3 },
+  { id: "natija", label: "Natija va dalillar (hisob, misollar, jadval, havola)", rows: 5 },
+  { id: "xulosa", label: "Metodik xulosa: boshlang'ich sinf darsida qanday foydalanaman", rows: 3 },
+];
+
+/** Ijodiy-tadqiqotchilik topshirig'i yuborilganda ref: "<modul>/<IT-n>". */
+export const creativeRef = (moduleKey: string, id: string) => `${moduleKey}/${id}`;
+
+export const creativeByRef = (ref: string) => {
+  const [mk, id] = ref.split("/");
+  const m = MODULES.find((x) => x.key === mk);
+  const t = m?.creative.find((c) => c.id === id);
+  return m && t ? { module: m, task: t } : undefined;
+};
+
 /** Modulni yakunlashdagi refleksiya savollari. */
 export const COMPLETE_FIELDS: Field[] = [
   { id: "qiyin", label: "Bu modulda nima qiyin bo'ldi?", rows: 2 },
@@ -439,5 +586,7 @@ export const COMPLETE_FIELDS: Field[] = [
 
 /** Modul formalaridagi maydon nomlari (ishni ko'rsatishda kalit o'rniga). */
 export const MODULE_FIELD_LABEL: Record<string, string> = Object.fromEntries(
-  [...MODULES.flatMap((m) => m.methodTask.fields), ...COMPLETE_FIELDS].map((f) => [f.id, f.label]),
+  [...MODULES.flatMap((m) => m.methodTask.fields), ...COMPLETE_FIELDS, ...CREATIVE_FIELDS].map(
+    (f) => [f.id, f.label],
+  ),
 );
