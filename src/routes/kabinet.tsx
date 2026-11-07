@@ -142,6 +142,7 @@ function Page() {
 
   const load = useCallback(async () => {
     setLoading(true);
+    const missing: string[] = [];
     try {
       const [results, rubric, feedback, reflections, pins, subs, scores] = await Promise.all([
         loadResults(),
@@ -149,9 +150,23 @@ function Page() {
         fetchAll<FeedbackRow>("teacher_feedback", "created_at"),
         fetchAll<ReflectionRow>("portfolio_reflections", "created_at"),
         fetchAll<{ code: string; locked_until: string | null }>("portfolio_pins", "created_at"),
-        fetchAll<SubmissionRow>("portfolio_submissions", "created_at"),
-        fetchAll<SubmissionScoreRow>("submission_scores", "updated_at"),
+        // Amaliy ishlar jadvallari alohida migratsiyada qo'shilgan: ular hali bo'lmasa ham
+        // natijalar va ishtirokchilar ro'yxati ko'rinishi kerak.
+        fetchAll<SubmissionRow>("portfolio_submissions", "created_at").catch((e: unknown) => {
+          console.error("[kabinet] portfolio_submissions", e);
+          missing.push("portfolio_submissions");
+          return [] as SubmissionRow[];
+        }),
+        fetchAll<SubmissionScoreRow>("submission_scores", "updated_at").catch((e: unknown) => {
+          console.error("[kabinet] submission_scores", e);
+          missing.push("submission_scores");
+          return [] as SubmissionScoreRow[];
+        }),
       ]);
+      if (missing.length)
+        toast.warning(
+          "Amaliy ishlar jadvallari topilmadi. Lovable'da 20261015090000_modullar_amaliyot.sql migratsiyasini qo'llang; natijalar va ishtirokchilar ro'yxati shunday ham ko'rinadi.",
+        );
       setData({
         results,
         rubric,
