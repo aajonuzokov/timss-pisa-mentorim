@@ -39,6 +39,7 @@ import {
 } from "@/lib/results";
 import { LEVELS, levelInfo, levelText, pctOf } from "@/lib/levels";
 import type { Row } from "@/lib/diagnostics";
+import { buildItemExport, downloadCsv } from "@/lib/itemExport";
 
 export const Route = createFileRoute("/monitoring")({
   head: () => ({
@@ -49,6 +50,10 @@ export const Route = createFileRoute("/monitoring")({
         content:
           "Test natijalari eksportini yuklab, guruh diagnostikasi va ishtirokchilar monitoringini ko'rish.",
       },
+      { property: "og:title", content: "Monitoring — TIMSS/PISA Platformasi" },
+      { property: "og:description", content: "Talabalar test natijalari, topshiriqlar bo‘yicha javoblar eksporti va monitoring." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Page,
@@ -120,6 +125,9 @@ function Page() {
   const teacher = useTeacher();
   const [selfMap, setSelfMap] = useState<Map<string, Record<string, number>> | null>(null);
   const [rubricMap, setRubricMap] = useState<RubricMap>(new Map());
+  const [sourceRows, setSourceRows] = useState<Record<string, string>[]>([]);
+  const [exportBanks, setExportBanks] = useState(defaultBanks);
+  const [exportFiltered, setExportFiltered] = useState(false);
 
   const build = async (rows: Record<string, string>[], rubric?: RubricMap) => {
     const banks = defaultBanks();
@@ -127,6 +135,8 @@ function Page() {
     const built = buildAttempts(rows, banks, rubric);
     setAttempts(built.attempts);
     setSkipped(built.skipped);
+    setSourceRows(rows);
+    setExportBanks(banks);
   };
 
   const onFile = async (file: File) => {
@@ -139,6 +149,7 @@ function Page() {
         );
       }
       await build(rows);
+      setRubricMap(new Map());
       setFileName(file.name);
     } catch (e) {
       setAttempts(null);
@@ -347,6 +358,16 @@ function Page() {
     URL.revokeObjectURL(url);
   };
 
+  const exportRows = useMemo(() => {
+    if (!exportFiltered) return sourceRows;
+    const ids = new Set(included.map((a) => a.id));
+    return sourceRows.filter((r) => ids.has(r.id));
+  }, [sourceRows, included, exportFiltered]);
+  const itemExport = useMemo(
+    () => buildItemExport(exportRows, exportBanks, rubricMap),
+    [exportRows, exportBanks, rubricMap],
+  );
+
   return (
     <SiteLayout>
       <PageHeader
@@ -429,6 +450,18 @@ function Page() {
 
         {attempts && (
           <>
+            <div className="flex flex-wrap items-center gap-3 border-b pb-4">
+              <h2 className="font-semibold">Topshiriqlar bo‘yicha javoblar</h2>
+              <label className="inline-flex items-center gap-2 text-sm">
+                <input type="checkbox" checked={exportFiltered} onChange={(e) => setExportFiltered(e.target.checked)} />
+                Faqat quyidagi filtrlarga mos urinishlar
+              </label>
+              <span className="text-sm text-muted-foreground">{exportRows.length} ta urinish · {itemExport.count} ta qator</span>
+              <Button variant="outline" className="sm:ml-auto" disabled={!exportRows.length} onClick={() => downloadCsv(itemExport.csv, `topshiriqlar-javoblari-${new Date().toISOString().slice(0, 10)}.csv`)}>
+                <Download className="w-4 h-4 mr-2" /> Javoblarni CSV yuklab olish
+              </Button>
+              {itemExport.unresolved > 0 && <p className="w-full text-sm text-muted-foreground">Bank bilan moslashtirilmagan {itemExport.unresolved} ta qator: «Tekshirish kerak». Ular eksportda saqlanadi.</p>}
+            </div>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
               <label className="inline-flex items-center gap-2">
                 <input

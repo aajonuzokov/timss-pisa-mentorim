@@ -1,0 +1,2 @@
+- [x] Add item-level answer CSV export to Monitoring without changing stored results or question banks.
+- [x] Test version resolution, missing answers, diagnostic rubrics, and authenticated file download.
