@@ -15,6 +15,20 @@
       "when": 1791816759848,
       "tag": "0001_diagnostika_portfolio",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794715958775,
+      "tag": "0002_tighten_open_inserts_and_books_storage",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794715973806,
+      "tag": "0003_reflection_policy_no_rls_subquery",
+      "breakpoints": true
     }
   ]
 }
