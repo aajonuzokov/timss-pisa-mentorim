@@ -1,2 +1,5 @@
 - [x] Add item-level answer CSV export to Monitoring without changing stored results or question banks.
 - [x] Test version resolution, missing answers, diagnostic rubrics, and authenticated file download.
+- [x] Verify consent enforcement and its introduction date.
+- [x] Export every stored attempt with participant code, name, submission time and consent evidence.
+- [x] Record future checkbox acceptance times and verify saving and teacher CSV download.

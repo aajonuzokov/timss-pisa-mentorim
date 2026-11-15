@@ -16,6 +16,10 @@ export const Route = createFileRoute("/sinov")({
         content:
           "Dissertatsiyaning diagnostik testi (Ilova 1): kirish (A) va yakuniy (B) shakllar, 20 tadan ochiq topshiriq, 40 ballik rubrika.",
       },
+      { property: "og:title", content: "Tajriba-sinov testlari — TIMSS/PISA Platformasi" },
+      { property: "og:description", content: "Kirish va yakuniy diagnostik testlar: 20 ta topshiriq, 40 ballik baholash." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Page,

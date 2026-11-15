@@ -40,6 +40,7 @@ import {
 import { LEVELS, levelInfo, levelText, pctOf } from "@/lib/levels";
 import type { Row } from "@/lib/diagnostics";
 import { buildItemExport, downloadCsv } from "@/lib/itemExport";
+import { buildParticipantExport } from "@/lib/participantExport";
 
 export const Route = createFileRoute("/monitoring")({
   head: () => ({
@@ -450,6 +451,13 @@ function Page() {
 
         {attempts && (
           <>
+            <div className="flex flex-wrap items-center gap-3 border-b pb-4">
+              <h2 className="font-semibold">Ishtirokchilar va rozilik qaydlari</h2>
+              <span className="text-sm text-muted-foreground">{sourceRows.length} ta urinish</span>
+              <Button variant="outline" className="sm:ml-auto" disabled={!sourceRows.length} onClick={() => downloadCsv(buildParticipantExport(sourceRows).csv, `ishtirokchilar-rozilik-${new Date().toISOString().slice(0, 10)}.csv`)}>
+                <Download className="w-4 h-4 mr-2" /> Ishtirokchilarni CSV yuklab olish
+              </Button>
+            </div>
             <div className="flex flex-wrap items-center gap-3 border-b pb-4">
               <h2 className="font-semibold">Topshiriqlar bo‘yicha javoblar</h2>
               <label className="inline-flex items-center gap-2 text-sm">

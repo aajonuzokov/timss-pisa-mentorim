@@ -24,6 +24,7 @@ export type Participant = {
   code: string;
   group: Group;
   consent: boolean;
+  consent_at?: string;
 };
 
 export type Meta = {
@@ -31,6 +32,8 @@ export type Meta = {
   stage: Stage;
   group: Group;
   consent: boolean;
+  /** Checkbox acceptance time; absent on historical results. */
+  consent_at?: string;
   /** Meta formatining versiyasi. */
   v: 1;
 };
@@ -96,7 +99,8 @@ export const loadProfile = (): Participant => {
   const raw = storage.get(PROFILE_KEY);
   if (!raw) return emptyParticipant();
   try {
-    return { ...emptyParticipant(), ...JSON.parse(raw) };
+    // A saved profile is not a fresh consent action for this visit.
+    return { ...emptyParticipant(), ...JSON.parse(raw), consent: false, consent_at: undefined };
   } catch {
     return emptyParticipant();
   }
@@ -128,6 +132,12 @@ export const saveDraft = <T>(key: string, d: Draft<T>) =>
 export const clearDraft = (key: string) => storage.remove(DRAFT_PREFIX + key);
 
 export const isValidCode = (c: string) => /^[A-Z0-9][A-Z0-9-]{2,19}$/.test(c);
+
+export const setConsent = (p: Participant, accepted: boolean, at = new Date().toISOString()): Participant => ({
+  ...p,
+  consent: accepted,
+  consent_at: accepted ? at : undefined,
+});
 
 /** Saqlangan javoblardan metamaʼlumotni ajratish (eski yozuvlarda yo'q). */
 export const readMeta = (answers: Record<string, unknown>): Partial<Meta> => {

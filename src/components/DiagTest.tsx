@@ -123,6 +123,7 @@ export function DiagTest({ items, testKey, stage, label, showKey = false }: Prop
           stage,
           group: participant.group,
           consent: participant.consent,
+          consent_at: participant.consent_at,
           v: 1,
         } satisfies Meta,
       },

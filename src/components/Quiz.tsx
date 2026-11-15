@@ -189,6 +189,7 @@ export function Quiz({
           stage,
           group: participant.group,
           consent: participant.consent,
+          consent_at: participant.consent_at,
           v: 1,
         } satisfies Meta,
       },

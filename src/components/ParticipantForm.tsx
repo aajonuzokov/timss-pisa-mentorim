@@ -3,6 +3,7 @@ import {
   STAGE_LABEL,
   isValidCode,
   normalizeCode,
+  setConsent,
   type Group,
   type Participant,
   type Stage,
@@ -146,7 +147,7 @@ export function ParticipantForm({
           className="mt-1"
           checked={participant.consent}
           aria-label="Rozilik"
-          onChange={(e) => setParticipant({ ...participant, consent: e.target.checked })}
+          onChange={(e) => setParticipant(setConsent(participant, e.target.checked))}
         />
         <span>
           Test natijam va kiritgan ma'lumotlarim faqat ilmiy-tadqiqot maqsadida, umumlashtirilgan
